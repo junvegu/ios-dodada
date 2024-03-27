@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "booking.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
