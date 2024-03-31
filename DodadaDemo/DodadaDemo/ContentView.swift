@@ -9,6 +9,7 @@ import SwiftUI
 import Dodada
 
 enum DesingSystemMenu: String, CaseIterable, Hashable {
+    case foundations = "Foundations"
     case atoms = "Atoms"
     case molecules = "Molecules"
     case organisms = "Organisms"
@@ -27,6 +28,7 @@ struct MenuItem: Identifiable {
 }
 struct ContentView: View {
     let items: [MenuItem] = [
+        .init(type: .foundations),
         .init(type: .atoms),
         .init(type: .molecules),
         .init(type: .organisms),
@@ -39,8 +41,8 @@ struct ContentView: View {
                 ForEach(items) { menu in
                     NavigationLink {
                         switch menu.type {
-                        case .atoms:
-                            DDDAtomsDetail()
+                        case .foundations:
+                            DDDFoundationsDetail()
                         default:
                             DDDColorsView()
                         }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DDDAtomsDetail: View {
+struct DDDFoundationsDetail: View {
     var body: some View {
         List {
             NavigationLink {
@@ -22,11 +22,11 @@ struct DDDAtomsDetail: View {
                 Text("Fonts").apply(token: .title3, weight: .bold)
             }
         }
-        .navigationTitle("Atoms")
+        .navigationTitle("Foundations")
         .listStyle(GroupedListStyle())
     }
 }
 
 #Preview {
-    DDDAtomsDetail()
+    DDDFoundationsDetail()
 }
