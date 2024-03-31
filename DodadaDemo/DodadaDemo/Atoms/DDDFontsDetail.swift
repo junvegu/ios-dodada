@@ -41,7 +41,7 @@ struct DDDFontsDetail: View {
                     }
                 }
                 
-                Section(header: Text("Bold").apply(token: .title3, weight: .bold)) {
+                Section(header: Text("Underline").apply(token: .title3, weight: .bold)) {
                   
                     ForEach(fonts) { item in
                         Text(item.item.rawValue).apply(token: item.item, weight: .bold)
@@ -49,10 +49,9 @@ struct DDDFontsDetail: View {
                     }
                 }
             }
-
-            
-
         }
+        .navigationTitle("Fonts")
+        .listStyle(GroupedListStyle())
     }
 }
 

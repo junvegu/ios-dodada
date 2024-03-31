@@ -10,7 +10,7 @@ import SwiftUI
 struct DDDColorsView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
-            HStack {
+            VStack {
                 Rectangle().foregroundColor(Color.designSystem.defaultButton)
                 Rectangle().foregroundColor(Color.designSystem.disabledButton)
                 Rectangle().foregroundColor(Color.designSystem.disabledText)
@@ -27,6 +27,8 @@ struct DDDColorsView: View {
                 Rectangle().foregroundColor(Color.designSystem.titleNavigationBar)
             }
         }
+        .navigationTitle("Colors")
+        .background(Color.mint)
     }
 }
 
