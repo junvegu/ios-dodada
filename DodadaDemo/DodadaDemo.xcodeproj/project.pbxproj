@@ -1,0 +1,646 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD8D13A12BB5339B00106AC2 /* DodadaDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13A02BB5339B00106AC2 /* DodadaDemoApp.swift */; };
+		AD8D13A32BB5339B00106AC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13A22BB5339B00106AC2 /* ContentView.swift */; };
+		AD8D13A52BB5339C00106AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8D13A42BB5339C00106AC2 /* Assets.xcassets */; };
+		AD8D13A82BB5339C00106AC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8D13A72BB5339C00106AC2 /* Preview Assets.xcassets */; };
+		AD8D13B22BB5339C00106AC2 /* DodadaDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13B12BB5339C00106AC2 /* DodadaDemoTests.swift */; };
+		AD8D13BC2BB5339D00106AC2 /* DodadaDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13BB2BB5339D00106AC2 /* DodadaDemoUITests.swift */; };
+		AD8D13BE2BB5339D00106AC2 /* DodadaDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13BD2BB5339D00106AC2 /* DodadaDemoUITestsLaunchTests.swift */; };
+		AD8D13CC2BB533B700106AC2 /* Dodada in Frameworks */ = {isa = PBXBuildFile; productRef = AD8D13CB2BB533B700106AC2 /* Dodada */; };
+		AD8D13CF2BB5379E00106AC2 /* Dodada in Frameworks */ = {isa = PBXBuildFile; productRef = AD8D13CE2BB5379E00106AC2 /* Dodada */; };
+		AD8D13D32BB9030000106AC2 /* DDDColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13D22BB9030000106AC2 /* DDDColorsView.swift */; };
+		AD8D13D52BB9072500106AC2 /* DDDAtomsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13D42BB9072500106AC2 /* DDDAtomsDetail.swift */; };
+		AD8D13D72BB9102D00106AC2 /* DDDFontsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13D62BB9102D00106AC2 /* DDDFontsDetail.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD8D13AE2BB5339C00106AC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD8D13952BB5339B00106AC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD8D139C2BB5339B00106AC2;
+			remoteInfo = DodadaDemo;
+		};
+		AD8D13B82BB5339D00106AC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD8D13952BB5339B00106AC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD8D139C2BB5339B00106AC2;
+			remoteInfo = DodadaDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AD8D139D2BB5339B00106AC2 /* DodadaDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DodadaDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD8D13A02BB5339B00106AC2 /* DodadaDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DodadaDemoApp.swift; sourceTree = "<group>"; };
+		AD8D13A22BB5339B00106AC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AD8D13A42BB5339C00106AC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD8D13A72BB5339C00106AC2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AD8D13AD2BB5339C00106AC2 /* DodadaDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DodadaDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD8D13B12BB5339C00106AC2 /* DodadaDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DodadaDemoTests.swift; sourceTree = "<group>"; };
+		AD8D13B72BB5339D00106AC2 /* DodadaDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DodadaDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD8D13BB2BB5339D00106AC2 /* DodadaDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DodadaDemoUITests.swift; sourceTree = "<group>"; };
+		AD8D13BD2BB5339D00106AC2 /* DodadaDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DodadaDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AD8D13D02BB7C59300106AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AD8D13D22BB9030000106AC2 /* DDDColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDColorsView.swift; sourceTree = "<group>"; };
+		AD8D13D42BB9072500106AC2 /* DDDAtomsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDAtomsDetail.swift; sourceTree = "<group>"; };
+		AD8D13D62BB9102D00106AC2 /* DDDFontsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDFontsDetail.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD8D139A2BB5339B00106AC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8D13CC2BB533B700106AC2 /* Dodada in Frameworks */,
+				AD8D13CF2BB5379E00106AC2 /* Dodada in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD8D13AA2BB5339C00106AC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD8D13B42BB5339D00106AC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD8D13942BB5339B00106AC2 = {
+			isa = PBXGroup;
+			children = (
+				AD8D139F2BB5339B00106AC2 /* DodadaDemo */,
+				AD8D13B02BB5339C00106AC2 /* DodadaDemoTests */,
+				AD8D13BA2BB5339D00106AC2 /* DodadaDemoUITests */,
+				AD8D139E2BB5339B00106AC2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD8D139E2BB5339B00106AC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD8D139D2BB5339B00106AC2 /* DodadaDemo.app */,
+				AD8D13AD2BB5339C00106AC2 /* DodadaDemoTests.xctest */,
+				AD8D13B72BB5339D00106AC2 /* DodadaDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD8D139F2BB5339B00106AC2 /* DodadaDemo */ = {
+			isa = PBXGroup;
+			children = (
+				AD8D13D12BB902E900106AC2 /* Atoms */,
+				AD8D13D02BB7C59300106AC2 /* Info.plist */,
+				AD8D13A02BB5339B00106AC2 /* DodadaDemoApp.swift */,
+				AD8D13A22BB5339B00106AC2 /* ContentView.swift */,
+				AD8D13A42BB5339C00106AC2 /* Assets.xcassets */,
+				AD8D13A62BB5339C00106AC2 /* Preview Content */,
+			);
+			path = DodadaDemo;
+			sourceTree = "<group>";
+		};
+		AD8D13A62BB5339C00106AC2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AD8D13A72BB5339C00106AC2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AD8D13B02BB5339C00106AC2 /* DodadaDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				AD8D13B12BB5339C00106AC2 /* DodadaDemoTests.swift */,
+			);
+			path = DodadaDemoTests;
+			sourceTree = "<group>";
+		};
+		AD8D13BA2BB5339D00106AC2 /* DodadaDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AD8D13BB2BB5339D00106AC2 /* DodadaDemoUITests.swift */,
+				AD8D13BD2BB5339D00106AC2 /* DodadaDemoUITestsLaunchTests.swift */,
+			);
+			path = DodadaDemoUITests;
+			sourceTree = "<group>";
+		};
+		AD8D13D12BB902E900106AC2 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				AD8D13D22BB9030000106AC2 /* DDDColorsView.swift */,
+				AD8D13D42BB9072500106AC2 /* DDDAtomsDetail.swift */,
+				AD8D13D62BB9102D00106AC2 /* DDDFontsDetail.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD8D139C2BB5339B00106AC2 /* DodadaDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD8D13C12BB5339D00106AC2 /* Build configuration list for PBXNativeTarget "DodadaDemo" */;
+			buildPhases = (
+				AD8D13992BB5339B00106AC2 /* Sources */,
+				AD8D139A2BB5339B00106AC2 /* Frameworks */,
+				AD8D139B2BB5339B00106AC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DodadaDemo;
+			packageProductDependencies = (
+				AD8D13CB2BB533B700106AC2 /* Dodada */,
+				AD8D13CE2BB5379E00106AC2 /* Dodada */,
+			);
+			productName = DodadaDemo;
+			productReference = AD8D139D2BB5339B00106AC2 /* DodadaDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AD8D13AC2BB5339C00106AC2 /* DodadaDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD8D13C42BB5339D00106AC2 /* Build configuration list for PBXNativeTarget "DodadaDemoTests" */;
+			buildPhases = (
+				AD8D13A92BB5339C00106AC2 /* Sources */,
+				AD8D13AA2BB5339C00106AC2 /* Frameworks */,
+				AD8D13AB2BB5339C00106AC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD8D13AF2BB5339C00106AC2 /* PBXTargetDependency */,
+			);
+			name = DodadaDemoTests;
+			productName = DodadaDemoTests;
+			productReference = AD8D13AD2BB5339C00106AC2 /* DodadaDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AD8D13B62BB5339D00106AC2 /* DodadaDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD8D13C72BB5339D00106AC2 /* Build configuration list for PBXNativeTarget "DodadaDemoUITests" */;
+			buildPhases = (
+				AD8D13B32BB5339D00106AC2 /* Sources */,
+				AD8D13B42BB5339D00106AC2 /* Frameworks */,
+				AD8D13B52BB5339D00106AC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD8D13B92BB5339D00106AC2 /* PBXTargetDependency */,
+			);
+			name = DodadaDemoUITests;
+			productName = DodadaDemoUITests;
+			productReference = AD8D13B72BB5339D00106AC2 /* DodadaDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD8D13952BB5339B00106AC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AD8D139C2BB5339B00106AC2 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					AD8D13AC2BB5339C00106AC2 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = AD8D139C2BB5339B00106AC2;
+					};
+					AD8D13B62BB5339D00106AC2 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = AD8D139C2BB5339B00106AC2;
+					};
+				};
+			};
+			buildConfigurationList = AD8D13982BB5339B00106AC2 /* Build configuration list for PBXProject "DodadaDemo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AD8D13942BB5339B00106AC2;
+			packageReferences = (
+				AD8D13CD2BB5379E00106AC2 /* XCLocalSwiftPackageReference "../Library" */,
+			);
+			productRefGroup = AD8D139E2BB5339B00106AC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD8D139C2BB5339B00106AC2 /* DodadaDemo */,
+				AD8D13AC2BB5339C00106AC2 /* DodadaDemoTests */,
+				AD8D13B62BB5339D00106AC2 /* DodadaDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD8D139B2BB5339B00106AC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8D13A82BB5339C00106AC2 /* Preview Assets.xcassets in Resources */,
+				AD8D13A52BB5339C00106AC2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD8D13AB2BB5339C00106AC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD8D13B52BB5339D00106AC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD8D13992BB5339B00106AC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8D13A32BB5339B00106AC2 /* ContentView.swift in Sources */,
+				AD8D13A12BB5339B00106AC2 /* DodadaDemoApp.swift in Sources */,
+				AD8D13D72BB9102D00106AC2 /* DDDFontsDetail.swift in Sources */,
+				AD8D13D52BB9072500106AC2 /* DDDAtomsDetail.swift in Sources */,
+				AD8D13D32BB9030000106AC2 /* DDDColorsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD8D13A92BB5339C00106AC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8D13B22BB5339C00106AC2 /* DodadaDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD8D13B32BB5339D00106AC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8D13BE2BB5339D00106AC2 /* DodadaDemoUITestsLaunchTests.swift in Sources */,
+				AD8D13BC2BB5339D00106AC2 /* DodadaDemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD8D13AF2BB5339C00106AC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD8D139C2BB5339B00106AC2 /* DodadaDemo */;
+			targetProxy = AD8D13AE2BB5339C00106AC2 /* PBXContainerItemProxy */;
+		};
+		AD8D13B92BB5339D00106AC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD8D139C2BB5339B00106AC2 /* DodadaDemo */;
+			targetProxy = AD8D13B82BB5339D00106AC2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AD8D13BF2BB5339D00106AC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AD8D13C02BB5339D00106AC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD8D13C22BB5339D00106AC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DodadaDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = 7T4GE77SRT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DodadaDemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbklabs.DodadaDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD8D13C32BB5339D00106AC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DodadaDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = 7T4GE77SRT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DodadaDemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbklabs.DodadaDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AD8D13C52BB5339D00106AC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T4GE77SRT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbklabs.DodadaDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DodadaDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DodadaDemo";
+			};
+			name = Debug;
+		};
+		AD8D13C62BB5339D00106AC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T4GE77SRT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbklabs.DodadaDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DodadaDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DodadaDemo";
+			};
+			name = Release;
+		};
+		AD8D13C82BB5339D00106AC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T4GE77SRT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbklabs.DodadaDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DodadaDemo;
+			};
+			name = Debug;
+		};
+		AD8D13C92BB5339D00106AC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T4GE77SRT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qbklabs.DodadaDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DodadaDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD8D13982BB5339B00106AC2 /* Build configuration list for PBXProject "DodadaDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8D13BF2BB5339D00106AC2 /* Debug */,
+				AD8D13C02BB5339D00106AC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD8D13C12BB5339D00106AC2 /* Build configuration list for PBXNativeTarget "DodadaDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8D13C22BB5339D00106AC2 /* Debug */,
+				AD8D13C32BB5339D00106AC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD8D13C42BB5339D00106AC2 /* Build configuration list for PBXNativeTarget "DodadaDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8D13C52BB5339D00106AC2 /* Debug */,
+				AD8D13C62BB5339D00106AC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD8D13C72BB5339D00106AC2 /* Build configuration list for PBXNativeTarget "DodadaDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8D13C82BB5339D00106AC2 /* Debug */,
+				AD8D13C92BB5339D00106AC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		AD8D13CD2BB5379E00106AC2 /* XCLocalSwiftPackageReference "../Library" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Library;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD8D13CB2BB533B700106AC2 /* Dodada */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Dodada;
+		};
+		AD8D13CE2BB5379E00106AC2 /* Dodada */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Dodada;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = AD8D13952BB5339B00106AC2 /* Project object */;
+}
