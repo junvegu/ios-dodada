@@ -129,19 +129,37 @@ internal enum Asset {
     internal static let user = ImageAsset(name: "user")
   }
   internal enum Colors {
+    internal static let black = ColorAsset(name: "Black")
     internal static let error = ColorAsset(name: "Error")
     internal static let info = ColorAsset(name: "Info")
+    internal static let primary100 = ColorAsset(name: "Primary.100")
+    internal static let primary200 = ColorAsset(name: "Primary.200")
+    internal static let primary300 = ColorAsset(name: "Primary.300")
+    internal static let primary400 = ColorAsset(name: "Primary.400")
+    internal static let primary600 = ColorAsset(name: "Primary.600")
+    internal static let primary700 = ColorAsset(name: "Primary.700")
+    internal static let primary800 = ColorAsset(name: "Primary.800")
+    internal static let primary900 = ColorAsset(name: "Primary.900")
     internal static let primary = ColorAsset(name: "Primary")
+    internal static let secondary100 = ColorAsset(name: "Secondary.100")
+    internal static let secondary200 = ColorAsset(name: "Secondary.200")
+    internal static let secondary300 = ColorAsset(name: "Secondary.300")
+    internal static let secondary400 = ColorAsset(name: "Secondary.400")
+    internal static let secondary600 = ColorAsset(name: "Secondary.600")
+    internal static let secondary700 = ColorAsset(name: "Secondary.700")
+    internal static let secondary800 = ColorAsset(name: "Secondary.800")
+    internal static let secondary900 = ColorAsset(name: "Secondary.900")
     internal static let secondary = ColorAsset(name: "Secondary")
     internal static let success = ColorAsset(name: "Success")
     internal static let warning = ColorAsset(name: "Warning")
+    internal static let white = ColorAsset(name: "White")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 // MARK: - Implementation Details
 
-internal final class ColorAsset {
+public final class ColorAsset {
   internal fileprivate(set) var name: String
 
   #if os(macOS)
@@ -171,12 +189,12 @@ internal final class ColorAsset {
 
   #if canImport(SwiftUI)
   @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
-  internal private(set) lazy var swiftUIColor: SwiftUI.Color = {
+  public private(set) lazy var swiftUIColor: SwiftUI.Color = {
     SwiftUI.Color(asset: self)
   }()
   #endif
 
-  fileprivate init(name: String) {
+  public init(name: String) {
     self.name = name
   }
 }
@@ -205,7 +223,7 @@ internal extension SwiftUI.Color {
 }
 #endif
 
-internal struct ImageAsset {
+public struct ImageAsset {
   internal fileprivate(set) var name: String
 
   #if os(macOS)
@@ -244,7 +262,7 @@ internal struct ImageAsset {
 
   #if canImport(SwiftUI)
   @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
-  internal var swiftUIImage: SwiftUI.Image {
+    public var swiftUIImage: SwiftUI.Image {
     SwiftUI.Image(asset: self)
   }
   #endif
@@ -268,7 +286,7 @@ internal extension ImageAsset.Image {
 
 #if canImport(SwiftUI)
 @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
-internal extension SwiftUI.Image {
+public extension SwiftUI.Image {
   init(asset: ImageAsset) {
     let bundle = BundleToken.bundle
     self.init(asset.name, bundle: bundle)

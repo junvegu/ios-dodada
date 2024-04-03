@@ -19,6 +19,7 @@
 		AD8D13D32BB9030000106AC2 /* DDDColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13D22BB9030000106AC2 /* DDDColorsView.swift */; };
 		AD8D13D52BB9072500106AC2 /* DDDFoundationsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13D42BB9072500106AC2 /* DDDFoundationsDetail.swift */; };
 		AD8D13D72BB9102D00106AC2 /* DDDFontsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13D62BB9102D00106AC2 /* DDDFontsDetail.swift */; };
+		AD8D13DA2BB9265700106AC2 /* DDDButtonsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13D92BB9265700106AC2 /* DDDButtonsDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		AD8D13D22BB9030000106AC2 /* DDDColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDColorsView.swift; sourceTree = "<group>"; };
 		AD8D13D42BB9072500106AC2 /* DDDFoundationsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDFoundationsDetail.swift; sourceTree = "<group>"; };
 		AD8D13D62BB9102D00106AC2 /* DDDFontsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDFontsDetail.swift; sourceTree = "<group>"; };
+		AD8D13D92BB9265700106AC2 /* DDDButtonsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDButtonsDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				AD8D13D22BB9030000106AC2 /* DDDColorsView.swift */,
 				AD8D13D42BB9072500106AC2 /* DDDFoundationsDetail.swift */,
 				AD8D13D62BB9102D00106AC2 /* DDDFontsDetail.swift */,
+				AD8D13D92BB9265700106AC2 /* DDDButtonsDetail.swift */,
 			);
 			path = Atoms;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				AD8D13D72BB9102D00106AC2 /* DDDFontsDetail.swift in Sources */,
 				AD8D13D52BB9072500106AC2 /* DDDFoundationsDetail.swift in Sources */,
 				AD8D13D32BB9030000106AC2 /* DDDColorsView.swift in Sources */,
+				AD8D13DA2BB9265700106AC2 /* DDDButtonsDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

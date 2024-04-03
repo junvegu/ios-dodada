@@ -54,6 +54,8 @@ public protocol DDDTheme {
     
     /// Button Colors
     var disabledButton: Color { get }
+    var disabledTextButton: Color { get }
+
     var hoverButton: Color { get }
     var defaultButton: Color { get }
     var pressedButton: Color { get }
@@ -80,6 +82,8 @@ struct ColorThemeDefault: DDDTheme {
     var disabledText: Color = Color("Secondary.400", bundle: .module)
     
     var disabledButton: Color = Color("Secondary.100", bundle: .module)
+    
+    var disabledTextButton: Color = Color("Secondary.300", bundle: .module)
     
     var hoverButton: Color = Color("Primary.700", bundle: .module)
     

@@ -27,7 +27,7 @@ struct DDDFontsDetail: View {
     var body: some View {
         VStack {
             List {
-                Section(header: Text("Regular").apply(token: .title3, weight: .bold)) {
+                Section(header: Text("").apply(token: .title3, weight: .bold)) {
                   
                     ForEach(fonts) { item in
                         Text(item.item.rawValue).apply(token: item.item, weight: .regular)

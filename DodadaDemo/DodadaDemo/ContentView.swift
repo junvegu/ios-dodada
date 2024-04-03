@@ -44,7 +44,7 @@ struct ContentView: View {
                         case .foundations:
                             DDDFoundationsDetail()
                         default:
-                            DDDColorsView()
+                            DDDButtonsDetail()
                         }
                     } label: {
                         Text(menu.type.rawValue).apply(token: .title3, weight: .bold)

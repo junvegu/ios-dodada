@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public extension Text {
+public extension View {
     func apply(
         token: DDDFontToken = .caption2,
         weight: DDDFontToken.Weigth = .regular
@@ -18,6 +18,8 @@ public extension Text {
     }
 }
 
+
+
 public struct DDDTypographyModifier: ViewModifier {
 
     @Environment(\.colorTheme) private var colorTheme: DDDTheme
@@ -26,16 +28,9 @@ public struct DDDTypographyModifier: ViewModifier {
     var weight: DDDFontToken.Weigth
     
     public func body(content: Content) -> some View {
-        
-        if #available(iOS 16.0, *) {
-            content
-                .font(typography.font(weight))
-                .kerning(typography.letterSpacing)
-                .lineSpacing(typography.lineSpacing)
-        } else {
-            content
-                .font(typography.font(weight))
-                .lineSpacing(typography.lineSpacing)
-        }
+        content
+            .font(typography.font(weight))
+            .kerning(typography.letterSpacing)
+            .lineSpacing(typography.lineSpacing)
     }
 }
