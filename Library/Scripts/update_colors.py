@@ -27,7 +27,7 @@ contents_filename = 'Contents.json'
 
 xcassets_header = '''{
   "info" : {
-    "author" : "xcode",
+    "author" : "El Wachin",
     "version" : 1
   }
 }

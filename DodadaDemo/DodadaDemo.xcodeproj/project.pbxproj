@@ -20,6 +20,7 @@
 		AD8D13D52BB9072500106AC2 /* DDDFoundationsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13D42BB9072500106AC2 /* DDDFoundationsDetail.swift */; };
 		AD8D13D72BB9102D00106AC2 /* DDDFontsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13D62BB9102D00106AC2 /* DDDFontsDetail.swift */; };
 		AD8D13DA2BB9265700106AC2 /* DDDButtonsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13D92BB9265700106AC2 /* DDDButtonsDetail.swift */; };
+		AD962FD32BCA133C00BC18FE /* DDDIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD962FD22BCA133C00BC18FE /* DDDIconView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		AD8D13D42BB9072500106AC2 /* DDDFoundationsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDFoundationsDetail.swift; sourceTree = "<group>"; };
 		AD8D13D62BB9102D00106AC2 /* DDDFontsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDFontsDetail.swift; sourceTree = "<group>"; };
 		AD8D13D92BB9265700106AC2 /* DDDButtonsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDButtonsDetail.swift; sourceTree = "<group>"; };
+		AD962FD22BCA133C00BC18FE /* DDDIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDIconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		AD8D139F2BB5339B00106AC2 /* DodadaDemo */ = {
 			isa = PBXGroup;
 			children = (
+				AD962FD12BCA126100BC18FE /* Foundation */,
 				AD8D13D82BB9155000106AC2 /* Molecules */,
 				AD8D13D12BB902E900106AC2 /* Atoms */,
 				AD8D13D02BB7C59300106AC2 /* Info.plist */,
@@ -146,9 +149,6 @@
 		AD8D13D12BB902E900106AC2 /* Atoms */ = {
 			isa = PBXGroup;
 			children = (
-				AD8D13D22BB9030000106AC2 /* DDDColorsView.swift */,
-				AD8D13D42BB9072500106AC2 /* DDDFoundationsDetail.swift */,
-				AD8D13D62BB9102D00106AC2 /* DDDFontsDetail.swift */,
 				AD8D13D92BB9265700106AC2 /* DDDButtonsDetail.swift */,
 			);
 			path = Atoms;
@@ -159,6 +159,17 @@
 			children = (
 			);
 			path = Molecules;
+			sourceTree = "<group>";
+		};
+		AD962FD12BCA126100BC18FE /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				AD8D13D22BB9030000106AC2 /* DDDColorsView.swift */,
+				AD8D13D42BB9072500106AC2 /* DDDFoundationsDetail.swift */,
+				AD8D13D62BB9102D00106AC2 /* DDDFontsDetail.swift */,
+				AD962FD22BCA133C00BC18FE /* DDDIconView.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +313,7 @@
 				AD8D13A12BB5339B00106AC2 /* DodadaDemoApp.swift in Sources */,
 				AD8D13D72BB9102D00106AC2 /* DDDFontsDetail.swift in Sources */,
 				AD8D13D52BB9072500106AC2 /* DDDFoundationsDetail.swift in Sources */,
+				AD962FD32BCA133C00BC18FE /* DDDIconView.swift in Sources */,
 				AD8D13D32BB9030000106AC2 /* DDDColorsView.swift in Sources */,
 				AD8D13DA2BB9265700106AC2 /* DDDButtonsDetail.swift in Sources */,
 			);

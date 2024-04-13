@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Junior Quevedo Gutiérrez  on 1/04/24.
 //
@@ -8,107 +8,323 @@
 import Foundation
 import SwiftUI
 
-public extension Image {
-    static let arrowDown = ImageAsset(name: "arrow-down")
-    static let arrowLeft = ImageAsset(name: "arrow-left")
-    static let arrowRight = ImageAsset(name: "arrow-right")
-    static let arrowUpRight = ImageAsset(name: "arrow-up-right")
-    static let arrowUp = ImageAsset(name: "arrow-up")
-    static let chevronDown = ImageAsset(name: "chevron-down")
-    static let chevronLeft = ImageAsset(name: "chevron-left")
-    static let chevronRight = ImageAsset(name: "chevron-right")
-    static let chevronUp = ImageAsset(name: "chevron-up")
-    static let grid = ImageAsset(name: "grid")
-    static let maximize2 = ImageAsset(name: "maximize-2")
-    static let minimize2 = ImageAsset(name: "minimize-2")
-    static let add = ImageAsset(name: "add")
-    static let alertCircle = ImageAsset(name: "alert-circle")
-    static let alertTriangle = ImageAsset(name: "alert-triangle")
-    static let chevronDownFill = ImageAsset(name: "chevron-down-fill")
-    static let chevronUpFill = ImageAsset(name: "chevron-up-fill")
-    static let circle = ImageAsset(name: "circle")
-    static let clock = ImageAsset(name: "clock")
-    static let collections = ImageAsset(name: "collections")
-    static let delete = ImageAsset(name: "delete")
-    static let download = ImageAsset(name: "download")
-    static let externalLink = ImageAsset(name: "external-link")
-    static let filter = ImageAsset(name: "filter")
-    static let gift = ImageAsset(name: "gift")
-    static let globe = ImageAsset(name: "globe")
-    static let heart = ImageAsset(name: "heart")
-    static let helpCircle = ImageAsset(name: "help-circle")
-    static let home = ImageAsset(name: "home")
-    static let info = ImageAsset(name: "info")
-    static let lifeBuoy = ImageAsset(name: "life-buoy")
-    static let mail = ImageAsset(name: "mail")
-    static let mapPin = ImageAsset(name: "map-pin")
-    static let map = ImageAsset(name: "map")
-    static let restaurant = ImageAsset(name: "restaurant")
-    static let share2 = ImageAsset(name: "share-2")
-    static let slash = ImageAsset(name: "slash")
-    static let trendingTopic = ImageAsset(name: "trending topic")
-    static let trendingDown = ImageAsset(name: "trending-down")
-    static let trendingUp = ImageAsset(name: "trending-up")
-    static let zap = ImageAsset(name: "zap")
-    static let award2 = ImageAsset(name: "award 2")
-    static let award = ImageAsset(name: "award")
-    static let calendar = ImageAsset(name: "calendar")
-    static let check = ImageAsset(name: "check")
-    static let dollarSign = ImageAsset(name: "dollar-sign")
-    static let edit2 = ImageAsset(name: "edit-2")
-    static let eyeOff = ImageAsset(name: "eye-off")
-    static let eye = ImageAsset(name: "eye")
-    static let image = ImageAsset(name: "image")
-    static let like = ImageAsset(name: "like")
-    static let list = ImageAsset(name: "list")
-    static let loader = ImageAsset(name: "loader")
-    static let lock = ImageAsset(name: "lock")
-    static let menuFood = ImageAsset(name: "menu food")
-    static let minus = ImageAsset(name: "minus")
-    static let moreHorizontal = ImageAsset(name: "more-horizontal")
-    static let moreVertical = ImageAsset(name: "more-vertical")
-    static let navigation = ImageAsset(name: "navigation")
-    static let phone = ImageAsset(name: "phone")
-    static let plus = ImageAsset(name: "plus")
-    static let premium = ImageAsset(name: "premium")
-    static let promo = ImageAsset(name: "promo")
-    static let refreshCcw = ImageAsset(name: "refresh-ccw")
-    static let search = ImageAsset(name: "search")
-    static let send = ImageAsset(name: "send")
-    static let settings = ImageAsset(name: "settings")
-    static let share = ImageAsset(name: "share")
-    static let smile = ImageAsset(name: "smile")
-    static let star = ImageAsset(name: "star")
-    static let trash2 = ImageAsset(name: "trash-2")
-    static let unlock = ImageAsset(name: "unlock")
-    static let upload = ImageAsset(name: "upload")
-    static let wifi = ImageAsset(name: "wifi")
-    static let x = ImageAsset(name: "x")
-    static let anticuchos = ImageAsset(name: "Anticuchos")
-    static let chicken = ImageAsset(name: "Chicken")
-    static let delivery = ImageAsset(name: "Delivery")
-    static let privacy = ImageAsset(name: "Privacy")
-    static let bell = ImageAsset(name: "bell")
-    static let booking = ImageAsset(name: "booking")
-    static let cafe = ImageAsset(name: "cafe")
-    static let creditCard = ImageAsset(name: "credit card")
-    static let eatInRestaurant = ImageAsset(name: "eat in restaurant")
-    static let estacionamiento = ImageAsset(name: "estacionamiento")
-    static let food = ImageAsset(name: "food")
-    static let glow = ImageAsset(name: "glow")
-    static let happyHour = ImageAsset(name: "happy hour")
-    static let kidsPlay = ImageAsset(name: "kids play")
-    static let music = ImageAsset(name: "music")
-    static let payment = ImageAsset(name: "payment")
-    static let terms = ImageAsset(name: "terms")
-    static let terrace = ImageAsset(name: "terrace")
-    static let apple = ImageAsset(name: "Apple")
-    static let facebook = ImageAsset(name: "Facebook")
-    static let google = ImageAsset(name: "Google")
-    static let instagram = ImageAsset(name: "Instagram")
-    static let twitter = ImageAsset(name: "Twitter")
-    static let agend = ImageAsset(name: "agend")
-    static let aquisito = ImageAsset(name: "aquisito")
-    static let fotocheck = ImageAsset(name: "fotocheck")
-    static let user = ImageAsset(name: "user")
+public extension DDDIcon {
+    enum Images: CaseIterable, Identifiable {
+        public var id: String { return self.hashValue.description }
+
+        case arrowDown
+        case arrowLeft
+        case arrowRight
+        case arrowUpRight
+        case arrowUp
+        case chevronDown
+        case chevronLeft
+        case chevronRight
+        case chevronUp
+        case grid
+        case maximize2
+        case minimize2
+        case add
+        case alertCircle
+        case alertTriangle
+        case chevronDownFill
+        case chevronUpFill
+        case circle
+        case clock
+        case collections
+        case delete
+        case download
+        case externalLink
+        case filter
+        case gift
+        case globe
+        case heart
+        case helpCircle
+        case home
+        case info
+        case lifeBuoy
+        case mail
+        case mapPin
+        case map
+        case restaurant
+        case share2
+        case slash
+        case trendingTopic
+        case trendingDown
+        case trendingUp
+        case zap
+        case award2
+        case award
+        case calendar
+        case check
+        case dollarSign
+        case edit2
+        case eyeOff
+        case eye
+        case image
+        case like
+        case list
+        case loader
+        case lock
+        case menuFood
+        case minus
+        case moreHorizontal
+        case moreVertical
+        case navigation
+        case phone
+        case plus
+        case premium
+        case promo
+        case refreshCcw
+        case search
+        case send
+        case settings
+        case share
+        case smile
+        case star
+        case trash2
+        case unlock
+        case upload
+        case wifi
+        case x
+        case anticuchos
+        case chicken
+        case delivery
+        case privacy
+        case bell
+        case booking
+        case cafe
+        case creditCard
+        case eatInRestaurant
+        case estacionamiento
+        case food
+        case glow
+        case happyHour
+        case kidsPlay
+        case music
+        case payment
+        case terms
+        case terrace
+        case apple
+        case facebook
+        case google
+        case instagram
+        case twitter
+        case agend
+        case aquisito
+        case fotocheck
+        case user
+        
+        public var image: ImageAsset {
+            switch self {
+                
+            case .arrowDown:
+                ImageAsset(name: "arrow-down")
+            case .arrowLeft:
+                ImageAsset(name: "arrow-left")
+            case .arrowRight:
+                ImageAsset(name: "arrow-right")
+            case .arrowUpRight:
+                ImageAsset(name: "arrow-up-right")
+            case .arrowUp:
+                ImageAsset(name: "arrow-up")
+            case .chevronDown:
+                ImageAsset(name: "chevron-down")
+            case .chevronLeft:
+                ImageAsset(name: "chevron-left")
+            case .chevronRight:
+                ImageAsset(name: "chevron-right")
+            case .chevronUp:
+                ImageAsset(name: "chevron-up")
+            case .grid:
+                ImageAsset(name: "grid")
+            case .maximize2:
+                ImageAsset(name: "maximize-2")
+            case .minimize2:
+                ImageAsset(name: "minimize-2")
+            case .add:
+                ImageAsset(name: "add")
+            case .alertCircle:
+                ImageAsset(name: "alert-circle")
+            case .alertTriangle:
+                ImageAsset(name: "alert-triangle")
+            case .chevronDownFill:
+                ImageAsset(name: "chevron-down-fill")
+            case .chevronUpFill:
+                ImageAsset(name: "chevron-up-fill")
+            case .circle:
+                ImageAsset(name: "circle")
+            case .clock:
+                ImageAsset(name: "clock")
+            case .collections:
+                ImageAsset(name: "collections")
+            case .delete:
+                ImageAsset(name: "delete")
+            case .download:
+                ImageAsset(name: "download")
+            case .externalLink:
+                ImageAsset(name: "external-link")
+            case .filter:
+                ImageAsset(name: "filter")
+            case .gift:
+                ImageAsset(name: "gift")
+            case .globe:
+                ImageAsset(name: "globe")
+            case .heart:
+                ImageAsset(name: "heart")
+            case .helpCircle:
+                ImageAsset(name: "help-circle")
+            case .home:
+                ImageAsset(name: "home")
+            case .info:
+                ImageAsset(name: "info")
+            case .lifeBuoy:
+                ImageAsset(name: "life-buoy")
+            case .mail:
+                ImageAsset(name: "mail")
+            case .mapPin:
+                ImageAsset(name: "map-pin")
+            case .map:
+                ImageAsset(name: "map")
+            case .restaurant:
+                ImageAsset(name: "restaurant")
+            case .share2:
+                ImageAsset(name: "share-2")
+            case .slash:
+                ImageAsset(name: "slash")
+            case .trendingTopic:
+                ImageAsset(name: "trending topic")
+            case .trendingDown:
+                ImageAsset(name: "trending-down")
+            case .trendingUp:
+                ImageAsset(name: "trending-up")
+            case .zap:
+                ImageAsset(name: "zap")
+            case .award2:
+                ImageAsset(name: "award 2")
+            case .award:
+                ImageAsset(name: "award")
+            case .calendar:
+                ImageAsset(name: "calendar")
+            case .check:
+                ImageAsset(name: "check")
+            case .dollarSign:
+                ImageAsset(name: "dollar-sign")
+            case .edit2:
+                ImageAsset(name: "edit-2")
+            case .eyeOff:
+                ImageAsset(name: "eye-off")
+            case .eye:
+                ImageAsset(name: "eye")
+            case .image:
+                ImageAsset(name: "image")
+            case .like:
+                ImageAsset(name: "like")
+            case .list:
+                ImageAsset(name: "list")
+            case .loader:
+                ImageAsset(name: "loader")
+            case .lock:
+                ImageAsset(name: "lock")
+            case .menuFood:
+                ImageAsset(name: "menu food")
+            case .minus:
+                ImageAsset(name: "minus")
+            case .moreHorizontal:
+                ImageAsset(name: "more-horizontal")
+            case .moreVertical:
+                ImageAsset(name: "more-vertical")
+            case .navigation:
+                ImageAsset(name: "navigation")
+            case .phone:
+                ImageAsset(name: "phone")
+            case .plus:
+                ImageAsset(name: "plus")
+            case .premium:
+                ImageAsset(name: "premium")
+            case .promo:
+                ImageAsset(name: "promo")
+            case .refreshCcw:
+                ImageAsset(name: "refresh-ccw")
+            case .search:
+                ImageAsset(name: "search")
+            case .send:
+                ImageAsset(name: "send")
+            case .settings:
+                ImageAsset(name: "settings")
+            case .share:
+                ImageAsset(name: "share")
+            case .smile:
+                ImageAsset(name: "smile")
+            case .star:
+                ImageAsset(name: "star")
+            case .trash2:
+                ImageAsset(name: "trash-2")
+            case .unlock:
+                ImageAsset(name: "unlock")
+            case .upload:
+                ImageAsset(name: "upload")
+            case .wifi:
+                ImageAsset(name: "wifi")
+            case .x:
+                ImageAsset(name: "x")
+            case .anticuchos:
+                ImageAsset(name: "Anticuchos")
+            case .chicken:
+                ImageAsset(name: "Chicken")
+            case .delivery:
+                ImageAsset(name: "Delivery")
+            case .privacy:
+                ImageAsset(name: "Privacy")
+            case .bell:
+                ImageAsset(name: "bell")
+            case .booking:
+                ImageAsset(name: "booking")
+            case .cafe:
+                ImageAsset(name: "cafe")
+            case .creditCard:
+                ImageAsset(name: "credit card")
+            case .eatInRestaurant:
+                ImageAsset(name: "eat in restaurant")
+            case .estacionamiento:
+                ImageAsset(name: "estacionamiento")
+            case .food:
+                ImageAsset(name: "food")
+            case .glow:
+                ImageAsset(name: "glow")
+            case .happyHour:
+                ImageAsset(name: "happy hour")
+            case .kidsPlay:
+                ImageAsset(name: "kids play")
+            case .music:
+                ImageAsset(name: "music")
+            case .payment:
+                ImageAsset(name: "payment")
+            case .terms:
+                ImageAsset(name: "terms")
+            case .terrace:
+                ImageAsset(name: "terrace")
+            case .apple:
+                ImageAsset(name: "Apple")
+            case .facebook:
+                ImageAsset(name: "Facebook")
+            case .google:
+                ImageAsset(name: "Google")
+            case .instagram:
+                ImageAsset(name: "Instagram")
+            case .twitter:
+                ImageAsset(name: "Twitter")
+            case .agend:
+                ImageAsset(name: "agend")
+            case .aquisito:
+                ImageAsset(name: "aquisito")
+            case .fotocheck:
+                ImageAsset(name: "fotocheck")
+            case .user:
+                ImageAsset(name: "user")
+            }
+        }
+
+    }
+    
 }

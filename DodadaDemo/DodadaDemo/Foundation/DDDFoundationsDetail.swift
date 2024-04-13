@@ -21,6 +21,12 @@ struct DDDFoundationsDetail: View {
             } label: {
                 Text("Fonts").apply(token: .title3, weight: .bold)
             }
+            
+            NavigationLink {
+                DDDIconFoundationView()
+            } label: {
+                Text("Icons").apply(token: .title3, weight: .bold)
+            }
         }
         .navigationTitle("Foundations")
         .listStyle(GroupedListStyle())
