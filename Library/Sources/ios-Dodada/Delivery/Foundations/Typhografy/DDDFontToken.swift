@@ -94,7 +94,8 @@ public enum DDDFontToken: String, CaseIterable {
     }
     
     public var lineSpacing: CGFloat {
-        switch self {
+        return 0
+       /* switch self {
         case .caption2:
             return 13
         case .caption1:
@@ -117,7 +118,7 @@ public enum DDDFontToken: String, CaseIterable {
             return 34
         case .largeTitle:
             return 41
-        }
+        }*/
     }
     
     public func font(_ weight: Weigth) -> SwiftUI.Font {

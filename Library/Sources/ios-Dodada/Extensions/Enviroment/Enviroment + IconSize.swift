@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 struct IconSizeKey: EnvironmentKey {
-    static let defaultValue: CGFloat? = nil
+    static let defaultValue: DDDIconSize = .xLarge
 }
 
 public extension EnvironmentValues {
-    var iconSize: CGFloat? {
+    var iconSize: DDDIconSize {
         get { self[IconSizeKey.self] }
         set { self[IconSizeKey.self] = newValue }
     }
@@ -21,7 +21,7 @@ public extension EnvironmentValues {
 
 public extension View {
 
-    func iconSize(custom size: CGFloat?) -> some View {
+    func iconSize(custom size: DDDIconSize) -> some View {
         environment(\.iconSize, size)
     }
 }

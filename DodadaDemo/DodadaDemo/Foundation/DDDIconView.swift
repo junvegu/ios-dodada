@@ -17,7 +17,7 @@ struct DDDIconFoundationView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(DDDIcon.Images.allCases, id: \.id) { item in
-                    DDDIcon(item.image.swiftUIImage)
+                    DDDIcon(item)
                 }
             }
             .padding(.horizontal)

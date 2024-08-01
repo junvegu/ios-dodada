@@ -21,7 +21,11 @@ struct DDDFoundationsDetail: View {
             } label: {
                 Text("Fonts").apply(token: .title3, weight: .bold)
             }
-            
+            NavigationLink {
+                LabelViewDetail()
+            } label: {
+                Text("Label With Icon").apply(token: .title3, weight: .bold)
+            }
             NavigationLink {
                 DDDIconFoundationView()
             } label: {

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD0BD0022C0ABB1A003BFA09 /* DDDTagViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0BD0012C0ABB1A003BFA09 /* DDDTagViewDetail.swift */; };
+		AD0BD0042C0ABBFC003BFA09 /* PricinViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0BD0032C0ABBFC003BFA09 /* PricinViewDetail.swift */; };
+		AD0BD0062C0AC075003BFA09 /* LabelViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0BD0052C0AC075003BFA09 /* LabelViewDetail.swift */; };
+		AD0BD0082C0AC15D003BFA09 /* MoleculesInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0BD0072C0AC15D003BFA09 /* MoleculesInspectorView.swift */; };
+		AD0BD00A2C0AC81B003BFA09 /* NotificationMessageViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0BD0092C0AC81B003BFA09 /* NotificationMessageViewDetail.swift */; };
+		AD0BD00C2C0AD7C1003BFA09 /* RatingViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0BD00B2C0AD7C1003BFA09 /* RatingViewDetail.swift */; };
+		AD0BD00E2C0AD93C003BFA09 /* RantingMentionsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0BD00D2C0AD93C003BFA09 /* RantingMentionsDetailView.swift */; };
 		AD8D13A12BB5339B00106AC2 /* DodadaDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13A02BB5339B00106AC2 /* DodadaDemoApp.swift */; };
 		AD8D13A32BB5339B00106AC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13A22BB5339B00106AC2 /* ContentView.swift */; };
 		AD8D13A52BB5339C00106AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8D13A42BB5339C00106AC2 /* Assets.xcassets */; };
@@ -41,6 +48,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD0BD0012C0ABB1A003BFA09 /* DDDTagViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDTagViewDetail.swift; sourceTree = "<group>"; };
+		AD0BD0032C0ABBFC003BFA09 /* PricinViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricinViewDetail.swift; sourceTree = "<group>"; };
+		AD0BD0052C0AC075003BFA09 /* LabelViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewDetail.swift; sourceTree = "<group>"; };
+		AD0BD0072C0AC15D003BFA09 /* MoleculesInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoleculesInspectorView.swift; sourceTree = "<group>"; };
+		AD0BD0092C0AC81B003BFA09 /* NotificationMessageViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationMessageViewDetail.swift; sourceTree = "<group>"; };
+		AD0BD00B2C0AD7C1003BFA09 /* RatingViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewDetail.swift; sourceTree = "<group>"; };
+		AD0BD00D2C0AD93C003BFA09 /* RantingMentionsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RantingMentionsDetailView.swift; sourceTree = "<group>"; };
 		AD8D139D2BB5339B00106AC2 /* DodadaDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DodadaDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8D13A02BB5339B00106AC2 /* DodadaDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DodadaDemoApp.swift; sourceTree = "<group>"; };
 		AD8D13A22BB5339B00106AC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,6 +171,12 @@
 		AD8D13D82BB9155000106AC2 /* Molecules */ = {
 			isa = PBXGroup;
 			children = (
+				AD0BD0012C0ABB1A003BFA09 /* DDDTagViewDetail.swift */,
+				AD0BD0032C0ABBFC003BFA09 /* PricinViewDetail.swift */,
+				AD0BD0072C0AC15D003BFA09 /* MoleculesInspectorView.swift */,
+				AD0BD0092C0AC81B003BFA09 /* NotificationMessageViewDetail.swift */,
+				AD0BD00B2C0AD7C1003BFA09 /* RatingViewDetail.swift */,
+				AD0BD00D2C0AD93C003BFA09 /* RantingMentionsDetailView.swift */,
 			);
 			path = Molecules;
 			sourceTree = "<group>";
@@ -168,6 +188,7 @@
 				AD8D13D42BB9072500106AC2 /* DDDFoundationsDetail.swift */,
 				AD8D13D62BB9102D00106AC2 /* DDDFontsDetail.swift */,
 				AD962FD22BCA133C00BC18FE /* DDDIconView.swift */,
+				AD0BD0052C0AC075003BFA09 /* LabelViewDetail.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -309,12 +330,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD0BD0042C0ABBFC003BFA09 /* PricinViewDetail.swift in Sources */,
 				AD8D13A32BB5339B00106AC2 /* ContentView.swift in Sources */,
 				AD8D13A12BB5339B00106AC2 /* DodadaDemoApp.swift in Sources */,
 				AD8D13D72BB9102D00106AC2 /* DDDFontsDetail.swift in Sources */,
 				AD8D13D52BB9072500106AC2 /* DDDFoundationsDetail.swift in Sources */,
 				AD962FD32BCA133C00BC18FE /* DDDIconView.swift in Sources */,
+				AD0BD00E2C0AD93C003BFA09 /* RantingMentionsDetailView.swift in Sources */,
+				AD0BD0082C0AC15D003BFA09 /* MoleculesInspectorView.swift in Sources */,
 				AD8D13D32BB9030000106AC2 /* DDDColorsView.swift in Sources */,
+				AD0BD00A2C0AC81B003BFA09 /* NotificationMessageViewDetail.swift in Sources */,
+				AD0BD00C2C0AD7C1003BFA09 /* RatingViewDetail.swift in Sources */,
+				AD0BD0022C0ABB1A003BFA09 /* DDDTagViewDetail.swift in Sources */,
+				AD0BD0062C0AC075003BFA09 /* LabelViewDetail.swift in Sources */,
 				AD8D13DA2BB9265700106AC2 /* DDDButtonsDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

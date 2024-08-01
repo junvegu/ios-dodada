@@ -43,6 +43,8 @@ struct ContentView: View {
                         switch menu.type {
                         case .foundations:
                             DDDFoundationsDetail()
+                        case .molecules:
+                            MoleculesInspectorView()
                         default:
                             DDDButtonsDetail()
                         }
