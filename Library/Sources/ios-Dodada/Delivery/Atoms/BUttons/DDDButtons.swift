@@ -46,9 +46,9 @@ public struct DDDButton<LeadingIcon: View, TrailingIcon: View>: View {
         self.init(label, desing: desing) {
             action()
         } icon: {
-            DDDIcon(icon?.image.swiftUIImage)
+            DDDIcon(icon)
         } disclosureIcon: {
-            DDDIcon(disclosureIcon?.image.swiftUIImage)
+            DDDIcon(disclosureIcon)
         }
     }
     
@@ -74,7 +74,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
     private var desing: DDDButtonDesing
     @ViewBuilder private let icon: LeadingIcon
     @ViewBuilder private let disclosureIcon: TrailingIcon
-    /// Create button style for Orbit ``Button`` component.
+    
     public init(
         desing: DDDButtonDesing,
         @ViewBuilder icon: () -> LeadingIcon = { EmptyView() },
@@ -107,6 +107,10 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                 disclosureIcon
             })
         case .onlyIcon:
+            return AnyView(IconButton(desing: desing, configuration: configuration) {
+                icon
+            })
+        case .ghost:
             return AnyView(IconButton(desing: desing, configuration: configuration) {
                 icon
             })
@@ -148,9 +152,9 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                 isEnabled ? desing.textColor : colorTheme.disabledTextButton
             )
             .padding()
-            .frame( minHeight: desing.height)
+            .frame( maxWidth: desing.width, minHeight: desing.height)
             .background(isEnabled ?
-                        configuration.isPressed ? desing.pressedColor:  desing.backgroundColor
+                        configuration.isPressed ? desing.pressedColor: colorTheme.pressedButton
                         : colorTheme.disabledButton)
             .cornerRadius(desing.cornerRadius)
 
@@ -236,7 +240,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                              configuration.isPressed ?  desing.pressedColor :  desing.textColor
                              : colorTheme.disabledTextButton)
             .padding()
-            .frame( maxWidth: desing.width, minHeight: desing.height)
+            .frame(minHeight: desing.height)
             .background(desing.backgroundColor)
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
         }
@@ -279,6 +283,38 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             )
             .clipShape(Circle())
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
+        }
+    }
+    
+    private struct GhostButton: View {
+        let configuration: ButtonStyle.Configuration
+        private let desing: DDDButtonDesing
+
+        @Environment(\.isEnabled) private var isEnabled: Bool
+        @Environment(\.colorTheme) private var colorTheme: DDDTheme
+        @ViewBuilder let icon: LeadingIcon
+
+        init(
+            desing: DDDButtonDesing,
+            configuration: ButtonStyle.Configuration,
+            @ViewBuilder icon: () -> LeadingIcon
+        ) {
+            self.desing = desing
+            self.configuration = configuration
+            self.icon = icon()
+        }
+        
+        var body: some View {
+            
+            HStack {
+                icon
+            }
+            .padding()
+            .frame( maxWidth: desing.width, minHeight: desing.height)
+            .background(isEnabled ? configuration.isPressed ? desing.pressedColor : desing.backgroundColor : colorTheme.disabledButton)
+            .cornerRadius(desing.cornerRadius)
+            .clipShape(Circle())
+            .iconColor(isEnabled ? desing.iconColor : colorTheme.disabledTextButton )
         }
     }
 }

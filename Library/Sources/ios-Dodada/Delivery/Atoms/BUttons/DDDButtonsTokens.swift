@@ -13,6 +13,7 @@ public enum DDDButtonDesing {
     case secondary
     case tertiary
     case onlyIcon(inverted: Bool)
+    case ghost
     case link
     
     var iconColor: Color? {
@@ -27,6 +28,8 @@ public enum DDDButtonDesing {
             inverted ? Asset.Colors.primary.swiftUIColor : Color.white
         case .link:
             Asset.Colors.primary.swiftUIColor
+        case .ghost:
+            Asset.Colors.black.swiftUIColor
         }
     }
     
@@ -44,7 +47,7 @@ public enum DDDButtonDesing {
             Color.white
         case .onlyIcon(let inverted):
             inverted ? Color.white : Asset.Colors.primary.swiftUIColor 
-        case .link:
+        case .link, .ghost:
             Color.white
         }
     }
@@ -55,7 +58,7 @@ public enum DDDButtonDesing {
             Color.clear
         case .secondary:
             Asset.Colors.primary.swiftUIColor
-        case .tertiary:
+        case .tertiary, .ghost:
             Color.clear
         case .onlyIcon(let inverted):
             inverted ? Asset.Colors.primary.swiftUIColor : Color.clear
@@ -72,7 +75,7 @@ public enum DDDButtonDesing {
             Asset.Colors.primary.swiftUIColor
         case .tertiary:
             Asset.Colors.primary.swiftUIColor
-        case .onlyIcon:
+        case .onlyIcon, .ghost:
             Color.clear
         case .link:
             Asset.Colors.primary.swiftUIColor
@@ -83,6 +86,8 @@ public enum DDDButtonDesing {
         switch self {
         case .primary, .secondary, .tertiary, .link:
             Asset.Colors.primary400.swiftUIColor
+        case .ghost:
+            Asset.Colors.secondary200.swiftUIColor
         case .onlyIcon(let inverted):
             inverted ? Asset.Colors.primary400.swiftUIColor : Color.white
         }
@@ -96,7 +101,7 @@ public enum DDDButtonDesing {
             return 100
         case .tertiary:
             return 0
-        case .onlyIcon:
+        case .onlyIcon, .ghost:
             return 0
         case .link:
             return 24
@@ -105,16 +110,18 @@ public enum DDDButtonDesing {
     
     var height: CGFloat {
         switch self {
-        case .primary, .secondary, .tertiary, .onlyIcon, .link:
+        case .primary, .secondary, .tertiary, .onlyIcon, .link, .ghost:
             return 48
         }
     }
     
     var width: CGFloat {
         switch self {
-        case .primary, .secondary, .tertiary, .link:
+        case .primary, .secondary, .link:
             return .infinity
-        case .onlyIcon:
+        case .tertiary:
+            return .leastNormalMagnitude
+        case .onlyIcon, .ghost:
             return 48
         }
     }

@@ -7,8 +7,21 @@
 
 import Foundation
 
-public enum CornerRadius {
-    public static let smallCornerRadius: CGFloat = 4
-    public static let regularCornerRadius: CGFloat = 8
-    public static let extraLargeRadius: CGFloat = 100
+public enum CornerRadius: CGFloat {
+    case small = 4
+    case regular = 8
+    case extraLarge = 100
+}
+
+public enum BorderStroke: CGFloat {
+    case regular = 1
+}
+
+
+public extension CGFloat {
+    static let smallCornerRadius = CornerRadius.small.rawValue
+    static let regularCornerRadius = CornerRadius.regular.rawValue
+    static let xLargeCornerRadius = CornerRadius.extraLarge.rawValue
+    
+    static let regularBorderWidth = BorderStroke.regular.rawValue
 }

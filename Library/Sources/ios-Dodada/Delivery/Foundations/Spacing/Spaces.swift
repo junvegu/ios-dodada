@@ -16,8 +16,8 @@ public enum Spacing: CGFloat {
     case xMedium = 20
     case large = 24
     case xLarge = 32
-    case _2xLarge = 44
-    case _3xxLarge = 60
+    case _2xLarge = 48
+    case _3xxLarge = 64
 }
 
 public extension CGFloat {
