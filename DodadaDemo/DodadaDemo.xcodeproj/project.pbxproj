@@ -14,6 +14,7 @@
 		AD0BD00A2C0AC81B003BFA09 /* NotificationMessageViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0BD0092C0AC81B003BFA09 /* NotificationMessageViewDetail.swift */; };
 		AD0BD00C2C0AD7C1003BFA09 /* RatingViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0BD00B2C0AD7C1003BFA09 /* RatingViewDetail.swift */; };
 		AD0BD00E2C0AD93C003BFA09 /* RantingMentionsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0BD00D2C0AD93C003BFA09 /* RantingMentionsDetailView.swift */; };
+		AD1E35C82CBDC2CB002BAD74 /* PhoneInputDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E35C72CBDC2CB002BAD74 /* PhoneInputDetailView.swift */; };
 		AD8D13A12BB5339B00106AC2 /* DodadaDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13A02BB5339B00106AC2 /* DodadaDemoApp.swift */; };
 		AD8D13A32BB5339B00106AC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D13A22BB5339B00106AC2 /* ContentView.swift */; };
 		AD8D13A52BB5339C00106AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8D13A42BB5339C00106AC2 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		AD0BD0092C0AC81B003BFA09 /* NotificationMessageViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationMessageViewDetail.swift; sourceTree = "<group>"; };
 		AD0BD00B2C0AD7C1003BFA09 /* RatingViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewDetail.swift; sourceTree = "<group>"; };
 		AD0BD00D2C0AD93C003BFA09 /* RantingMentionsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RantingMentionsDetailView.swift; sourceTree = "<group>"; };
+		AD1E35C72CBDC2CB002BAD74 /* PhoneInputDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputDetailView.swift; sourceTree = "<group>"; };
 		AD8D139D2BB5339B00106AC2 /* DodadaDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DodadaDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8D13A02BB5339B00106AC2 /* DodadaDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DodadaDemoApp.swift; sourceTree = "<group>"; };
 		AD8D13A22BB5339B00106AC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				AD0BD0092C0AC81B003BFA09 /* NotificationMessageViewDetail.swift */,
 				AD0BD00B2C0AD7C1003BFA09 /* RatingViewDetail.swift */,
 				AD0BD00D2C0AD93C003BFA09 /* RantingMentionsDetailView.swift */,
+				AD1E35C72CBDC2CB002BAD74 /* PhoneInputDetailView.swift */,
 			);
 			path = Molecules;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				AD0BD00E2C0AD93C003BFA09 /* RantingMentionsDetailView.swift in Sources */,
 				AD0BD0082C0AC15D003BFA09 /* MoleculesInspectorView.swift in Sources */,
 				AD8D13D32BB9030000106AC2 /* DDDColorsView.swift in Sources */,
+				AD1E35C82CBDC2CB002BAD74 /* PhoneInputDetailView.swift in Sources */,
 				AD0BD00A2C0AC81B003BFA09 /* NotificationMessageViewDetail.swift in Sources */,
 				AD0BD00C2C0AD7C1003BFA09 /* RatingViewDetail.swift in Sources */,
 				AD0BD0022C0ABB1A003BFA09 /* DDDTagViewDetail.swift in Sources */,
