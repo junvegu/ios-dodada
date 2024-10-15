@@ -91,8 +91,7 @@ public struct DDDPhoneNumberView: View {
 struct PhoneNumberView_Previews: PreviewProvider {
     static var previews: some View {
         
-        DDDPhoneNumberView.init(
-            countries: [],
+        DDDPhoneNumberView(
             mobPhoneNumber: .constant(""),
             isValidPhoneNumber: .constant(false)
         )
