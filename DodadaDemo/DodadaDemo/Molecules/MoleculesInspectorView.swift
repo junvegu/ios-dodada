@@ -41,6 +41,12 @@ struct MoleculesInspectorView: View {
             } label: {
                 Text("Rating mentions Detailk").apply(token: .title3, weight: .bold)
             }
+            
+            NavigationLink {
+                PhoneInputDetailView()
+            } label: {
+                Text("Phone Input").apply(token: .title3, weight: .bold)
+            }
         }
         .navigationTitle("Molecules")
         .listStyle(GroupedListStyle())
