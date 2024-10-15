@@ -25,7 +25,6 @@ public struct DDDPhoneNumberView: View {
     
     
     public init(
-        countries: [DDDCountryData],
         backgroundColor: Color = .gray.opacity(0.2),
         foregroundColor: Color = .gray,
         cornerRadius: CGFloat = 10,

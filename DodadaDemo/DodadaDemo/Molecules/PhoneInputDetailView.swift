@@ -16,17 +16,6 @@ struct PhoneInputDetailView: View {
     var body: some View {
         VStack(spacing: .zero) {
             DDDPhoneNumberView(
-                countries: [
-                    DDDCountryData(
-                        id: "0001",
-                        name: "Perú",
-                        flag: "🇵🇪",
-                        code: "PE",
-                        dial_code: "+51",
-                        pattern: "### ### ###",
-                        limit: 9
-                    ),
-                ],
                 mobPhoneNumber: $phoneNumber,
                 isValidPhoneNumber: $isPhoneNumberValid
             )
