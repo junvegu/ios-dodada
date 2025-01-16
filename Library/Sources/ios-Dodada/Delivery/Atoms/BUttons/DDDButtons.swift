@@ -156,7 +156,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             .background(isEnabled ?
                         configuration.isPressed ? desing.pressedColor: colorTheme.pressedButton
                         : colorTheme.disabledButton)
-            .cornerRadius(desing.cornerRadius)
+            .cornerRadius(colorTheme.borderRoundButton)
 
         }
     }
@@ -197,7 +197,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             .frame( maxWidth: desing.width, minHeight: desing.height)
             .background(desing.backgroundColor)
             .overlay(
-                RoundedRectangle(cornerRadius: desing.cornerRadius)
+                RoundedRectangle(cornerRadius: colorTheme.borderRoundButton)
                     .stroke(isEnabled ?
                             configuration.isPressed ?  desing.pressedColor : desing.borderColor
                             : colorTheme.disabledButton, lineWidth: 1)
@@ -274,7 +274,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             .padding()
             .frame( maxWidth: desing.width, minHeight: desing.height)
             .background(isEnabled ? desing.backgroundColor : colorTheme.disabledButton)
-            .cornerRadius(desing.cornerRadius)
+            .cornerRadius(desing.width/2)
             .overlay(
                 Circle()
                     .stroke(isEnabled ?
@@ -312,7 +312,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             .padding()
             .frame( maxWidth: desing.width, minHeight: desing.height)
             .background(isEnabled ? configuration.isPressed ? desing.pressedColor : desing.backgroundColor : colorTheme.disabledButton)
-            .cornerRadius(desing.cornerRadius)
+            .cornerRadius(colorTheme.borderRoundButton)
             .clipShape(Circle())
             .iconColor(isEnabled ? desing.iconColor : colorTheme.disabledTextButton )
         }

@@ -11,7 +11,7 @@ import Combine
 public struct PhoneNumberTextField: View {
     @Binding var phoneNumber: String
     @Binding var isValidPhoneNumber: Bool
-    
+    @Environment(\.colorTheme) private var theme: DDDTheme
     let countryPattern: String
     let countryLimit: Int
     let backgroundColor: Color
@@ -72,19 +72,7 @@ extension View {
             }
         }
 }
-extension View {
-    func hideKeyboard() {
-        let resign = #selector(UIResponder.resignFirstResponder)
-        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
-    }
-}
-extension View {
-    func disableWithOpacity(_ condition: Bool) -> some View {
-        self
-            .disabled(condition)
-            .opacity(condition ? 0.6 : 1)
-    }
-}
+
 
 struct PhoneNumberTextField_Previews: PreviewProvider {
     static var previews: some View {

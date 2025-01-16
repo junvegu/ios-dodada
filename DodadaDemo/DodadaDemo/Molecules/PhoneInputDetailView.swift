@@ -12,7 +12,8 @@ struct PhoneInputDetailView: View {
     
     @State private var phoneNumber: String = ""
     @State private var isPhoneNumberValid: Bool = false
-    
+    @FocusState private var keyIsFocused: Bool
+
     var body: some View {
         VStack(spacing: .zero) {
             DDDPhoneNumberView(
