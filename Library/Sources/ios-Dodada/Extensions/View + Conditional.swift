@@ -37,3 +37,18 @@ private struct SizePreferenceKey: PreferenceKey {
   static var defaultValue: CGSize = .zero
   static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
 }
+
+public extension View {
+    func hideKeyboard() {
+        let resign = #selector(UIResponder.resignFirstResponder)
+        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+    }
+}
+
+public extension View {
+    func disableWithOpacity(_ condition: Bool) -> some View {
+        self
+            .disabled(condition)
+            .opacity(condition ? 0.6 : 1)
+    }
+}

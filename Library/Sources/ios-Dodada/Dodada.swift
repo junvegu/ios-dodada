@@ -66,9 +66,19 @@ public protocol DDDTheme {
     var success: Color { get }
     var warning: Color { get }
     
+    
+    var borderRoundButton: CGFloat { get }
+    var offBorderRoundButton: CGFloat { get }
+    var linkBorderRoundButton: CGFloat { get }
 }
 
 struct ColorThemeDefault: DDDTheme {
+    var linkBorderRoundButton: CGFloat = 24
+    
+    var offBorderRoundButton: CGFloat = 0
+    
+    var borderRoundButton: CGFloat = 100
+    
     let navigationBackground: Color = .white
     
     var tintTabBar: Color = .white

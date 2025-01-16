@@ -83,7 +83,6 @@ public struct DDDPhoneNumberView: View {
                 keyIsFocused: _keyIsFocused
             )
         }
-        .padding()
         .ignoresSafeArea(.keyboard)
     }
 }

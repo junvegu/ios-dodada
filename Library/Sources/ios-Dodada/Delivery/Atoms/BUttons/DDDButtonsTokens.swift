@@ -93,25 +93,12 @@ public enum DDDButtonDesing {
         }
     }
     
-    var cornerRadius: CGFloat {
-        switch self {
-        case .primary:
-            return 100
-        case .secondary:
-            return 100
-        case .tertiary:
-            return 0
-        case .onlyIcon, .ghost:
-            return 0
-        case .link:
-            return 24
-        }
-    }
-    
     var height: CGFloat {
         switch self {
-        case .primary, .secondary, .tertiary, .onlyIcon, .link, .ghost:
+        case .primary, .secondary, .onlyIcon, .link, .ghost:
             return 48
+        case .tertiary:
+            return 24
         }
     }
     
