@@ -1,5 +1,5 @@
 import XCTest
-@testable import ios_Dodada
+//@testable import ios_Dodada
 
 final class ios_DodadaTests: XCTestCase {
     func testExample() throws {
