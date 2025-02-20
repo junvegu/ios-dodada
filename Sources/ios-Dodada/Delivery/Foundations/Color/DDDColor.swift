@@ -17,6 +17,7 @@ public extension Color {
     static let primary200 = ColorAsset(name: "Primary.200")
     static let primary300 = ColorAsset(name: "Primary.300")
     static let primary400 = ColorAsset(name: "Primary.400")
+    static let primary500 = ColorAsset(name: "Primary")
     static let primary600 = ColorAsset(name: "Primary.600")
     static let primary700 = ColorAsset(name: "Primary.700")
     static let primary800 = ColorAsset(name: "Primary.800")
@@ -31,8 +32,11 @@ public extension Color {
     static let secondary800 = ColorAsset(name: "Secondary.800")
     static let secondary900 = ColorAsset(name: "Secondary.900")
     static let secondary = ColorAsset(name: "Secondary")
+    static let secondary500 = ColorAsset(name: "Secondary")
     static let success = ColorAsset(name: "Success")
+    static let success500 = ColorAsset(name: "Success")
     static let warning = ColorAsset(name: "Warning")
+    static let warning500 = ColorAsset(name: "Warning")
     static let white = ColorAsset(name: "White")
 }
 
