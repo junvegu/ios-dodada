@@ -33,7 +33,6 @@ public struct DDDTextFields: View {
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            // Label con ícono de información
             HStack {
                 Text(label)
                     .apply(token: .footNote, weight: .regular)
@@ -44,7 +43,7 @@ public struct DDDTextFields: View {
                     .iconColor(Asset.Colors.secondary.swiftUIColor)
                 Spacer()
                 
-                Text(isOptional ? "(opcional)" : "")
+                Text(isOptional ? "(Opcional)" : "")
                     .apply(token: .footNote, weight: .regular)
                     .foregroundStyle(Asset.Colors.secondary400.swiftUIColor)
             }
