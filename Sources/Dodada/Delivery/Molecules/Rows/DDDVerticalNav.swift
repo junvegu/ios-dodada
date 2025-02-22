@@ -49,23 +49,28 @@ public struct DDDVerticalNav<LeadingIcon: View, TrailingIcon: View>: View {
         Button(action: {
             action()
         }) {
-            HStack {
-                leadingIcon()
-                
-                VStack(alignment: .leading, spacing: .xSmall) {
-                    Text(title)
-                        .apply(token: .callOut, weight: .bold)
+            VStack{
+                HStack {
+                    leadingIcon()
                     
-                    if let description = description {
-                        Text(description)
-                            .apply(token: .footNote, weight: .regular)
+                    VStack(alignment: .leading, spacing: .xSmall) {
+                        Text(title)
+                            .apply(token: .callOut, weight: .bold)
+                        
+                        if let description = description {
+                            Text(description)
+                                .apply(token: .footNote, weight: .regular)
+                        }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    trailingIcon()
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                
-                trailingIcon()
+                Divider()
             }
+            
             .padding(.vertical, .xSmall)
+            .padding(.horizontal, .small)
         }
         .buttonStyle(.plain)
     }
@@ -80,8 +85,6 @@ public struct DDDVerticalNav<LeadingIcon: View, TrailingIcon: View>: View {
             print("Número de celular presionado")
         }
         
-        Divider()
-        
         DDDVerticalNav(
             title: "Mis datos personales",
             leadingIcon: .aquisito,
@@ -91,5 +94,4 @@ public struct DDDVerticalNav<LeadingIcon: View, TrailingIcon: View>: View {
         }
     }
     .environment(\.colorTheme, ColorThemeDefault())
-    .padding()
 }
