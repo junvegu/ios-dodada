@@ -20,11 +20,8 @@ let package = Package(
         .target(
             name: "Dodada",
             dependencies: [],
-            resources: [.process("Dodada/Resources/Fonts")],
-            swiftSettings: [
-                // Excluye arm64 en simuladores
-                .unsafeFlags(["-target", "x86_64-apple-ios-simulator"], .when(platforms: [.iOS], configuration: .debug))
-            ]
+            resources: [.process("Resources/Fonts")]
+            
         ),
         
         .testTarget(
