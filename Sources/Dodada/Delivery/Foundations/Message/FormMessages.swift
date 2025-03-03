@@ -11,9 +11,9 @@ import SwiftUI
 public enum Message: Equatable, Hashable, CustomStringConvertible {
 
     case normal(String, icon: DDDIcon.Images? = nil)
-    case help(String, icon: DDDIcon.Images? = .alertCircle)
-    case warning(String, icon: DDDIcon.Images? = .alertCircle)
-    case error(String, icon: DDDIcon.Images? = .alertCircle)
+    case help(String, icon: DDDIcon.Images? = .check)
+    case warning(String, icon: DDDIcon.Images? = .info)
+    case error(String, icon: DDDIcon.Images? = .info)
 
     public var description: String {
         switch self {
