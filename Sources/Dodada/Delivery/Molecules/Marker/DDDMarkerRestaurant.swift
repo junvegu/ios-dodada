@@ -7,9 +7,10 @@
 
 import SwiftUI
 import MapKit
+import SDWebImageSwiftUI
 
 struct DDDMarkerRestaurant: View {
-    let image: Image
+    let imageURL: URL?
     let type: MarkerType
     
     private let markerSize: CGFloat = 64
@@ -22,13 +23,23 @@ struct DDDMarkerRestaurant: View {
                 .frame(width: markerSize, height: markerSize)
                 .shadow(radius: 4)
                 .overlay(
-                    image
+                    WebImage(url: imageURL)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: markerSize * 0.6, height: markerSize * 0.6)
+                        //.frame(width: markerSize * 0.9, height: markerSize * 0.9)
+                        .clipShape(Circle())
+                        .placeholder(when: true) {
+                            ZStack {
+                                Circle()
+                                    .fill(Color.white.opacity(0.6))
+                                ProgressView()
+                            }
+                        }
+                    
+                    
                 )
             
-            // Badge(el icono: top_one, new, trending)
+            // Badge (el icono: top_one, new, trending)
             Circle()
                 .fill(type.badgeColor)
                 .frame(width: markerSize * 0.3, height: markerSize * 0.3)
@@ -47,29 +58,29 @@ struct DDDMarkerRestaurant: View {
 struct RestaurantLocation: Identifiable {
     let id = UUID()
     let coordinate: CLLocationCoordinate2D
-    let image: Image
+    let imageURL: URL?
     let type: MarkerType
 }
 
 let restaurantLocations = [
     RestaurantLocation(
         coordinate: CLLocationCoordinate2D(latitude: -12.0464, longitude: -77.0428),
-        image: Image(.aquisito),
+        imageURL: URL(string: "https://www.biografia.de/biografia/Emma-Myers.jpg"),
         type: .new
     ),
     RestaurantLocation(
         coordinate: CLLocationCoordinate2D(latitude: -12.0455, longitude: -77.0353),
-        image: Image(.aquisito),
+        imageURL: URL(string: "https://example.com/image2.jpg"),
         type: .top_one
     ),
     RestaurantLocation(
         coordinate: CLLocationCoordinate2D(latitude: -12.0470, longitude: -77.0400),
-        image: Image(.aquisito),
+        imageURL: URL(string: "https://example.com/image3.jpg"),
         type: .trading
     )
 ]
 
-#Preview {
+#Preview("Marker en Mapa") {
     struct DDDMarkerRestaurantMapPreview: View {
         @State private var region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: -12.0460, longitude: -77.0390),
@@ -80,7 +91,7 @@ let restaurantLocations = [
             Map(coordinateRegion: $region, annotationItems: restaurantLocations) { location in
                 MapAnnotation(coordinate: location.coordinate) {
                     DDDMarkerRestaurant(
-                        image: location.image,
+                        imageURL: location.imageURL,
                         type: location.type
                     )
                 }
@@ -94,8 +105,8 @@ let restaurantLocations = [
 
 #Preview {
     VStack(spacing: 20){
-        DDDMarkerRestaurant(image: Image(.aquisito), type: .new)
-        DDDMarkerRestaurant(image: Image(.aquisito), type: .top_one)
-        DDDMarkerRestaurant(image: Image(.aquisito), type: .trading)
+        DDDMarkerRestaurant(imageURL: URL(string: "https://www.biografia.de/biografia/Emma-Myers.jpg"), type: .new)
+        DDDMarkerRestaurant(imageURL: URL(string: "https://example.com/image2.jpg"), type: .top_one)
+        DDDMarkerRestaurant(imageURL: URL(string: "https://example.com/image3.jpg"), type: .trading)
     }
 }
