@@ -8,10 +8,10 @@
 import SwiftUI
 import MapKit
 
-struct DDDMarker: View {
+public struct DDDMarker: View {
     let size: MarkerSize
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             Circle()
                 .fill(Color.white)
