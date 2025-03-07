@@ -9,9 +9,14 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 public struct DDDAvatar: View {
-    let type: AvatarType
-    let size: AvatarSize
+    public let type: AvatarType
+    public let size: AvatarSize
 
+    public init(type: AvatarType, size: AvatarSize) {
+            self.type = type
+            self.size = size
+        }
+    
     public var body: some View {
         ZStack(alignment: .bottomTrailing) {
             Circle()
