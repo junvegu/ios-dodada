@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum AvatarSize{
+public enum AvatarSize{
     case tiny, small, medium, large
     
-    var avatarSize: CGFloat{
+    public var avatarSize: CGFloat{
         switch self {
         case .tiny:
             return 24
@@ -24,7 +24,7 @@ enum AvatarSize{
     }
 }
 
-enum AvatarType {
+public enum AvatarType {
     case icon(DDDIcon.Images)
     case image(URL)
     case initials(String)
