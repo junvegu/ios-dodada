@@ -8,11 +8,11 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct DDDAvatar: View {
+public struct DDDAvatar: View {
     let type: AvatarType
     let size: AvatarSize
 
-    var body: some View {
+    public var body: some View {
         ZStack(alignment: .bottomTrailing) {
             Circle()
                 .fill(Color.gray.opacity(0.2))
