@@ -9,13 +9,13 @@ import SwiftUI
 import MapKit
 import SDWebImageSwiftUI
 
-struct DDDMarkerRestaurant: View {
+public struct DDDMarkerRestaurant: View {
     let imageURL: URL?
     let type: MarkerType
     
     private let markerSize: CGFloat = 64
     
-    var body: some View {
+    public var body: some View {
         ZStack(alignment: .bottomTrailing) {
             // Marker para la Imagen
             Circle()
