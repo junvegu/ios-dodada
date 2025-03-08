@@ -207,35 +207,65 @@ public extension DDDInputText {
 
 // MARK: - Preview
 #Preview {
-    VStack {
-        DDDInputText(
-            "Username",
-            value: .constant("JohnDoe"),
-            prefix: .user,
-            suffix: .google,
-            prompt: "Enter your username",
-            state: .default,
-            labelStyle: .default,
-            isSecure: false,
-            passwordStrength: nil,
-            message: .help("Enter a valid username"),
-            messageHeight: .constant(50)
-        )
-        .padding()
-        
-        DDDInputText(
-            "Password",
-            value: .constant("password123"),
-            prefix: .lock,
-            suffix: .eye,
-            prompt: "Enter your password",
-            state: .default,
-            labelStyle: .default,
-            isSecure: true,
-            passwordStrength: .medium(title: "Medium strength"),
-            message: .error("Weak password"),
-            messageHeight: .constant(20)
-        )
-        .padding()
+    
+    struct PreviewWrapper: View {
+        @State private var isShow = false
+
+        var body: some View {
+            ContentView()
+        }
     }
+    struct ContentView: View {
+        @State private var isShow: Bool = false
+
+        var body: some View {
+            VStack {
+                DDDInputText(
+                    "Username",
+                    value: .constant("JohnDoe"),
+                    prefix: .user,
+                    suffix: .google,
+                    prompt: "Enter your username",
+                    state: .default,
+                    labelStyle: .default,
+                    isSecure: false,
+                    passwordStrength: nil,
+                    message: .help("Enter a valid username"),
+                    messageHeight: .constant(50)
+                )
+                .padding()
+                
+                DDDInputText(
+                    "Password",
+                    value: .constant("password123"),
+                    prefix: .lock,
+                    suffix: .eye,
+                    prompt: "Enter your password",
+                    state: .default,
+                    labelStyle: .default,
+                    isSecure: true,
+                    passwordStrength: .medium(title: "Medium strength"),
+                    message: .error("Weak password"),
+                    messageHeight: .constant(20)
+                )
+                .padding()
+
+                DDDInputText(
+                    "Password",
+                    value: .constant("password123"),
+                    prompt: "Enter your password",
+                    message: !isShow ? nil : .error("Weak password")
+                )
+                .padding()
+                
+                DDDButton("Action", desing: .primary) {
+                    isShow.toggle()
+                }
+                .padding()
+            }
+        }
+    }
+    
+    return     PreviewWrapper()
+
 }

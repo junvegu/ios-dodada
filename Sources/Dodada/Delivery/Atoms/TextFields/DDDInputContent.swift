@@ -60,6 +60,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
 
                 content
             }
+            .padding(.vertical, verticalPadding)
 
             if idealSize.horizontal != true {
              Spacer(minLength: 0)
@@ -78,10 +79,12 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
         .overlay(focusBorder)
         .overlay(border)
     }
+
     @ViewBuilder private var border: some View {
         RoundedRectangle(cornerRadius: .regularCornerRadius)
             .strokeBorder(isFocused ? .clear : Asset.Colors.secondary200.swiftUIColor, lineWidth: 2)
     }
+
     @ViewBuilder private var focusBorder: some View {
          RoundedRectangle(cornerRadius: .regularCornerRadius)
              .trim(from: 0, to: isFocused ? 1 : 0) // Hace que la animación recorra todo el borde
@@ -147,6 +150,9 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
 #Preview {
     VStack {
         
+        DDDInputContent(label: "Label") {
+            EmptyView()
+        }.padding()
         
         DDDInputContent(label: "Label") {
             EmptyView()

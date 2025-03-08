@@ -21,6 +21,7 @@ public struct FieldMessage: View {
                 if let icon = message.icon {
                     DDDIcon(icon)
                         .accessibility(hidden: true)
+                        .alignmentGuide(.firstTextBaseline) { $0.height * 0.82 }
                 }
 
                 Text(message.description)
@@ -29,7 +30,7 @@ public struct FieldMessage: View {
             .iconColor(message.color)
             .iconSize(custom: .small)
             .foregroundStyle(message.color)
-           .transition(.opacity.animation(.easeOut(duration: 0.2)))
+            .transition(.opacity.animation(.easeOut(duration: 0.2)))
             .accessibilityElement(children: .combine)
         }
     }
