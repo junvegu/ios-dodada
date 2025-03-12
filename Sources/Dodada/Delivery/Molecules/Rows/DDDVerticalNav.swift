@@ -71,6 +71,7 @@ public struct DDDVerticalNav<LeadingIcon: View, TrailingIcon: View>: View {
                 Divider()
             }
             .padding(.horizontal, .medium)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }
