@@ -65,12 +65,12 @@ public struct DDDVerticalNav<LeadingIcon: View, TrailingIcon: View>: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
                     trailingIcon()
-                }
+                    
+                }.padding(.vertical, .medium)
+                
                 Divider()
             }
-            
-            .padding(.vertical, .xSmall)
-            .padding(.horizontal, .small)
+            .padding(.horizontal, .medium)
         }
         .buttonStyle(.plain)
     }
