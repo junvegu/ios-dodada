@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum NotificationType{
+public enum NotificationType{
     case success, error, warning, info, state5
     
     var backgroundColor: Color {

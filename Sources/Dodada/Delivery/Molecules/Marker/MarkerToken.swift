@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-enum MarkerType {
+public enum MarkerType {
     case new, trading, top_one
     
     var badgeColor: Color {
@@ -26,7 +26,7 @@ enum MarkerType {
     }
 }
 
-enum MarkerSize {
+public enum MarkerSize {
     case medium, small, tiny
     
     var size: CGFloat {

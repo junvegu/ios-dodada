@@ -16,7 +16,7 @@ public struct DDDNotification: View {
     
     @State private var animate: Bool = false
     
-     init(
+     public init(
         title: String,
         description: String,
         type: NotificationType,
@@ -73,13 +73,13 @@ public struct DDDNotification: View {
     }
 }
 
-struct NotificationModifier: ViewModifier {
+public struct NotificationModifier: ViewModifier {
     @Binding var isVisible: Bool
     let title: String
     let description: String
     let type: NotificationType
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         ZStack {
             content
             
@@ -112,7 +112,7 @@ struct NotificationModifier: ViewModifier {
 }
 
 // Extension for easy usage
-extension View {
+public extension View {
     func notification(
         isVisible: Binding<Bool>,
         title: String,
