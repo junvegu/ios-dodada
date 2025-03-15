@@ -106,6 +106,7 @@ public struct DDDRestaurantPreview: View {
             }
         }
         .padding()
+        .background(Color.white)
         .cornerRadius(15)
         .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color(asset: Color.secondary100), lineWidth: 2))
         .padding(.horizontal, 16)
