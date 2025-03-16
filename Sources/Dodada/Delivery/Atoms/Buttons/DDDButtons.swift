@@ -153,10 +153,14 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             )
             .padding()
             .frame( maxWidth: desing.width, minHeight: desing.height)
-            .background(isEnabled ?
-                        configuration.isPressed ? desing.pressedColor: colorTheme.pressedButton
-                        : colorTheme.disabledButton)
+            .background(
+                Rectangle()
+                    .fill(configuration.isPressed ? desing.pressedColor : colorTheme.defaultButton)
+                    .animation(.easeOut(duration: 0.3), value: configuration.isPressed)
+            )
             .cornerRadius(colorTheme.borderRoundButton)
+            .transition(.opacity)
+
 
         }
     }
@@ -326,5 +330,12 @@ extension Button {
         design: DDDButtonDesing = .primary
     ) -> some View {
         self.buttonStyle(DDDButtons(desing: design))
+    }
+}
+
+
+#Preview {
+    DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
+        print("asdasdasdasdadsad")
     }
 }
