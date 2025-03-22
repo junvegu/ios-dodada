@@ -79,10 +79,17 @@ public struct DDDSearchFiltersView: View {
 
 /// Modelo de los filtros
 public struct FilterItem: Identifiable {
-    public let id: UUID = UUID()
+    public let id: UUID
     public let title: String
     public let options: [String]
+
+    public init(id: UUID = UUID(), title: String, options: [String]) {
+        self.id = id
+        self.title = title
+        self.options = options
+    }
 }
+
 
 public struct FilterButton: View {
     let title: String
