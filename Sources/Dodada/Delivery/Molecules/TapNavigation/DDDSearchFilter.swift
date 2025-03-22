@@ -10,16 +10,19 @@ import MapKit
 
 public struct DDDSearchFiltersView: View {
     @State private var searchText: String = ""
-    @State private var selectedOptions: [String: String?] = [:]
+    @State private var selectedOptions: [String: String?]
     
     public let placeholder: String
     public let filters: [FilterItem]
     public let onSearch: (String) -> Void
+    public let onFilterChange: (String, String?) -> Void
 
-    public init(placeholder: String, filters: [FilterItem], onSearch: @escaping (String) -> Void) {
+    public init(placeholder: String, filters: [FilterItem], onSearch: @escaping (String) -> Void, onFilterChange: @escaping (String, String?) -> Void) {
         self.placeholder = placeholder
         self.filters = filters
         self.onSearch = onSearch
+        self.onFilterChange = onFilterChange
+        self._selectedOptions = State(initialValue: Dictionary(uniqueKeysWithValues: filters.map { ($0.title, nil) }))
     }
     
     public var body: some View {
@@ -45,6 +48,7 @@ public struct DDDSearchFiltersView: View {
                 DDDIcon(.x)
                     .onTapGesture {
                         searchText = ""
+                        onSearch("")
                     }
             }
         }
@@ -60,8 +64,11 @@ public struct DDDSearchFiltersView: View {
                         title: filter.title,
                         options: filter.options,
                         selectedOption: Binding(
-                            get: { selectedOptions[filter.title] ?? nil }, // Permite que sea nil
-                            set: { selectedOptions[filter.title] = $0 }
+                            get: { selectedOptions[filter.title] ?? nil },
+                            set: {
+                                selectedOptions[filter.title] = $0
+                                onFilterChange(filter.title, $0)
+                            }
                         )
                     )
                 }
@@ -70,13 +77,12 @@ public struct DDDSearchFiltersView: View {
     }
 }
 
-///Orden de los filtros
+/// Modelo de los filtros
 public struct FilterItem: Identifiable {
-    public let id: Int
+    public let id: UUID = UUID()
     public let title: String
     public let options: [String]
 }
-
 
 public struct FilterButton: View {
     let title: String
@@ -97,17 +103,21 @@ private extension View {
     }
 }
 
+
 // Preview normal
 #Preview {
     DDDSearchFiltersView(
         placeholder: "Buscar...",
         filters: [
-            FilterItem(id: 1, title: "Categoría", options: ["Tecnología", "Ropa", "Hogar"]),
-            FilterItem(id: 2, title: "Tipo", options: ["Electrónica", "Moda", "Casa"]),
-            FilterItem(id: 3, title: "Disponibilidad", options: ["En stock", "Agotado"])
+            FilterItem(title: "Categoría", options: ["Tecnología", "Ropa", "Hogar"]),
+            FilterItem(title: "Tipo", options: ["Electrónica", "Moda", "Casa"]),
+            FilterItem(title: "Disponibilidad", options: ["En stock", "Agotado"])
         ],
         onSearch: { query in
             print("Búsqueda: \(query)")
+        },
+        onFilterChange: { title, option in
+            print("Filtro cambiado: \(title) -> \(option ?? "Ninguno")")
         }
     )
 }
@@ -129,15 +139,18 @@ private extension View {
                     DDDSearchFiltersView(
                         placeholder: "Buscar...",
                         filters: [
-                            FilterItem(id: 1, title: "Facilidades", options: ["Lejanía", "Cercanía", "Otras"]),
-                            FilterItem(id: 2, title: "Precio", options: ["$", "$$", "$$$"]),
-                            FilterItem(id: 3, title: "Horario", options: ["Diurno", "Nocturno", "Vampiro"]),
-                            FilterItem(id: 4, title: "Ordenar", options: ["Menor a mayor", "Mayor a menor"]),
-                            FilterItem(id: 5, title: "Cocinas", options: ["Criolla", "Selvática", "Marina"]),
-                            FilterItem(id: 6, title: "Calificación", options: ["1", "2", "3", "4", "5"])
+                            FilterItem(title: "Facilidades", options: ["Lejanía", "Cercanía", "Otras"]),
+                            FilterItem(title: "Precio", options: ["$", "$$", "$$$"]),
+                            FilterItem(title: "Horario", options: ["Diurno", "Nocturno", "Vampiro"]),
+                            FilterItem(title: "Ordenar", options: ["Menor a mayor", "Mayor a menor"]),
+                            FilterItem(title: "Cocinas", options: ["Criolla", "Selvática", "Marina"]),
+                            FilterItem(title: "Calificación", options: ["1", "2", "3", "4", "5"])
                         ],
                         onSearch: { query in
                             print("Búsqueda: \(query)")
+                        },
+                        onFilterChange: { title, option in
+                            print("Filtro cambiado: \(title) -> \(option ?? "Ninguno")")
                         }
                     )
                     
