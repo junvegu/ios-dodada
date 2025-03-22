@@ -83,8 +83,8 @@ public struct FilterItem: Identifiable {
     public let title: String
     public let options: [String]
 
-    public init(id: UUID = UUID(), title: String, options: [String]) {
-        self.id = id
+    public init(title: String, options: [String]) {
+        self.id = UUID()
         self.title = title
         self.options = options
     }
