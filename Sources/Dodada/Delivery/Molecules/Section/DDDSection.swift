@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-struct DDDSection: View {
+public struct DDDSection: View {
     let title: String
     let subtitle: String?
     let action: (() -> Void)?
     let buttonTitle: String?
     
-    init(title: String, subtitle: String? = nil, buttonTitle: String? = nil, action: (() -> Void)? = nil) {
+    public init(title: String, subtitle: String? = nil, buttonTitle: String? = nil, action: (() -> Void)? = nil) {
         self.title = title
         self.subtitle = subtitle
         self.buttonTitle = buttonTitle
         self.action = action
     }
     
-    var body: some View {
+    public var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(title)
