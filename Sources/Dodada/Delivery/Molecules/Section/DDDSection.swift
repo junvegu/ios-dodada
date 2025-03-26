@@ -33,10 +33,8 @@ public struct DDDSection: View {
             }
             Spacer()
             
-            //Corregir
-            ///Cambiar en "design" el .primary por el .link
             if let buttonTitle = buttonTitle, let action = action {
-                DDDButton(buttonTitle, desing: .primary, action: action)
+                DDDButton(buttonTitle, desing: .link, action: action)
                     .padding(.leading, 80)
             }
         }
