@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-public struct DDDSearchFiltersView: View {
+public struct DDDSearchFilters: View {
     @State private var searchText: String = ""
     @State private var selectedOptions: [String: String?]
     
@@ -113,7 +113,7 @@ private extension View {
 
 // Preview normal
 #Preview {
-    DDDSearchFiltersView(
+    DDDSearchFilters(
         placeholder: "Buscar...",
         filters: [
             FilterItem(title: "Categoría", options: ["Tecnología", "Ropa", "Hogar"]),
@@ -143,7 +143,7 @@ private extension View {
                     .ignoresSafeArea()
                 
                 VStack {
-                    DDDSearchFiltersView(
+                    DDDSearchFilters(
                         placeholder: "Buscar...",
                         filters: [
                             FilterItem(title: "Facilidades", options: ["Lejanía", "Cercanía", "Otras"]),
