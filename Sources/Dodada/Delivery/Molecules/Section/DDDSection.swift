@@ -35,7 +35,6 @@ public struct DDDSection: View {
             
             if let buttonTitle = buttonTitle, let action = action {
                 DDDButton(buttonTitle, desing: .link, action: action)
-                    .padding(.leading, 80)
             }
         }
         .padding()
