@@ -26,12 +26,16 @@ public struct DDDSearchFilters: View {
     }
     
     public var body: some View {
-        VStack(spacing: 8) {
-            searchBar
-            filterScrollView
+        VStack {
+            VStack {
+                searchBar
+                filterScrollView
+            }
+            .padding(.horizontal, 16)
+            Divider()
+                .frame(maxWidth: .infinity)
+                .background(Color(asset: Color.secondary200))
         }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 10)
         .background(.white)
     }
     

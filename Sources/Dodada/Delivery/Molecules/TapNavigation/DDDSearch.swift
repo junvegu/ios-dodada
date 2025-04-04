@@ -20,11 +20,13 @@ public struct DDDSearch: View {
     }
 
     public var body: some View {
-        VStack(spacing: 8) {
+        VStack{
             searchBar
+                .padding(.horizontal, 16)
+            Divider()
+                .frame(maxWidth: .infinity)
+                .background(Color(asset: Color.secondary200))
         }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 10)
         .background(.white)
     }
 
