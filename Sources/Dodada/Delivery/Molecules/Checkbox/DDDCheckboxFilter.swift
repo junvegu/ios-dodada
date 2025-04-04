@@ -44,7 +44,7 @@ public struct DDDCheckboxFilter: View {
                 DDDCheckboxIcon(type: .checkbox, state: isChecked ? .active : .default, isChecked: $isChecked)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 

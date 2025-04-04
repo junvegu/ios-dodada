@@ -37,7 +37,7 @@ public struct DDDSection: View {
                 DDDButton(buttonTitle, desing: .link, action: action)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 
