@@ -15,6 +15,14 @@ public struct DDDMediaCard: View {
     let isLive: Bool
     let author: String
     
+    public init(imageURL: URL?, text: String, views: String, isLive: Bool, author: String) {
+        self.imageURL = imageURL
+        self.text = text
+        self.views = views
+        self.isLive = isLive
+        self.author = author
+    }
+    
     public var body: some View {
         VStack (alignment: .leading){
             
