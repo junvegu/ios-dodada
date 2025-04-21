@@ -48,7 +48,7 @@ public enum DDDButtonDesing {
         case .onlyIcon(let inverted):
             inverted ? Color.white : Asset.Colors.primary.swiftUIColor 
         case .link, .ghost:
-            Color.white
+            Color.clear
         }
     }
     
