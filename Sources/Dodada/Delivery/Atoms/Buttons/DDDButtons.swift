@@ -254,6 +254,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             .frame(minHeight: desing.height)
             .background(desing.backgroundColor)
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
+            .cornerRadius(colorTheme.borderRoundButton)
         }
     }
     
@@ -381,7 +382,16 @@ extension Button {
 
 
 #Preview {
-    DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
-        print("asdasdasdasdadsad")
-    }
+    VStack{
+        DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
+            print("asdasdasdasdadsad")
+        }
+        DDDButton("$", desing: .tertiary) {//tertiary se adapta al texto, el primiary no
+            print("asdasdasdasdadsad")
+        }
+        DDDButton("HOla como estan", desing: .link, icon: .add, disclosureIcon: .alertCircle) {
+            print("asdasdasdasdadsad")
+        }
+    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 242/255, green: 242/255, blue: 247/255))
 }
