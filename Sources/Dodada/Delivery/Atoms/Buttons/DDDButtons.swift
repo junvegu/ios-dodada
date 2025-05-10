@@ -335,7 +335,14 @@ extension Button {
 
 
 #Preview {
-    DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
-        print("asdasdasdasdadsad")
+    
+    VStack(spacing: .zero) {
+        DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
+            print("asdasdasdasdadsad")
+        }
+          DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
+            print("asdasdasdasdadsad")
+        }
     }
+  
 }

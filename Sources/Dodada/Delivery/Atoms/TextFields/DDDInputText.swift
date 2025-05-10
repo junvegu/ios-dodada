@@ -219,7 +219,7 @@ public extension DDDInputText {
         @State private var isShow: Bool = false
 
         var body: some View {
-            VStack {
+            VStack(spacing: 8) {
                 DDDInputText(
                     "Username",
                     value: .constant("JohnDoe"),
@@ -233,7 +233,6 @@ public extension DDDInputText {
                     message: .help("Enter a valid username"),
                     messageHeight: .constant(50)
                 )
-                .padding()
                 
                 DDDInputText(
                     "Password",
@@ -248,21 +247,26 @@ public extension DDDInputText {
                     message: .error("Weak password"),
                     messageHeight: .constant(20)
                 )
-                .padding()
-
                 DDDInputText(
                     "Password",
                     value: .constant("password123"),
                     prompt: "Enter your password",
                     message: !isShow ? nil : .error("Weak password")
                 )
-                .padding()
-                
+                DDDInputText(
+                    "Password",
+                    value: .constant("password123"),
+                    prompt: "Enter your password"
+                )
+                DDDInputText(
+                    value: .constant("password123"),
+                    prompt: "Enter your password"
+                )
                 DDDButton("Action", desing: .primary) {
                     isShow.toggle()
                 }
                 .padding()
-            }
+            }.padding(.horizontal, 12)
         }
     }
     

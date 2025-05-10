@@ -89,8 +89,13 @@ public struct FieldLabel: View {
     private let label: String
 
     public var body: some View {
-        Text(label)
-            .apply(token: .footNote, weight: .regular)
+        if label.isEmpty {
+            EmptyView()
+        } else {
+            Text(label)
+                .apply(token: .footNote, weight: .regular)
+        }
+
     }
 
     public init(_ label: String) {

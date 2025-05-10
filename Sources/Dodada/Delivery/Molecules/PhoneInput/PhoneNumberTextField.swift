@@ -79,9 +79,9 @@ struct PhoneNumberTextField_Previews: PreviewProvider {
         PhoneNumberTextField(
             phoneNumber: .constant("987654321"),
             isValidPhoneNumber: .constant(false),
-            countryPattern: "",
+            countryPattern: "PE",
             countryLimit: 9,
-            backgroundColor: .accentColor,
+            backgroundColor: .clear,
             cornerRadius: .regularCornerRadius,
             foregroundColor: .accentColor
         )
