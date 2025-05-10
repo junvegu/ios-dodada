@@ -110,12 +110,19 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             return AnyView(IconButton(desing: desing, configuration: configuration) {
                 icon
             })
+        case .link:
+            return AnyView(LinkButton(desing: desing, configuration: configuration){
+                icon
+            } disclosureIcon: {
+                disclosureIcon
+            })
         case .ghost:
             return AnyView(IconButton(desing: desing, configuration: configuration) {
                 icon
             })
+            /*
         default:
-            return AnyView(EmptyView())
+            return AnyView(EmptyView())*/
         }
     }
     
@@ -247,6 +254,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             .frame(minHeight: desing.height)
             .background(desing.backgroundColor)
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
+            .cornerRadius(colorTheme.borderRoundButton)
         }
     }
     
@@ -286,6 +294,45 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                             : colorTheme.disabledButton, lineWidth: 1)
             )
             .clipShape(Circle())
+            .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
+        }
+    }
+    
+    private struct LinkButton: View {
+        let configuration: ButtonStyle.Configuration
+        private let desing: DDDButtonDesing
+
+        @Environment(\.isEnabled) private var isEnabled: Bool
+        @Environment(\.colorTheme) private var colorTheme: DDDTheme
+        @ViewBuilder let icon: LeadingIcon
+        @ViewBuilder let disclosureIcon: TrailingIcon
+
+        init(
+            desing: DDDButtonDesing,
+            configuration: ButtonStyle.Configuration,
+            @ViewBuilder icon: () -> LeadingIcon = { EmptyView() },
+            @ViewBuilder disclosureIcon: () -> TrailingIcon = { EmptyView() }
+        ) {
+            self.desing = desing
+            self.configuration = configuration
+            self.icon = icon()
+            self.disclosureIcon = disclosureIcon()
+        }
+        
+        var body: some View {
+            
+            HStack {
+                icon
+                configuration.label
+                    .apply(token: .callOut, weight: .bold)
+                    .layoutPriority(1)
+                disclosureIcon
+            }.foregroundColor(isEnabled ?
+                             configuration.isPressed ?  desing.pressedColor :  desing.textColor
+                             : colorTheme.disabledTextButton)
+            //.padding()
+            //.frame(minHeight: desing.height)
+            .background(desing.backgroundColor)
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
         }
     }
@@ -345,4 +392,16 @@ extension Button {
         }
     }
   
+    VStack{
+        DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
+            print("asdasdasdasdadsad")
+        }
+        DDDButton("$", desing: .tertiary) {//tertiary se adapta al texto, el primiary no
+            print("asdasdasdasdadsad")
+        }
+        DDDButton("HOla como estan", desing: .link, icon: .add, disclosureIcon: .alertCircle) {
+            print("asdasdasdasdadsad")
+        }
+    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 242/255, green: 242/255, blue: 247/255))
 }
