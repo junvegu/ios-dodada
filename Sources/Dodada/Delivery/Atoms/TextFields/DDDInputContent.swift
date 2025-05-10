@@ -82,7 +82,10 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
 
     @ViewBuilder private var border: some View {
         RoundedRectangle(cornerRadius: .regularCornerRadius)
-            .strokeBorder(isFocused ? .clear : Asset.Colors.secondary200.swiftUIColor, lineWidth: 2)
+            .strokeBorder(
+                Asset.Colors.secondary200.swiftUIColor.opacity(isFocused ? 0.6 : 1.0),
+                lineWidth: isFocused ? 1 : 2
+            )
     }
 
     @ViewBuilder private var focusBorder: some View {
