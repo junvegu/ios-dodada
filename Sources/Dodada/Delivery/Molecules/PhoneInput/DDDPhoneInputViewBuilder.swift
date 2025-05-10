@@ -93,6 +93,6 @@ struct PhoneNumberView_Previews: PreviewProvider {
         DDDPhoneNumberView(
             mobPhoneNumber: .constant(""),
             isValidPhoneNumber: .constant(false)
-        )
+        ).padding(.horizontal, 12)
     }
 }

@@ -138,8 +138,6 @@ public struct DDDInputDropDown<T: Identifiable & CustomStringConvertible>: View 
      }
 }
 
-import SwiftUI
-
 struct DropdownField_Previews: PreviewProvider {
     struct Country: Identifiable, CustomStringConvertible, Equatable {
         let id = UUID()
