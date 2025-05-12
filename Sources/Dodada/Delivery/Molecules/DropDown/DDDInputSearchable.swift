@@ -48,7 +48,11 @@ public struct DDDInputSearchable<T: Identifiable & CustomStringConvertible & Equ
                 .cornerRadius(.regularCornerRadius)
                 .overlay(
                     RoundedRectangle(cornerRadius: .regularCornerRadius)
-                        .stroke(viewModel.state.borderColor, lineWidth: 2)
+                        .stroke(
+                            isPresented ? InputStyles.focus.borderColor : InputStyles.default.borderColor,
+                            lineWidth: isPresented ? 2.5 : 2
+                        )
+                        .animation(.easeInOut(duration: 0.2), value: isPresented)
                 )
             }
             .disabled(!isEnabled)

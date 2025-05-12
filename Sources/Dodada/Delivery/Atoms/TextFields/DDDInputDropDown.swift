@@ -102,7 +102,7 @@ public struct DDDInputDropDown<T: Identifiable & CustomStringConvertible>: View 
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            if !viewModel.placeholder.isEmpty {
+            if !viewModel.placeholder.isEmpty  &&  viewModel.selected != nil {
                 Text(viewModel.placeholder)
                        .apply(token: .footNote, weight: .regular)
                        .scaleEffect((viewModel.selected != nil || isFocused) ? 1.0 : 0.0001)
@@ -112,11 +112,6 @@ public struct DDDInputDropDown<T: Identifiable & CustomStringConvertible>: View 
             }
   
             Menu {
-                if viewModel.isSearchable {
-                    TextField("Buscar...", text: $viewModel.searchText)
-                        .textFieldStyle(.roundedBorder)
-                        .padding(.horizontal)
-                }
 
                 ForEach(viewModel.filteredOptions) { option in
                     Button(option.description) {
@@ -146,7 +141,7 @@ public struct DDDInputDropDown<T: Identifiable & CustomStringConvertible>: View 
                 .overlay(
                     RoundedRectangle(cornerRadius: .regularCornerRadius)
                         .stroke(
-                            isFocused ? viewModel.state.borderColor.opacity(0.9) : viewModel.state.borderColor,
+                            isFocused ? InputStyles.focus.borderColor : InputStyles.default.borderColor,
                             lineWidth: isFocused ? 2.5 : 2
                         )
                         .animation(.easeInOut(duration: 0.2), value: isFocused)
