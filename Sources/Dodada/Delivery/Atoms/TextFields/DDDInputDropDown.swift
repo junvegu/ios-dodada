@@ -48,7 +48,7 @@ final public class DropdownFieldViewModel<T: Identifiable & CustomStringConverti
 
     let isSearchable: Bool
 
-    init(
+    public init(
         options: [T],
         placeholder: String,
         selected: Binding<T?>,
