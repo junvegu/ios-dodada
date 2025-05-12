@@ -120,7 +120,7 @@ public struct DDDInputDropDown<T: Identifiable & CustomStringConvertible>: View 
   
             Menu {
 
-                ForEach(viewModel.filteredOptions) { option in
+                ForEach(viewModel.options) { option in
                     Button(option.description) {
                         withAnimation {
                             viewModel.selected = option
