@@ -95,6 +95,11 @@ public struct DDDInputDropDown<T: Identifiable & CustomStringConvertible>: View 
     @State private var isFocused: Bool = false
     @Namespace private var animationNamespace
 
+    
+    public init(viewModel: DropdownFieldViewModel<T>) {
+        self.viewModel = viewModel
+    }
+    
     public var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Menu {
