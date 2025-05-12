@@ -15,7 +15,6 @@ let package = Package(
             targets: ["Dodada"]),
     ],
     dependencies: [
-        // Agregamos la dependencia de SDWebImageSwiftUI
         .package(url: "https://github.com/SDWebImage/SDWebImageSwiftUI.git", from: "2.0.0")
     ],
     targets: [
@@ -24,7 +23,10 @@ let package = Package(
             dependencies: [
                 .product(name: "SDWebImageSwiftUI", package: "SDWebImageSwiftUI")
             ],
-            resources: [.process("Resources/Fonts")]
+            resources: [
+                   .process("Resources/Fonts"),
+                   .process("Resources/Assets/Countries.json")
+               ]
         ),
         
         .testTarget(
