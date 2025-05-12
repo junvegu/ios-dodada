@@ -102,6 +102,13 @@ public struct DDDInputDropDown<T: Identifiable & CustomStringConvertible>: View 
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 4) {
+            Text(viewModel.placeholder)
+                   .apply(token: .footNote, weight: .regular)
+                   .scaleEffect((viewModel.selected != nil || isFocused) ? 1.0 : 0.0001)
+                   .opacity((viewModel.selected != nil || isFocused) ? 1.0 : 0.0)
+                   .offset(y: (viewModel.selected != nil || isFocused) ? 0 : 16)
+                   .animation(.easeInOut(duration: 0.2), value: isFocused)
+               
             Menu {
                 if viewModel.isSearchable {
                     TextField("Buscar...", text: $viewModel.searchText)
@@ -127,7 +134,8 @@ public struct DDDInputDropDown<T: Identifiable & CustomStringConvertible>: View 
                     DDDIcon(.chevronDown)
                         .iconColor(viewModel.state.textColor)
                 }
-                .padding()
+                .padding(.vertical, 16)
+                .padding(.horizontal)
                 .background(
                     (!isEnabled ? Asset.Colors.secondary200.swiftUIColor.opacity(0.4) : .white)
                         .animation(.easeInOut(duration: 0.2), value: isEnabled)
