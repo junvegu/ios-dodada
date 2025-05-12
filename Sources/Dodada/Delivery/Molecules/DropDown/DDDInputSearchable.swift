@@ -19,14 +19,14 @@ public struct DDDInputSearchable<T: Identifiable & CustomStringConvertible & Equ
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            if !viewModel.placeholder.isEmpty {
-                Text(viewModel.placeholder)
-                        .apply(token: .footNote, weight: .regular)
-                          .scaleEffect((viewModel.selected != nil || isPresented) ? 1.0 : 0.0001)
-                          .opacity((viewModel.selected != nil || isPresented) ? 1.0 : 0.0)
-                          .offset(y: (viewModel.selected != nil || isPresented) ? 0 : 16)
-                          .animation(.easeInOut(duration: 0.2), value: isPresented)
-            }
+            ZStack(alignment: .leading) {
+                 if !viewModel.placeholder.isEmpty && viewModel.selected != nil {
+                     Text(viewModel.placeholder)
+                         .apply(token: .footNote, weight: .regular)
+                         .transition(.move(edge: .top).combined(with: .opacity))
+                 }
+             }
+             .animation(.easeInOut(duration: 0.2), value: viewModel.selected)
         
             Button {
                 isPresented = true

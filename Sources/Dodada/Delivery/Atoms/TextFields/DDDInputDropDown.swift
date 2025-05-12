@@ -102,13 +102,20 @@ public struct DDDInputDropDown<T: Identifiable & CustomStringConvertible>: View 
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            if !viewModel.placeholder.isEmpty  &&  viewModel.selected != nil {
-                Text(viewModel.placeholder)
-                       .apply(token: .footNote, weight: .regular)
-                       .scaleEffect((viewModel.selected != nil || isFocused) ? 1.0 : 0.0001)
-                       .opacity((viewModel.selected != nil || isFocused) ? 1.0 : 0.0)
-                       .offset(y: (viewModel.selected != nil || isFocused) ? 0 : 16)
-                       .animation(.easeInOut(duration: 0.2), value: isFocused)
+            ZStack(alignment: .leading) {
+                if !viewModel.placeholder.isEmpty && viewModel.selected != nil {
+                    Text(viewModel.placeholder)
+                        .apply(token: .footNote, weight: .regular)
+                        .scaleEffect(1.0)
+                        .opacity(1.0)
+                        .offset(y: 0)
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .top).combined(with: .opacity),
+                                removal: .scale(scale: 0.8).combined(with: .opacity)
+                            )
+                        )
+                }
             }
   
             Menu {

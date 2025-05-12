@@ -18,6 +18,23 @@ public struct DDDInputDatePicker: View {
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 4) {
+            ZStack(alignment: .leading) {
+                if !placeholder.isEmpty && selectedDate != nil {
+                    Text(placeholder)
+                        .apply(token: .footNote, weight: .regular)
+                        .scaleEffect(1.0)
+                        .opacity(1.0)
+                        .offset(y: 0)
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .top).combined(with: .opacity),
+                                removal: .scale(scale: 0.8).combined(with: .opacity)
+                            )
+                        )
+                }
+            }
+            .animation(.easeInOut(duration: 0.2), value: selectedDate)
+        
             Button {
                 withAnimation {
                     showDatePicker = true
@@ -34,7 +51,8 @@ public struct DDDInputDatePicker: View {
                     DDDIcon(.calendar)
                         .iconColor(InputStyles.default.textColor)
                 }
-                .padding()
+                .padding(.horizontal)
+                .padding(.vertical, 12)
                 .background(
                     (!isEnabled ? Asset.Colors.secondary200.swiftUIColor.opacity(0.4) : .white)
                         .animation(.easeInOut(duration: 0.2), value: isEnabled)
