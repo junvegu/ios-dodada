@@ -21,7 +21,7 @@ public extension View {
 
 
 public struct DDDTypographyModifier: ViewModifier {
-
+    @Environment(\.dddFontProvider) private var fontProvider
     @Environment(\.colorTheme) private var colorTheme: DDDTheme
     
     var typography: DDDFontToken
@@ -29,7 +29,7 @@ public struct DDDTypographyModifier: ViewModifier {
     
     public func body(content: Content) -> some View {
         content
-            .font(typography.font(weight))
+            .font(fontProvider.font(for: typography, weight: weight))
             .kerning(typography.letterSpacing)
             .lineSpacing(typography.lineSpacing)
     }

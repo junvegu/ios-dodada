@@ -35,16 +35,7 @@ public struct DDDPhoneNumberView: View {
         countryPattern: String = "### ### ###",
         countryLimit: Int = 9
     ) {
-        self.countries = [
-            DDDCountryData(
-                id: "0001",
-                name: "Perú",
-                flag: "🇵🇪",
-                code: "PE",
-                dial_code: "+51",
-                pattern: "### ### ###",
-                limit: 9
-            )]
+        self.countries = DDDCountryData.allCountry
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
         self.cornerRadius = cornerRadius

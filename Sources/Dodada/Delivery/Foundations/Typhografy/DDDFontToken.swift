@@ -7,6 +7,37 @@
 
 import Foundation
 import SwiftUI
+
+struct MyCustomFontProvider: DDDFontProviding {
+    func font(for token: DDDFontToken, weight: DDDFontToken.Weigth) -> SwiftUI.Font {
+        let fontName: String
+
+        switch weight {
+        case .regular:
+            fontName = "Quicksand-Medium"
+        case .bold:
+            fontName = "Quicksand-Bold"
+        case .light:
+            fontName = "Quicksand-Light"
+        }
+
+        return SwiftUI.Font.custom(fontName, size: token.size)
+    }
+}
+
+
+public protocol DDDFontProviding {
+    func font(for token: DDDFontToken, weight: DDDFontToken.Weigth) -> SwiftUI.Font
+}
+
+public struct DDDFontProviderDefault: DDDFontProviding {
+    public init() {}
+    
+    public func font(for token: DDDFontToken, weight: DDDFontToken.Weigth) -> SwiftUI.Font {
+        weight.value.swiftUIFont(size: token.size)
+    }
+}
+
 public enum DDDFontToken: String, CaseIterable {
     case caption2
     case caption1
