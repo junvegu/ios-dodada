@@ -48,33 +48,41 @@ public struct DDDPhoneNumberView: View {
     }
     
     public var body: some View {
-        HStack {
-            CountryPickerView(
-                countryFlag: $countryFlag,
-                countryCode: $countryCode,
-                countryPattern: $countryPattern,
-                countryLimit: $countryLimit,
-                presentSheet: $presentSheet,
-                keyIsFocused: _keyIsFocused,
-                countries: countries,
-                backgroundColor: backgroundColor,
-                foregroundColor: foregroundColor,
-                cornerRadius: cornerRadius
-            )
-            
-            
-            PhoneNumberTextField(
-                phoneNumber: $mobPhoneNumber,
-                isValidPhoneNumber: $isValidPhoneNumber,
-                countryPattern: countryPattern,
-                countryLimit: countryLimit,
-                backgroundColor: backgroundColor,
-                cornerRadius: cornerRadius,
-                foregroundColor: foregroundColor,
-                keyIsFocused: _keyIsFocused
+        
+        FieldWrapper("") {
+            HStack {
+                CountryPickerView(
+                    countryFlag: $countryFlag,
+                    countryCode: $countryCode,
+                    countryPattern: $countryPattern,
+                    countryLimit: $countryLimit,
+                    presentSheet: $presentSheet,
+                    keyIsFocused: _keyIsFocused,
+                    countries: countries,
+                    backgroundColor: backgroundColor,
+                    foregroundColor: foregroundColor,
+                    cornerRadius: cornerRadius
+                )
+                
+                
+                PhoneNumberTextField(
+                    phoneNumber: $mobPhoneNumber,
+                    isValidPhoneNumber: $isValidPhoneNumber,
+                    countryPattern: countryPattern,
+                    countryLimit: countryLimit,
+                    backgroundColor: backgroundColor,
+                    cornerRadius: cornerRadius,
+                    foregroundColor: foregroundColor,
+                    keyIsFocused: _keyIsFocused
+                )
+            }
+            .overlay(
+                RoundedRectangle(cornerRadius: .regularCornerRadius)
+                    .stroke( Color.secondary200.swiftUIColor , lineWidth: 2)
             )
         }
         .ignoresSafeArea(.keyboard)
+       
     }
 }
 

@@ -27,9 +27,10 @@ struct CountryPickerView: View {
         } label: {
             Text("\(countryFlag) \(countryCode)")
                 .padding(.medium)
+                .apply(token: .callOut, weight: .bold)
                 .frame(minWidth: 80, minHeight: 47)
                 .background(backgroundColor, in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
-                .foregroundColor(foregroundColor)
+                .foregroundColor(.black)
         }
         .sheet(isPresented: $presentSheet) {
             NavigationView {

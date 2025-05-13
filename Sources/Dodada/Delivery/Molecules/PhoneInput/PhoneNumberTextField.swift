@@ -25,6 +25,7 @@ public struct PhoneNumberTextField: View {
         TextField("", text: $phoneNumber)
             .placeholder(when: phoneNumber.isEmpty) {
                 Text("Phone number")
+                    .apply(token: .callOut, weight: .regular)
                     .foregroundColor(foregroundColor)
             }
             .focused($keyIsFocused)
