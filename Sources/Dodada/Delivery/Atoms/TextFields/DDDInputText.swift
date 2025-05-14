@@ -145,7 +145,9 @@ public extension DDDInputText {
         isSecure: Bool = false,
         passwordStrength: PasswordStrengthIndicator.PasswordStrength? = nil,
         message: Message? = nil,
-        messageHeight: Binding<CGFloat> = .constant(0)
+        messageHeight: Binding<CGFloat> = .constant(0),
+        autocapitalization: UITextAutocapitalizationType = .none,
+        autocorrectionDisabled: Bool = true
     ) where Prefix == DDDIcon, Suffix == DDDIcon {
         self.init(
             label,
@@ -156,13 +158,16 @@ public extension DDDInputText {
             isSecure: isSecure,
             passwordStrength: passwordStrength,
             message: message,
-            messageHeight: messageHeight
+            messageHeight: messageHeight,
+            autocapitalization: autocapitalization,
+            autocorrectionDisabled: autocorrectionDisabled
         ) {
             DDDIcon(prefix)
         } suffix: {
             DDDIcon(suffix)
         }
     }
+
     
     /// Creates an `InputField` with a customizable prefix and suffix views.
     ///
@@ -188,6 +193,8 @@ public extension DDDInputText {
         passwordStrength: PasswordStrengthIndicator.PasswordStrength? = nil,
         message: Message? = nil,
         messageHeight: Binding<CGFloat> = .constant(0),
+        autocapitalization: UITextAutocapitalizationType = .none,
+        autocorrectionDisabled: Bool = true,
         @ViewBuilder prefix: () -> Prefix,
         @ViewBuilder suffix: () -> Suffix = { EmptyView() }
     ) {
@@ -202,7 +209,10 @@ public extension DDDInputText {
         self._messageHeight = messageHeight
         self.prefix = prefix()
         self.suffix = suffix()
+        self.autocapitalizationType = autocapitalization
+        self.isAutocorrectionDisabled = autocorrectionDisabled
     }
+
 }
 
 // MARK: - Preview
