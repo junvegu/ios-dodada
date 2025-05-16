@@ -79,19 +79,22 @@ public struct DDDPhoneNumberView: View {
     }
 
     private func setDefaultCountry() {
-        let regionCode = Locale.current.identifier
-        if let defaultCountry = countries.first(where: { $0.id == regionCode }) {
-            countryFlag = defaultCountry.flag
-            countryCode = defaultCountry.dial_code
-            countryPattern = defaultCountry.pattern
-            countryLimit = defaultCountry.limit
-        } else if let fallback = countries.first(where: { $0.id == "PE" }) {
-            // Fallback a Perú si no se encuentra el país actual
-            countryFlag = fallback.flag
-            countryCode = fallback.dial_code
-            countryPattern = fallback.pattern
-            countryLimit = fallback.limit
-        }
+        
+
+        let regionCode = Locale.current.region?.identifier
+        if let defaultCountry = countries.first(where: { $0.code == regionCode }) {
+             print("🌍 Found country: \(defaultCountry.name)")
+             countryFlag = defaultCountry.flag
+             countryCode = defaultCountry.dial_code
+             countryPattern = defaultCountry.pattern
+             countryLimit = defaultCountry.limit
+         }else if let fallback = countries.first(where: { $0.code == "PE" }) {
+             // Fallback a Perú si no se encuentra el país actual
+             countryFlag = fallback.flag
+             countryCode = fallback.dial_code
+             countryPattern = fallback.pattern
+             countryLimit = fallback.limit
+         }
     }
 }
 
