@@ -39,7 +39,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
     @ViewBuilder private let content: Content
     @ViewBuilder private let prefix: Prefix
     @ViewBuilder private let suffix: Suffix
-    
+    @Binding private var value: String
     public var body: some View {
         HStack(spacing: 0) {
             prefix
@@ -87,14 +87,19 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
                 lineWidth: isFocused ? 1 : 2
             )
     }
+    
 
     @ViewBuilder private var focusBorder: some View {
          RoundedRectangle(cornerRadius: .regularCornerRadius)
-             .trim(from: 0, to: isFocused ? 1 : 0) // Hace que la animación recorra todo el borde
+             .trim(from: 0, to: showBorderFofus ? 1 : 0) // Hace que la animación recorra todo el borde
              .stroke(focusOutlineColor, style: StrokeStyle(lineWidth: 2, lineCap: .round))
-             .animation(.easeInOut(duration: 0.4), value: isFocused) // Animación progresiva
+             .animation(.easeInOut(duration: 0.4), value: showBorderFofus) // Animación progresiva
      }
 
+    private var showBorderFofus: Bool {
+        return !value.isEmpty || isFocused
+    }
+    
     private var resolvedTextColor: Color {
         isEnabled
         ?  state.textColor
@@ -114,7 +119,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
 
 
     private var focusOutlineColor: Color {
-        switch (message, isFocused) {
+        switch (message, showBorderFofus) {
         case (.error, true):        return .error.swiftUIColor
         case (.warning, true):      return .warning500.swiftUIColor
         case (.help, true):         return .secondary400.swiftUIColor
@@ -135,6 +140,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
         label: String = "",
         message: Message? = nil,
         isFocused: Bool = false,
+        value: Binding<String>,
         @ViewBuilder content: () -> Content,
         @ViewBuilder prefix: () -> Prefix = { EmptyView() },
         @ViewBuilder suffix: () -> Suffix = { EmptyView() }
@@ -146,6 +152,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
         self.content = content()
         self.prefix = prefix()
         self.suffix = suffix()
+        self._value = value
     }
 }
 
@@ -153,11 +160,11 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
 #Preview {
     VStack {
         
-        DDDInputContent(label: "Label") {
+        DDDInputContent(label: "Label", value: .constant("")) {
             EmptyView()
         }.padding()
         
-        DDDInputContent(label: "Label") {
+        DDDInputContent(label: "Label", value: .constant("")) {
             EmptyView()
         } prefix: {
             DDDIcon(.aquisito)
@@ -165,7 +172,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
             DDDIcon(.google)
         }.padding()
         
-        DDDInputContent(label: "Label", isFocused: true) {
+        DDDInputContent(label: "Label", isFocused: true, value: .constant("")) {
             TextField("", text: .constant("Value"))
                 .padding(.horizontal, .small)
         } prefix: {
@@ -174,7 +181,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
             DDDIcon(.google)
         }.padding()
         
-        DDDInputContent(label: "Label", isFocused: true) {
+        DDDInputContent(label: "Label", isFocused: true, value: .constant("")) {
             TextField("", text: .constant("Value"))
                 .padding(.horizontal, .small)
         } prefix: {
@@ -184,7 +191,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
         }.padding()
             .disabled(true)
         
-        DDDInputContent(label: "Label", message: .error("Este es un error", icon: .alertCircle), isFocused: true) {
+        DDDInputContent(label: "Label", message: .error("Este es un error", icon: .alertCircle), isFocused: true, value: .constant("")) {
             TextField("", text: .constant("Value"))
                 .padding(.horizontal, .small)
         } prefix: {

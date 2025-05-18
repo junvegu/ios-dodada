@@ -1,23 +1,24 @@
 //
-//  InputField.swift
+//  DDDInputText.swift
+//  Dodada UI Component
 //
-//
-//  Created by Junior Quevedo Gutiérrez  on 1/03/25.
+//  Created by Junior Quevedo Gutierrez on 1/03/25.
 //
 
-import Foundation
 import SwiftUI
 
 /// A customizable input field component for Dodada.
-/// Supports optional prefix and suffix views, secure text entry, and password strength indication.
+/// Supports optional prefix and suffix views, secure text entry, password strength indication,
+/// and validation for required fields.
 public struct DDDInputText<Prefix: View, Suffix: View>: View {
-    // MARK: - Environment Variables
+    
+    // MARK: - Environment
     @Environment(\.isEnabled) private var isEnabled
-    
-    // MARK: - Focus State
+
+    // MARK: - Focus
     @FocusState private var isFocused: Bool
-    
-    // MARK: - Properties
+
+    // MARK: - Internal Properties
     private let label: String
     private let prompt: String
     private let state: InputState
@@ -25,30 +26,46 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
     private let passwordStrength: PasswordStrengthIndicator.PasswordStrength?
     private let isSecure: Bool
     private let message: Message?
-    
+    private let isRequired: Bool
+    private let requiredMessage: String?
+
     @Binding private var value: String
     @Binding private var messageHeight: CGFloat
-    
+
     var onBeginEditing: (() -> Void)?
     var onEndEditing: (() -> Void)?
-    
+
     @ViewBuilder private var prefix: Prefix
     @ViewBuilder private var suffix: Suffix
-    
+
     @State private var isSecureTextRedacted: Bool = true
-    
-    // MARK: - Text Field Configuration
+    @State private var hasLostFocus: Bool = false
+
+    // MARK: - Configuration
     var autocapitalizationType: UITextAutocapitalizationType = .none
     var isAutocorrectionDisabled: Bool? = false
     var keyboardType: UIKeyboardType = .default
     var returnKeyType: SubmitLabel = .done
     var textContentType: UITextContentType?
     var shouldDeleteBackwardAction: (String) -> Bool = { _ in true }
-    
+
     // MARK: - Body
     public var body: some View {
-        FieldWrapper(labelText, message: message, messageHeight: $messageHeight) {
-            DDDInputContent(state: state, label: compactLabel, message: message, isFocused: isFocused) {
+        let effectiveMessage: Message? = {
+            if isRequired && hasLostFocus && value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                return .error(requiredMessage ?? "El \(label.lowercased()) es obligatorio")
+            }
+            return message
+        }()
+
+        return FieldWrapper(labelText, message: effectiveMessage, messageHeight: $messageHeight) {
+            DDDInputContent(
+                state: state,
+                label: compactLabel,
+                message: effectiveMessage,
+                isFocused: isFocused,
+                value: $value
+            ) {
                 buildTextField()
             } prefix: {
                 prefix
@@ -63,8 +80,8 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
             }
         }
     }
-    
-    // MARK: - Text Field Builder
+
+    // MARK: - TextField Builder
     @ViewBuilder
     private func buildTextField() -> some View {
         Group {
@@ -84,6 +101,7 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
             if newValue {
                 onBeginEditing?()
             } else {
+                hasLostFocus = true
                 onEndEditing?()
             }
         }
@@ -91,27 +109,26 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
         .apply(token: .callOut, weight: .regular)
         .padding(.horizontal, .small)
     }
-    
-    // MARK: - Secure Text Toggle Button
+
+    // MARK: - Secure Text Toggle
     @ViewBuilder
     private var secureTextToggleButton: some View {
         if showSecureTextToggle {
             DDDIcon(isSecureTextRedacted ? .eye : .eyeOff).onTapGesture {
                 isSecureTextRedacted.toggle()
-
             }
         }
     }
-    
+
     // MARK: - Computed Properties
     private var showSecureTextToggle: Bool {
         isSecure && !value.isEmpty && isEnabled
     }
-    
+
     private var labelText: String {
         labelStyle == .default ? label : ""
     }
-    
+
     private var compactLabel: String {
         labelStyle == .compact ? label : ""
     }
@@ -120,20 +137,24 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
 // MARK: - Initializers
 public extension DDDInputText {
     
-    /// Creates an `InputField` with an optional prefix and suffix using predefined `DDDIcon` images.
+    /// Creates a `DDDInputText` field using standard prefix and suffix icons.
     ///
     /// - Parameters:
     ///   - label: The label of the input field.
-    ///   - value: A binding to the text value.
-    ///   - prefix: An optional icon for the left side.
-    ///   - suffix: An optional icon for the right side.
-    ///   - prompt: The placeholder text.
-    ///   - state: The input field state (e.g., default, error).
-    ///   - labelStyle: The label display style.
-    ///   - isSecure: Whether the field should mask input (for passwords).
+    ///   - value: A binding to the input value.
+    ///   - prefix: Optional left-side icon.
+    ///   - suffix: Optional right-side icon.
+    ///   - prompt: Placeholder text shown when the field is empty.
+    ///   - state: The visual state (e.g., `.default`, `.error`).
+    ///   - labelStyle: How the label is displayed (e.g., `.default`, `.compact`).
+    ///   - isSecure: Whether to mask the input (for passwords).
     ///   - passwordStrength: Optional password strength indicator.
-    ///   - message: Additional message below the field.
-    ///   - messageHeight: Binding to message height.
+    ///   - message: Additional field message (e.g., help or error).
+    ///   - messageHeight: The binding used to calculate message height dynamically.
+    ///   - isRequired: Whether this field must be filled before proceeding.
+    ///   - requiredMessage: Custom error message for required validation.
+    ///   - autocapitalization: Text autocapitalization rule.
+    ///   - autocorrectionDisabled: Whether autocorrection is enabled.
     init(
         _ label: String = "",
         value: Binding<String>,
@@ -146,6 +167,8 @@ public extension DDDInputText {
         passwordStrength: PasswordStrengthIndicator.PasswordStrength? = nil,
         message: Message? = nil,
         messageHeight: Binding<CGFloat> = .constant(0),
+        isRequired: Bool = false,
+        requiredMessage: String? = nil,
         autocapitalization: UITextAutocapitalizationType = .none,
         autocorrectionDisabled: Bool = true
     ) where Prefix == DDDIcon, Suffix == DDDIcon {
@@ -159,6 +182,8 @@ public extension DDDInputText {
             passwordStrength: passwordStrength,
             message: message,
             messageHeight: messageHeight,
+            isRequired: isRequired,
+            requiredMessage: requiredMessage,
             autocapitalization: autocapitalization,
             autocorrectionDisabled: autocorrectionDisabled
         ) {
@@ -168,21 +193,24 @@ public extension DDDInputText {
         }
     }
 
-    
-    /// Creates an `InputField` with a customizable prefix and suffix views.
+    /// Creates a `DDDInputText` field with custom prefix and suffix views.
     ///
     /// - Parameters:
     ///   - label: The label of the input field.
-    ///   - value: A binding to the text value.
-    ///   - prompt: The placeholder text.
-    ///   - state: The input field state (e.g., default, error).
-    ///   - labelStyle: The label display style.
-    ///   - isSecure: Whether the field should mask input (for passwords).
-    ///   - passwordStrength: Optional password strength indicator.
-    ///   - message: Additional message below the field.
-    ///   - messageHeight: Binding to message height.
-    ///   - prefix: A custom prefix view.
-    ///   - suffix: A custom suffix view.
+    ///   - value: A binding to the input value.
+    ///   - prompt: Placeholder text shown when the field is empty.
+    ///   - state: The visual state (e.g., `.default`, `.error`).
+    ///   - labelStyle: How the label is displayed.
+    ///   - isSecure: Whether to hide input text.
+    ///   - passwordStrength: Optional password strength level.
+    ///   - message: Field message for guidance or error.
+    ///   - messageHeight: A binding to determine dynamic height of the message label.
+    ///   - isRequired: Whether the field is mandatory.
+    ///   - requiredMessage: Optional custom message if required and left empty.
+    ///   - autocapitalization: Text autocapitalization setting.
+    ///   - autocorrectionDisabled: Whether to disable autocorrect.
+    ///   - prefix: A custom view shown to the left of the input.
+    ///   - suffix: A custom view shown to the right of the input.
     init(
         _ label: String = "",
         value: Binding<String>,
@@ -193,6 +221,8 @@ public extension DDDInputText {
         passwordStrength: PasswordStrengthIndicator.PasswordStrength? = nil,
         message: Message? = nil,
         messageHeight: Binding<CGFloat> = .constant(0),
+        isRequired: Bool = false,
+        requiredMessage: String? = nil,
         autocapitalization: UITextAutocapitalizationType = .none,
         autocorrectionDisabled: Bool = true,
         @ViewBuilder prefix: () -> Prefix,
@@ -209,77 +239,51 @@ public extension DDDInputText {
         self._messageHeight = messageHeight
         self.prefix = prefix()
         self.suffix = suffix()
+        self.isRequired = isRequired
+        self.requiredMessage = requiredMessage
         self.autocapitalizationType = autocapitalization
         self.isAutocorrectionDisabled = autocorrectionDisabled
     }
-
 }
 
 // MARK: - Preview
-#Preview {
-    
-    struct PreviewWrapper: View {
-        @State private var isShow = false
 
-        var body: some View {
-            ContentView()
-        }
-    }
+#Preview {
     struct ContentView: View {
+        @State private var username: String = ""
+        @State private var password: String = ""
         @State private var isShow: Bool = false
 
         var body: some View {
             VStack(spacing: 8) {
                 DDDInputText(
-                    "Username",
-                    value: .constant("JohnDoe"),
+                    "Usuario",
+                    value: $username,
                     prefix: .user,
                     suffix: .google,
-                    prompt: "Enter your username",
-                    state: .default,
-                    labelStyle: .default,
-                    isSecure: false,
-                    passwordStrength: nil,
-                    message: .help("Enter a valid username"),
-                    messageHeight: .constant(50)
+                    prompt: "Ingresa tu usuario",
+                    isRequired: true
                 )
-                
+
                 DDDInputText(
-                    "Password",
-                    value: .constant("password123"),
+                    "Contraseña",
+                    value: $password,
                     prefix: .lock,
                     suffix: .eye,
-                    prompt: "Enter your password",
-                    state: .default,
-                    labelStyle: .default,
+                    prompt: "Ingresa tu contraseña",
                     isSecure: true,
-                    passwordStrength: .medium(title: "Medium strength"),
-                    message: .error("Weak password"),
-                    messageHeight: .constant(20)
+                    passwordStrength: .medium(title: "Seguridad media"),
+                    message: .help("Debe tener al menos 8 caracteres"),
+                    isRequired: true
                 )
-                DDDInputText(
-                    "Password",
-                    value: .constant("password123"),
-                    prompt: "Enter your password",
-                    message: !isShow ? nil : .error("Weak password")
-                )
-                DDDInputText(
-                    "Password",
-                    value: .constant("password123"),
-                    prompt: "Enter your password"
-                )
-                DDDInputText(
-                    value: .constant("password123"),
-                    prompt: "Enter your password"
-                )
-                DDDButton("Action", desing: .primary) {
+
+                DDDButton("Validar", desing: .primary) {
                     isShow.toggle()
                 }
                 .padding()
             }.padding(.horizontal, 12)
         }
     }
-    
-    return     PreviewWrapper()
 
+    return ContentView()
 }
