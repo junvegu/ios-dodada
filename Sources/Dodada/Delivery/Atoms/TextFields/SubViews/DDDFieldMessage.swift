@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 public struct FieldMessage: View {
-
     @Environment(\.sizeCategory) private var sizeCategory
 
     private let message: Message?

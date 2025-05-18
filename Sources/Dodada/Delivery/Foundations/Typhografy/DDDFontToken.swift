@@ -75,7 +75,7 @@ public enum DDDFontToken: String, CaseIterable {
         case .caption2:
             return 11
         case .caption1:
-            return 11
+            return 12
         case .footNote:
             return 13
         case .subheadline:
