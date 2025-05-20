@@ -13,16 +13,31 @@ public struct DDDCountryData: Codable, Identifiable {
     public let flag: String
     public let code: String
     public let dial_code: String
-    public let pattern: String
+    public let formatPattern: String
     public let limit: Int
+    public let regex: String
+    public let formatExample: String
     
-    public init(id: String, name: String, flag: String, code: String, dial_code: String, pattern: String, limit: Int) {
+    
+    public init(
+        id: String,
+        name: String,
+        flag: String,
+        code: String,
+        dial_code: String,
+        formatPattern: String,
+        limit: Int,
+        formatExample: String,
+        regex: String
+    ) {
         self.id = id
         self.name = name
         self.flag = flag
         self.code = code
+        self.regex = regex
         self.dial_code = dial_code
-        self.pattern = pattern
+        self.formatPattern = formatPattern
+        self.formatExample = formatExample
         self.limit = limit
     }
 

@@ -8,55 +8,70 @@
 import SwiftUI
 import Combine
 
+
+/// A phone number input field that formats the number as the user types and validates its length.
 public struct PhoneNumberTextField: View {
     @Binding var phoneNumber: String
     @Binding var isValidPhoneNumber: Bool
+    
     @Environment(\.colorTheme) private var theme: DDDTheme
+    
+    /// The formatting pattern using `#` as a digit placeholder, e.g., "### ### ####".
     let countryPattern: String
+    
+    /// Maximum number of digits (not counting separators).
     let countryLimit: Int
+    
+    let validationRegex: String
+    
+    /// Customization
     let backgroundColor: Color
     let cornerRadius: CGFloat
     let foregroundColor: Color
-    
+    let placeHolder: String
+
     @FocusState var keyIsFocused: Bool
     
-    
     public var body: some View {
-        TextField("", text: $phoneNumber)
-            .placeholder(when: phoneNumber.isEmpty) {
-                Text("Phone number")
-                    .apply(token: .callOut, weight: .regular)
-                    .foregroundColor(foregroundColor)
-            }
+        TextField(placeHolder, text: $phoneNumber)
             .focused($keyIsFocused)
-            .keyboardType(.numbersAndPunctuation)
-            .onReceive(Just(phoneNumber)) { _ in
-                applyPatternOnNumbers(&phoneNumber, pattern: countryPattern, replacementCharacter: "#")
-                isValidPhoneNumber = validatePhoneNumber(phoneNumber)
+            .keyboardType(.numberPad)
+            .onChange(of: phoneNumber) { newValue in
+                formatPhoneNumber()
             }
-            .padding(.medium)
-            .frame(minWidth: 80, minHeight: 47)
             .background(backgroundColor, in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
     }
     
-    func applyPatternOnNumbers(_ stringvar: inout String, pattern: String, replacementCharacter: Character) {
-        var pureNumber = stringvar.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        for index in 0 ..< pattern.count {
-            guard index < pureNumber.count else {
-                stringvar = pureNumber
-                return
+    /// Applies the pattern and validates the number.
+    private func formatPhoneNumber() {
+        let rawDigits = phoneNumber.filter(\.isNumber).prefix(countryLimit)
+        phoneNumber = applyPattern(to: String(rawDigits), using: countryPattern)
+        isValidPhoneNumber = validatePhoneNumber(String(rawDigits))
+    }
+
+    /// Replaces each `#` in the pattern with digits from the input.
+    private func applyPattern(to input: String, using pattern: String) -> String {
+        let digitsOnly = input.filter("0123456789".contains)
+        var result = ""
+        var index = digitsOnly.startIndex
+        print("DIGITS \(digitsOnly)")
+        for ch in pattern {
+            if index == digitsOnly.endIndex { break }
+            if ch == "#" {
+                result.append(digitsOnly[index])
+                index = digitsOnly.index(after: index)
+            } else {
+                result.append(ch)
             }
-            let stringIndex = String.Index(utf16Offset: index, in: pattern)
-            let patternCharacter = pattern[stringIndex]
-            guard patternCharacter != replacementCharacter else { continue }
-            pureNumber.insert(patternCharacter, at: stringIndex)
         }
-        stringvar = pureNumber
+        return result
     }
     
-    func validatePhoneNumber(_ phoneNumber: String) -> Bool {
-        let pureNumber = phoneNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        return pureNumber.count == countryLimit
+    private func validatePhoneNumber(_ digits: String) -> Bool {
+        let predicate = NSPredicate(format: "SELF MATCHES %@", validationRegex)
+        print("REGEX \(validationRegex)")
+
+        return predicate.evaluate(with: digits)
     }
 }
 
@@ -75,16 +90,25 @@ extension View {
 }
 
 
-struct PhoneNumberTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        PhoneNumberTextField(
-            phoneNumber: .constant("987654321"),
-            isValidPhoneNumber: .constant(false),
-            countryPattern: "PE",
-            countryLimit: 9,
-            backgroundColor: .clear,
-            cornerRadius: .regularCornerRadius,
-            foregroundColor: .accentColor
-        )
+#Preview {
+    struct PhoneNumberTextFieldPreviewWrapper: View {
+        @State private var phoneNumber: String = "987654321"
+        @State private var isValid: Bool = false
+
+        var body: some View {
+            PhoneNumberTextField(
+                phoneNumber: $phoneNumber,
+                isValidPhoneNumber: $isValid,
+                countryPattern: "### ### ####",
+                countryLimit: 9,
+                validationRegex: "^9[0-9]{8}sssssdsds$",
+                backgroundColor: .clear,
+                cornerRadius: .regularCornerRadius,
+                foregroundColor: .accentColor,
+                placeHolder: "mmm"
+            )
+        }
     }
+
+    return PhoneNumberTextFieldPreviewWrapper()
 }

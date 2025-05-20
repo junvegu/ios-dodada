@@ -26,9 +26,8 @@ struct CountryPickerView: View {
             keyIsFocused = false
         } label: {
             Text("\(countryFlag) \(countryCode)")
-                .padding(.medium)
                 .apply(token: .callOut, weight: .bold)
-                .frame(minWidth: 80, minHeight: 47)
+                .frame(minWidth: 80, minHeight: 28)
                 .background(backgroundColor, in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
                 .foregroundColor(.black)
         }
@@ -45,7 +44,7 @@ struct CountryPickerView: View {
                     .onTapGesture {
                         self.countryFlag = country.flag
                         self.countryCode = country.dial_code
-                        self.countryPattern = country.pattern
+                        self.countryPattern = country.formatPattern
                         self.countryLimit = country.limit
                         presentSheet = false
                     }
@@ -76,7 +75,7 @@ struct CountryPickerView_Previews: PreviewProvider {
             countryCode: .constant("PE"),
             countryPattern: .constant("### ### ###"),
             countryLimit: .constant(9),
-            presentSheet: .constant(true),
+            presentSheet: .constant(false),
             countries: [],
             backgroundColor: .accentColor,
             foregroundColor: .gray,
