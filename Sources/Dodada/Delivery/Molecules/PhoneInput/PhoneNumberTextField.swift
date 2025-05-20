@@ -36,6 +36,14 @@ public struct PhoneNumberTextField: View {
         TextField(placeHolder, text: $phoneNumber)
             .focused($keyIsFocused)
             .keyboardType(.numberPad)
+            .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Aceptar") {
+                            keyIsFocused = false
+                        }
+                    }
+                }
             .onChange(of: phoneNumber) { newValue in
                 formatPhoneNumber()
             }
