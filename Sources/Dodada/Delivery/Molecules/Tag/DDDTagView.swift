@@ -17,10 +17,10 @@ struct DDDTagView: View {
             .apply(token: .caption2, weight: .bold)
             .padding(.xxSmall)
             .frame(minHeight: 28)
-            .foregroundStyle(invert ? Color.white : Asset.Colors.primary.swiftUIColor)
+            .foregroundStyle(invert ? Color.white : colorTheme.defaultButton)
             .background(
                 invert
-                ? Asset.Colors.primary.swiftUIColor
+                ? colorTheme.defaultButton
                 : Color.clear
             )
             .overlay(
