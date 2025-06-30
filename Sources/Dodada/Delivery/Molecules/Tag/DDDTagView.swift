@@ -8,24 +8,35 @@
 import SwiftUI
 
 struct DDDTagView: View {
+    @Environment(\.colorTheme) private var colorTheme: DDDTheme
     let label: String
+    var invert: Bool = false
 
     var body: some View {
-        ZStack {
-            Text(label)
-                .apply(token: .caption2, weight: .bold)
-                .padding(.xxSmall)
-                .foregroundStyle(Asset.Colors.primary.swiftUIColor)
-        }.overlay {
-            RoundedRectangle(cornerRadius: .smallCornerRadius)
-                .stroke(
-                    Asset.Colors.primary.swiftUIColor,
-                    lineWidth: .regularBorderWidth
-                )
-        }
+        Text(label)
+            .apply(token: .caption2, weight: .bold)
+            .padding(.xxSmall)
+            .frame(minHeight: 28)
+            .foregroundStyle(invert ? Color.white : Asset.Colors.primary.swiftUIColor)
+            .background(
+                invert
+                ? Asset.Colors.primary.swiftUIColor
+                : Color.clear
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: .smallCornerRadius)
+                    .stroke(
+                        invert ? Color.clear : colorTheme.defaultButton,
+                        lineWidth: .regularBorderWidth
+                    )
+            )
+            .clipShape(
+                RoundedRectangle(cornerRadius: .smallCornerRadius)
+            )
     }
 }
 
+
 #Preview {
-    DDDTagView(label: "Esternocleidomastoideo")
+    DDDTagView(label: "Esternocleidomastoideo", invert: true)
 }

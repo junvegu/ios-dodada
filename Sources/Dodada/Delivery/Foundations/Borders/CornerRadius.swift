@@ -10,6 +10,7 @@ import Foundation
 public enum CornerRadius: CGFloat {
     case small = 4
     case regular = 8
+    case large = 16
     case extraLarge = 100
 }
 

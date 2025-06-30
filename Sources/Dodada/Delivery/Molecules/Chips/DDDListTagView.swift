@@ -9,9 +9,11 @@ import SwiftUI
 
 public struct DDDListTagView<Data: Collection>: View where Data.Element == String {
     let data: Data
+    let invert: Bool
     
-    public init(data: Data) {
+    public init(data: Data, _ invert: Bool = false) {
         self.data = data
+        self.invert = invert
     }
     
     public var body: some View {
@@ -19,7 +21,7 @@ public struct DDDListTagView<Data: Collection>: View where Data.Element == Strin
                         spacing: .xxSmall,
                         alignment: .leading
         ) { item in
-            DDDTagView(label: item)
+            DDDTagView(label: item, invert: invert)
         }
     }
 }
