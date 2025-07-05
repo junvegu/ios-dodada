@@ -15,13 +15,15 @@ let package = Package(
             targets: ["Dodada"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/SDWebImage/SDWebImageSwiftUI.git", from: "2.0.0")
+        .package(url: "https://github.com/SDWebImage/SDWebImageSwiftUI.git", from: "2.0.0"),
+        .package(url: "https://github.com/SDWebImage/SDWebImageSVGCoder.git", from: "1.4.0")
     ],
     targets: [
         .target(
             name: "Dodada",
             dependencies: [
-                .product(name: "SDWebImageSwiftUI", package: "SDWebImageSwiftUI")
+                .product(name: "SDWebImageSwiftUI", package: "SDWebImageSwiftUI"),
+                .product(name: "SDWebImageSVGCoder", package: "SDWebImageSVGCoder")
             ],
             resources: [
                    .process("Resources/Fonts"),
