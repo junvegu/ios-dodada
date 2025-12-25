@@ -24,8 +24,7 @@ public struct DDDSubSections: View {
             line
             
             VStack(spacing: 4){
-                DDDIcon(icon)
-                    .iconColor(.red)
+                DDDIcon(icon, iconColor: .red)
                 Text(title)
                     .apply(token: .subheadline,
                            weight: .bold)

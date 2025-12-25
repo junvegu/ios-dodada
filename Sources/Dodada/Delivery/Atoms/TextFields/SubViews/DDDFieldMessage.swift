@@ -18,7 +18,7 @@ public struct FieldMessage: View {
         if let message = message, message.isEmpty == false {
             HStack(alignment: .center, spacing: spacing) {
                 if let icon = message.icon {
-                    DDDIcon(icon)
+                    DDDIcon(icon, iconColor: message.color)
                         .accessibility(hidden: true)
                         .alignmentGuide(.firstTextBaseline) { $0.height * 0.82 }
                 }
@@ -26,7 +26,6 @@ public struct FieldMessage: View {
                 Text(message.description)
                     .apply(token: .caption2, weight: .regular)
             }
-            .iconColor(message.color)
             .iconSize(custom: .small)
             .foregroundStyle(message.color)
             .transition(.opacity.animation(.easeOut(duration: 0.2)))

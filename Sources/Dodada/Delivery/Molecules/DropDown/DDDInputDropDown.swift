@@ -73,8 +73,7 @@ public struct DDDInputDropDown<T: Identifiable & CustomStringConvertible>: View 
                     .apply(token: viewModel.state.textStyle.token, weight: viewModel.state.textStyle.weight)
 
                 Spacer()
-                DDDIcon(.chevronDown)
-                    .iconColor(viewModel.state.textColor)
+                DDDIcon(.chevronDown, iconColor: viewModel.state.textColor)
             }
             .padding(.horizontal)
             .cornerRadius(.regularCornerRadius)

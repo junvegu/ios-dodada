@@ -67,8 +67,7 @@ public struct DDDRestaurantPreview: View {
                         .apply(token: .body, weight: .bold)
                     Spacer()
                     HStack(spacing: 4) {
-                        DDDIcon(.star)
-                            .iconColor(.yellow)
+                        DDDIcon(.star, iconColor: .yellow)
                             .iconSize(custom: .small)
                         Text(String(format: "%.1f", rating))
                             .apply(token: .caption2, weight: .bold)
@@ -95,8 +94,7 @@ public struct DDDRestaurantPreview: View {
                         Text("•")
                             .foregroundColor(.gray)
                         HStack {
-                            DDDIcon(.award2)
-                                .iconColor(.yellow)
+                            DDDIcon(.award2, iconColor: .yellow)
                                 .iconSize(custom: .normal)
                             Text("Destacado")
                                 .apply(token: .caption2, weight: .bold)

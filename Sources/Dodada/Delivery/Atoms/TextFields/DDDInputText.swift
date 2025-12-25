@@ -187,9 +187,9 @@ public extension DDDInputText {
             autocapitalization: autocapitalization,
             autocorrectionDisabled: autocorrectionDisabled
         ) {
-            DDDIcon(prefix)
+            DDDIcon(prefix, iconColor: .secondary500.swiftUIColor)
         } suffix: {
-            DDDIcon(suffix)
+            DDDIcon(suffix, iconColor: .secondary500.swiftUIColor)
         }
     }
 

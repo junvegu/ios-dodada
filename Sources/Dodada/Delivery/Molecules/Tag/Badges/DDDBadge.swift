@@ -22,9 +22,8 @@ public struct DDDBadge: View {
 
     public var body: some View {
         HStack(spacing: 4) {
-            DDDIcon(icon)
+            DDDIcon(icon, iconColor: state.iconColor(for: type))
                 .iconSize(custom: .small)
-                .iconColor(state.iconColor(for: type))
 
             Text(text)
                 .apply(token: .caption2, weight: .bold)

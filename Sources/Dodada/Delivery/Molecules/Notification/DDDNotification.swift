@@ -31,8 +31,7 @@ public struct DDDNotification: View {
     public var body: some View {
         if isVisible {
             HStack(spacing: 10) {
-                DDDIcon(type.leadingIcon)
-                    .iconColor(type.iconColor)
+                DDDIcon(type.leadingIcon, iconColor: type.iconColor)
                 
                 VStack(alignment: .leading) {
                     Text(title)

@@ -48,8 +48,7 @@ public struct DDDInputDatePicker: View {
 
                     Spacer()
 
-                    DDDIcon(.calendar)
-                        .iconColor(InputStyles.default.textColor)
+                    DDDIcon(.calendar, iconColor: InputStyles.default.textColor)
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 12)

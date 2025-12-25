@@ -21,8 +21,7 @@ public struct DDDMarker: View {
                         .stroke(Color.red, lineWidth: 6)
                 )
             
-            DDDIcon(.aquisito)
-                .iconColor(.red)
+            DDDIcon(.aquisito, iconColor: .red)
         }
     }
 }

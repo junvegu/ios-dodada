@@ -25,7 +25,7 @@ public struct DDDButton<LeadingIcon: View, TrailingIcon: View>: View {
             } trailingIcon: {
                 trailingIcon
             }
-        ).iconColor(desing.iconColor)
+        )
     }
     
     @ViewBuilder private var button: some View {
@@ -46,9 +46,9 @@ public struct DDDButton<LeadingIcon: View, TrailingIcon: View>: View {
         self.init(label, desing: desing) {
             action()
         } icon: {
-            DDDIcon(icon)
+            DDDIcon(icon, iconColor: desing.iconColor)
         } disclosureIcon: {
-            DDDIcon(disclosureIcon)
+            DDDIcon(disclosureIcon, iconColor: desing.iconColor)
         }
     }
     
@@ -213,6 +213,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                             configuration.isPressed ?  desing.pressedColor : desing.borderColor
                             : colorTheme.disabledButton, lineWidth: 1)
             )
+            // TODO: Refactor to pass iconColor directly to DDDIcon when color is dynamic
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
             //.frame(maxWidth: desing.width)
         }
@@ -253,6 +254,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             .padding()
             .frame(minHeight: desing.height)
             .background(desing.backgroundColor)
+            // TODO: Refactor to pass iconColor directly to DDDIcon when color is dynamic
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
             .cornerRadius(colorTheme.borderRoundButton)
         }
@@ -294,6 +296,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                             : colorTheme.disabledButton, lineWidth: 1)
             )
             .clipShape(Circle())
+            // TODO: Refactor to pass iconColor directly to DDDIcon when color is dynamic
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
         }
     }
@@ -333,6 +336,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             //.padding()
             //.frame(minHeight: desing.height)
             .background(desing.backgroundColor)
+            // TODO: Refactor to pass iconColor directly to DDDIcon when color is dynamic
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
         }
     }
@@ -365,6 +369,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             .background(isEnabled ? configuration.isPressed ? desing.pressedColor : desing.backgroundColor : colorTheme.disabledButton)
             .cornerRadius(colorTheme.borderRoundButton)
             .clipShape(Circle())
+            // TODO: Refactor to pass iconColor directly to DDDIcon when color is dynamic
             .iconColor(isEnabled ? desing.iconColor : colorTheme.disabledTextButton )
         }
     }
