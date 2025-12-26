@@ -77,7 +77,7 @@ struct ColorThemeDefault: DDDTheme {
     
     var offBorderRoundButton: CGFloat = 0
     
-    var borderRoundButton: CGFloat = 100
+    var borderRoundButton: CGFloat = 8
     
     let navigationBackground: Color = .white
     

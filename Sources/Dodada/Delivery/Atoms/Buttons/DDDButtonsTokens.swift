@@ -95,9 +95,9 @@ public enum DDDButtonDesing {
     
     var height: CGFloat {
         switch self {
-        case .primary, .secondary, .onlyIcon, .link, .ghost:
+        case .primary, .secondary, .onlyIcon, .link:
             return 48
-        case .tertiary:
+        case .tertiary, .ghost:
             return 24
         }
     }
@@ -107,7 +107,7 @@ public enum DDDButtonDesing {
         case .primary, .secondary, .link, .tertiary:
             return nil
         case .onlyIcon, .ghost:
-            return 48
+            return 24
         }
     }
 }

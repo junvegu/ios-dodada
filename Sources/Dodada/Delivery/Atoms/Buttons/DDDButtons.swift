@@ -172,7 +172,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             .frame(maxWidth: fullWidth ? .infinity : desing.width, minHeight: desing.height)
             .background(
                 Rectangle()
-                    .fill(configuration.isPressed ? desing.pressedColor : colorTheme.defaultButton)
+                    .fill( isEnabled ? (configuration.isPressed ? desing.pressedColor : colorTheme.defaultButton) : .secondary100.swiftUIColor)
                     .animation(.easeOut(duration: 0.3), value: configuration.isPressed)
             )
             .cornerRadius(colorTheme.borderRoundButton)
@@ -219,16 +219,20 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                              : colorTheme.disabledTextButton)
             .padding()
             .frame(maxWidth: fullWidth ? .infinity : desing.width, minHeight: desing.height)
-            .background(desing.backgroundColor)
+            .background(
+                RoundedRectangle(cornerRadius: colorTheme.borderRoundButton)
+                    .fill(desing.backgroundColor)
+            )
             .overlay(
                 RoundedRectangle(cornerRadius: colorTheme.borderRoundButton)
-                    .stroke(isEnabled ?
-                            configuration.isPressed ?  desing.pressedColor : desing.borderColor
-                            : colorTheme.disabledButton, lineWidth: 1)
+                    .stroke(
+                        isEnabled
+                        ? (configuration.isPressed ? desing.pressedColor : desing.borderColor)
+                        : colorTheme.disabledButton,
+                        lineWidth: 1
+                    )
             )
-            // TODO: Refactor to pass iconColor directly to DDDIcon when color is dynamic
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
-            //.frame(maxWidth: desing.width)
         }
     }
     
@@ -315,7 +319,6 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                             : colorTheme.disabledButton, lineWidth: 1)
             )
             .clipShape(Circle())
-            // TODO: Refactor to pass iconColor directly to DDDIcon when color is dynamic
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
         }
     }
@@ -413,25 +416,36 @@ extension Button {
 
 #Preview {
     
-    VStack(spacing: .xMedium) {
-        DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
+    VStack(spacing: 4) {
+        DDDButton("Primary", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
+            print("asdasdasdasdadsad")
+        }.disabled(true)
+        DDDButton("Primary No full", desing: .primary, fullWidth: false, icon: .add, disclosureIcon: .alertCircle) {
             print("asdasdasdasdadsad")
         }
-          DDDButton("HOla como estan", desing: .primary, fullWidth: true, icon: .add, disclosureIcon: .alertCircle) {
+        
+        DDDButton("Secondary", desing: .secondary, icon: .apple, disclosureIcon: .aquisito) {
+            print("asdasdasdasdadsad")
+        }
+        
+        DDDButton("Tertiary", desing: .tertiary, icon: .apple, disclosureIcon: .aquisito) {
+            print("asdasdasdasdadsad")
+        }
+        
+        DDDButton("Link", desing: .link, icon: .add, disclosureIcon: .alertCircle) {
+            print("asdasdasdasdadsad")
+        }
+        
+        DDDButton("Link", desing: .ghost, icon: .add, disclosureIcon: .alertCircle) {
+            print("asdasdasdasdadsad")
+        }
+        DDDButton("Link", desing: .onlyIcon(inverted: true), icon: .add, disclosureIcon: .alertCircle) {
             print("asdasdasdasdadsad")
         }
     }
-  
-    VStack{
-        DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
-            print("asdasdasdasdadsad")
-        }
-        DDDButton("$Hola asd", desing: .tertiary) {//tertiary se adapta al texto, el primiary no
-            print("asdasdasdasdadsad")
-        }
-        DDDButton("HOla como estan", desing: .link, icon: .add, disclosureIcon: .alertCircle) {
-            print("asdasdasdasdadsad")
-        }
-    }.frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(red: 242/255, green: 242/255, blue: 247/255))
+    .padding()
+    .background(Color(red: 242/255, green: 242/255, blue: 247/255))
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    
+       
 }
