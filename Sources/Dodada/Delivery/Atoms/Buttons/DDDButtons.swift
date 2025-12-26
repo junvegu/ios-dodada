@@ -11,6 +11,7 @@ public struct DDDButton<LeadingIcon: View, TrailingIcon: View>: View {
     private let label: String
     private let action: () -> Void
     private let desing: DDDButtonDesing
+    private let fullWidth: Bool
     
     @ViewBuilder private let leadingIcon: LeadingIcon
     @ViewBuilder private let trailingIcon: TrailingIcon
@@ -18,8 +19,8 @@ public struct DDDButton<LeadingIcon: View, TrailingIcon: View>: View {
     public var body: some View {
         button.buttonStyle(
             DDDButtons(
-                desing: desing
-                
+                desing: desing,
+                fullWidth: fullWidth
             )  {
                 leadingIcon
             } trailingIcon: {
@@ -39,11 +40,12 @@ public struct DDDButton<LeadingIcon: View, TrailingIcon: View>: View {
     public init(
         _ label: String = "",
         desing: DDDButtonDesing = .primary,
+        fullWidth: Bool = false,
         icon: DDDIcon.Images? = nil,
         disclosureIcon: DDDIcon.Images? = nil,
         action: @escaping () -> Void
     ) where LeadingIcon == DDDIcon, TrailingIcon == DDDIcon {
-        self.init(label, desing: desing) {
+        self.init(label, desing: desing, fullWidth: fullWidth) {
             action()
         } icon: {
             DDDIcon(icon, iconColor: desing.iconColor)
@@ -55,12 +57,14 @@ public struct DDDButton<LeadingIcon: View, TrailingIcon: View>: View {
     public init(
         _ label: String = "",
         desing: DDDButtonDesing = .primary,
+        fullWidth: Bool = false,
         action: @escaping () -> Void,
         @ViewBuilder icon: () -> LeadingIcon,
         @ViewBuilder disclosureIcon: () -> TrailingIcon = { EmptyView() }
     ) {
         self.label = label
         self.desing = desing
+        self.fullWidth = fullWidth
         self.action = action
         self.leadingIcon = icon()
         self.trailingIcon = disclosureIcon()
@@ -72,15 +76,18 @@ public struct DDDButton<LeadingIcon: View, TrailingIcon: View>: View {
 
 struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
     private var desing: DDDButtonDesing
+    private let fullWidth: Bool
     @ViewBuilder private let icon: LeadingIcon
     @ViewBuilder private let disclosureIcon: TrailingIcon
     
     public init(
         desing: DDDButtonDesing,
+        fullWidth: Bool = false,
         @ViewBuilder icon: () -> LeadingIcon = { EmptyView() },
         @ViewBuilder trailingIcon: () -> TrailingIcon = { EmptyView() }
     ) {
         self.desing = desing
+        self.fullWidth = fullWidth
         self.icon = icon()
         self.disclosureIcon = trailingIcon()
     }
@@ -88,36 +95,36 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
     func makeBody(configuration: ButtonStyle.Configuration) -> some View {
         switch desing {
         case .primary:
-            return AnyView(FillButton(desing: desing, configuration: configuration){
+            return AnyView(FillButton(desing: desing, fullWidth: fullWidth, configuration: configuration){
                 icon
             } disclosureIcon: {
                 disclosureIcon
             })
         case .secondary:
-            return AnyView(SecondaryButton(desing: desing, configuration: configuration) {
+            return AnyView(SecondaryButton(desing: desing, fullWidth: fullWidth, configuration: configuration) {
                 icon
             } disclosureIcon: {
                 disclosureIcon
             })
             
         case .tertiary:
-            return AnyView(TertiaryButton(desing: desing, configuration: configuration) {
+            return AnyView(TertiaryButton(desing: desing, fullWidth: fullWidth, configuration: configuration) {
                 icon
             } disclosureIcon: {
                 disclosureIcon
             })
         case .onlyIcon:
-            return AnyView(IconButton(desing: desing, configuration: configuration) {
+            return AnyView(IconButton(desing: desing, fullWidth: fullWidth, configuration: configuration) {
                 icon
             })
         case .link:
-            return AnyView(LinkButton(desing: desing, configuration: configuration){
+            return AnyView(LinkButton(desing: desing, fullWidth: fullWidth, configuration: configuration){
                 icon
             } disclosureIcon: {
                 disclosureIcon
             })
         case .ghost:
-            return AnyView(IconButton(desing: desing, configuration: configuration) {
+            return AnyView(IconButton(desing: desing, fullWidth: fullWidth, configuration: configuration) {
                 icon
             })
             /*
@@ -135,14 +142,17 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
         @ViewBuilder let disclosureIcon: TrailingIcon
         
         private let desing: DDDButtonDesing
+        private let fullWidth: Bool
 
         init(
             desing: DDDButtonDesing,
+            fullWidth: Bool,
             configuration: ButtonStyle.Configuration,
             @ViewBuilder icon: () -> LeadingIcon = { EmptyView() },
             @ViewBuilder disclosureIcon: () -> TrailingIcon = { EmptyView() }
         ) {
             self.desing = desing
+            self.fullWidth = fullWidth
             self.configuration = configuration
             self.icon = icon()
             self.disclosureIcon = disclosureIcon()
@@ -159,7 +169,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                 isEnabled ? desing.textColor : colorTheme.disabledTextButton
             )
             .padding()
-            .frame( maxWidth: desing.width, minHeight: desing.height)
+            .frame(maxWidth: fullWidth ? .infinity : desing.width, minHeight: desing.height)
             .background(
                 Rectangle()
                     .fill(configuration.isPressed ? desing.pressedColor : colorTheme.defaultButton)
@@ -175,6 +185,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
     private struct SecondaryButton: View {
         let configuration: ButtonStyle.Configuration
         private let desing: DDDButtonDesing
+        private let fullWidth: Bool
 
         @Environment(\.isEnabled) private var isEnabled: Bool
         @Environment(\.colorTheme) private var colorTheme: DDDTheme
@@ -183,11 +194,13 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
 
         init(
             desing: DDDButtonDesing,
+            fullWidth: Bool,
             configuration: ButtonStyle.Configuration,
             @ViewBuilder icon: () -> LeadingIcon = { EmptyView() },
             @ViewBuilder disclosureIcon: () -> TrailingIcon = { EmptyView() }
         ) {
             self.desing = desing
+            self.fullWidth = fullWidth
             self.configuration = configuration
             self.icon = icon()
             self.disclosureIcon = disclosureIcon()
@@ -205,7 +218,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                              configuration.isPressed ?  desing.pressedColor : desing.textColor
                              : colorTheme.disabledTextButton)
             .padding()
-            .frame( maxWidth: desing.width, minHeight: desing.height)
+            .frame(maxWidth: fullWidth ? .infinity : desing.width, minHeight: desing.height)
             .background(desing.backgroundColor)
             .overlay(
                 RoundedRectangle(cornerRadius: colorTheme.borderRoundButton)
@@ -222,6 +235,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
     private struct TertiaryButton: View {
         let configuration: ButtonStyle.Configuration
         private let desing: DDDButtonDesing
+        private let fullWidth: Bool
 
         @Environment(\.isEnabled) private var isEnabled: Bool
         @Environment(\.colorTheme) private var colorTheme: DDDTheme
@@ -230,11 +244,13 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
 
         init(
             desing: DDDButtonDesing,
+            fullWidth: Bool,
             configuration: ButtonStyle.Configuration,
             @ViewBuilder icon: () -> LeadingIcon = { EmptyView() },
             @ViewBuilder disclosureIcon: () -> TrailingIcon = { EmptyView() }
         ) {
             self.desing = desing
+            self.fullWidth = fullWidth
             self.configuration = configuration
             self.icon = icon()
             self.disclosureIcon = disclosureIcon()
@@ -252,7 +268,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                              configuration.isPressed ?  desing.pressedColor :  desing.textColor
                              : colorTheme.disabledTextButton)
             .padding()
-            .frame(minHeight: desing.height)
+            .frame(maxWidth: fullWidth ? .infinity : desing.width, minHeight: desing.height)
             .background(desing.backgroundColor)
             // TODO: Refactor to pass iconColor directly to DDDIcon when color is dynamic
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
@@ -263,6 +279,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
     private struct IconButton: View {
         let configuration: ButtonStyle.Configuration
         private let desing: DDDButtonDesing
+        private let fullWidth: Bool
 
         @Environment(\.isEnabled) private var isEnabled: Bool
         @Environment(\.colorTheme) private var colorTheme: DDDTheme
@@ -270,10 +287,12 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
 
         init(
             desing: DDDButtonDesing,
+            fullWidth: Bool,
             configuration: ButtonStyle.Configuration,
             @ViewBuilder icon: () -> LeadingIcon
         ) {
             self.desing = desing
+            self.fullWidth = fullWidth
             self.configuration = configuration
             self.icon = icon()
         }
@@ -286,7 +305,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                              configuration.isPressed ?  desing.pressedColor : desing.textColor
                              : colorTheme.disabledTextButton)
             .padding()
-            .frame( maxWidth: desing.width, minHeight: desing.height)
+            .frame(maxWidth: fullWidth ? .infinity : desing.width, minHeight: desing.height)
             .background(isEnabled ? desing.backgroundColor : colorTheme.disabledButton)
             .cornerRadius(desing.width/2)
             .overlay(
@@ -304,6 +323,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
     private struct LinkButton: View {
         let configuration: ButtonStyle.Configuration
         private let desing: DDDButtonDesing
+        private let fullWidth: Bool
 
         @Environment(\.isEnabled) private var isEnabled: Bool
         @Environment(\.colorTheme) private var colorTheme: DDDTheme
@@ -312,11 +332,13 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
 
         init(
             desing: DDDButtonDesing,
+            fullWidth: Bool,
             configuration: ButtonStyle.Configuration,
             @ViewBuilder icon: () -> LeadingIcon = { EmptyView() },
             @ViewBuilder disclosureIcon: () -> TrailingIcon = { EmptyView() }
         ) {
             self.desing = desing
+            self.fullWidth = fullWidth
             self.configuration = configuration
             self.icon = icon()
             self.disclosureIcon = disclosureIcon()
@@ -333,8 +355,8 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             }.foregroundColor(isEnabled ?
                              configuration.isPressed ?  desing.pressedColor :  desing.textColor
                              : colorTheme.disabledTextButton)
-            //.padding()
-            //.frame(minHeight: desing.height)
+            .padding()
+            .frame(maxWidth: fullWidth ? .infinity : desing.width, minHeight: desing.height)
             .background(desing.backgroundColor)
             // TODO: Refactor to pass iconColor directly to DDDIcon when color is dynamic
             .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
@@ -344,6 +366,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
     private struct GhostButton: View {
         let configuration: ButtonStyle.Configuration
         private let desing: DDDButtonDesing
+        private let fullWidth: Bool
 
         @Environment(\.isEnabled) private var isEnabled: Bool
         @Environment(\.colorTheme) private var colorTheme: DDDTheme
@@ -351,10 +374,12 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
 
         init(
             desing: DDDButtonDesing,
+            fullWidth: Bool,
             configuration: ButtonStyle.Configuration,
             @ViewBuilder icon: () -> LeadingIcon
         ) {
             self.desing = desing
+            self.fullWidth = fullWidth
             self.configuration = configuration
             self.icon = icon()
         }
@@ -365,7 +390,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                 icon
             }
             .padding()
-            .frame( maxWidth: desing.width, minHeight: desing.height)
+            .frame(maxWidth: fullWidth ? .infinity : desing.width, minHeight: desing.height)
             .background(isEnabled ? configuration.isPressed ? desing.pressedColor : desing.backgroundColor : colorTheme.disabledButton)
             .cornerRadius(colorTheme.borderRoundButton)
             .clipShape(Circle())
