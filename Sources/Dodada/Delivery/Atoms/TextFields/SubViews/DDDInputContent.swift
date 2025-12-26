@@ -10,7 +10,6 @@ import SwiftUI
 
 public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
 
-    @Environment(\.iconColor) private var iconColor
     @Environment(\.idealSize) private var idealSize
     @Environment(\.isEnabled) private var isEnabled
 
@@ -27,8 +26,6 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
     public var body: some View {
         HStack(spacing: 0) {
             prefix
-                .iconColor(prefixIconColor)
-                .foregroundStyle(Color.secondary500.swiftUIColor)
                 .padding(.leading, .small)
                 .padding(.trailing, -.xxSmall)
                 .padding(.vertical, verticalPadding)
@@ -96,10 +93,6 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
             : .secondary200.swiftUIColor
     }
 
-    private var prefixIconColor: Color? {
-        isEnabled
-        ? iconColor ?? .secondary500.swiftUIColor : .secondary500.swiftUIColor
-    }
 
 
     private var focusOutlineColor: Color {
@@ -169,7 +162,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
             TextField("", text: .constant("Value"))
                 .padding(.horizontal, .small)
         } prefix: {
-            DDDIcon(.aquisito)
+            DDDIcon(.google)
         } suffix: {
             DDDIcon(.google)
         }.padding()

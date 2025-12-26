@@ -13,8 +13,8 @@ public struct DDDRatingView: View {
 
     private let label: String
     private let maximumRating: Int
-    private var offImage: DDDIcon?
-    private var onImage = DDDIcon(.star)
+    private var offImage: DDDIcon.Images?
+    private var onImage: DDDIcon.Images = .star
     private var offColor = Asset.Colors.secondary200.swiftUIColor
     private var onColor = Color.yellow
     
@@ -34,16 +34,17 @@ public struct DDDRatingView: View {
                 Button {
                     rating = number
                 } label: {
-                    image(for: number).iconColor(number > rating ? offColor : onColor)
+                    let iconImage = image(for: number)
+                    DDDIcon(iconImage, iconColor: number > rating ? offColor : onColor)
                 }
             }
         }.iconSize(custom: .small)
     }
-    func image(for number: Int) -> DDDIcon {
+    func image(for number: Int) -> DDDIcon.Images {
         if number > rating {
-            offImage ?? onImage
+            return offImage ?? onImage
         } else {
-            onImage
+            return onImage
         }
     }
 }

@@ -37,8 +37,7 @@ public struct DDDCheckboxFilter: View {
             
             if type == .last_results, let onRemove = onRemove {
                 Button(action: { onRemove() }) {
-                    DDDIcon(trailingIcon)
-                        .iconColor(Color(asset: Color.secondary400))
+                    DDDIcon(trailingIcon, iconColor: Color(asset: Color.secondary400))
                 }
             } else if type == .checkbox {
                 DDDCheckboxIcon(type: .checkbox, state: isChecked ? .active : .default, isChecked: $isChecked)

@@ -44,9 +44,8 @@ public struct DDDMarkerRestaurant: View {
                 .fill(type.badgeColor)
                 .frame(width: markerSize * 0.3, height: markerSize * 0.3)
                 .overlay(
-                    DDDIcon(type.Badge)
+                    DDDIcon(type.Badge, iconColor: .white)
                         .frame(width: markerSize * 0.18, height: markerSize * 0.18)
-                        .iconColor(.white)
                         .iconSize(custom: .small)
                 )
                 .offset(y: markerSize * 0.03)

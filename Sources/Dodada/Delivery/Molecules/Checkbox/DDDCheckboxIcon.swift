@@ -28,8 +28,7 @@ public struct DDDCheckboxIcon: View {
 
                 if isChecked {
                     if type == .checkbox {
-                        DDDIcon(.check)
-                            .iconColor(state.checkmarkColor)
+                        DDDIcon(.check, iconColor: state.checkmarkColor)
                             .iconSize(custom: .xLarge)
                     } else {
                         Circle()

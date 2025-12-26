@@ -16,8 +16,7 @@ struct DDDPricingView: View {
 
     var body: some View {
         HStack {
-            DDDIcon(.dollarSign)
-                .iconColor(.white)
+            DDDIcon(.dollarSign, iconColor: .white)
                 .iconSize(custom: .small)
         }
         .padding(.xxxSmall)
