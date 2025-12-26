@@ -40,7 +40,7 @@ public struct DDDButton<LeadingIcon: View, TrailingIcon: View>: View {
     public init(
         _ label: String = "",
         desing: DDDButtonDesing = .primary,
-        fullWidth: Bool = false,
+        fullWidth: Bool = true,
         icon: DDDIcon.Images? = nil,
         disclosureIcon: DDDIcon.Images? = nil,
         action: @escaping () -> Void
@@ -307,7 +307,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             .padding()
             .frame(maxWidth: fullWidth ? .infinity : desing.width, minHeight: desing.height)
             .background(isEnabled ? desing.backgroundColor : colorTheme.disabledButton)
-            .cornerRadius(desing.width/2)
+            .cornerRadius((desing.width ?? 48)/2)
             .overlay(
                 Circle()
                     .stroke(isEnabled ?
@@ -413,11 +413,11 @@ extension Button {
 
 #Preview {
     
-    VStack(spacing: .zero) {
+    VStack(spacing: .xMedium) {
         DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
             print("asdasdasdasdadsad")
         }
-          DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
+          DDDButton("HOla como estan", desing: .primary, fullWidth: true, icon: .add, disclosureIcon: .alertCircle) {
             print("asdasdasdasdadsad")
         }
     }
@@ -426,7 +426,7 @@ extension Button {
         DDDButton("HOla como estan", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
             print("asdasdasdasdadsad")
         }
-        DDDButton("$", desing: .tertiary) {//tertiary se adapta al texto, el primiary no
+        DDDButton("$Hola asd", desing: .tertiary) {//tertiary se adapta al texto, el primiary no
             print("asdasdasdasdadsad")
         }
         DDDButton("HOla como estan", desing: .link, icon: .add, disclosureIcon: .alertCircle) {

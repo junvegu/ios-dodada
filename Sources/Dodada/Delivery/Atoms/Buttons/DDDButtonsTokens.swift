@@ -102,12 +102,10 @@ public enum DDDButtonDesing {
         }
     }
     
-    var width: CGFloat {
+    var width: CGFloat? {
         switch self {
-        case .primary, .secondary, .link:
-            return .infinity
-        case .tertiary:
-            return .leastNormalMagnitude
+        case .primary, .secondary, .link, .tertiary:
+            return nil
         case .onlyIcon, .ghost:
             return 48
         }
