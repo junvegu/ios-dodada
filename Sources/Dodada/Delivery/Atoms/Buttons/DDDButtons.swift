@@ -439,6 +439,13 @@ extension Button {
         DDDButton("Link", desing: .ghost, icon: .add, disclosureIcon: .alertCircle) {
             print("asdasdasdasdadsad")
         }
+        
+        HStack {
+            Spacer()
+            DDDButton("Link", desing: .link) {
+                print("asdasdasdasdadsad")
+            }
+        }.frame(maxWidth: .infinity)
         DDDButton("Link", desing: .onlyIcon(inverted: true), icon: .add, disclosureIcon: .alertCircle) {
             print("asdasdasdasdadsad")
         }

@@ -15,6 +15,11 @@ public struct DDDMarkerRestaurant: View {
     
     private let markerSize: CGFloat = 64
     
+    public init(imageURL: URL?, type: MarkerType) {
+        self.imageURL = imageURL
+        self.type = type
+    }
+    
     public var body: some View {
         ZStack(alignment: .bottomTrailing) {
             // Marker para la Imagen
