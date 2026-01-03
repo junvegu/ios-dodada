@@ -8,7 +8,7 @@
 import Foundation
 
 public enum AvatarSize{
-    case tiny, small, medium, large
+    case tiny, small, medium, large, xLarge
     
     public var avatarSize: CGFloat{
         switch self {
@@ -20,6 +20,8 @@ public enum AvatarSize{
             return 48
         case .large:
             return 64
+        case .xLarge:
+            return 80
         }
     }
 }

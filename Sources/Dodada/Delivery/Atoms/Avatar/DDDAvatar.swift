@@ -63,12 +63,14 @@ public struct DDDAvatar: View {
             DDDAvatar(type: .icon(.user), size: .small)
             DDDAvatar(type: .icon(.user), size: .medium)
             DDDAvatar(type: .icon(.user), size: .large)
+            DDDAvatar(type: .icon(.user), size: .xLarge)
         }
         VStack {
             DDDAvatar(type: .initials("BB"), size: .tiny)
             DDDAvatar(type: .initials("BB"), size: .small)
             DDDAvatar(type: .initials("BB"), size: .medium)
             DDDAvatar(type: .initials("BB"), size: .large)
+            DDDAvatar(type: .icon(.user), size: .xLarge)
         }
     }
 }
