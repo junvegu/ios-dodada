@@ -11,49 +11,50 @@ import SDWebImageSwiftUI
 
 public struct DDDMarkerRestaurant: View {
     let imageURL: URL?
-    let type: MarkerType
+    let type: MarkerType?
+    let isHighLight: Bool
     
     private let markerSize: CGFloat = 64
     
-    public init(imageURL: URL?, type: MarkerType) {
+    public init(imageURL: URL?, type: MarkerType? = nil, isHighLight: Bool = false) {
         self.imageURL = imageURL
         self.type = type
+        self.isHighLight = isHighLight
     }
     
     public var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            // Marker para la Imagen
             Circle()
                 .fill(Color.white)
                 .frame(width: markerSize, height: markerSize)
                 .shadow(radius: 4)
                 .overlay(
-                    WebImage(url: imageURL)
-                        .resizable()
+                    DDDAsyncImage(url: imageURL)
+                        .frame(width: markerSize, height: markerSize)
                         .scaledToFit()
-                        //.frame(width: markerSize * 0.9, height: markerSize * 0.9)
                         .clipShape(Circle())
-                        .placeholder(when: true) {
-                            ZStack {
-                                Circle()
-                                    .fill(Color.white.opacity(0.6))
-                                ProgressView()
-                            }
-                        }
                     
                     
+                )
+                .overlay(
+                    Circle()
+                        .stroke(
+                            Asset.Colors.primary.swiftUIColor,
+                            lineWidth: isHighLight ? 3 : 0
+                        )
                 )
             
-            // Badge (el icono: top_one, new, trending)
-            Circle()
-                .fill(type.badgeColor)
-                .frame(width: markerSize * 0.3, height: markerSize * 0.3)
-                .overlay(
-                    DDDIcon(type.Badge, iconColor: .white)
-                        .frame(width: markerSize * 0.18, height: markerSize * 0.18)
-                        .iconSize(custom: .small)
-                )
-                .offset(y: markerSize * 0.03)
+            if let type {
+                Circle()
+                    .fill(type.badgeColor)
+                    .frame(width: markerSize * 0.3, height: markerSize * 0.3)
+                    .overlay(
+                        DDDIcon(type.Badge, iconColor: .white)
+                            .frame(width: markerSize * 0.18, height: markerSize * 0.18)
+                            .iconSize(custom: .small)
+                    )
+                    .offset(y: markerSize * 0.03)
+            }
         }
     }
 }
@@ -74,7 +75,7 @@ let restaurantLocations = [
     ),
     RestaurantLocation(
         coordinate: CLLocationCoordinate2D(latitude: -12.0455, longitude: -77.0353),
-        imageURL: URL(string: "https://example.com/image2.jpg"),
+        imageURL: URL(string: "https://rukminim2.flixcart.com/image/480/640/kuyf8nk0/poster/n/l/y/medium-rose-blackpink-blackpink-rose-kpop-on-the-ground-park-original-imag7ys9fsw8cmwy.jpeg?q=90"),
         type: .top_one
     ),
     RestaurantLocation(
@@ -109,8 +110,9 @@ let restaurantLocations = [
 
 #Preview {
     VStack(spacing: 20){
-        DDDMarkerRestaurant(imageURL: URL(string: "https://www.biografia.de/biografia/Emma-Myers.jpg"), type: .new)
-        DDDMarkerRestaurant(imageURL: URL(string: "https://example.com/image2.jpg"), type: .top_one)
-        DDDMarkerRestaurant(imageURL: URL(string: "https://example.com/image3.jpg"), type: .trading)
+        DDDMarkerRestaurant(imageURL: URL(string: "https://i.pinimg.com/736x/95/20/4f/95204f0745253b7fe66474ecc09b7534.jpg"), isHighLight: true)
+        DDDMarkerRestaurant(imageURL: URL(string: "https://rukminim2.flixcart.com/image/480/640/kuyf8nk0/poster/n/l/y/medium-rose-blackpink-blackpink-rose-kpop-on-the-ground-park-original-imag7ys9fsw8cmwy.jpeg?q=90"), type: .top_one)
+        DDDMarkerRestaurant(imageURL: URL(string: "https://s.yimg.com/ny/api/res/1.2/QwXf3bUzCETetIfD6sXnxw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD0xNTIzO2NmPXdlYnA-/https://media.zenfs.com/en/where_is_the_buzz_814/f9413375386b12554013607cb214be66"), type: .trading)
     }
 }
+

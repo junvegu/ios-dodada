@@ -36,22 +36,18 @@ public struct DDDTabItem: View {
     // MARK: - Body
     public var body: some View {
         Button(action: action) {
-            VStack(spacing: 0) {
+            VStack(spacing: .zero) {
                 Text(title)
                     .apply(token: .subheadline, weight: .bold)
                     .foregroundStyle(isSelected ? activeColor : inactiveColor)
                     .animation(.easeInOut(duration: 0.3), value: isSelected)
                     .padding(.horizontal, .medium)
-                    .padding(.vertical, .small)
                 
-                // Active indicator (underline)
                 ZStack(alignment: .center) {
-                    // Invisible placeholder to maintain height
                     Rectangle()
                         .fill(Color.clear)
                         .frame(height: 2)
                     
-                    // Animated underline
                     Rectangle()
                         .fill(activeColor)
                         .frame(width: isSelected ? 20 : 0, height: 2)
@@ -59,6 +55,7 @@ public struct DDDTabItem: View {
                         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
                 }
             }
+            .padding(.vertical, .small)
         }
         .buttonStyle(PlainButtonStyle())
     }
@@ -76,19 +73,23 @@ public struct DDDTabItem: View {
 // MARK: - Preview
 
 #Preview {
-    HStack {
-        DDDTabItem(
-            title: "Menú",
-            isSelected: true,
-            action: {}
-        )
-        
-        DDDTabItem(
-            title: "Información",
-            isSelected: false,
-            action: {}
-        )
+    ZStack {
+        Color.black
+        HStack {
+            DDDTabItem(
+                title: "Menú",
+                isSelected: true,
+                action: {}
+            )
+            
+            DDDTabItem(
+                title: "Información",
+                isSelected: false,
+                action: {}
+            )
+        }
+        .padding()
     }
-    .padding()
+   
 }
 

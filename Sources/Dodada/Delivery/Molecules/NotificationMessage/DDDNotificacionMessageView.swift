@@ -32,7 +32,7 @@ public struct DDDNotificacionMessageView: View {
 
             Spacer()
         }
-        .frame(width: .infinity)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .clipShape(
             RoundedRectangle(cornerRadius: .regularCornerRadius)
             
