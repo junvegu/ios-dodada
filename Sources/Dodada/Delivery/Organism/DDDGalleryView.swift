@@ -10,25 +10,31 @@ import SDWebImageSwiftUI
 
 public struct DDDGalleryView: View {
     let imageURLs: [String]
+    let title: String?
     @State private var selectedIndex: Int?
     
-    public init(imageURLs: [String]) {
+    public init(imageURLs: [String], title: String? = nil) {
         self.imageURLs = imageURLs
+        self.title = title
     }
     
     public var body: some View {
         VStack(alignment: .leading, spacing: .medium) {
-            HStack {
-                Text("Galería de fotos")
-                    .apply(token: .headline, weight: .regular)
-                Spacer()
-                if !imageURLs.isEmpty {
-                    Text("1/\(imageURLs.count)")
-                        .apply(token: .caption1, weight: .bold)
-                        .foregroundColor(Asset.Colors.secondary400.swiftUIColor)
+            if let title = title {
+                HStack {
+                    Text(title)
+                        .apply(token: .headline, weight: .regular)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(2)
+                    Spacer()
+                    if !imageURLs.isEmpty {
+                        Text("1/\(imageURLs.count)")
+                            .apply(token: .caption1, weight: .bold)
+                            .foregroundColor(Asset.Colors.secondary400.swiftUIColor)
+                    }
                 }
+                .padding(.horizontal, .small)
             }
-            .padding(.horizontal, .small)
             
             if imageURLs.isEmpty {
                 EmptyGalleryView()
@@ -41,6 +47,7 @@ public struct DDDGalleryView: View {
                 )
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .sheet(item: Binding(
             get: { selectedIndex.map { GalleryItem(index: $0) } },
             set: { _ in selectedIndex = nil }
@@ -100,6 +107,7 @@ private struct GalleryGridView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity)
         .padding(.horizontal, .small)
     }
 }
@@ -112,12 +120,14 @@ private struct GalleryImageItem: View {
     
     var body: some View {
         Button(action: onTap) {
-            DDDAsyncImage(urlString: urlString)
-                .scaledToFill()
-                .frame(maxWidth: .infinity)
-                .frame(height: isLarge ? 200 : 150)
-                .clipped()
-                .clipShape(RoundedRectangle(cornerRadius: .regularCornerRadius))
+            GeometryReader { geometry in
+                DDDAsyncImage(urlString: urlString)
+                    .scaledToFill()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .clipped()
+            }
+            .frame(height: isLarge ? 200 : 150)
+            .clipShape(RoundedRectangle(cornerRadius: .regularCornerRadius))
         }
         .buttonStyle(PlainButtonStyle())
     }
@@ -135,7 +145,6 @@ private struct FullScreenImageView: View {
     
     var body: some View {
         ZStack {
-            // Imagen de fondo con blur
             TabView(selection: $currentIndex) {
                 ForEach(Array(imageURLs.enumerated()), id: \.offset) { index, urlString in
                     DDDAsyncImage(urlString: urlString)
@@ -147,14 +156,13 @@ private struct FullScreenImageView: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .indexViewStyle(.page(backgroundDisplayMode: .never))
-            .disabled(true) // Deshabilitar swipe en el fondo
+            .disabled(true)
             
-            // Overlay con material blur
             Rectangle()
                 .fill(.ultraThinMaterial)
                 .ignoresSafeArea()
             
-            // Imagen principal sin blur
+            
             TabView(selection: $currentIndex) {
                 ForEach(Array(imageURLs.enumerated()), id: \.offset) { index, urlString in
                     DDDAsyncImage(urlString: urlString)
@@ -166,7 +174,6 @@ private struct FullScreenImageView: View {
             .tabViewStyle(.page(indexDisplayMode: .never))
             .indexViewStyle(.page(backgroundDisplayMode: .never))
             
-            // Indicador
             VStack {
                 Spacer()
                 HStack {
@@ -213,6 +220,8 @@ private struct EmptyGalleryView: View {
 
 #Preview {
     DDDGalleryView(imageURLs: [
+        "https://cdn.shopify.com/s/files/1/0469/3927/5428/t/21/assets/bannerredvelvet-1669985736741.png?v=1669985742",
+        "https://media.allure.com/photos/5b7b0983b60c70133b1eaaf0/16:9/w_1920,c_limit/Red%20Velvet%20Power%20Up.jpg",
         "https://nolae.es/cdn/shop/articles/jennie-blackpink-profil-646657.jpg?v=1732634830&width=1200",
         "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2024/03/17/17106774423813.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/3/3a/Paris_Jackson_2021_02.jpg",

@@ -11,6 +11,7 @@ import SwiftUI
 public enum DDDButtonDesing {
     case primary
     case secondary
+    case secondaryDark
     case tertiary
     case onlyIcon(inverted: Bool)
     case ghost
@@ -22,6 +23,8 @@ public enum DDDButtonDesing {
             .white
         case .secondary:
             Asset.Colors.primary.swiftUIColor
+        case .secondaryDark:
+            nil
         case .tertiary:
             Asset.Colors.primary.swiftUIColor
         case .onlyIcon(let inverted):
@@ -41,7 +44,7 @@ public enum DDDButtonDesing {
         switch self {
         case .primary:
             Asset.Colors.primary.swiftUIColor
-        case .secondary:
+        case .secondary, .secondaryDark:
             Color.white
         case .tertiary:
             Color.white
@@ -58,6 +61,8 @@ public enum DDDButtonDesing {
             Color.clear
         case .secondary:
             Asset.Colors.primary.swiftUIColor
+        case .secondaryDark:
+            Color.black
         case .tertiary, .ghost:
             Color.clear
         case .onlyIcon(let inverted):
@@ -73,6 +78,8 @@ public enum DDDButtonDesing {
             Color.white
         case .secondary:
             Asset.Colors.primary.swiftUIColor
+        case .secondaryDark:
+            Color.black
         case .tertiary:
             Asset.Colors.primary.swiftUIColor
         case .onlyIcon, .ghost:
@@ -86,6 +93,8 @@ public enum DDDButtonDesing {
         switch self {
         case .primary, .secondary, .tertiary, .link:
             Asset.Colors.primary400.swiftUIColor
+        case .secondaryDark:
+            Color.gray.opacity(0.2)
         case .ghost:
             Asset.Colors.secondary200.swiftUIColor
         case .onlyIcon(let inverted):
@@ -95,7 +104,7 @@ public enum DDDButtonDesing {
     
     var height: CGFloat {
         switch self {
-        case .primary, .secondary, .onlyIcon, .link:
+        case .primary, .secondary, .secondaryDark, .onlyIcon, .link:
             return 48
         case .tertiary, .ghost:
             return 24
@@ -104,7 +113,7 @@ public enum DDDButtonDesing {
     
     var width: CGFloat? {
         switch self {
-        case .primary, .secondary, .link, .tertiary:
+        case .primary, .secondary, .secondaryDark, .link, .tertiary:
             return nil
         case .onlyIcon, .ghost:
             return 24

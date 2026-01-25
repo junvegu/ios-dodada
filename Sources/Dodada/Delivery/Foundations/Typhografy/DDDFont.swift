@@ -18,6 +18,17 @@ public extension View {
     }
 }
 
+public extension Text {
+    func apply(
+        _ token: DDDFontToken = .caption2,
+        weight: DDDFontToken.Weigth = .regular
+    ) -> Text {
+        self
+            .font(token.font(weight))
+            .kerning(token.letterSpacing)
+    }
+}
+
 
 
 public struct DDDTypographyModifier: ViewModifier {

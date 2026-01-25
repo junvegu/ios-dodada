@@ -100,7 +100,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
             } disclosureIcon: {
                 disclosureIcon
             })
-        case .secondary:
+        case .secondary, .secondaryDark:
             return AnyView(SecondaryButton(desing: desing, fullWidth: fullWidth, configuration: configuration) {
                 icon
             } disclosureIcon: {
@@ -232,7 +232,7 @@ struct DDDButtons<LeadingIcon: View, TrailingIcon: View>: ButtonStyle {
                         lineWidth: 1
                     )
             )
-            .iconColor(configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor )
+            .iconColor(desing.iconColor == nil ? nil : (configuration.isPressed ? desing.pressedColor : desing.iconColor ?? desing.backgroundColor))
         }
     }
     
@@ -420,11 +420,16 @@ extension Button {
         DDDButton("Primary", desing: .primary, icon: .add, disclosureIcon: .alertCircle) {
             print("asdasdasdasdadsad")
         }.disabled(true)
+    
         DDDButton("Primary No full", desing: .primary, fullWidth: false, icon: .add, disclosureIcon: .alertCircle) {
             print("asdasdasdasdadsad")
         }
         
         DDDButton("Secondary", desing: .secondary, icon: .apple, disclosureIcon: .aquisito) {
+            print("asdasdasdasdadsad")
+        }
+        
+        DDDButton("Secondary Dark", desing: .secondaryDark, icon: .google, disclosureIcon: .aquisito) {
             print("asdasdasdasdadsad")
         }
         
