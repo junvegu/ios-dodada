@@ -164,7 +164,7 @@ public extension DDDPhoneNumberView {
         countryCode: Binding<String>,
         isRequired: Bool = false,
         requiredMessage: String? = nil,
-        state: InputState = .default,
+        state: InputState = .default
     ) {
         self.labelText = label
         self.placeHolder = placeholder

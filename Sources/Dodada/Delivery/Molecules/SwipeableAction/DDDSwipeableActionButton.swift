@@ -117,46 +117,37 @@ public struct DDDSwipeableActionButton: View {
     
     // MARK: - Background Layer
     @ViewBuilder
-    private func backgroundLayer(progress: CGFloat, buttonWidth: CGFloat) -> some View {
-        ZStack(alignment: .leading) {
-            // Base background (gray)
-            Asset.Colors.secondary100.swiftUIColor
-            
-            // Progressive fill based on swipe direction
-            if dragOffset > 0 && !rightAction.isDisabled {
-                // Swiping right - llenar desde la izquierda
-                Asset.Colors.primary.swiftUIColor
-                    .frame(width: abs(dragOffset), alignment: .leading)
-                    .clipShape(
-                        UnevenRoundedRectangle(
-                            cornerRadii: .init(
-                                topLeading: 0,
-                                bottomLeading: 0,
-                                bottomTrailing: 100,
-                                topTrailing: 100
-                            )
-                        )
-                    )
-            } else if dragOffset < 0 && !leftAction.isDisabled {
-                // Swiping left - llenar desde la derecha
-                HStack {
-                    Spacer()
-                    Asset.Colors.primary.swiftUIColor
-                        .frame(width: abs(dragOffset), alignment: .trailing)
-                        .clipShape(
-                            UnevenRoundedRectangle(
-                                cornerRadii: .init(
-                                    topLeading: 100,
-                                    bottomLeading: 100,
-                                    bottomTrailing: 0,
-                                    topTrailing: 0
-                                )
-                            )
-                        )
+        private func backgroundLayer(progress: CGFloat, buttonWidth: CGFloat) -> some View {
+            ZStack {
+                // 1. Fondo Base (Gris)
+                Asset.Colors.secondary100.swiftUIColor
+                
+                // 2. Capa de relleno animado (Cápsula elástica desde el centro)
+                let height: CGFloat = 53 // La altura de tu botón
+                // El ancho de la burbuja es el círculo base (height) + lo que arrastras
+                let shapeWidth = height + abs(dragOffset)
+                
+                if dragOffset > 0 && !rightAction.isDisabled {
+                    // SWIPE DERECHA (>>>)
+                    // El color sale del centro hacia la derecha
+                    Capsule()
+                        .fill(Asset.Colors.primary.swiftUIColor)
+                        .frame(width: shapeWidth, height: height)
+                        // Offset positivo: mueve el centro de la cápsula a la derecha
+                        // para compensar el crecimiento y que el lado izquierdo parezca fijo.
+                        .offset(x: abs(dragOffset) / 2)
+                    
+                } else if dragOffset < 0 && !leftAction.isDisabled {
+                    // SWIPE IZQUIERDA (<<<)
+                    // El color sale del centro hacia la izquierda
+                    Capsule()
+                        .fill(Asset.Colors.primary.swiftUIColor)
+                        .frame(width: shapeWidth, height: height)
+                        // Offset negativo: mueve el centro de la cápsula a la izquierda
+                        .offset(x: -abs(dragOffset) / 2)
                 }
             }
         }
-    }
     
     // MARK: - Content Layer
     @ViewBuilder
@@ -179,22 +170,22 @@ public struct DDDSwipeableActionButton: View {
         // El estilo determina qué acción se muestra en la izquierda
         let displayedAction = style == .left ? leftAction : rightAction
         // Verificar si está cubierto por el color de relleno
-        // Solo se pone blanco si el swipe es hacia la derecha (dragOffset > 0) porque el color se llena desde la izquierda
-        let isCovered = dragOffset > 0 ? isSectionCovered(section: .left, buttonWidth: buttonWidth) : false
+        
+        let currentColor = smoothTextColor(section: .left)
         
         HStack(spacing: .xxSmall) {
             DDDIcon(
                 displayedAction.icon,
-                iconColor: textColor(isCovered: isCovered)
+                iconColor: currentColor
             )
             
             Text(displayedAction.title)
                 .apply(token: .body, weight: .regular)
-                .foregroundStyle(textColor(isCovered: isCovered))
+                .foregroundStyle(currentColor)
             Spacer()
             Text("<<")
                 .apply(token: .body, weight: .bold)
-                .foregroundStyle(textColor(isCovered: isCovered))
+                .foregroundStyle(currentColor)
         }
         .padding(.leading, .medium)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -243,21 +234,21 @@ public struct DDDSwipeableActionButton: View {
         // El estilo determina qué acción se muestra en la derecha
         let displayedAction = style == .left ? rightAction : leftAction
         // Verificar si está cubierto por el color de relleno
-        // Solo se pone blanco si el swipe es hacia la izquierda (dragOffset < 0) porque el color se llena desde la derecha
-        let isCovered = dragOffset < 0 ? isSectionCovered(section: .right, buttonWidth: buttonWidth) : false
+        
+        let currentColor = smoothTextColor(section: .right)
         
         HStack(spacing: .xxSmall) {
             Text(">>")
                 .apply(token: .body, weight: .bold)
-                .foregroundStyle(textColor(isCovered: isCovered))
+                .foregroundStyle(currentColor)
             Spacer()
-            Text("ir ahora")
+            Text("Ir ahora")
                 .apply(token: .body, weight: .regular)
-                .foregroundStyle(textColor(isCovered: isCovered))
+                .foregroundStyle(currentColor)
             
             DDDIcon(
                 .arrowRight,
-                iconColor: textColor(isCovered: isCovered)
+                iconColor: currentColor
             )
         }
         .padding(.trailing, .medium)
@@ -279,52 +270,48 @@ public struct DDDSwipeableActionButton: View {
         case right
     }
     
-    // Verificar si una sección está cubierta por el color de relleno
-    private func isSectionCovered(section: Section, buttonWidth: CGFloat) -> Bool {
-        guard dragOffset != 0 else { return false }
-        
-        let fillWidth = abs(dragOffset)
-        
-        // Estimar las posiciones aproximadas de cada sección
-        // Las secciones ocupan aproximadamente: izquierda 35%, centro 30%, derecha 35%
-        let leftSectionEnd = buttonWidth * 0.35
-        let centerSectionStart = buttonWidth * 0.35
-        let centerSectionEnd = buttonWidth * 0.65
-        let rightSectionStart = buttonWidth * 0.65
-        
-        if dragOffset > 0 {
-            // Swipe hacia la derecha - el color se llena desde la izquierda (x=0)
-            // Solo la sección izquierda puede ponerse blanca
-            switch section {
-            case .left:
-                // La sección izquierda está cubierta si el fillWidth alcanza su mitad
-                return fillWidth >= leftSectionEnd * 0.5
-            case .center:
-                // El centro está cubierto si el fillWidth alcanza su inicio
-                return fillWidth >= centerSectionStart
-            case .right:
-                // La derecha nunca se pone blanca en swipe derecho
-                return false
+    
+    // Nueva función para calcular el color suavemente (Interpolación)
+        private func smoothTextColor(section: Section) -> Color {
+            // Si no hay movimiento, todo es negro
+            guard dragOffset != 0 else { return Asset.Colors.black.swiftUIColor }
+            
+            let distance = abs(dragOffset)
+            
+            // Definimos el rango de transición
+            // startFade: A partir de 40px (al salir del icono central) el texto empieza a cambiar.
+            // endFade: A los 150px de arrastre, el texto ya debe ser totalmente blanco.
+            let startFade: CGFloat = 40.0
+            let endFade: CGFloat = 150.0
+            
+            // Calculamos el porcentaje (0.0 es Negro, 1.0 es Blanco)
+            var progress: CGFloat = 0.0
+            
+            if distance > startFade {
+                progress = (distance - startFade) / (endFade - startFade)
+                // Aseguramos que no pase de 1.0 ni baje de 0.0
+                progress = min(max(progress, 0.0), 1.0)
             }
-        } else if dragOffset < 0 {
-            // Swipe hacia la izquierda - el color se llena desde la derecha (x=buttonWidth)
-            // Solo la sección derecha puede ponerse blanca
-            let fillStart = buttonWidth - fillWidth
-            switch section {
-            case .left:
-                // La sección izquierda nunca se pone blanca en swipe izquierdo
-                return false
-            case .center:
-                // El centro está cubierto si el fillStart está antes de su fin
-                return fillStart <= centerSectionEnd
-            case .right:
-                // La sección derecha está cubierta si el fillStart está antes de su fin
-                return fillStart <= rightSectionStart + (buttonWidth - rightSectionStart) * 0.5
+            
+            // Aplicamos la lógica según la dirección
+            if dragOffset > 0 {
+                // ---> SWIPE DERECHA
+                if section == .right {
+                    // El texto derecho se aclara gradualmente (Negro -> Gris -> Blanco)
+                    // Color(white: 0) = Negro, Color(white: 1) = Blanco
+                    return Color(white: progress) // Esto crea el gris intermedio automáticamente
+                }
+            } else {
+                // <--- SWIPE IZQUIERDA
+                if section == .left {
+                    // El texto izquierdo se aclara gradualmente
+                    return Color(white: progress)
+                }
             }
+            
+            // Si no es la sección activa, se mantiene negro
+            return Asset.Colors.black.swiftUIColor
         }
-        
-        return false
-    }
     
     private func centerBackgroundColor(buttonWidth: CGFloat) -> Color {
         let maxDragDistance = buttonWidth * 0.7
