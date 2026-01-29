@@ -48,7 +48,7 @@ public struct DDDSwipeableActionButton: View {
     public var body: some View {
         GeometryReader { geometry in
             let buttonWidth = geometry.size.width
-            let maxDragDistance = buttonWidth * 0.7 // 70% del ancho para activar
+            let maxDragDistance = buttonWidth * 0.7
             let progress = abs(dragOffset) / maxDragDistance
             let clampedProgress = min(progress, 1.0)
             
@@ -119,31 +119,21 @@ public struct DDDSwipeableActionButton: View {
     @ViewBuilder
         private func backgroundLayer(progress: CGFloat, buttonWidth: CGFloat) -> some View {
             ZStack {
-                // 1. Fondo Base (Gris)
                 Asset.Colors.secondary100.swiftUIColor
                 
-                // 2. Capa de relleno animado (Cápsula elástica desde el centro)
-                let height: CGFloat = 53 // La altura de tu botón
-                // El ancho de la burbuja es el círculo base (height) + lo que arrastras
+                let height: CGFloat = 53
                 let shapeWidth = height + abs(dragOffset)
                 
                 if dragOffset > 0 && !rightAction.isDisabled {
-                    // SWIPE DERECHA (>>>)
-                    // El color sale del centro hacia la derecha
                     Capsule()
                         .fill(Asset.Colors.primary.swiftUIColor)
                         .frame(width: shapeWidth, height: height)
-                        // Offset positivo: mueve el centro de la cápsula a la derecha
-                        // para compensar el crecimiento y que el lado izquierdo parezca fijo.
                         .offset(x: abs(dragOffset) / 2)
                     
                 } else if dragOffset < 0 && !leftAction.isDisabled {
-                    // SWIPE IZQUIERDA (<<<)
-                    // El color sale del centro hacia la izquierda
                     Capsule()
                         .fill(Asset.Colors.primary.swiftUIColor)
                         .frame(width: shapeWidth, height: height)
-                        // Offset negativo: mueve el centro de la cápsula a la izquierda
                         .offset(x: -abs(dragOffset) / 2)
                 }
             }
@@ -153,13 +143,8 @@ public struct DDDSwipeableActionButton: View {
     @ViewBuilder
     private func contentLayer(buttonWidth: CGFloat) -> some View {
         HStack(spacing: 0) {
-            // Left section
             leftSection(buttonWidth: buttonWidth)
-            
-            // Center section
             centerSection(buttonWidth: buttonWidth)
-            
-            // Right section
             rightSection(buttonWidth: buttonWidth)
         }
     }
@@ -167,10 +152,7 @@ public struct DDDSwipeableActionButton: View {
     // MARK: - Left Section
     @ViewBuilder
     private func leftSection(buttonWidth: CGFloat) -> some View {
-        // El estilo determina qué acción se muestra en la izquierda
         let displayedAction = style == .left ? leftAction : rightAction
-        // Verificar si está cubierto por el color de relleno
-        
         let currentColor = smoothTextColor(section: .left)
         
         HStack(spacing: .xxSmall) {
@@ -195,15 +177,12 @@ public struct DDDSwipeableActionButton: View {
     @ViewBuilder
     private func centerSection(buttonWidth: CGFloat) -> some View {
         ZStack {
-            // Background circle - debe estar por encima del color de relleno
             Circle()
                 .fill(centerBackgroundColor(buttonWidth: buttonWidth))
                 .frame(width: 40, height: 40)
                 .zIndex(2)
             
-            // Ring animation cuando se alcanza el threshold
             if showRing {
-                // Ring exterior que se expande
                 Circle()
                     .stroke(Asset.Colors.primary.swiftUIColor, lineWidth: 2.5)
                     .frame(width: 40, height: 40)
@@ -211,7 +190,6 @@ public struct DDDSwipeableActionButton: View {
                     .opacity(ringScale > 1.2 ? 0 : max(0, 1.0 - (ringScale - 1.0) * 2.0))
                     .zIndex(3)
                 
-                // Ring interior que se une (handicap)
                 Circle()
                     .stroke(Asset.Colors.primary.swiftUIColor, lineWidth: 1.5)
                     .frame(width: 40, height: 40)
@@ -220,7 +198,6 @@ public struct DDDSwipeableActionButton: View {
                     .zIndex(3)
             }
             
-            // Center icon
             DDDIcon(centerIcon, iconColor: centerIconColor(buttonWidth: buttonWidth))
                 .iconSize(custom: .xxLarge)
                 .zIndex(4)
@@ -231,10 +208,7 @@ public struct DDDSwipeableActionButton: View {
     // MARK: - Right Section
     @ViewBuilder
     private func rightSection(buttonWidth: CGFloat) -> some View {
-        // El estilo determina qué acción se muestra en la derecha
         let displayedAction = style == .left ? rightAction : leftAction
-        // Verificar si está cubierto por el color de relleno
-        
         let currentColor = smoothTextColor(section: .right)
         
         HStack(spacing: .xxSmall) {
@@ -263,7 +237,6 @@ public struct DDDSwipeableActionButton: View {
         return Asset.Colors.black.swiftUIColor
     }
     
-    // Enum para identificar las secciones
     private enum Section {
         case left
         case center
@@ -271,47 +244,32 @@ public struct DDDSwipeableActionButton: View {
     }
     
     
-    // Nueva función para calcular el color suavemente (Interpolación)
-        private func smoothTextColor(section: Section) -> Color {
-            // Si no hay movimiento, todo es negro
-            guard dragOffset != 0 else { return Asset.Colors.black.swiftUIColor }
-            
-            let distance = abs(dragOffset)
-            
-            // Definimos el rango de transición
-            // startFade: A partir de 40px (al salir del icono central) el texto empieza a cambiar.
-            // endFade: A los 150px de arrastre, el texto ya debe ser totalmente blanco.
-            let startFade: CGFloat = 40.0
-            let endFade: CGFloat = 150.0
-            
-            // Calculamos el porcentaje (0.0 es Negro, 1.0 es Blanco)
-            var progress: CGFloat = 0.0
-            
-            if distance > startFade {
-                progress = (distance - startFade) / (endFade - startFade)
-                // Aseguramos que no pase de 1.0 ni baje de 0.0
-                progress = min(max(progress, 0.0), 1.0)
-            }
-            
-            // Aplicamos la lógica según la dirección
-            if dragOffset > 0 {
-                // ---> SWIPE DERECHA
-                if section == .right {
-                    // El texto derecho se aclara gradualmente (Negro -> Gris -> Blanco)
-                    // Color(white: 0) = Negro, Color(white: 1) = Blanco
-                    return Color(white: progress) // Esto crea el gris intermedio automáticamente
-                }
-            } else {
-                // <--- SWIPE IZQUIERDA
-                if section == .left {
-                    // El texto izquierdo se aclara gradualmente
-                    return Color(white: progress)
-                }
-            }
-            
-            // Si no es la sección activa, se mantiene negro
-            return Asset.Colors.black.swiftUIColor
+    private func smoothTextColor(section: Section) -> Color {
+        guard dragOffset != 0 else { return Asset.Colors.black.swiftUIColor }
+        
+        let distance = abs(dragOffset)
+        let startFade: CGFloat = 40.0
+        let endFade: CGFloat = 150.0
+        
+        var progress: CGFloat = 0.0
+        
+        if distance > startFade {
+            progress = (distance - startFade) / (endFade - startFade)
+            progress = min(max(progress, 0.0), 1.0)
         }
+        
+        if dragOffset > 0 {
+            if section == .right {
+                return Color(white: progress)
+            }
+        } else {
+            if section == .left {
+                return Color(white: progress)
+            }
+        }
+        
+        return Asset.Colors.black.swiftUIColor
+    }
     
     private func centerBackgroundColor(buttonWidth: CGFloat) -> Color {
         let maxDragDistance = buttonWidth * 0.7
@@ -375,7 +333,6 @@ public enum SwipeableStyle {
 
 #Preview {
     VStack(spacing: 20) {
-        // Left style - Reservar
         DDDSwipeableActionButton(
             leftAction: SwipeAction(
                 icon: .bell,
@@ -397,7 +354,6 @@ public enum SwipeableStyle {
             style: .left
         )
         
-        // Right style - Llamar
         DDDSwipeableActionButton(
             leftAction: SwipeAction(
                 icon: .phone,
@@ -419,7 +375,6 @@ public enum SwipeableStyle {
             style: .right
         )
         
-        // Disabled example
         DDDSwipeableActionButton(
             leftAction: SwipeAction(
                 icon: .bell,
