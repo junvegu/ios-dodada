@@ -66,7 +66,7 @@ public struct DDDTabBar: View {
                 )
                 
                 Text("Tab seleccionado: \(selectedIndex)")
-                    .apply(token: .body, weight: .regular)
+                    .textStyle(.bodyRegular)
                 
                 Spacer()
             }

@@ -32,8 +32,8 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
 
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text(label)
-                    .apply(token: .callOut, weight: .regular)
-                    .foregroundStyle(Asset.Colors.secondary400.swiftUIColor)
+                    .textStyle(.calloutRegular)
+                    .foregroundStyle(Color.secondaryValue400)
                     .padding(.leading, .small)
                     .padding(.trailing, -.xxSmall)
                     .accessibility(hidden: true)
@@ -56,25 +56,25 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
         .background(
             backgroundColor().animation(.default, value: message)
         )
-        .cornerRadius(.regularCornerRadius)
+        .cornerRadius(.radiusSm)
         .overlay(focusBorder)
         .overlay(border)
     }
 
     @ViewBuilder private var border: some View {
-        RoundedRectangle(cornerRadius: .regularCornerRadius)
+        RoundedRectangle(cornerRadius: .radiusSm)
             .strokeBorder(
-                Asset.Colors.secondary200.swiftUIColor.opacity(isFocused ? 0.6 : 1.0),
+                Color.secondaryValue200.opacity(isFocused ? 0.6 : 1.0),
                 lineWidth: isFocused ? 1 : 2
             )
     }
     
 
     @ViewBuilder private var focusBorder: some View {
-         RoundedRectangle(cornerRadius: .regularCornerRadius)
-             .trim(from: 0, to: showBorderFofus ? 1 : 0) // Hace que la animación recorra todo el borde
+         RoundedRectangle(cornerRadius: .radiusSm)
+             .trim(from: 0, to: showBorderFofus ? 1 : 0)
              .stroke(focusOutlineColor, style: StrokeStyle(lineWidth: 2, lineCap: .round))
-             .animation(.easeInOut(duration: 0.4), value: showBorderFofus) // Animación progresiva
+             .animation(.easeInOut(duration: 0.4), value: showBorderFofus)
      }
 
     private var showBorderFofus: Bool {
@@ -84,29 +84,29 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
     private var resolvedTextColor: Color {
         isEnabled
         ?  state.textColor
-        : .secondary300.swiftUIColor
+        : Color.secondaryValue300
     }
 
     private var labelColor: Color {
         isEnabled
-            ? (.secondary500.swiftUIColor)
-            : .secondary200.swiftUIColor
+            ? Color.secondaryValue500
+            : Color.secondaryValue200
     }
 
 
 
     private var focusOutlineColor: Color {
         switch (message, showBorderFofus) {
-        case (.error, true):        return .error.swiftUIColor
-        case (.warning, true):      return .warning500.swiftUIColor
-        case (.help, true):         return .secondary400.swiftUIColor
-        case (_, true):             return .secondary500.swiftUIColor
-        case (_, false):            return .secondary200.swiftUIColor
+        case (.error, true):        return Color.errorValue500
+        case (.warning, true):      return Color.warningValue500
+        case (.help, true):         return Color.secondaryValue400
+        case (_, true):             return Color.secondaryValue500
+        case (_, false):            return Color.secondaryValue200
         }
     }
     private func backgroundColor() -> Color {
         if isEnabled == false {
-            return .secondary200.swiftUIColor
+            return Color.secondaryValue200
         }
 
         return .clear
@@ -144,37 +144,37 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
         DDDInputContent(label: "Label", value: .constant("")) {
             EmptyView()
         } prefix: {
-            DDDIcon(.aquisito)
+            DDDIcon(.specialAquisito)
         } suffix: {
-            DDDIcon(.google)
+            DDDIcon(.socialGoogle)
         }.padding()
         
         DDDInputContent(label: "Label", isFocused: true, value: .constant("")) {
             TextField("", text: .constant("Value"))
                 .padding(.horizontal, .small)
         } prefix: {
-            DDDIcon(.aquisito)
+            DDDIcon(.specialAquisito)
         } suffix: {
-            DDDIcon(.google)
+            DDDIcon(.socialGoogle)
         }.padding()
         
         DDDInputContent(label: "Label", isFocused: true, value: .constant("")) {
             TextField("", text: .constant("Value"))
                 .padding(.horizontal, .small)
         } prefix: {
-            DDDIcon(.google)
+            DDDIcon(.socialGoogle)
         } suffix: {
-            DDDIcon(.google)
+            DDDIcon(.socialGoogle)
         }.padding()
             .disabled(true)
         
-        DDDInputContent(label: "Label", message: .error("Este es un error", icon: .alertCircle), isFocused: true, value: .constant("")) {
+        DDDInputContent(label: "Label", message: .error("Este es un error", icon: .feedbackAlertCircle), isFocused: true, value: .constant("")) {
             TextField("", text: .constant("Value"))
                 .padding(.horizontal, .small)
         } prefix: {
-            DDDIcon(.aquisito)
+            DDDIcon(.specialAquisito)
         } suffix: {
-            DDDIcon(.google)
+            DDDIcon(.socialGoogle)
         }.padding()
     }
 }

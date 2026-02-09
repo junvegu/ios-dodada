@@ -70,13 +70,13 @@ public struct DDDInputDropDown<T: Identifiable & CustomStringConvertible>: View 
             HStack {
                 Text(viewModel.selected?.description ?? viewModel.placeholder)
                     .foregroundColor(viewModel.selected == nil ? .gray : viewModel.state.textColor)
-                    .apply(token: viewModel.state.textStyle.token, weight: viewModel.state.textStyle.weight)
+                    .textStyle(viewModel.state.textStyle)
 
                 Spacer()
-                DDDIcon(.chevronDown, iconColor: viewModel.state.textColor)
+                DDDIcon(.chevronsDown, color: .secondaryValue500)
             }
             .padding(.horizontal)
-            .cornerRadius(.regularCornerRadius)
+            .cornerRadius(.radiusSm)
         }
         .disabled(!isEnabled)
     }

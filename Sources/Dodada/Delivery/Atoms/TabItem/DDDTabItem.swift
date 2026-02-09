@@ -38,7 +38,7 @@ public struct DDDTabItem: View {
         Button(action: action) {
             VStack(spacing: .zero) {
                 Text(title)
-                    .apply(token: .subheadline, weight: .bold)
+                    .textStyle(.subheadlineBold)
                     .foregroundStyle(isSelected ? activeColor : inactiveColor)
                     .animation(.easeInOut(duration: 0.3), value: isSelected)
                     .padding(.horizontal, .medium)
@@ -62,11 +62,11 @@ public struct DDDTabItem: View {
     
     // MARK: - Computed Properties
     private var activeColor: Color {
-        Asset.Colors.primary.swiftUIColor
+        Color.primaryValue500
     }
     
     private var inactiveColor: Color {
-        Asset.Colors.secondary300.swiftUIColor
+        Color.secondaryValue300
     }
 }
 
@@ -74,7 +74,6 @@ public struct DDDTabItem: View {
 
 #Preview {
     ZStack {
-        Color.black
         HStack {
             DDDTabItem(
                 title: "Menú",

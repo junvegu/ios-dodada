@@ -48,24 +48,24 @@ public enum TagState {
 
     public var outlineBorderColor: Color {
         switch self {
-        case .default: return Color(asset: Color.primary500)
-        case .info: return Color(asset: Color.info)
-        case .success: return Color(asset: Color.success500)
-        case .warning: return Color(asset: Color.warning500)
-        case .alert: return Color(asset: Color.error)
-        case .secondary: return Color(asset: Color.secondary200)
+        case .default: return Color.primaryValue500
+        case .info: return Color.infoValue500
+        case .success: return Color.successValue500
+        case .warning: return Color.warningValue500
+        case .alert: return Color.errorValue500
+        case .secondary: return Color.secondaryValue200
         case .ghost: return .clear
         }
     }
 
     public var filledBorderColor: Color {
         switch self {
-        case .default: return Color(asset: Color.primary600)
-        case .info: return Color(asset: Color.info)
-        case .success: return Color(asset: Color.success)
-        case .warning: return Color(asset: Color.warning)
-        case .alert: return Color(asset: Color.error)
-        case .secondary: return Color(asset: Color.secondary600)
+        case .default: return Color.primaryValue600
+        case .info: return Color.infoValue500
+        case .success: return Color.successValue500
+        case .warning: return Color.warningValue500
+        case .alert: return Color.errorValue500
+        case .secondary: return Color.secondaryValue600
         case .ghost: return .clear
         }
     }
@@ -74,30 +74,30 @@ public enum TagState {
     public var foregroundColor: Color {
         switch self {
         case .default:
-            return Color(asset: Color.primary500)
+            return Color.primaryValue500
         case .info:
-            return Color(asset: Color.info)
+            return Color.infoValue500
         case .success:
-            return Color(asset: Color.success500)
+            return Color.successValue500
         case .warning:
-            return Color(asset: Color.warning500)
+            return Color.warningValue500
         case .alert:
-            return Color(asset: Color.error)
+            return Color.errorValue500
         case .secondary:
-            return Color(asset: Color.secondary500)
+            return Color.secondaryValue500
         case .ghost:
-            return Color(asset: Color.secondary500)
+            return Color.secondaryValue500
         }
     }
 
     public var background: Color {
         switch self {
-        case .default: return Color(asset: Color.primary500)
-        case .info: return Color(asset: Color.info)
-        case .success: return Color(asset: Color.success500)
-        case .warning: return Color(asset: Color.warning500)
-        case .alert: return Color(asset: Color.error)
-        case .secondary: return Color(asset: Color.secondary500)
+        case .default: return Color.primaryValue500
+        case .info: return Color.infoValue500
+        case .success: return Color.successValue500
+        case .warning: return Color.warningValue500
+        case .alert: return Color.errorValue500
+        case .secondary: return Color.secondaryValue500
         case .ghost: return .clear
         }
     }
@@ -108,12 +108,27 @@ public enum TagState {
             return .white
         case .outline, .opacity:
             switch self {
-            case .default: return Color(asset: Color.primary500)
-            case .info: return Color(asset: Color.info)
-            case .success: return Color(asset: Color.success500)
-            case .warning: return Color(asset: Color.warning500)
-            case .alert: return Color(asset: Color.error)
-            case .secondary, .ghost: return Color(asset: Color.secondary500)
+            case .default: return Color.primaryValue500
+            case .info: return Color.infoValue500
+            case .success: return Color.successValue500
+            case .warning: return Color.warningValue500
+            case .alert: return Color.errorValue500
+            case .secondary, .ghost: return Color.secondaryValue500
+            }
+        }
+    }
+
+    public func iconColorToken(for type: TagType) -> DodadaColorToken {
+        switch type {
+        case .filled: return .textOnPrimary
+        case .outline, .opacity:
+            switch self {
+            case .default: return .primaryValue500
+            case .info: return .infoValue500
+            case .success: return .successValue500
+            case .warning: return .warningValue500
+            case .alert: return .errorValue500
+            case .secondary, .ghost: return .secondaryValue500
             }
         }
     }

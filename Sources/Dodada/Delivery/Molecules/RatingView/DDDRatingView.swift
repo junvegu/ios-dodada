@@ -13,9 +13,9 @@ public struct DDDRatingView: View {
 
     private let label: String
     private let maximumRating: Int
-    private var offImage: DDDIcon.Images?
-    private var onImage: DDDIcon.Images = .star
-    private var offColor = Asset.Colors.secondary200.swiftUIColor
+    private var offImage: DodadaIconToken?
+    private var onImage: DodadaIconToken = .contentStar
+    private var offColor = Color.secondaryValue200
     private var onColor = Color.yellow
     
     public init(rating: Binding<Int>, label: String = "", maximumRating: Int = 5) {
@@ -27,7 +27,7 @@ public struct DDDRatingView: View {
     public var body: some View {
         HStack(spacing: 0) {
             if label.isEmpty == false {
-                Text(label).apply()
+                Text(label).textStyle(.caption2Regular)
             }
 
             ForEach(1..<maximumRating + 1, id: \.self) { number in
@@ -35,12 +35,12 @@ public struct DDDRatingView: View {
                     rating = number
                 } label: {
                     let iconImage = image(for: number)
-                    DDDIcon(iconImage, iconColor: number > rating ? offColor : onColor)
+                    DDDIcon(iconImage, color: number > rating ? .secondaryValue200 : nil, size: .iconSm)
                 }
             }
-        }.iconSize(custom: .small)
+        }
     }
-    func image(for number: Int) -> DDDIcon.Images {
+    func image(for number: Int) -> DodadaIconToken {
         if number > rating {
             return offImage ?? onImage
         } else {

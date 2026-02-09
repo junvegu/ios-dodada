@@ -18,15 +18,14 @@ public struct FieldMessage: View {
         if let message = message, message.isEmpty == false {
             HStack(alignment: .center, spacing: spacing) {
                 if let icon = message.icon {
-                    DDDIcon(icon, iconColor: message.color)
+                    DDDIcon(icon, color: nil)
                         .accessibility(hidden: true)
                         .alignmentGuide(.firstTextBaseline) { $0.height * 0.82 }
                 }
 
                 Text(message.description)
-                    .apply(token: .caption2, weight: .regular)
+                    .textStyle(.caption2Regular)
             }
-            .iconSize(custom: .small)
             .foregroundStyle(message.color)
             .transition(.opacity.animation(.easeOut(duration: 0.2)))
             .accessibilityElement(children: .combine)

@@ -24,7 +24,7 @@ public struct DDDActionTextField: View {
     public var body: some View {
         HStack {
             TextField(placeholder, text: $text)
-                .apply(token: .subheadline, weight: .regular)
+                .textStyles(.subheadlineRegular)
                 .multilineTextAlignment(.center)
 
             Rectangle()

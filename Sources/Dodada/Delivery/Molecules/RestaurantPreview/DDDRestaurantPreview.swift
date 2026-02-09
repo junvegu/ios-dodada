@@ -64,23 +64,21 @@ public struct DDDRestaurantPreview: View {
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
                     Text(name)
-                        .apply(token: .body, weight: .bold)
+                        .textStyle(.bodyBold)
                     Spacer()
                     HStack(spacing: 4) {
-                        DDDIcon(.star, iconColor: .yellow)
-                            .iconSize(custom: .small)
+                        DDDIcon(.contentStar, color: nil, size: .iconSm)
                         Text(String(format: "%.1f", rating))
-                            .apply(token: .caption2, weight: .bold)
+                            .textStyle(.caption2Bold)
                     }
                 }
                 
                 HStack {
-                    DDDIcon(.mapPin)
-                        .iconSize(custom: .small)
+                    DDDIcon(.locationMapPin, size: .iconSm)
                     Text(location)
-                        .apply(token: .caption1)
+                        .textStyle(.caption1Regular)
                     Text("(\(distance))")
-                        .apply(token: .caption2)
+                        .textStyle(.caption2Regular)
                 }
                 
                 HStack {
@@ -94,10 +92,9 @@ public struct DDDRestaurantPreview: View {
                         Text("•")
                             .foregroundColor(.gray)
                         HStack {
-                            DDDIcon(.award2, iconColor: .yellow)
-                                .iconSize(custom: .normal)
+                            DDDIcon(.contentAward, color: nil, size: .iconMd)
                             Text("Destacado")
-                                .apply(token: .caption2, weight: .bold)
+                                .textStyle(.caption2Bold)
                         }
                     }
                 }
@@ -106,7 +103,7 @@ public struct DDDRestaurantPreview: View {
         .padding()
         .background(Color.white)
         .cornerRadius(15)
-        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color(asset: Color.secondary100), lineWidth: 2))
+        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.secondaryValue100, lineWidth: 2))
         .padding(.horizontal, 16)
     }
 }

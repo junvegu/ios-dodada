@@ -13,12 +13,12 @@ public enum InputState {
 
     public var textColor: Color {
         switch self {
-        case .default:          return .secondary500.swiftUIColor
-        case .modified:         return .secondary200.swiftUIColor
+        case .default:          return Color.secondaryValue500
+        case .modified:         return Color.secondaryValue200
         }
     }
     
     public var placeholderColor: Color {
-        .secondary400.swiftUIColor
+        Color.secondaryValue400
     }
 }

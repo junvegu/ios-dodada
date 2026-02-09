@@ -105,8 +105,8 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
                 onEndEditing?()
             }
         }
-        .foregroundStyle(Asset.Colors.secondary.swiftUIColor)
-        .apply(token: .callOut, weight: .regular)
+        .foregroundStyle(Color.secondaryValue500)
+        .textStyles(.calloutRegular)
         .padding(.horizontal, .small)
     }
 
@@ -114,7 +114,7 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
     @ViewBuilder
     private var secureTextToggleButton: some View {
         if showSecureTextToggle {
-            DDDIcon(isSecureTextRedacted ? .eye : .eyeOff).onTapGesture {
+            DDDIcon(isSecureTextRedacted ? .userEye : .userEyeOff).onTapGesture {
                 isSecureTextRedacted.toggle()
             }
         }
@@ -158,8 +158,8 @@ public extension DDDInputText {
     init(
         _ label: String = "",
         value: Binding<String>,
-        prefix: DDDIcon.Images? = nil,
-        suffix: DDDIcon.Images? = nil,
+        prefix: DodadaIconToken? = nil,
+        suffix: DodadaIconToken? = nil,
         prompt: String = "",
         state: InputState = .default,
         labelStyle: InputLabelStyle = .default,
@@ -187,9 +187,9 @@ public extension DDDInputText {
             autocapitalization: autocapitalization,
             autocorrectionDisabled: autocorrectionDisabled
         ) {
-            DDDIcon(prefix, iconColor: .secondary500.swiftUIColor)
+            DDDIcon(prefix, color: .secondaryValue500)
         } suffix: {
-            DDDIcon(suffix, iconColor: .secondary500.swiftUIColor)
+            DDDIcon(suffix, color: .secondaryValue500)
         }
     }
 
@@ -249,6 +249,8 @@ public extension DDDInputText {
 // MARK: - Preview
 
 #Preview {
+    
+    
     struct ContentView: View {
         @State private var username: String = ""
         @State private var password: String = ""
@@ -259,8 +261,8 @@ public extension DDDInputText {
                 DDDInputText(
                     "Usuario",
                     value: $username,
-                    prefix: .user,
-                    suffix: .google,
+                    prefix: .userUser,
+                    suffix: .socialGoogle,
                     prompt: "Ingresa tu usuario",
                     isRequired: true
                 )
@@ -268,8 +270,8 @@ public extension DDDInputText {
                 DDDInputText(
                     "Contraseña",
                     value: $password,
-                    prefix: .lock,
-                    suffix: .eye,
+                    prefix: .userLock,
+                    suffix: .userEye,
                     prompt: "Ingresa tu contraseña",
                     isSecure: true,
                     passwordStrength: .medium(title: "Seguridad media"),
@@ -285,5 +287,9 @@ public extension DDDInputText {
         }
     }
 
-    return ContentView()
+    return NavigationView {
+        ContentView()
+    }.onAppear {
+        Dodada.registerFonts()
+    }
 }

@@ -32,8 +32,8 @@ public struct DDDVerticalNav<LeadingIcon: View, TrailingIcon: View>: View {
     public init(
         title: String,
         description: String? = nil,
-        leadingIcon: DDDIcon.Images? = nil,
-        trailingIcon: DDDIcon.Images? = .chevronRight,
+        leadingIcon: DodadaIconToken? = nil,
+        trailingIcon: DodadaIconToken? = .chevronsRight,
         action: @escaping () -> Void
     ) where LeadingIcon == DDDIcon, TrailingIcon == DDDIcon {
         self.init(title: title, description: description) {
@@ -55,11 +55,11 @@ public struct DDDVerticalNav<LeadingIcon: View, TrailingIcon: View>: View {
                     
                     VStack(alignment: .leading, spacing: .xSmall) {
                         Text(title)
-                            .apply(token: .callOut, weight: .bold)
+                            .textStyle(.calloutBold)
                         
                         if let description = description {
                             Text(description)
-                                .apply(token: .footNote, weight: .regular)
+                                .textStyle(.footnoteRegular)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -82,17 +82,17 @@ public struct DDDVerticalNav<LeadingIcon: View, TrailingIcon: View>: View {
         DDDVerticalNav(
             title: "Mi número de celular",
             description: "+51 9999 99999",
-            leadingIcon: .agend) {
+            leadingIcon: .timeAgend) {
             print("Número de celular presionado")
         }
         
         DDDVerticalNav(
             title: "Mis datos personales",
-            leadingIcon: .aquisito,
-            trailingIcon: .google
+            leadingIcon: .specialAquisito,
+            trailingIcon: .socialGoogle
         ) {
             print("Datos personales presionados")
         }
     }
-    .environment(\.colorTheme, ColorThemeDefault())
+    .environment(\.colorTheme, DDDThemeDefault())
 }

@@ -10,10 +10,10 @@ import SwiftUI
 
 public enum Message: Equatable, Hashable, CustomStringConvertible {
 
-    case normal(String, icon: DDDIcon.Images? = nil)
-    case help(String, icon: DDDIcon.Images? = .check)
-    case warning(String, icon: DDDIcon.Images? = .info)
-    case error(String, icon: DDDIcon.Images? = .info)
+    case normal(String, icon: DodadaIconToken? = nil)
+    case help(String, icon: DodadaIconToken? = .actionsCheck)
+    case warning(String, icon: DodadaIconToken? = .feedbackInfo)
+    case error(String, icon: DodadaIconToken? = .feedbackInfo)
 
     public var description: String {
         switch self {
@@ -48,7 +48,7 @@ public enum Message: Equatable, Hashable, CustomStringConvertible {
     }
 
     public var color: Color {
-        status?.color ?? Asset.Colors.secondary.swiftUIColor
+        status?.color ?? Color.secondaryValue500
     }
 
     public var darkColor: Color {
@@ -56,10 +56,10 @@ public enum Message: Equatable, Hashable, CustomStringConvertible {
     }
 
     public var lightColor: Color {
-        status?.lightColor ?? Asset.Colors.secondary400.swiftUIColor
+        status?.lightColor ?? Color.secondaryValue400
     }
 
-    public var icon: DDDIcon.Images? {
+    public var icon: DodadaIconToken? {
         switch self {
             case .error(_, let icon),
                  .warning(_, let icon),
@@ -90,92 +90,92 @@ public enum Status: Equatable {
 public extension Status {
 
     /// Default icon associated with status.
-    var icon: DDDIcon.Images? {
+    var icon: DodadaIconToken? {
         switch self {
             case .info:         return nil
-            case .success:      return .alertCircle
-            case .warning:      return .alertCircle
-            case .critical:     return .alertCircle
+            case .success:      return .feedbackAlertCircle
+            case .warning:      return .feedbackAlertCircle
+            case .critical:     return .feedbackAlertCircle
         }
     }
 
     /// Color associated with status.
     var color: Color {
         switch self {
-        case .info:         return Asset.Colors.secondary.swiftUIColor
-            case .success:      return Asset.Colors.secondary.swiftUIColor
-            case .warning:      return Asset.Colors.success.swiftUIColor
-            case .critical:     return Asset.Colors.error.swiftUIColor
+        case .info:         return Color.secondaryValue500
+            case .success:      return Color.secondaryValue500
+            case .warning:      return Color.successValue500
+            case .critical:     return Color.errorValue500
         }
     }
 
     /// Light color associated with status.
     var lightColor: Color {
         switch self {
-        case .info:         return Asset.Colors.secondary.swiftUIColor
-            case .success:      return Asset.Colors.secondary.swiftUIColor
-            case .warning:      return Asset.Colors.success.swiftUIColor
-            case .critical:     return Asset.Colors.error.swiftUIColor
+        case .info:         return Color.secondaryValue500
+            case .success:      return Color.secondaryValue500
+            case .warning:      return Color.successValue500
+            case .critical:     return Color.errorValue500
         }
     }
 
     /// Light hover color associated with status.
     var lightHoverColor: Color {
         switch self {
-        case .info:         return Asset.Colors.secondary.swiftUIColor
-            case .success:      return Asset.Colors.secondary.swiftUIColor
-            case .warning:      return Asset.Colors.success.swiftUIColor
-            case .critical:     return Asset.Colors.error.swiftUIColor
+        case .info:         return Color.secondaryValue500
+            case .success:      return Color.secondaryValue500
+            case .warning:      return Color.successValue500
+            case .critical:     return Color.errorValue500
         }
     }
 
     /// Dark color associated with status.
     var darkColor: Color {
         switch self {
-        case .info:         return Asset.Colors.secondary.swiftUIColor
-            case .success:      return Asset.Colors.secondary.swiftUIColor
-            case .warning:      return Asset.Colors.success.swiftUIColor
-            case .critical:     return Asset.Colors.error.swiftUIColor
+        case .info:         return Color.secondaryValue500
+            case .success:      return Color.secondaryValue500
+            case .warning:      return Color.successValue500
+            case .critical:     return Color.errorValue500
         }
     }
 
     /// Dark hover color associated with status.
     var darkHoverColor: Color {
         switch self {
-        case .info:         return Asset.Colors.secondary.swiftUIColor
-            case .success:      return Asset.Colors.secondary.swiftUIColor
-            case .warning:      return Asset.Colors.success.swiftUIColor
-            case .critical:     return Asset.Colors.error.swiftUIColor
+        case .info:         return Color.secondaryValue500
+            case .success:      return Color.secondaryValue500
+            case .warning:      return Color.successValue500
+            case .critical:     return Color.errorValue500
         }
     }
 
     /// Active color associated with status.
     var activeColor: Color {
         switch self {
-        case .info:         return Asset.Colors.secondary.swiftUIColor
-            case .success:      return Asset.Colors.secondary.swiftUIColor
-            case .warning:      return Asset.Colors.success.swiftUIColor
-            case .critical:     return Asset.Colors.error.swiftUIColor
+        case .info:         return Color.secondaryValue500
+            case .success:      return Color.secondaryValue500
+            case .warning:      return Color.successValue500
+            case .critical:     return Color.errorValue500
         }
     }
 
     /// Dark active color associated with status.
     var darkActiveColor: Color {
         switch self {
-        case .info:         return Asset.Colors.secondary.swiftUIColor
-            case .success:      return Asset.Colors.secondary.swiftUIColor
-            case .warning:      return Asset.Colors.success.swiftUIColor
-            case .critical:     return Asset.Colors.error.swiftUIColor
+        case .info:         return Color.secondaryValue500
+            case .success:      return Color.secondaryValue500
+            case .warning:      return Color.successValue500
+            case .critical:     return Color.errorValue500
         }
     }
 
     /// Light active color associated with status.
     var lightActiveColor: Color {
         switch self {
-        case .info:         return Asset.Colors.secondary.swiftUIColor
-            case .success:      return Asset.Colors.secondary.swiftUIColor
-            case .warning:      return Asset.Colors.success.swiftUIColor
-            case .critical:     return Asset.Colors.error.swiftUIColor
+        case .info:         return Color.secondaryValue500
+            case .success:      return Color.secondaryValue500
+            case .warning:      return Color.successValue500
+            case .critical:     return Color.errorValue500
         }
     }
 

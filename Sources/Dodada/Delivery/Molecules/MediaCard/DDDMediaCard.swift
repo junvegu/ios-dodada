@@ -29,10 +29,10 @@ public struct DDDMediaCard: View {
             VStack{
                 VStack{
                     HStack {
-                        DDDBadge(text: views, icon: .eye, type: .filled, state: .secondary)
+                        DDDBadge(text: views, icon: .userEye, type: .filled, state: .secondary)
                         Spacer()
                         if isLive{
-                            DDDBadge(text: "Live", icon: .zap, type: .filled, state: .default)
+                            DDDBadge(text: "Live", icon: .trendingZap, type: .filled, state: .default)
                         }
                     }
                     .padding(.top, 8)
@@ -42,8 +42,7 @@ public struct DDDMediaCard: View {
                     
                     VStack(alignment: .leading){
                         Text(text)
-                            .apply(token: .subheadline,
-                                   weight: .bold)
+                            .textStyle(.subheadlineBold)
                     }.foregroundColor(.white)
                         .padding(.bottom, 8)
                         .padding(.horizontal, 8)
@@ -63,11 +62,9 @@ public struct DDDMediaCard: View {
             
             VStack(alignment: .leading){
                 Text("TikTok")
-                    .apply(token: .caption2,
-                           weight: .bold)
+                    .textStyle(.caption2Bold)
                 Text(author)
-                    .apply(token: .subheadline,
-                           weight: .bold)
+                    .textStyle(.subheadlineBold)
             }
         }
         .frame(width: 164, height: 233)

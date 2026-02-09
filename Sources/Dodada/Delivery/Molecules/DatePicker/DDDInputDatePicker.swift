@@ -21,7 +21,7 @@ public struct DDDInputDatePicker: View {
             ZStack(alignment: .leading) {
                 if !placeholder.isEmpty && selectedDate != nil {
                     Text(placeholder)
-                        .apply(token: .footNote, weight: .regular)
+                        .textStyle(.footnoteRegular)
                         .scaleEffect(1.0)
                         .opacity(1.0)
                         .offset(y: 0)
@@ -44,21 +44,21 @@ public struct DDDInputDatePicker: View {
                 HStack {
                     Text(selectedDate.map { formatDate($0) } ?? placeholder)
                         .foregroundColor(selectedDate == nil ? .gray : InputStyles.default.textColor)
-                        .apply(token: .body, weight: .regular)
+                        .textStyle(.bodyRegular)
 
                     Spacer()
 
-                    DDDIcon(.calendar, iconColor: InputStyles.default.textColor)
+                    DDDIcon(.timeCalendar, color: .secondaryValue500)
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 12)
                 .background(
-                    (!isEnabled ? Asset.Colors.secondary200.swiftUIColor.opacity(0.4) : .white)
+                    (!isEnabled ? Color.secondaryValue200.opacity(0.4) : .white)
                         .animation(.easeInOut(duration: 0.2), value: isEnabled)
                 )
-                .cornerRadius(.regularCornerRadius)
+                .cornerRadius(.radiusSm)
                 .overlay(
-                    RoundedRectangle(cornerRadius: .regularCornerRadius)
+                    RoundedRectangle(cornerRadius: .radiusSm)
                         .stroke(
                             isFocused ? InputStyles.focus.borderColor : InputStyles.default.borderColor,
                             lineWidth: isFocused ? 2.5 : 2
@@ -71,12 +71,12 @@ public struct DDDInputDatePicker: View {
             Group {
                 if let error = errorMessage, !error.isEmpty {
                     Text(error)
-                        .apply(token: .caption1)
+                        .textStyle(.caption1Regular)
                         .foregroundColor(.red)
                         .transition(.opacity.combined(with: .move(edge: .top)))
                 } else if let desc = description {
                     Text(desc)
-                        .apply(token: .caption1)
+                        .textStyle(.caption1Regular)
                         .foregroundColor(.black)
                         .transition(.opacity)
                 }

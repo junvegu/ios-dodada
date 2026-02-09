@@ -31,14 +31,14 @@ public struct DDDNotification: View {
     public var body: some View {
         if isVisible {
             HStack(spacing: 10) {
-                DDDIcon(type.leadingIcon, iconColor: type.iconColor)
+                DDDIcon(type.leadingIcon, color: type.iconColorToken)
                 
                 VStack(alignment: .leading) {
                     Text(title)
-                        .apply(token: .footNote, weight: .bold)
+                        .textStyle(.footnoteBold)
                     
                     Text(description)
-                        .apply(token: .footNote)
+                        .textStyle(.footnoteRegular)
                 }
                 .foregroundColor(type.textColor)
                 

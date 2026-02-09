@@ -21,7 +21,7 @@ public struct DDDSwipeableActionButton: View {
     
     private let leftAction: SwipeAction
     private let rightAction: SwipeAction
-    private let centerIcon: DDDIcon.Images
+    private let centerIcon: DodadaIconToken
     private let style: SwipeableStyle
     
     // MARK: - Initializer
@@ -35,7 +35,7 @@ public struct DDDSwipeableActionButton: View {
     public init(
         leftAction: SwipeAction,
         rightAction: SwipeAction,
-        centerIcon: DDDIcon.Images = .aquisito,
+        centerIcon: DodadaIconToken = .specialAquisito,
         style: SwipeableStyle = .left
     ) {
         self.leftAction = leftAction
@@ -112,7 +112,7 @@ public struct DDDSwipeableActionButton: View {
             )
         }
         .frame(height: 53)
-        .cornerRadius(.xLargeCornerRadius)
+        .cornerRadius(.radiusLg)
     }
     
     // MARK: - Background Layer
@@ -120,12 +120,12 @@ public struct DDDSwipeableActionButton: View {
     private func backgroundLayer(progress: CGFloat, buttonWidth: CGFloat) -> some View {
         ZStack(alignment: .leading) {
             // Base background (gray)
-            Asset.Colors.secondary100.swiftUIColor
+            Color.secondaryValue100
             
             // Progressive fill based on swipe direction
             if dragOffset > 0 && !rightAction.isDisabled {
                 // Swiping right - llenar desde la izquierda
-                Asset.Colors.primary.swiftUIColor
+                Color.primaryValue500
                     .frame(width: abs(dragOffset), alignment: .leading)
                     .clipShape(
                         UnevenRoundedRectangle(
@@ -141,7 +141,7 @@ public struct DDDSwipeableActionButton: View {
                 // Swiping left - llenar desde la derecha
                 HStack {
                     Spacer()
-                    Asset.Colors.primary.swiftUIColor
+                    Color.primaryValue500
                         .frame(width: abs(dragOffset), alignment: .trailing)
                         .clipShape(
                             UnevenRoundedRectangle(
@@ -185,15 +185,15 @@ public struct DDDSwipeableActionButton: View {
         HStack(spacing: .xxSmall) {
             DDDIcon(
                 displayedAction.icon,
-                iconColor: textColor(isCovered: isCovered)
+                color: textColorToken(isCovered: isCovered)
             )
             
             Text(displayedAction.title)
-                .apply(token: .body, weight: .regular)
+                .textStyle(.bodyRegular)
                 .foregroundStyle(textColor(isCovered: isCovered))
             Spacer()
             Text("<<")
-                .apply(token: .body, weight: .bold)
+                .textStyle(.bodyBold)
                 .foregroundStyle(textColor(isCovered: isCovered))
         }
         .padding(.leading, .medium)
@@ -214,7 +214,7 @@ public struct DDDSwipeableActionButton: View {
             if showRing {
                 // Ring exterior que se expande
                 Circle()
-                    .stroke(Asset.Colors.primary.swiftUIColor, lineWidth: 2.5)
+                    .stroke(Color.primaryValue500, lineWidth: 2.5)
                     .frame(width: 40, height: 40)
                     .scaleEffect(ringScale)
                     .opacity(ringScale > 1.2 ? 0 : max(0, 1.0 - (ringScale - 1.0) * 2.0))
@@ -222,7 +222,7 @@ public struct DDDSwipeableActionButton: View {
                 
                 // Ring interior que se une (handicap)
                 Circle()
-                    .stroke(Asset.Colors.primary.swiftUIColor, lineWidth: 1.5)
+                    .stroke(Color.primaryValue500, lineWidth: 1.5)
                     .frame(width: 40, height: 40)
                     .scaleEffect(max(1.0, ringScale * 0.8))
                     .opacity(ringScale > 1.0 ? 0.3 : 1)
@@ -230,8 +230,7 @@ public struct DDDSwipeableActionButton: View {
             }
             
             // Center icon
-            DDDIcon(centerIcon, iconColor: centerIconColor(buttonWidth: buttonWidth))
-                .iconSize(custom: .xxLarge)
+            DDDIcon(centerIcon, color: centerIconColorToken(buttonWidth: buttonWidth), size: .iconTwoXl)
                 .zIndex(4)
         }
         .padding(.horizontal, .small)
@@ -248,16 +247,16 @@ public struct DDDSwipeableActionButton: View {
         
         HStack(spacing: .xxSmall) {
             Text(">>")
-                .apply(token: .body, weight: .bold)
+                .textStyle(.bodyBold)
                 .foregroundStyle(textColor(isCovered: isCovered))
             Spacer()
             Text("ir ahora")
-                .apply(token: .body, weight: .regular)
+                .textStyle(.bodyRegular)
                 .foregroundStyle(textColor(isCovered: isCovered))
             
             DDDIcon(
-                .arrowRight,
-                iconColor: textColor(isCovered: isCovered)
+                .arrowsRight,
+                color: textColorToken(isCovered: isCovered)
             )
         }
         .padding(.trailing, .medium)
@@ -269,7 +268,7 @@ public struct DDDSwipeableActionButton: View {
         if isCovered {
             return .white
         }
-        return Asset.Colors.black.swiftUIColor
+        return Color.neutralValue1000
     }
     
     // Enum para identificar las secciones
@@ -332,7 +331,7 @@ public struct DDDSwipeableActionButton: View {
         let clampedProgress = min(progress, 1.0)
         
         if clampedProgress > 0.3 {
-            return Asset.Colors.primary.swiftUIColor
+            return Color.primaryValue500
         }
         return .white
     }
@@ -345,7 +344,18 @@ public struct DDDSwipeableActionButton: View {
         if clampedProgress > 0.3 {
             return .white
         }
-        return Asset.Colors.primary.swiftUIColor
+        return Color.primaryValue500
+    }
+
+    private func centerIconColorToken(buttonWidth: CGFloat) -> DodadaColorToken {
+        let maxDragDistance = buttonWidth * 0.7
+        let progress = abs(dragOffset) / maxDragDistance
+        let clampedProgress = min(progress, 1.0)
+        return clampedProgress > 0.3 ? .textOnPrimary : .primaryValue500
+    }
+
+    private func textColorToken(isCovered: Bool) -> DodadaColorToken {
+        isCovered ? .textOnPrimary : .neutralValue1000
     }
 }
 
@@ -353,7 +363,7 @@ public struct DDDSwipeableActionButton: View {
 
 /// Configuration for a swipe action (left or right).
 public struct SwipeAction {
-    let icon: DDDIcon.Images
+    let icon: DodadaIconToken
     let title: String
     let isDisabled: Bool
     let onAction: () -> Void
@@ -366,7 +376,7 @@ public struct SwipeAction {
     ///   - isDisabled: Whether this action is disabled.
     ///   - onAction: Callback when the action is triggered.
     public init(
-        icon: DDDIcon.Images,
+        icon: DodadaIconToken,
         title: String,
         isDisabled: Bool = false,
         onAction: @escaping () -> Void
@@ -391,7 +401,7 @@ public enum SwipeableStyle {
         // Left style - Reservar
         DDDSwipeableActionButton(
             leftAction: SwipeAction(
-                icon: .bell,
+                icon: .feedbackBell,
                 title: "Reservar",
                 isDisabled: false,
                 onAction: {
@@ -399,21 +409,21 @@ public enum SwipeableStyle {
                 }
             ),
             rightAction: SwipeAction(
-                icon: .arrowRight,
+                icon: .arrowsRight,
                 title: "ir ahora",
                 isDisabled: false,
                 onAction: {
                     print("Right action")
                 }
             ),
-            centerIcon: .aquisito,
+            centerIcon: .specialAquisito,
             style: .left
         )
         
         // Right style - Llamar
         DDDSwipeableActionButton(
             leftAction: SwipeAction(
-                icon: .phone,
+                icon: .communicationPhone,
                 title: "Llamar",
                 isDisabled: false,
                 onAction: {
@@ -421,21 +431,21 @@ public enum SwipeableStyle {
                 }
             ),
             rightAction: SwipeAction(
-                icon: .arrowRight,
+                icon: .arrowsRight,
                 title: "ir ahora",
                 isDisabled: false,
                 onAction: {
                     print("Right action")
                 }
             ),
-            centerIcon: .aquisito,
+            centerIcon: .specialAquisito,
             style: .right
         )
         
         // Disabled example
         DDDSwipeableActionButton(
             leftAction: SwipeAction(
-                icon: .bell,
+                icon: .feedbackBell,
                 title: "Reservar",
                 isDisabled: true,
                 onAction: {
@@ -443,14 +453,14 @@ public enum SwipeableStyle {
                 }
             ),
             rightAction: SwipeAction(
-                icon: .arrowRight,
+                icon: .arrowsRight,
                 title: "ir ahora",
                 isDisabled: false,
                 onAction: {
                     print("Right action")
                 }
             ),
-            centerIcon: .aquisito,
+            centerIcon: .specialAquisito,
             style: .left
         )
     }

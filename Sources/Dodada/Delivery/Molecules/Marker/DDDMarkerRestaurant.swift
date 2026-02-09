@@ -39,7 +39,7 @@ public struct DDDMarkerRestaurant: View {
                 .overlay(
                     Circle()
                         .stroke(
-                            Asset.Colors.primary.swiftUIColor,
+                            Color.primaryValue500,
                             lineWidth: isHighLight ? 3 : 0
                         )
                 )
@@ -49,9 +49,8 @@ public struct DDDMarkerRestaurant: View {
                     .fill(type.badgeColor)
                     .frame(width: markerSize * 0.3, height: markerSize * 0.3)
                     .overlay(
-                        DDDIcon(type.Badge, iconColor: .white)
+                        DDDIcon(type.badge, color: .textOnPrimary, size: .iconSm)
                             .frame(width: markerSize * 0.18, height: markerSize * 0.18)
-                            .iconSize(custom: .small)
                     )
                     .offset(y: markerSize * 0.03)
             }

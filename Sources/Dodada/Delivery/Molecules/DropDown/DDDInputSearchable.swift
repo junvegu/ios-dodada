@@ -60,10 +60,10 @@ public struct DDDInputSearchable<T: Identifiable & CustomStringConvertible & Equ
             HStack {
                 Text(viewModel.selected?.description ?? viewModel.placeholder)
                     .foregroundColor(viewModel.selected == nil ? .gray : viewModel.state.textColor)
-                    .apply(token: viewModel.state.textStyle.token, weight: viewModel.state.textStyle.weight)
+                    .textStyle(viewModel.state.textStyle)
 
                 Spacer()
-                DDDIcon(.chevronDown, iconColor: viewModel.state.textColor)
+                DDDIcon(.chevronsDown, color: .secondaryValue500)
             }
             .padding(.horizontal)
         }
@@ -80,7 +80,7 @@ public struct DDDInputSearchable<T: Identifiable & CustomStringConvertible & Equ
                     isPresented = false
                 } label: {
                     Text(item.description)
-                        .apply(token: .callOut, weight: .regular)
+                        .textStyle(.calloutRegular)
                         .foregroundStyle(.black)
                 }
             }
@@ -89,7 +89,7 @@ public struct DDDInputSearchable<T: Identifiable & CustomStringConvertible & Equ
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text(viewModel.placeholder)
-                        .apply(token: .headline, weight: .bold)
+                        .textStyle(.headlineBold)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)

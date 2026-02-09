@@ -23,8 +23,9 @@ public struct FieldWrapper<Label: View, Content: View, Footer: View>: View {
         VStack(alignment: .leading, spacing: 0) {
             HStack (spacing: .zero) {
                 if isMandatory {
-                    Text("*").foregroundStyle(Asset.Colors.error.swiftUIColor)
-                        .apply(token: .headline, weight: .regular)
+                    Text("*")
+                        .textStyle(.headlineRegular)
+                        .foregroundStyle(Color.errorValue500)
                 }
                 label
                     .accessibility(hidden: true)
@@ -93,7 +94,7 @@ public struct FieldLabel: View {
             EmptyView()
         } else {
             Text(label)
-                .apply(token: .footNote, weight: .regular)
+                .textStyle(.footnoteRegular)
         }
 
     }

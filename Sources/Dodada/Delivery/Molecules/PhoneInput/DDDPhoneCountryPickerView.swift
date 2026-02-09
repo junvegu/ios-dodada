@@ -26,7 +26,7 @@ struct CountryPickerView: View {
             keyIsFocused = false
         } label: {
             Text("\(countryFlag) \(countryCode)")
-                .apply(token: .callOut, weight: .bold)
+                .textStyle(.calloutBold)
                 .frame(minWidth: 80, minHeight: 28)
                 .background(backgroundColor, in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
                 .foregroundColor(.black)

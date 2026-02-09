@@ -50,7 +50,7 @@ public struct DDDInputSearch: View {
             ) {
                 buildTextField()
             } prefix: {
-                DDDIcon(.search)
+                DDDIcon(.navigationSearch)
                     .accessibility(hidden: true)
             } suffix: {
                 if showClearButton {
@@ -79,15 +79,15 @@ public struct DDDInputSearch: View {
                     onEndEditing?()
                 }
             }
-            .foregroundStyle(Asset.Colors.secondary.swiftUIColor)
-            .apply(token: .callOut, weight: .regular)
+            .foregroundStyle(Color.secondaryValue500)
+            .textStyles(.calloutRegular)
             .padding(.horizontal, .small)
     }
 
     // MARK: - Clear Button
     @ViewBuilder
     private var clearButton: some View {
-        DDDIcon(.x, iconColor: .secondary500.swiftUIColor)
+        DDDIcon(.actionsCircleX, color: .secondaryValue500)
             .onTapGesture {
                 withAnimation(.easeInOut(duration: 0.2)) {
                     value = ""

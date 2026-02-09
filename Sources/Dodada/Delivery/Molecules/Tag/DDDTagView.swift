@@ -14,7 +14,7 @@ struct DDDTagView: View {
 
     var body: some View {
         Text(label)
-            .apply(token: .caption2, weight: .bold)
+            .textStyle(.caption2Bold)
             .padding(.xxSmall)
             .frame(minHeight: 28)
             .foregroundStyle(invert ? Color.white : colorTheme.defaultButton)
@@ -24,14 +24,14 @@ struct DDDTagView: View {
                 : Color.clear
             )
             .overlay(
-                RoundedRectangle(cornerRadius: .smallCornerRadius)
+                RoundedRectangle(cornerRadius: .radiusXs)
                     .stroke(
                         invert ? Color.clear : colorTheme.defaultButton,
-                        lineWidth: .regularBorderWidth
+                        lineWidth: .lineHeightLoose
                     )
             )
             .clipShape(
-                RoundedRectangle(cornerRadius: .smallCornerRadius)
+                RoundedRectangle(cornerRadius: .radiusXs)
             )
     }
 }

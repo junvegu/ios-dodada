@@ -17,10 +17,10 @@ public enum CheckboxState{
     
     var borderColor : Color {
         switch self{
-        case .active: return Color(asset: Color.secondary500)
-        case .focused: return Color(asset: Color.secondary500)
-        case .disabled: return Color(asset: Color.secondary200)
-        case .default: return Color(asset: Color.secondary200)
+        case .active: return Color.secondaryValue500
+        case .focused: return Color.secondaryValue500
+        case .disabled: return Color.secondaryValue200
+        case .default: return Color.secondaryValue200
         }
     }
     
@@ -30,11 +30,18 @@ public enum CheckboxState{
         default: return .black
         }
     }
-    
+
+    var checkmarkColorToken: DodadaColorToken {
+        switch self {
+        case .active: return .textOnPrimary
+        default: return .neutralValue1000
+        }
+    }
+
     var backgroundColor: Color{
         switch self{
-        case .active: return Color(asset: Color.secondary500)
-        case .disabled: return Color(asset: Color.secondary100)
+        case .active: return Color.secondaryValue500
+        case .disabled: return Color.secondaryValue100
         default: return .clear
         }
     }

@@ -26,32 +26,32 @@ public struct DDDRatingMentionDetailsView: View {
             HStack{
                 VStack(spacing: .xSmall) {
                     Text("Calificaciones")
-                        .apply(token: .caption2, weight: .bold)
-                        .foregroundStyle(Asset.Colors.secondary400.swiftUIColor)
-                    Text("\(rating, specifier: "%.1f")").apply(token: .title2, weight: .bold)
+                        .textStyle(.caption2Bold)
+                        .foregroundStyle(Color.secondaryValue400)
+                    Text("\(rating, specifier: "%.1f")").textStyle(.title2Bold)
                     DDDRatingView(rating: .constant(Int(rating)))
                 }
                 Divider().frame(width: .xxLarge, height: .large)
                 
                 VStack(spacing: .xSmall) {
                     Text("Menciones")
-                        .apply(token: .caption2, weight: .bold)
-                        .foregroundStyle(Asset.Colors.secondary400.swiftUIColor)
-                    Text("\(mentions)").apply(token: .title2, weight: .bold)
+                        .textStyle(.caption2Bold)
+                        .foregroundStyle(Color.secondaryValue400)
+                    Text("\(mentions)").textStyle(.title2Bold)
                     Text("Vlogs")
-                        .apply(token: .caption2, weight: .bold)
-                        .foregroundStyle(Asset.Colors.secondary.swiftUIColor)
+                        .textStyle(.caption2Bold)
+                        .foregroundStyle(Color.secondaryValue500)
                 }
                 Divider().frame(width: .xxLarge, height: .large)
 
                 VStack(spacing: .xSmall) {
                     Text("Detalles")
-                        .apply(token: .caption2, weight: .bold)
-                        .foregroundStyle(Asset.Colors.secondary400.swiftUIColor)
-                    Text("\(facilities)").apply(token: .title2, weight: .bold)
+                        .textStyle(.caption2Bold)
+                        .foregroundStyle(Color.secondaryValue400)
+                    Text("\(facilities)").textStyle(.title2Bold)
                     Text("Facilidades")
-                        .apply(token: .caption2, weight: .bold)
-                        .foregroundStyle(Asset.Colors.secondary.swiftUIColor)
+                        .textStyle(.caption2Bold)
+                        .foregroundStyle(Color.secondaryValue500)
                 }
             }
             Divider().frame(height: .small)
