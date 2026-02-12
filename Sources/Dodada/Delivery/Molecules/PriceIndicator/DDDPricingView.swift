@@ -18,7 +18,7 @@ struct DDDPricingView: View {
         HStack {
             DDDIcon(.paymentDollarSign, color: .textOnPrimary, size: .iconSm)
         }
-        .padding(.xxxSmall)
+        .padding(.spacingTwoXs)
         .background(enabled ? Color.secondaryValue500 : Color.secondaryValue200)
         .clipShape(Circle())
     }

@@ -81,7 +81,7 @@ public struct DDDInputSearch: View {
             }
             .foregroundStyle(Color.secondaryValue500)
             .textStyles(.calloutRegular)
-            .padding(.horizontal, .small)
+            .padding(.horizontal, .spacingSm)
     }
 
     // MARK: - Clear Button

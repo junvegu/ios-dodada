@@ -13,7 +13,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
     @Environment(\.idealSize) private var idealSize
     @Environment(\.isEnabled) private var isEnabled
 
-    public let verticalPadding: CGFloat = .small
+    public let verticalPadding: CGFloat = .spacingSm
 
     private let state: InputState
     private let label: String
@@ -26,16 +26,16 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
     public var body: some View {
         HStack(spacing: 0) {
             prefix
-                .padding(.leading, .small)
-                .padding(.trailing, -.xxSmall)
+                .padding(.leading, .spacingSm)
+                .padding(.trailing, -.spacingXs)
                 .padding(.vertical, verticalPadding)
 
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text(label)
                     .textStyle(.calloutRegular)
                     .foregroundStyle(Color.secondaryValue400)
-                    .padding(.leading, .small)
-                    .padding(.trailing, -.xxSmall)
+                    .padding(.leading, .spacingSm)
+                    .padding(.trailing, -.spacingXs)
                     .accessibility(hidden: true)
                     .accessibility(removeTraits: .isStaticText)
 
@@ -48,8 +48,8 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
             }
 
             suffix
-                .padding(.leading, -.xSmall)
-                .padding(.trailing, .xSmall)
+                .padding(.leading, -.spacingSm)
+                .padding(.trailing, .spacingSm)
                 .padding(.vertical, verticalPadding)
         }
         .foregroundStyle(resolvedTextColor)
@@ -151,7 +151,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
         
         DDDInputContent(label: "Label", isFocused: true, value: .constant("")) {
             TextField("", text: .constant("Value"))
-                .padding(.horizontal, .small)
+                .padding(.horizontal, .spacingSm)
         } prefix: {
             DDDIcon(.specialAquisito)
         } suffix: {
@@ -160,7 +160,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
         
         DDDInputContent(label: "Label", isFocused: true, value: .constant("")) {
             TextField("", text: .constant("Value"))
-                .padding(.horizontal, .small)
+                .padding(.horizontal, .spacingSm)
         } prefix: {
             DDDIcon(.socialGoogle)
         } suffix: {
@@ -170,7 +170,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
         
         DDDInputContent(label: "Label", message: .error("Este es un error", icon: .feedbackAlertCircle), isFocused: true, value: .constant("")) {
             TextField("", text: .constant("Value"))
-                .padding(.horizontal, .small)
+                .padding(.horizontal, .spacingSm)
         } prefix: {
             DDDIcon(.specialAquisito)
         } suffix: {

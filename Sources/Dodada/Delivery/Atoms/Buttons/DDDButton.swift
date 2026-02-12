@@ -55,12 +55,12 @@ public struct DDDButton<LeadingIcon: View, TrailingIcon: View>: View {
         self.action = action
         self.iconBuilder = { state in
             guard let token = icon else { return DDDIcon(nil) }
-            let color = desing.getIconColor(by: state.theme, isDisabled: state.isDisabled, isPressed: state.isPressed)
+            let color = desing.getIconColor(by: state.theme, size: size, isDisabled: state.isDisabled, isPressed: state.isPressed)
             return color.map { DDDIcon(token).iconColor($0) } ?? DDDIcon(token)
         }
         self.disclosureIconBuilder = { state in
             guard let token = disclosureIcon else { return DDDIcon(nil) }
-            let color = desing.getIconColor(by: state.theme, isDisabled: state.isDisabled, isPressed: state.isPressed)
+            let color = desing.getIconColor(by: state.theme, size: size, isDisabled: state.isDisabled, isPressed: state.isPressed)
             return color.map { DDDIcon(token).iconColor($0) } ?? DDDIcon(token)
         }
     }
@@ -174,7 +174,7 @@ extension Button {
             }
         }
         .padding()
-        .background(Color(red: 242/255, green: 242/255, blue: 247/255))
+        .background(Color.white)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }.onAppear {
         Dodada.registerFonts()

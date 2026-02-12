@@ -81,79 +81,79 @@ public final class DDDThemeManager {
 // Tipografía con tamaños distintos. Uso: `.environment(\.colorTheme, DDDThemeAlternate())`
 
 private struct AlternateTypographyTokens: DodadaThemeTypographyTokens {
-    private static func font(size: CGFloat, weight: CGFloat, lineHeight: CGFloat = 1.5, letterSpacing: CGFloat? = nil, underline: Bool = false) -> DodadaFont {
+    private func font(size: CGFloat, weight: CGFloat, lineHeight: CGFloat = 1.5, letterSpacing: CGFloat? = nil, underline: Bool = false) -> DodadaFont {
         DodadaFont(family: "ChalkboardSE", size: size, weight: weight, lineHeight: lineHeight, letterSpacing: letterSpacing, underline: underline)
     }
 
-    static var largeTitleRegular: DodadaFont { font(size: 32, weight: 400) }
-    static var largeTitleBold: DodadaFont { font(size: 32, weight: 700) }
-    static var largeTitleBoldUnderline: DodadaFont { font(size: 32, weight: 700, underline: true) }
-    static var title1Regular: DodadaFont { font(size: 24, weight: 400) }
-    static var title1Bold: DodadaFont { font(size: 24, weight: 700) }
-    static var title1BoldUnderline: DodadaFont { font(size: 24, weight: 700, underline: true) }
-    static var title2Regular: DodadaFont { font(size: 22, weight: 400) }
-    static var title2Bold: DodadaFont { font(size: 22, weight: 700) }
-    static var title2BoldUnderline: DodadaFont { font(size: 22, weight: 700, underline: true) }
-    static var title3Regular: DodadaFont { font(size: 20, weight: 400) }
-    static var title3Bold: DodadaFont { font(size: 20, weight: 700) }
-    static var title3BoldUnderline: DodadaFont { font(size: 20, weight: 700, underline: true) }
-    static var headlineRegular: DodadaFont { font(size: 19, weight: 400) }
-    static var headlineBold: DodadaFont { font(size: 19, weight: 700) }
-    static var headlineBoldUnderline: DodadaFont { font(size: 19, weight: 700, underline: true) }
-    static var bodyRegular: DodadaFont { font(size: 17, weight: 400) }
-    static var bodyBold: DodadaFont { font(size: 17, weight: 700) }
-    static var bodyBoldUnderline: DodadaFont { font(size: 17, weight: 700, underline: true) }
-    static var calloutRegular: DodadaFont { font(size: 15, weight: 400) }
-    static var calloutBold: DodadaFont { font(size: 15, weight: 700) }
-    static var calloutBoldUnderline: DodadaFont { font(size: 15, weight: 700, underline: true) }
-    static var subheadlineRegular: DodadaFont { font(size: 14, weight: 400) }
-    static var subheadlineBold: DodadaFont { font(size: 14, weight: 700) }
-    static var subheadlineBoldUnderline: DodadaFont { font(size: 14, weight: 700, underline: true) }
-    static var footnoteRegular: DodadaFont { font(size: 12, weight: 400) }
-    static var footnoteBold: DodadaFont { font(size: 12, weight: 700) }
-    static var footnoteBoldUnderline: DodadaFont { font(size: 12, weight: 700, underline: true) }
-    static var caption1Regular: DodadaFont { font(size: 13, weight: 400) }
-    static var caption1Bold: DodadaFont { font(size: 13, weight: 700) }
-    static var caption1BoldUnderline: DodadaFont { font(size: 13, weight: 700, underline: true) }
-    static var caption2Regular: DodadaFont { font(size: 12, weight: 400) }
-    static var caption2Bold: DodadaFont { font(size: 12, weight: 700) }
-    static var caption2BoldUnderline: DodadaFont { font(size: 12, weight: 700, underline: true) }
+    var largeTitleRegular: DodadaFont { font(size: 32, weight: 400) }
+     var largeTitleBold: DodadaFont { font(size: 32, weight: 700) }
+     var largeTitleBoldUnderline: DodadaFont { font(size: 32, weight: 700, underline: true) }
+     var title1Regular: DodadaFont { font(size: 24, weight: 400) }
+     var title1Bold: DodadaFont { font(size: 24, weight: 700) }
+     var title1BoldUnderline: DodadaFont { font(size: 24, weight: 700, underline: true) }
+     var title2Regular: DodadaFont { font(size: 22, weight: 400) }
+     var title2Bold: DodadaFont { font(size: 22, weight: 700) }
+     var title2BoldUnderline: DodadaFont { font(size: 22, weight: 700, underline: true) }
+     var title3Regular: DodadaFont { font(size: 20, weight: 400) }
+     var title3Bold: DodadaFont { font(size: 20, weight: 700) }
+     var title3BoldUnderline: DodadaFont { font(size: 20, weight: 700, underline: true) }
+     var headlineRegular: DodadaFont { font(size: 19, weight: 400) }
+     var headlineBold: DodadaFont { font(size: 19, weight: 700) }
+     var headlineBoldUnderline: DodadaFont { font(size: 19, weight: 700, underline: true) }
+     var bodyRegular: DodadaFont { font(size: 17, weight: 400) }
+     var bodyBold: DodadaFont { font(size: 17, weight: 700) }
+     var bodyBoldUnderline: DodadaFont { font(size: 17, weight: 700, underline: true) }
+     var calloutRegular: DodadaFont { font(size: 15, weight: 400) }
+     var calloutBold: DodadaFont { font(size: 15, weight: 700) }
+     var calloutBoldUnderline: DodadaFont { font(size: 15, weight: 700, underline: true) }
+     var subheadlineRegular: DodadaFont { font(size: 14, weight: 400) }
+     var subheadlineBold: DodadaFont { font(size: 14, weight: 700) }
+     var subheadlineBoldUnderline: DodadaFont { font(size: 14, weight: 700, underline: true) }
+     var footnoteRegular: DodadaFont { font(size: 12, weight: 400) }
+     var footnoteBold: DodadaFont { font(size: 12, weight: 700) }
+     var footnoteBoldUnderline: DodadaFont { font(size: 12, weight: 700, underline: true) }
+     var caption1Regular: DodadaFont { font(size: 13, weight: 400) }
+     var caption1Bold: DodadaFont { font(size: 13, weight: 700) }
+     var caption1BoldUnderline: DodadaFont { font(size: 13, weight: 700, underline: true) }
+     var caption2Regular: DodadaFont { font(size: 12, weight: 400) }
+     var caption2Bold: DodadaFont { font(size: 12, weight: 700) }
+     var caption2BoldUnderline: DodadaFont { font(size: 12, weight: 700, underline: true) }
 
     func font(for token: DodadaTypographyToken) -> DodadaFont {
         switch token {
-        case .largeTitleRegular: return Self.largeTitleRegular
-        case .largeTitleBold: return Self.largeTitleBold
-        case .largeTitleBoldUnderline: return Self.largeTitleBoldUnderline
-        case .title1Regular: return Self.title1Regular
-        case .title1Bold: return Self.title1Bold
-        case .title1BoldUnderline: return Self.title1BoldUnderline
-        case .title2Regular: return Self.title2Regular
-        case .title2Bold: return Self.title2Bold
-        case .title2BoldUnderline: return Self.title2BoldUnderline
-        case .title3Regular: return Self.title3Regular
-        case .title3Bold: return Self.title3Bold
-        case .title3BoldUnderline: return Self.title3BoldUnderline
-        case .headlineRegular: return Self.headlineRegular
-        case .headlineBold: return Self.headlineBold
-        case .headlineBoldUnderline: return Self.headlineBoldUnderline
-        case .bodyRegular: return Self.bodyRegular
-        case .bodyBold: return Self.bodyBold
-        case .bodyBoldUnderline: return Self.bodyBoldUnderline
-        case .calloutRegular: return Self.calloutRegular
-        case .calloutBold: return Self.calloutBold
-        case .calloutBoldUnderline: return Self.calloutBoldUnderline
-        case .subheadlineRegular: return Self.subheadlineRegular
-        case .subheadlineBold: return Self.subheadlineBold
-        case .subheadlineBoldUnderline: return Self.subheadlineBoldUnderline
-        case .footnoteRegular: return Self.footnoteRegular
-        case .footnoteBold: return Self.footnoteBold
-        case .footnoteBoldUnderline: return Self.footnoteBoldUnderline
-        case .caption1Regular: return Self.caption1Regular
-        case .caption1Bold: return Self.caption1Bold
-        case .caption1BoldUnderline: return Self.caption1BoldUnderline
-        case .caption2Regular: return Self.caption2Regular
-        case .caption2Bold: return Self.caption2Bold
-        case .caption2BoldUnderline: return Self.caption2BoldUnderline
+        case .largeTitleRegular: return self.largeTitleRegular
+        case .largeTitleBold: return self.largeTitleBold
+        case .largeTitleBoldUnderline: return self.largeTitleBoldUnderline
+        case .title1Regular: return self.title1Regular
+        case .title1Bold: return self.title1Bold
+        case .title1BoldUnderline: return self.title1BoldUnderline
+        case .title2Regular: return self.title2Regular
+        case .title2Bold: return self.title2Bold
+        case .title2BoldUnderline: return self.title2BoldUnderline
+        case .title3Regular: return self.title3Regular
+        case .title3Bold: return self.title3Bold
+        case .title3BoldUnderline: return self.title3BoldUnderline
+        case .headlineRegular: return self.headlineRegular
+        case .headlineBold: return self.headlineBold
+        case .headlineBoldUnderline: return self.headlineBoldUnderline
+        case .bodyRegular: return self.bodyRegular
+        case .bodyBold: return self.bodyBold
+        case .bodyBoldUnderline: return self.bodyBoldUnderline
+        case .calloutRegular: return self.calloutRegular
+        case .calloutBold: return self.calloutBold
+        case .calloutBoldUnderline: return self.calloutBoldUnderline
+        case .subheadlineRegular: return self.subheadlineRegular
+        case .subheadlineBold: return self.subheadlineBold
+        case .subheadlineBoldUnderline: return self.subheadlineBoldUnderline
+        case .footnoteRegular: return self.footnoteRegular
+        case .footnoteBold: return self.footnoteBold
+        case .footnoteBoldUnderline: return self.footnoteBoldUnderline
+        case .caption1Regular: return self.caption1Regular
+        case .caption1Bold: return self.caption1Bold
+        case .caption1BoldUnderline: return self.caption1BoldUnderline
+        case .caption2Regular: return self.caption2Regular
+        case .caption2Bold: return self.caption2Bold
+        case .caption2BoldUnderline: return self.caption2BoldUnderline
         }
     }
 }

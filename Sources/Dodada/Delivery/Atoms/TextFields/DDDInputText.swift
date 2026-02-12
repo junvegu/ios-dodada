@@ -72,7 +72,7 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
                     .accessibility(hidden: true)
             } suffix: {
                 if !suffix.isEmpty || showSecureTextToggle {
-                    HStack(spacing: .small) {
+                    HStack(spacing: .spacingSm) {
                         secureTextToggleButton
                         suffix
                     }
@@ -107,7 +107,7 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
         }
         .foregroundStyle(Color.secondaryValue500)
         .textStyles(.calloutRegular)
-        .padding(.horizontal, .small)
+        .padding(.horizontal, .spacingSm)
     }
 
     // MARK: - Secure Text Toggle

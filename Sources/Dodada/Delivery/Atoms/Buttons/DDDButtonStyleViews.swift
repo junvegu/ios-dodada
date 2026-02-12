@@ -30,13 +30,13 @@ struct DDDButtonFillStyleView<LeadingIcon: View, TrailingIcon: View>: View {
                 .layoutPriority(1)
             disclosureIconBuilder(state)
         }
-        .foregroundColor(desing.getForegroundColor(by: theme, isDisabled: isDisabled, isPressed: isPressed))
+        .foregroundColor(desing.getForegroundColor(by: theme, size: size, isDisabled: isDisabled, isPressed: isPressed))
         .padding()
         .frame(maxWidth: fullWidth ? .infinity : desing.getWidth(by: theme))
         .frame(height: desing.getHeight(by: theme, size: size))
         .background(
             Rectangle()
-                .fill(desing.getBackgroundColor(by: theme, isDisabled: isDisabled, isPressed: isPressed))
+                .fill(desing.getBackgroundColor(by: theme, size: size, isDisabled: isDisabled, isPressed: isPressed))
                 .animation(.easeOut(duration: 0.3), value: isPressed)
         )
         .cornerRadius(desing.getCornerRadius(by: theme))
@@ -69,17 +69,17 @@ struct DDDButtonSecondaryStyleView<LeadingIcon: View, TrailingIcon: View>: View 
                 .layoutPriority(1)
             disclosureIconBuilder(state)
         }
-        .foregroundColor(desing.getForegroundColor(by: theme, isDisabled: isDisabled, isPressed: isPressed))
+        .foregroundColor(desing.getForegroundColor(by: theme, size: size, isDisabled: isDisabled, isPressed: isPressed))
         .padding()
         .frame(maxWidth: fullWidth ? .infinity : desing.getWidth(by: theme), maxHeight: desing.getHeight(by: theme, size: size))
         .background(
             RoundedRectangle(cornerRadius: radius)
-                .fill(desing.getBackgroundColor(by: theme, isDisabled: isDisabled, isPressed: isPressed))
+                .fill(desing.getBackgroundColor(by: theme, size: size, isDisabled: isDisabled, isPressed: isPressed))
         )
         .overlay(
             RoundedRectangle(cornerRadius: radius)
                 .stroke(
-                    desing.getBorderColor(by: theme, isDisabled: isDisabled, isPressed: isPressed),
+                    desing.getBorderColor(by: theme, size: size, isDisabled: isDisabled, isPressed: isPressed),
                     lineWidth: borderWidth
                 )
         )
@@ -109,10 +109,10 @@ struct DDDButtonTertiaryStyleView<LeadingIcon: View, TrailingIcon: View>: View {
                 .layoutPriority(1)
             disclosureIconBuilder(state)
         }
-        .foregroundColor(desing.getForegroundColor(by: theme, isDisabled: isDisabled, isPressed: isPressed))
+        .foregroundColor(desing.getForegroundColor(by: theme, size: size, isDisabled: isDisabled, isPressed: isPressed))
         .padding()
         .frame(maxWidth: fullWidth ? .infinity : desing.getWidth(by: theme), maxHeight: desing.getHeight(by: theme, size: size))
-        .background(desing.getBackgroundColor(by: theme, isDisabled: isDisabled, isPressed: isPressed))
+        .background(desing.getBackgroundColor(by: theme, size: size, isDisabled: isDisabled, isPressed: isPressed))
         .cornerRadius(desing.getCornerRadius(by: theme))
     }
 }
@@ -138,15 +138,15 @@ struct DDDButtonIconStyleView<LeadingIcon: View, TrailingIcon: View>: View {
         HStack {
             iconBuilder(state)
         }
-        .foregroundColor(desing.getForegroundColor(by: theme, isDisabled: isDisabled, isPressed: isPressed))
+        .foregroundColor(desing.getForegroundColor(by: theme, size: size, isDisabled: isDisabled, isPressed: isPressed))
         .padding()
         .frame(maxWidth: fullWidth ? .infinity : desing.getWidth(by: theme), maxHeight: desing.getHeight(by: theme, size: size))
-        .background(desing.getBackgroundColor(by: theme, isDisabled: isDisabled, isPressed: isPressed))
+        .background(desing.getBackgroundColor(by: theme, size: size, isDisabled: isDisabled, isPressed: isPressed))
         .cornerRadius(radius)
         .overlay(
             Circle()
                 .stroke(
-                    desing.getBorderColor(by: theme, isDisabled: isDisabled, isPressed: isPressed),
+                    desing.getBorderColor(by: theme, size: size, isDisabled: isDisabled, isPressed: isPressed),
                     lineWidth: borderWidth
                 )
         )

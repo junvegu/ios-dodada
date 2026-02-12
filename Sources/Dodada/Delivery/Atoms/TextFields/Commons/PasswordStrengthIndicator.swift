@@ -14,7 +14,7 @@ public struct PasswordStrengthIndicator: View {
     
     public var body: some View {
         if text.isEmpty == false {
-            HStack(spacing: .medium) {
+            HStack(spacing: .spacingMd) {
                 indicator
                     .animation(.easeOut, value: passwordStrength)
                 
@@ -31,7 +31,7 @@ public struct PasswordStrengthIndicator: View {
         Capsule()
         // .fill(.cloudNormal)
             .overlay(bar)
-            .frame(height: .xxSmall)
+            .frame(height: .spacingTwoXs)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     

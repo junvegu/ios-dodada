@@ -22,18 +22,18 @@ public struct DDDRatingMentionDetailsView: View {
     public var body: some View {
         VStack {
             
-            Divider().frame(height: .small)
+            Divider().frame(height: .spacingSm)
             HStack{
-                VStack(spacing: .xSmall) {
+                VStack(spacing: .spacingXs) {
                     Text("Calificaciones")
                         .textStyle(.caption2Bold)
                         .foregroundStyle(Color.secondaryValue400)
                     Text("\(rating, specifier: "%.1f")").textStyle(.title2Bold)
                     DDDRatingView(rating: .constant(Int(rating)))
                 }
-                Divider().frame(width: .xxLarge, height: .large)
+                Divider().frame(width: .spacingTwoXl, height: .spacingLg)
                 
-                VStack(spacing: .xSmall) {
+                VStack(spacing: .spacingXs) {
                     Text("Menciones")
                         .textStyle(.caption2Bold)
                         .foregroundStyle(Color.secondaryValue400)
@@ -42,9 +42,9 @@ public struct DDDRatingMentionDetailsView: View {
                         .textStyle(.caption2Bold)
                         .foregroundStyle(Color.secondaryValue500)
                 }
-                Divider().frame(width: .xxLarge, height: .large)
+                Divider().frame(width: .spacingTwoXl, height: .spacingLg)
 
-                VStack(spacing: .xSmall) {
+                VStack(spacing: .spacingXs) {
                     Text("Detalles")
                         .textStyle(.caption2Bold)
                         .foregroundStyle(Color.secondaryValue400)
@@ -54,9 +54,9 @@ public struct DDDRatingMentionDetailsView: View {
                         .foregroundStyle(Color.secondaryValue500)
                 }
             }
-            Divider().frame(height: .small)
+            Divider().frame(height: .spacingSm)
             
-        }.padding(.small)
+        }.padding(.spacingSm)
         
     }
     

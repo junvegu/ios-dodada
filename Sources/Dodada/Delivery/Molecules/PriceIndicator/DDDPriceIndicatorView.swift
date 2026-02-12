@@ -22,7 +22,7 @@ public struct DDDPriceIndicatorView: View {
     
     public var body: some View {
         DDDFlexibleView(data: prices,
-                        spacing: .xxSmall,
+                        spacing: .spacingTwoXs,
                         alignment: .leading
         ) { item in
             DDDPricingView(enabled: level.rawValue >= item.rawValue)

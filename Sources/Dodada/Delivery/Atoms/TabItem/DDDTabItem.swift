@@ -35,13 +35,13 @@ public struct DDDTabItem: View {
     
     // MARK: - Body
     public var body: some View {
-        Button(action: action) {
+        Button.init(action: action, label: {
             VStack(spacing: .zero) {
                 Text(title)
                     .textStyle(.subheadlineBold)
                     .foregroundStyle(isSelected ? activeColor : inactiveColor)
                     .animation(.easeInOut(duration: 0.3), value: isSelected)
-                    .padding(.horizontal, .medium)
+                    .padding(.horizontal, .spacingMd)
                 
                 ZStack(alignment: .center) {
                     Rectangle()
@@ -55,9 +55,8 @@ public struct DDDTabItem: View {
                         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
                 }
             }
-            .padding(.vertical, .small)
-        }
-        .buttonStyle(PlainButtonStyle())
+            .padding(.vertical, .spacingSm)
+        })
     }
     
     // MARK: - Computed Properties

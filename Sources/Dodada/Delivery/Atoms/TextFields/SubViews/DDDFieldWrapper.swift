@@ -30,7 +30,7 @@ public struct FieldWrapper<Label: View, Content: View, Footer: View>: View {
                 label
                     .accessibility(hidden: true)
                     .accessibility(removeTraits: .isStaticText)
-                    .padding(.bottom, .xxSmall)
+                    .padding(.bottom, .spacingSm)
             }
 
             content
@@ -39,7 +39,7 @@ public struct FieldWrapper<Label: View, Content: View, Footer: View>: View {
                 VStack(alignment: .leading, spacing: 0) {
                     footer
                     FieldMessage(message)
-                        .padding(.top, .xxSmall)
+                        .padding(.top, .spacingSm)
                 }
             }
         }
@@ -103,3 +103,4 @@ public struct FieldLabel: View {
         self.label = label
     }
 }
+

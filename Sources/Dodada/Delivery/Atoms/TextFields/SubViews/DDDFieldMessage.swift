@@ -32,7 +32,7 @@ public struct FieldMessage: View {
         }
     }
 
-    public init(_ message: Message?, spacing: CGFloat = .xxSmall) {
+    public init(_ message: Message?, spacing: CGFloat = .spacingSm) {
         self.message = message
         self.spacing = spacing
     }

@@ -15,7 +15,7 @@ struct DDDTagView: View {
     var body: some View {
         Text(label)
             .textStyle(.caption2Bold)
-            .padding(.xxSmall)
+            .padding(.spacingTwoXs)
             .frame(minHeight: 28)
             .foregroundStyle(invert ? Color.white : colorTheme.defaultButton)
             .background(

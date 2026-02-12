@@ -182,7 +182,7 @@ public struct DDDSwipeableActionButton: View {
         // Solo se pone blanco si el swipe es hacia la derecha (dragOffset > 0) porque el color se llena desde la izquierda
         let isCovered = dragOffset > 0 ? isSectionCovered(section: .left, buttonWidth: buttonWidth) : false
         
-        HStack(spacing: .xxSmall) {
+        HStack(spacing: .spacingTwoXs) {
             DDDIcon(
                 displayedAction.icon,
                 color: textColorToken(isCovered: isCovered)
@@ -196,7 +196,7 @@ public struct DDDSwipeableActionButton: View {
                 .textStyle(.bodyBold)
                 .foregroundStyle(textColor(isCovered: isCovered))
         }
-        .padding(.leading, .medium)
+        .padding(.leading, .spacingMd)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
     
@@ -233,7 +233,7 @@ public struct DDDSwipeableActionButton: View {
             DDDIcon(centerIcon, color: centerIconColorToken(buttonWidth: buttonWidth), size: .iconTwoXl)
                 .zIndex(4)
         }
-        .padding(.horizontal, .small)
+        .padding(.horizontal, .spacingSm)
     }
     
     // MARK: - Right Section
@@ -245,7 +245,7 @@ public struct DDDSwipeableActionButton: View {
         // Solo se pone blanco si el swipe es hacia la izquierda (dragOffset < 0) porque el color se llena desde la derecha
         let isCovered = dragOffset < 0 ? isSectionCovered(section: .right, buttonWidth: buttonWidth) : false
         
-        HStack(spacing: .xxSmall) {
+        HStack(spacing: .spacingTwoXs) {
             Text(">>")
                 .textStyle(.bodyBold)
                 .foregroundStyle(textColor(isCovered: isCovered))
@@ -259,7 +259,7 @@ public struct DDDSwipeableActionButton: View {
                 color: textColorToken(isCovered: isCovered)
             )
         }
-        .padding(.trailing, .medium)
+        .padding(.trailing, .spacingMd)
         .frame(maxWidth: .infinity, alignment: .trailing)
     }
     

@@ -53,7 +53,7 @@ public struct DDDVerticalNav<LeadingIcon: View, TrailingIcon: View>: View {
                 HStack {
                     leadingIcon()
                     
-                    VStack(alignment: .leading, spacing: .xSmall) {
+                    VStack(alignment: .leading, spacing: .spacingXs) {
                         Text(title)
                             .textStyle(.calloutBold)
                         
@@ -66,11 +66,11 @@ public struct DDDVerticalNav<LeadingIcon: View, TrailingIcon: View>: View {
                     
                     trailingIcon()
                     
-                }.padding(.vertical, .medium)
+                }.padding(.vertical, .spacingMd)
                 
                 Divider()
             }
-            .padding(.horizontal, .medium)
+            .padding(.horizontal, .spacingMd)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
