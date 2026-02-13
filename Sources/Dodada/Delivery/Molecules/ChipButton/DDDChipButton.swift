@@ -28,7 +28,7 @@ public struct DDDChipButton: View {
         HStack(spacing: 8) {
             
             Text(model.titleKey)
-                .apply(token: .subheadline, weight: .bold)
+                .textStyle(.subheadlineBold)
                 .foregroundColor(isSelected ? .white : .black )
                 .lineLimit(1)
             Image(systemName: model.systemImage).font(.body)

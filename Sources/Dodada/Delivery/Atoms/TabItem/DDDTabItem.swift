@@ -11,10 +11,12 @@ import SwiftUI
 /// Represents one tab in a tab bar with active/inactive states.
 public struct DDDTabItem: View {
     
-    // MARK: - Properties
+    // MARK: - Configuration
     private let title: String
     private let isSelected: Bool
     private let action: () -> Void
+    
+    private static let indicatorWidth: CGFloat = 40
     
     // MARK: - Initializer
     /// Creates a `DDDTabItem` component.
@@ -36,45 +38,54 @@ public struct DDDTabItem: View {
     // MARK: - Body
     public var body: some View {
         Button(action: action) {
-            VStack(spacing: .zero) {
-                Text(title)
-                    .apply(token: .subheadline, weight: .bold)
-                    .foregroundStyle(isSelected ? activeColor : inactiveColor)
-                    .animation(.easeInOut(duration: 0.3), value: isSelected)
-                    .padding(.horizontal, .medium)
-                
-                ZStack(alignment: .center) {
-                    Rectangle()
-                        .fill(Color.clear)
-                        .frame(height: 2)
-                    
-                    Rectangle()
-                        .fill(activeColor)
-                        .frame(width: isSelected ? 20 : 0, height: 2)
-                        .opacity(isSelected ? 1 : 0)
-                        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
-                }
+            VStack(spacing: .spacingTwoXs) {
+                textLabel
+                indicatorBar
             }
-            .padding(.vertical, .small)
+            .padding(.vertical, .spacingSm)
         }
-        .buttonStyle(PlainButtonStyle())
+        .buttonStyle(.plain)
     }
     
-    // MARK: - Computed Properties
+    // MARK: - Subviews
+    @ViewBuilder
+    private var textLabel: some View {
+        Text(title)
+            .textStyle(.subheadlineBold)
+            .foregroundStyle(isSelected ? activeColor : inactiveColor)
+            .padding(.horizontal, .spacingMd)
+            .animation(.easeInOut(duration: 0.3), value: isSelected)
+    }
+    
+    @ViewBuilder
+    private var indicatorBar: some View {
+        ZStack(alignment: .center) {
+            Rectangle()
+                .fill(Color.clear)
+                .frame(height: 2)
+            
+            Rectangle()
+                .fill(activeColor)
+                .frame(width: isSelected ? Self.indicatorWidth : 0, height: .spacingTwoXs)
+                .cornerRadius(.radiusXs)
+                .opacity(isSelected ? 1 : 0)
+                .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
+        }
+    }
+    
+    // MARK: - Helpers
     private var activeColor: Color {
-        Asset.Colors.primary.swiftUIColor
+        Color.primaryValue500
     }
     
     private var inactiveColor: Color {
-        Asset.Colors.secondary300.swiftUIColor
+        Color.secondaryValue400
     }
 }
 
 // MARK: - Preview
-
 #Preview {
-    ZStack {
-        Color.black
+    NavigationView {
         HStack {
             DDDTabItem(
                 title: "Menú",
@@ -90,6 +101,7 @@ public struct DDDTabItem: View {
         }
         .padding()
     }
-   
+    .onAppear {
+        Dodada.registerFonts()
+    }
 }
-

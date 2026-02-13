@@ -14,7 +14,6 @@ public struct DDDDesignSystem {
     struct DesignSystemModifier: ViewModifier {
         func body(content: Content) -> some View {
             content
-                .environment(\.dddFontProvider, MyCustomFontProvider())
                 .environment(\.colorTheme, ColorThemeEnvironmentKey.defaultValue) // si usas colores también
         }
     }

@@ -31,15 +31,15 @@ public struct DDDToast: View {
     public var body: some View {
         if isVisible {
             HStack(spacing: 10) {
-                DDDIcon(type.leadingIcon, iconColor: type.iconColor)
+                DDDIcon(type.leadingIcon, color: type.iconColorToken)
                 
                 VStack(alignment: .leading) {
                     Text(title)
-                        .apply(token: .footNote, weight: .bold)
+                        .textStyle(.footnoteBold)
                     
                     if let message = message {
                         Text(message)
-                            .apply(token: .footNote)
+                            .textStyle(.footnoteRegular)
                     }
                 }
                 .foregroundColor(type.textColor)
@@ -49,7 +49,7 @@ public struct DDDToast: View {
                 Button(action: {
                     dismissToast()
                 }) {
-                    DDDIcon(.x, iconColor: type.iconColor)
+                    DDDIcon(.actionsCircleX, color: type.iconColorToken)
                 }
             }
             .padding()

@@ -34,14 +34,14 @@ public struct DDDSearchFilters: View {
             .padding(.horizontal, 16)
             Divider()
                 .frame(maxWidth: .infinity)
-                .background(Color(asset: Color.secondary200))
+                .background(Color.secondaryValue200)
         }
         .background(.white)
     }
     
     private var searchBar: some View {
         HStack {
-            DDDIcon(.search)
+            DDDIcon(.navigationSearch)
             
             TextField(placeholder, text: $searchText, onCommit: {
                 onSearch(searchText)
@@ -49,7 +49,7 @@ public struct DDDSearchFilters: View {
             .textFieldStyle(PlainTextFieldStyle())
             
             if !searchText.isEmpty {
-                DDDIcon(.x)
+                DDDIcon(.actionsCircleX)
                     .onTapGesture {
                         searchText = ""
                         onSearch("")
@@ -57,7 +57,7 @@ public struct DDDSearchFilters: View {
             }
         }
         .padding(12)
-        .background(RoundedRectangle(cornerRadius: 8).stroke(searchText.isEmpty ? Color(asset: Color.secondary200) : Color(asset: Color.secondary500)))
+        .background(RoundedRectangle(cornerRadius: 8).stroke(searchText.isEmpty ? Color.secondaryValue200 : Color.secondaryValue500))
     }
     
     private var filterScrollView: some View {
@@ -109,8 +109,8 @@ public struct FilterButton: View {
 
 private extension View {
     func applyTextStyle() -> some View {
-        self.apply(token: .callOut)
-            .foregroundColor(Color(asset: Color.secondary400))
+        self.textStyles(.calloutRegular)
+            .foregroundColor(Color.secondaryValue400)
     }
 }
 

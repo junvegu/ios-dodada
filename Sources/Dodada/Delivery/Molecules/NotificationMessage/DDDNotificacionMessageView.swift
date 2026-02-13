@@ -19,11 +19,12 @@ public struct DDDNotificacionMessageView: View {
     
     public var body: some View {
         HStack {
-            DDDIcon(.info)
-                .iconSize(custom: .xLarge)
+            DDDIcon(.feedbackInfo, size: .iconXl)
                 .padding(.leading)
             
-            Group { Text(text + " " ).font(DDDFontToken.footNote.font(.regular)) + Text( highligh).font(DDDFontToken.footNote.font(.bold)).underline()
+            Group {
+                Text(text + " " ).textStyle(.footnoteRegular) +
+                Text(highligh).textStyle(.footnoteBoldUnderline)
             }
             .padding([.top, .bottom])
             .onTapGesture {
@@ -34,10 +35,10 @@ public struct DDDNotificacionMessageView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .clipShape(
-            RoundedRectangle(cornerRadius: .regularCornerRadius)
+            RoundedRectangle(cornerRadius: .radiusMd)
             
         )
-        .background(Color.secondary100.swiftUIColor.clipShape(RoundedRectangle(cornerRadius:.regularCornerRadius)))
+        .background(Color.secondaryValue100.clipShape(RoundedRectangle(cornerRadius:.radiusMd)))
         .padding(.horizontal, 12)
         
     }

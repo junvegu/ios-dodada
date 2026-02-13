@@ -16,12 +16,10 @@ struct DDDPricingView: View {
 
     var body: some View {
         HStack {
-            DDDIcon(.dollarSign, iconColor: .white)
-                .iconSize(custom: .small)
+            DDDIcon(.paymentDollarSign, color: .textOnPrimary, size: .iconSm)
         }
-        .padding(.xxxSmall)
-        .background(enabled ? Asset.Colors.secondary.swiftUIColor :
-                        Asset.Colors.secondary200.swiftUIColor)
+        .padding(.spacingTwoXs)
+        .background(enabled ? Color.secondaryValue500 : Color.secondaryValue200)
         .clipShape(Circle())
     }
 }

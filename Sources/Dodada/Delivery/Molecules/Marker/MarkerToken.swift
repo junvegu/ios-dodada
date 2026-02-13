@@ -11,17 +11,17 @@ public enum MarkerType {
     
     var badgeColor: Color {
         switch self {
-        case .new: return Color(asset: Color.primary500)
-        case .trading: return Color(asset: Color.success500)
-        case .top_one: return Color(asset: Color.warning500)
+        case .new: return Color.primaryValue500
+        case .trading: return Color.successValue500
+        case .top_one: return Color.warningValue500
         }
     }
     
-    var Badge: DDDIcon.Images {
+    var badge: DodadaIconToken {
         switch self {
-        case .new: return .glow
-        case .trading: return .trendingTopic
-        case .top_one: return .award2
+        case .new: return .specialGlow
+        case .trading: return .trendingTrendingTopic
+        case .top_one: return .contentAward2
         }
     }
 }

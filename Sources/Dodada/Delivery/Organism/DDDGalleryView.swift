@@ -19,21 +19,21 @@ public struct DDDGalleryView: View {
     }
     
     public var body: some View {
-        VStack(alignment: .leading, spacing: .medium) {
+        VStack(alignment: .leading, spacing: .spacingMd) {
             if let title = title {
                 HStack {
                     Text(title)
-                        .apply(token: .headline, weight: .regular)
+                        .textStyle(.headlineRegular)
                         .fixedSize(horizontal: false, vertical: true)
                         .lineLimit(2)
                     Spacer()
                     if !imageURLs.isEmpty {
                         Text("1/\(imageURLs.count)")
-                            .apply(token: .caption1, weight: .bold)
-                            .foregroundColor(Asset.Colors.secondary400.swiftUIColor)
+                            .textStyle(.caption1Bold)
+                            .foregroundColor(Color.secondaryValue400)
                     }
                 }
-                .padding(.horizontal, .small)
+                .padding(.horizontal, .spacingSm)
             }
             
             if imageURLs.isEmpty {
@@ -75,7 +75,7 @@ private struct GalleryGridView: View {
     let onImageTap: (Int) -> Void
     
     var body: some View {
-        VStack(alignment: .leading, spacing: .small) {
+        VStack(alignment: .leading, spacing: .spacingSm) {
             if let firstImage = imageURLs.first {
                 GalleryImageItem(
                     urlString: firstImage,
@@ -90,9 +90,9 @@ private struct GalleryGridView: View {
             
             if imageURLs.count > 1 {
                 LazyVGrid(columns: [
-                    GridItem(.flexible(), spacing: .xSmall),
-                    GridItem(.flexible(), spacing: .xSmall)
-                ], alignment: .leading, spacing: .xSmall) {
+                    GridItem(.flexible(), spacing: .spacingXs),
+                    GridItem(.flexible(), spacing: .spacingXs)
+                ], alignment: .leading, spacing: .spacingXs) {
                     ForEach(Array(imageURLs.enumerated().dropFirst()), id: \.offset) { index, urlString in
                         GalleryImageItem(
                             urlString: urlString,
@@ -108,7 +108,7 @@ private struct GalleryGridView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, .small)
+        .padding(.horizontal, .spacingSm)
     }
 }
 
@@ -127,7 +127,7 @@ private struct GalleryImageItem: View {
                     .clipped()
             }
             .frame(height: isLarge ? 200 : 150)
-            .clipShape(RoundedRectangle(cornerRadius: .regularCornerRadius))
+            .clipShape(RoundedRectangle(cornerRadius: .radiusSm))
         }
         .buttonStyle(PlainButtonStyle())
     }
@@ -179,16 +179,16 @@ private struct FullScreenImageView: View {
                 HStack {
                     Spacer()
                     Text("\(currentIndex + 1)/\(imageURLs.count)")
-                        .apply(token: .callOut, weight: .regular)
+                        .textStyle(.calloutRegular)
                         .foregroundColor(Color.black)
-                        .padding(.horizontal, .medium)
-                        .padding(.vertical, .small)
+                        .padding(.horizontal, .spacingMd)
+                        .padding(.vertical, .spacingSm)
                         .background(
-                            RoundedRectangle(cornerRadius: .regularCornerRadius)
+                            RoundedRectangle(cornerRadius: .radiusSm)
                                 .fill(.regularMaterial)
                         )
-                        .padding(.trailing, .medium)
-                        .padding(.bottom, .large)
+                        .padding(.trailing, .spacingMd)
+                        .padding(.bottom, .spacingLg)
                 }
             }
         }
@@ -205,16 +205,16 @@ private struct FullScreenImageView: View {
 
 private struct EmptyGalleryView: View {
     var body: some View {
-        VStack(spacing: .medium) {
+        VStack(spacing: .spacingMd) {
             Image(systemName: "photo.on.rectangle")
                 .font(.system(size: 48))
-                .foregroundColor(Asset.Colors.secondary400.swiftUIColor)
+                .foregroundColor(Color.secondaryValue400)
             Text("No hay imágenes disponibles")
-                .apply(token: .body, weight: .regular)
-                .foregroundColor(Asset.Colors.secondary400.swiftUIColor)
+                .textStyle(.bodyRegular)
+                .foregroundColor(Color.secondaryValue400)
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, .xLarge)
+        .padding(.vertical, .spacingXl)
     }
 }
 

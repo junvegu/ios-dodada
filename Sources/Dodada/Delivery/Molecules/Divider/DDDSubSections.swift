@@ -9,11 +9,11 @@ import SwiftUI
 
 public struct DDDSubSections: View {
     
-    let icon: DDDIcon.Images
+    let icon: DodadaIconToken
     let title: String
     let subtitle: String
     
-    public init(icon: DDDIcon.Images, title: String, subtitle: String) {
+    public init(icon: DodadaIconToken, title: String, subtitle: String) {
         self.icon = icon
         self.title = title
         self.subtitle = subtitle
@@ -24,13 +24,11 @@ public struct DDDSubSections: View {
             line
             
             VStack(spacing: 4){
-                DDDIcon(icon, iconColor: .red)
+                DDDIcon(icon, color: .errorValue500)
                 Text(title)
-                    .apply(token: .subheadline,
-                           weight: .bold)
+                    .textStyle(.subheadlineBold)
                 Text(subtitle)
-                    .apply(token: .caption2,
-                           weight: .regular)
+                    .textStyle(.caption2Regular)
             }.fixedSize(horizontal: true, vertical: false)
             
             line
@@ -40,11 +38,11 @@ public struct DDDSubSections: View {
     private var line: some View{
         Rectangle()
             .frame(height: 1)
-            .foregroundColor(Color(asset: Color.secondary200))
+            .foregroundColor(Color.secondaryValue200)
     }
 }
 
 
 #Preview {
-    DDDSubSections(icon: .chicken, title: "Nombre de la Lista", subtitle: "10 restaurantes")
+    DDDSubSections(icon: .restaurantChicken, title: "Nombre de la Lista", subtitle: "10 restaurantes")
 }

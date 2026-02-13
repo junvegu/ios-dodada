@@ -27,7 +27,7 @@ public struct DDDCheckboxText: View {
             }
             
             Text(text)
-                .apply(token: .callOut, weight: .regular)
+                .textStyle(.calloutRegular)
             
             Spacer()
         }.padding(.horizontal, 10)

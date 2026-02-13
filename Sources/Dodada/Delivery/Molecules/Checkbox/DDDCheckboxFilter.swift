@@ -10,12 +10,12 @@ import SwiftUI
 public struct DDDCheckboxFilter: View {
     public let type: CheckboxFilterType
     public let title: String
-    public let leadingIcon: DDDIcon.Images?
-    public let trailingIcon: DDDIcon.Images?
+    public let leadingIcon: DodadaIconToken?
+    public let trailingIcon: DodadaIconToken?
     @Binding private var isChecked: Bool
     private var onRemove: (() -> Void)?
     
-    public init(type: CheckboxFilterType, title: String, leadingIcon: DDDIcon.Images? = nil, trailingIcon: DDDIcon.Images? = .x, isChecked: Binding<Bool>? = nil, onRemove: (() -> Void)? = nil) {
+    public init(type: CheckboxFilterType, title: String, leadingIcon: DodadaIconToken? = nil, trailingIcon: DodadaIconToken? = nil, isChecked: Binding<Bool>? = nil, onRemove: (() -> Void)? = nil) {
         self.type = type
         self.title = title
         self.leadingIcon = leadingIcon
@@ -31,13 +31,13 @@ public struct DDDCheckboxFilter: View {
             }
             
             Text(title)
-                .apply(token: .callOut, weight: .regular)
+                .textStyle(.calloutRegular)
             
             Spacer()
             
             if type == .last_results, let onRemove = onRemove {
                 Button(action: { onRemove() }) {
-                    DDDIcon(trailingIcon, iconColor: Color(asset: Color.secondary400))
+                    DDDIcon(trailingIcon, color: .secondaryValue400)
                 }
             } else if type == .checkbox {
                 DDDCheckboxIcon(type: .checkbox, state: isChecked ? .active : .default, isChecked: $isChecked)
@@ -55,14 +55,14 @@ public struct DDDCheckboxFilter: View {
                 DDDCheckboxFilter(
                     type: .last_results,
                     title: "Waaaaaaa",
-                    leadingIcon: .circle,
+                    leadingIcon: .feedbackAlertCircle,
                     onRemove: { print("Filtro eliminado") }
                 )
                 
                 DDDCheckboxFilter(
                     type: .checkbox,
                     title: "wiiiiii",
-                    leadingIcon: .circle,
+                    leadingIcon: .utilityCircle,
                     isChecked: $checkboxDefaults
                 )
             }

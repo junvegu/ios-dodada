@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct DDDRating: View {
     
-    var imageUser: DDDIcon.Images
+    var imageUser: DodadaIconToken
     var userName: String
     var date: String
     var description: String
@@ -22,27 +22,25 @@ public struct DDDRating: View {
                 
                 VStack{
                     Text(userName)
-                        .apply(token: .footNote,
-                               weight: .bold)
+                        .textStyle(.footnoteBold)
                     DDDRatingView(rating: .constant(Int(rating)))
                 }
                 Spacer()
                 
                 HStack{
                     Text(date)
-                        .apply(token: .caption2,
-                               weight: .bold)
+                        .textStyle(.caption2Bold)
                         .padding(.bottom)
                 }
             }
             
             Text(description)
-                .apply(token: .footNote)
+                .textStyle(.footnoteRegular)
             
         }.padding(.horizontal)
     }
 }
 
 #Preview {
-    DDDRating(imageUser: .user ,userName:  "Steve Jobs", date: "10/10/2025", description: "En este evento les presentamos oficialmente al nuevo integrante de la familia, el iPhone 16e.", rating: 5)
+    DDDRating(imageUser: .userEye ,userName:  "Steve Jobs", date: "10/10/2025", description: "En este evento les presentamos oficialmente al nuevo integrante de la familia, el iPhone 16e.", rating: 5)
 }

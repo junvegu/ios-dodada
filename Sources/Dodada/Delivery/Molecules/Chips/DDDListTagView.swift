@@ -18,7 +18,7 @@ public struct DDDListTagView<Data: Collection>: View where Data.Element == Strin
     
     public var body: some View {
         DDDFlexibleView(data: data,
-                        spacing: .xxSmall,
+                        spacing: .spacingTwoXs,
                         alignment: .leading
         ) { item in
             DDDTagView(label: item, invert: invert)

@@ -111,7 +111,7 @@ extension View {
                 countryLimit: 9,
                 validationRegex: "^9[0-9]{8}sssssdsds$",
                 backgroundColor: .clear,
-                cornerRadius: .regularCornerRadius,
+                cornerRadius: .radiusSm,
                 foregroundColor: .accentColor,
                 placeHolder: "mmm"
             )

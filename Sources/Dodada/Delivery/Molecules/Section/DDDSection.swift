@@ -24,11 +24,11 @@ public struct DDDSection: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(title)
-                    .apply(token: .title3, weight: .bold)
+                    .textStyle(.title3Bold)
                 
                 if let subtitle = subtitle {
                     Text(subtitle)
-                        .apply(token: .caption2, weight: .regular)
+                        .textStyle(.caption2Regular)
                 }
             }
             Spacer()
