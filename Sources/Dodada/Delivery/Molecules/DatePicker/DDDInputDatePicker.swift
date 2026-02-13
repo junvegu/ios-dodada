@@ -48,7 +48,7 @@ public struct DDDInputDatePicker: View {
 
                     Spacer()
 
-                    DDDIcon(.timeCalendar, color: .secondaryValue500)
+                    DDDIcon(.timeCalendar)
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 12)
@@ -126,24 +126,29 @@ public struct DDDInputDatePicker: View {
         @State private var showError = false
 
         var body: some View {
-            VStack(spacing: 24) {
-                DDDInputDatePicker(
-                    selectedDate: $birthDate,
-                    placeholder: "Fecha de nacimiento",
-                    description: "Tu fecha de nacimiento real",
-                    errorMessage: showError && birthDate == nil ? "Este campo es obligatorio" : nil
-                )
+            NavigationView {
+                VStack(spacing: 24) {
+                    DDDInputDatePicker(
+                        selectedDate: $birthDate,
+                        placeholder: "Fecha de nacimiento",
+                        description: "Tu fecha de nacimiento real",
+                        errorMessage: showError && birthDate == nil ? "Este campo es obligatorio" : nil
+                    )
 
-                Button("Validar") {
-                    showError = true
-                }
+                    Button("Validar") {
+                        showError = true
+                    }
 
-                Button("Reset") {
-                    birthDate = nil
-                    showError = false
+                    Button("Reset") {
+                        birthDate = nil
+                        showError = false
+                    }
                 }
+                .padding()
+            }.onAppear {
+                Dodada.registerFonts()
             }
-            .padding()
+            
         }
     }
 

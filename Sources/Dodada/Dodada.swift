@@ -6,10 +6,11 @@ import SwiftUI
 public struct Dodada {
     
     public static func registerFonts() {
-        
-        FontFamily.Quicksand.all.forEach {
-            registerFont(bundle: .module, fontName: $0.name, fontExtension: "ttf")
-        }
+        registerFont(bundle: .module, fontName: "Quicksand-Bold", fontExtension: "ttf")
+        registerFont(bundle: .module, fontName: "Quicksand-Light", fontExtension: "ttf")
+        registerFont(bundle: .module, fontName: "Quicksand-Medium", fontExtension: "ttf")
+        registerFont(bundle: .module, fontName: "Quicksand-Regular", fontExtension: "ttf")
+        registerFont(bundle: .module, fontName: "Quicksand-SemiBold", fontExtension: "ttf")
     }
     
     fileprivate static func registerFont(bundle: Bundle, fontName: String, fontExtension: String) {
@@ -28,4 +29,3 @@ public struct Dodada {
     
     
 }
-
