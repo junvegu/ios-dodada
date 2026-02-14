@@ -17,7 +17,7 @@ public extension View {
     }
 }
 
-extension Text {
+public extension Text {
     func textStyle(_ token: DodadaTypographyToken, color: DodadaColorToken = .textPrimary) -> Text {
         let theme = DDDThemeManager.shared.main
         let font = theme.typography.font(for: token)
