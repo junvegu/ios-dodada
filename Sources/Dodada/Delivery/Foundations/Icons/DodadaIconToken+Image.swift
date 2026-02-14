@@ -7,7 +7,7 @@
 import SwiftUI
 public extension DodadaIconToken {
     func toImage() -> Image {
-        Image(self.assetName)
+        Image(self.assetName, bundle: .module)
     }
 }
 
