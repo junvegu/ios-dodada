@@ -24,7 +24,8 @@ public struct DDDSection: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(title)
-                    .textStyle(.title3Bold)
+                    .textStyle(.headlineBold)
+                    .foregroundStyle(Color.secondaryValue500)
                 
                 if let subtitle = subtitle {
                     Text(subtitle)

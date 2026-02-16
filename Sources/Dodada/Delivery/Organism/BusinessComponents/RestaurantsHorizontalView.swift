@@ -57,10 +57,10 @@ public struct RestaurantsHorizontalView<Item: Identifiable>: View {
                 buttonTitle: sectionButtonTitle,
                 action: onSeeAllTap
             )
-            .padding(.horizontal, .spacingMd)
+            .padding(.horizontal, .spacingLg)
 
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: .spacingSm) {
+                LazyHStack(spacing: .spacingMd) {
                     ForEach(restaurants) { restaurant in
                         RecommendedRestaurantView(
                             imageURL: restaurantImageURL(restaurant),
@@ -76,7 +76,7 @@ public struct RestaurantsHorizontalView<Item: Identifiable>: View {
                         .onTapGesture {
                             onRestaurantTap(restaurant)
                         }
-                        .padding(.top, .spacingTwoXs)
+                        .padding(.top, .spacingXs)
                         .padding(.bottom, .spacingSm)
                     }
                 }

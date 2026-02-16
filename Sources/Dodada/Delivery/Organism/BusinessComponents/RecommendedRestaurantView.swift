@@ -60,14 +60,14 @@ public struct RecommendedRestaurantView: View {
                         .textStyle(.bodyBold)
                     Spacer()
                     HStack(spacing: .spacingTwoXs) {
-                        DDDIcon(.contentStar, color: .warningValue300)
+                        DDDIcon(.contentStar, color: .warningValue300, size: .iconXs)
                         Text(String(format: "%.1f", rating))
                             .textStyle(.caption2Bold)
                     }
                 }
                 
                 HStack {
-                    DDDIcon(.locationMapPin)
+                    DDDIcon(.locationMapPin, size: .iconXs)
                     Text(location)
                         .textStyle(.caption1Regular)
                     Text("(\(distance))")
@@ -85,7 +85,7 @@ public struct RecommendedRestaurantView: View {
                         Text("•")
                             .foregroundColor(.gray)
                         HStack {
-                            DDDIcon(.contentAward2, color: .warningValue300)
+                            DDDIcon(.contentAward2, color: .warningValue300, size: .iconSm)
                             Text("Destacado")
                                 .textStyle(.caption2Bold)
                         }

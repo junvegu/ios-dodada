@@ -117,15 +117,15 @@ public struct RouteCardItem: View {
                 Text(stops.description)
                     .textStyle(.subheadlineRegular)
             }
-            HStack(spacing: .spacingTwoXs) {
+            HStack(spacing: .spacingXs) {
                 DDDIcon(.locationMapPin, color: .primaryValue500)
                 
                 Text(distanceText)
                     .textStyle(.subheadlineRegular)
-                    .foregroundStyle(Color.successValue200)
-                    .padding(.horizontal, .spacingTwoXs)
-                    .padding(.vertical, .spacingTwoXs)
-                    .background(Color.successValue400)
+                    .foregroundStyle(Color.successValue500)
+                    .padding(.horizontal, .spacingXs)
+                    .padding(.vertical, .spacingXs)
+                    .background(Color.successValue100)
                     .clipShape(RoundedRectangle(cornerRadius: .radiusSm, style: .continuous))
 
                 Spacer()
