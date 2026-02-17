@@ -34,11 +34,6 @@ let package = Package(
         .testTarget(
             name: "DodadaTests",
             dependencies: ["Dodada"]
-        ),
-        
-        .executableTarget(
-            name: "DodadaPreview",
-            dependencies: ["Dodada"]
         )
     ]
 )

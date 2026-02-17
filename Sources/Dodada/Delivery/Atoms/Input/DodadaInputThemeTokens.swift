@@ -11,6 +11,7 @@ import SwiftUI
 public struct DodadaInputTokens {
     public let borderRadius: DodadaRadiusToken?
     public let paddingHorizontal: DodadaSpacingToken?
+    public let gap: DodadaSpacingToken?
     public let shapeHeight: DodadaSizingToken?
     public let backgroundColor: DodadaColorToken?
     public let borderColor: DodadaColorToken?
@@ -29,6 +30,7 @@ public struct DodadaInputTokens {
     private init(
         borderRadius: DodadaRadiusToken? = .md,
         paddingHorizontal: DodadaSpacingToken? = .md,
+        gap: DodadaSpacingToken? = .sm,
         shapeHeight: DodadaSizingToken? = .inputHeightLg,
         backgroundColor: DodadaColorToken? = nil,
         borderColor: DodadaColorToken? = nil,
@@ -46,6 +48,7 @@ public struct DodadaInputTokens {
     ) {
         self.borderRadius = borderRadius
         self.paddingHorizontal = paddingHorizontal
+        self.gap = gap
         self.shapeHeight = shapeHeight
         self.backgroundColor = backgroundColor
         self.borderColor = borderColor
