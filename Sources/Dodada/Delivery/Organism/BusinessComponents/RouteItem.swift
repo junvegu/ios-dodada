@@ -88,14 +88,14 @@ public struct RouteCardItem: View {
 
     private var ratingPill: some View {
         HStack(spacing: .spacingTwoXs) {
-            DDDIcon(.contentStar, color: .secondaryValue200)
+            DDDIcon(.contentStar, color: .warningValue600, size: .iconSm)
             Text(String(format: "%.1f", rating))
                 .textStyle(.subheadlineBold)
-                .foregroundStyle(Color.black)
+                .foregroundStyle(Color.warningValue600)
         }
         .padding(.horizontal, .spacingXs)
         .padding(.vertical, .spacingTwoXs)
-        .background(Color.warningValue500)
+        .background(Color.warningValue100)
         .clipShape(Capsule())
     }
 
@@ -112,13 +112,13 @@ public struct RouteCardItem: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             HStack(spacing: .spacingTwoXs) {
-                DDDIcon(.restaurantFood, color: .primaryValue500)
+                DDDIcon(.restaurantFood, color: .primaryValue500, size: .iconLg)
                 
                 Text(stops.description)
                     .textStyle(.subheadlineRegular)
             }
             HStack(spacing: .spacingXs) {
-                DDDIcon(.locationMapPin, color: .primaryValue500)
+                DDDIcon(.locationMapPin, color: .primaryValue500, size: .iconLg)
                 
                 Text(distanceText)
                     .textStyle(.subheadlineRegular)
@@ -126,11 +126,11 @@ public struct RouteCardItem: View {
                     .padding(.horizontal, .spacingXs)
                     .padding(.vertical, .spacingXs)
                     .background(Color.successValue100)
-                    .clipShape(RoundedRectangle(cornerRadius: .radiusSm, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: .radiusXs, style: .continuous))
 
                 Spacer()
 
-                DDDIcon(.timeClock, color: .primaryValue500)
+                DDDIcon(.timeClock, color: .primaryValue500, size: .iconLg)
                 
                 Text(durationText)
                     .textStyle(.subheadlineRegular)
