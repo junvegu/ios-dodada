@@ -16,7 +16,7 @@ struct DDDPricingView: View {
 
     var body: some View {
         HStack {
-            DDDIcon(.paymentDollarSign, color: .textOnPrimary, size: .iconSm)
+            DDDIcon(.paymentDollarSign, color: .textOnPrimary, size: .iconXs)
         }
         .padding(.spacingTwoXs)
         .background(enabled ? Color.secondaryValue500 : Color.secondaryValue200)
