@@ -29,7 +29,8 @@ public struct DDDSection: View {
                 
                 if let subtitle = subtitle {
                     Text(subtitle)
-                        .textStyle(.caption2Regular)
+                        .textStyle(.caption1Regular)
+                        .foregroundStyle(Color.secondaryValue500)
                 }
             }
             Spacer()
