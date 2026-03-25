@@ -7,36 +7,36 @@
 
 import SwiftUI
 
-struct DDDTagView: View {
+public struct DDDTagView: View {
     @Environment(\.colorTheme) private var colorTheme: DDDTheme
     let label: String
     var invert: Bool = false
 
-    var body: some View {
+    public var body: some View {
         Text(label)
             .textStyle(.caption2Bold)
-            .padding(.spacingTwoXs)
+            .padding(.spacingXs)
             .frame(minHeight: 28)
-            .foregroundStyle(invert ? Color.white : colorTheme.defaultButton)
+            .foregroundStyle(invert ? Color.white : Color.primaryValue500)
             .background(
                 invert
-                ? colorTheme.defaultButton
+                ? Color.primaryValue500
                 : Color.clear
             )
             .overlay(
-                RoundedRectangle(cornerRadius: .radiusXs)
+                RoundedRectangle(cornerRadius: .radiusSm)
                     .stroke(
-                        invert ? Color.clear : colorTheme.defaultButton,
-                        lineWidth: .lineHeightLoose
+                        invert ? Color.clear : Color.primaryValue500,
+                        lineWidth: .radiusXs
                     )
             )
             .clipShape(
-                RoundedRectangle(cornerRadius: .radiusXs)
+                RoundedRectangle(cornerRadius: .radiusSm)
             )
     }
 }
 
 
 #Preview {
-    DDDTagView(label: "Esternocleidomastoideo", invert: true)
+    DDDTagView(label: "Esternocleidomastoideo", invert: false)
 }
