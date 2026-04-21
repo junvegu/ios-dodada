@@ -40,7 +40,6 @@ public struct PopularMenuDishesHorizontalView<Item: Identifiable>: View where It
                 buttonTitle: "Ver todos",
                 action: onSeeAllTap
             )
-            .padding(.leading, .spacingMd)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: Constants.cardSpacing) {
@@ -94,7 +93,7 @@ private struct PopularDishCardView: View {
     }
 }
 
-#if PREVIEW
+//#if PREVIEW
 struct PopularMenuDishesHorizontalView_Previews: PreviewProvider {
     struct MockDish: Identifiable {
         let id: Int
@@ -147,5 +146,5 @@ struct PopularMenuDishesHorizontalView_Previews: PreviewProvider {
         .previewLayout(.sizeThatFits)
     }
 }
-#endif
+//#endif
 
