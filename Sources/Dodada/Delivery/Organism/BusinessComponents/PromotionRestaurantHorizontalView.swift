@@ -40,7 +40,6 @@ public struct PromotionRestaurantHorizontalView<Item: Identifiable>: View {
                 buttonTitle: "Ver todos",
                 action: onSeeAllTap
             )
-            .padding(.leading, .spacingMd)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: Constants.cardSpacing) {

@@ -114,7 +114,7 @@ public struct DDDSwipeableActionButton: View {
             )
         }
         .frame(height: 53)
-        .cornerRadius(.radiusLg)
+        .cornerRadius(.radiusTwoXl)
     }
     
     // MARK: - Background Layer
