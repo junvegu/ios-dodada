@@ -139,6 +139,22 @@ public enum DodadaColorToken: CaseIterable {
     case buttonTertiaryIconPressed
     case buttonTertiaryIconDisabled
     case buttonTertiaryBorder
+    case buttonQuaternaryBackgroundDefault
+    case buttonQuaternaryBackgroundHover
+    case buttonQuaternaryBackgroundPressed
+    case buttonQuaternaryBackgroundDisabled
+    case buttonQuaternaryTextDefault
+    case buttonQuaternaryTextHover
+    case buttonQuaternaryTextPressed
+    case buttonQuaternaryTextDisabled
+    case buttonQuaternaryIconDefault
+    case buttonQuaternaryIconHover
+    case buttonQuaternaryIconPressed
+    case buttonQuaternaryIconDisabled
+    case buttonQuaternaryBorderDefault
+    case buttonQuaternaryBorderHover
+    case buttonQuaternaryBorderPressed
+    case buttonQuaternaryBorderDisabled
     case buttonOnlyIconFilledBackgroundDefault
     case buttonOnlyIconFilledBackgroundHover
     case buttonOnlyIconFilledBackgroundPressed
@@ -352,6 +368,22 @@ extension DodadaColorToken {
         case .buttonTertiaryIconPressed: return "buttonTertiaryIconPressed"
         case .buttonTertiaryIconDisabled: return "buttonTertiaryIconDisabled"
         case .buttonTertiaryBorder: return "buttonTertiaryBorder"
+        case .buttonQuaternaryBackgroundDefault: return "buttonQuaternaryBackgroundDefault"
+        case .buttonQuaternaryBackgroundHover: return "buttonQuaternaryBackgroundHover"
+        case .buttonQuaternaryBackgroundPressed: return "buttonQuaternaryBackgroundPressed"
+        case .buttonQuaternaryBackgroundDisabled: return "buttonQuaternaryBackgroundDisabled"
+        case .buttonQuaternaryTextDefault: return "buttonQuaternaryTextDefault"
+        case .buttonQuaternaryTextHover: return "buttonQuaternaryTextHover"
+        case .buttonQuaternaryTextPressed: return "buttonQuaternaryTextPressed"
+        case .buttonQuaternaryTextDisabled: return "buttonQuaternaryTextDisabled"
+        case .buttonQuaternaryIconDefault: return "buttonQuaternaryIconDefault"
+        case .buttonQuaternaryIconHover: return "buttonQuaternaryIconHover"
+        case .buttonQuaternaryIconPressed: return "buttonQuaternaryIconPressed"
+        case .buttonQuaternaryIconDisabled: return "buttonQuaternaryIconDisabled"
+        case .buttonQuaternaryBorderDefault: return "buttonQuaternaryBorderDefault"
+        case .buttonQuaternaryBorderHover: return "buttonQuaternaryBorderHover"
+        case .buttonQuaternaryBorderPressed: return "buttonQuaternaryBorderPressed"
+        case .buttonQuaternaryBorderDisabled: return "buttonQuaternaryBorderDisabled"
         case .buttonOnlyIconFilledBackgroundDefault: return "buttonOnlyIconFilledBackgroundDefault"
         case .buttonOnlyIconFilledBackgroundHover: return "buttonOnlyIconFilledBackgroundHover"
         case .buttonOnlyIconFilledBackgroundPressed: return "buttonOnlyIconFilledBackgroundPressed"
@@ -571,6 +603,22 @@ public extension DodadaColorToken {
         case .buttonTertiaryIconPressed: return themeColors.buttonTertiaryIconPressed
         case .buttonTertiaryIconDisabled: return themeColors.buttonTertiaryIconDisabled
         case .buttonTertiaryBorder: return themeColors.buttonTertiaryBorder
+        case .buttonQuaternaryBackgroundDefault: return themeColors.buttonQuaternaryBackgroundDefault
+        case .buttonQuaternaryBackgroundHover: return themeColors.buttonQuaternaryBackgroundHover
+        case .buttonQuaternaryBackgroundPressed: return themeColors.buttonQuaternaryBackgroundPressed
+        case .buttonQuaternaryBackgroundDisabled: return themeColors.buttonQuaternaryBackgroundDisabled
+        case .buttonQuaternaryTextDefault: return themeColors.buttonQuaternaryTextDefault
+        case .buttonQuaternaryTextHover: return themeColors.buttonQuaternaryTextHover
+        case .buttonQuaternaryTextPressed: return themeColors.buttonQuaternaryTextPressed
+        case .buttonQuaternaryTextDisabled: return themeColors.buttonQuaternaryTextDisabled
+        case .buttonQuaternaryIconDefault: return themeColors.buttonQuaternaryIconDefault
+        case .buttonQuaternaryIconHover: return themeColors.buttonQuaternaryIconHover
+        case .buttonQuaternaryIconPressed: return themeColors.buttonQuaternaryIconPressed
+        case .buttonQuaternaryIconDisabled: return themeColors.buttonQuaternaryIconDisabled
+        case .buttonQuaternaryBorderDefault: return themeColors.buttonQuaternaryBorderDefault
+        case .buttonQuaternaryBorderHover: return themeColors.buttonQuaternaryBorderHover
+        case .buttonQuaternaryBorderPressed: return themeColors.buttonQuaternaryBorderPressed
+        case .buttonQuaternaryBorderDisabled: return themeColors.buttonQuaternaryBorderDisabled
         case .buttonOnlyIconFilledBackgroundDefault: return themeColors.buttonOnlyIconFilledBackgroundDefault
         case .buttonOnlyIconFilledBackgroundHover: return themeColors.buttonOnlyIconFilledBackgroundHover
         case .buttonOnlyIconFilledBackgroundPressed: return themeColors.buttonOnlyIconFilledBackgroundPressed
@@ -783,6 +831,22 @@ public protocol DodadaTokenColorTokens {
     var buttonTertiaryIconPressed: Color { get }
     var buttonTertiaryIconDisabled: Color { get }
     var buttonTertiaryBorder: Color { get }
+    var buttonQuaternaryBackgroundDefault: Color { get }
+    var buttonQuaternaryBackgroundHover: Color { get }
+    var buttonQuaternaryBackgroundPressed: Color { get }
+    var buttonQuaternaryBackgroundDisabled: Color { get }
+    var buttonQuaternaryTextDefault: Color { get }
+    var buttonQuaternaryTextHover: Color { get }
+    var buttonQuaternaryTextPressed: Color { get }
+    var buttonQuaternaryTextDisabled: Color { get }
+    var buttonQuaternaryIconDefault: Color { get }
+    var buttonQuaternaryIconHover: Color { get }
+    var buttonQuaternaryIconPressed: Color { get }
+    var buttonQuaternaryIconDisabled: Color { get }
+    var buttonQuaternaryBorderDefault: Color { get }
+    var buttonQuaternaryBorderHover: Color { get }
+    var buttonQuaternaryBorderPressed: Color { get }
+    var buttonQuaternaryBorderDisabled: Color { get }
     var buttonOnlyIconFilledBackgroundDefault: Color { get }
     var buttonOnlyIconFilledBackgroundHover: Color { get }
     var buttonOnlyIconFilledBackgroundPressed: Color { get }
@@ -994,6 +1058,22 @@ public struct DodadaThemeColorTokensDefault: DodadaTokenColorTokens {
     public var buttonTertiaryIconPressed: Color { DodadaColorToken.buttonTertiaryIconPressed.toColor() }
     public var buttonTertiaryIconDisabled: Color { DodadaColorToken.buttonTertiaryIconDisabled.toColor() }
     public var buttonTertiaryBorder: Color { DodadaColorToken.buttonTertiaryBorder.toColor() }
+    public var buttonQuaternaryBackgroundDefault: Color { DodadaColorToken.buttonQuaternaryBackgroundDefault.toColor() }
+    public var buttonQuaternaryBackgroundHover: Color { DodadaColorToken.buttonQuaternaryBackgroundHover.toColor() }
+    public var buttonQuaternaryBackgroundPressed: Color { DodadaColorToken.buttonQuaternaryBackgroundPressed.toColor() }
+    public var buttonQuaternaryBackgroundDisabled: Color { DodadaColorToken.buttonQuaternaryBackgroundDisabled.toColor() }
+    public var buttonQuaternaryTextDefault: Color { DodadaColorToken.buttonQuaternaryTextDefault.toColor() }
+    public var buttonQuaternaryTextHover: Color { DodadaColorToken.buttonQuaternaryTextHover.toColor() }
+    public var buttonQuaternaryTextPressed: Color { DodadaColorToken.buttonQuaternaryTextPressed.toColor() }
+    public var buttonQuaternaryTextDisabled: Color { DodadaColorToken.buttonQuaternaryTextDisabled.toColor() }
+    public var buttonQuaternaryIconDefault: Color { DodadaColorToken.buttonQuaternaryIconDefault.toColor() }
+    public var buttonQuaternaryIconHover: Color { DodadaColorToken.buttonQuaternaryIconHover.toColor() }
+    public var buttonQuaternaryIconPressed: Color { DodadaColorToken.buttonQuaternaryIconPressed.toColor() }
+    public var buttonQuaternaryIconDisabled: Color { DodadaColorToken.buttonQuaternaryIconDisabled.toColor() }
+    public var buttonQuaternaryBorderDefault: Color { DodadaColorToken.buttonQuaternaryBorderDefault.toColor() }
+    public var buttonQuaternaryBorderHover: Color { DodadaColorToken.buttonQuaternaryBorderHover.toColor() }
+    public var buttonQuaternaryBorderPressed: Color { DodadaColorToken.buttonQuaternaryBorderPressed.toColor() }
+    public var buttonQuaternaryBorderDisabled: Color { DodadaColorToken.buttonQuaternaryBorderDisabled.toColor() }
     public var buttonOnlyIconFilledBackgroundDefault: Color { DodadaColorToken.buttonOnlyIconFilledBackgroundDefault.toColor() }
     public var buttonOnlyIconFilledBackgroundHover: Color { DodadaColorToken.buttonOnlyIconFilledBackgroundHover.toColor() }
     public var buttonOnlyIconFilledBackgroundPressed: Color { DodadaColorToken.buttonOnlyIconFilledBackgroundPressed.toColor() }

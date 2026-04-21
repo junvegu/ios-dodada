@@ -63,6 +63,28 @@ public protocol DDDButtonTheme {
     var tertiaryPaddingHorizontal: CGFloat { get }
     var tertiaryRadius: CGFloat { get }
     var tertiaryElevation: CGFloat { get }
+    var quaternaryBackgroundDefault: Color { get }
+    var quaternaryBackgroundHover: Color { get }
+    var quaternaryBackgroundPressed: Color { get }
+    var quaternaryBackgroundDisabled: Color { get }
+    var quaternaryTextDefault: Color { get }
+    var quaternaryTextHover: Color { get }
+    var quaternaryTextPressed: Color { get }
+    var quaternaryTextDisabled: Color { get }
+    var quaternaryIconDefault: Color { get }
+    var quaternaryIconHover: Color { get }
+    var quaternaryIconPressed: Color { get }
+    var quaternaryIconDisabled: Color { get }
+    var quaternaryBorderDefault: Color { get }
+    var quaternaryBorderHover: Color { get }
+    var quaternaryBorderPressed: Color { get }
+    var quaternaryBorderDisabled: Color { get }
+    var quaternaryHeightRegular: CGFloat { get }
+    var quaternaryHeightMedium: CGFloat { get }
+    var quaternaryHeightSmall: CGFloat { get }
+    var quaternaryPaddingHorizontal: CGFloat { get }
+    var quaternaryRadius: CGFloat { get }
+    var quaternaryElevation: CGFloat { get }
     var onlyIconFilledBackgroundDefault: Color { get }
     var onlyIconFilledBackgroundHover: Color { get }
     var onlyIconFilledBackgroundPressed: Color { get }
@@ -188,6 +210,28 @@ public struct DDDButtonThemeDefault: DDDButtonTheme {
     public var tertiaryPaddingHorizontal: CGFloat { CGFloat(24) }
     public var tertiaryRadius: CGFloat { CGFloat(8) }
     public var tertiaryElevation: CGFloat { CGFloat(0) }
+    public var quaternaryBackgroundDefault: Color { Color(hex: "#FFFFFF") }
+    public var quaternaryBackgroundHover: Color { Color(hex: "#FFFFFF") }
+    public var quaternaryBackgroundPressed: Color { Color(hex: "#FFFFFF") }
+    public var quaternaryBackgroundDisabled: Color { Color(hex: "#ECEEF5") }
+    public var quaternaryTextDefault: Color { Color(hex: "#000000") }
+    public var quaternaryTextHover: Color { Color(hex: "#000000") }
+    public var quaternaryTextPressed: Color { Color(hex: "#000000") }
+    public var quaternaryTextDisabled: Color { Color(hex: "#777A8A") }
+    public var quaternaryIconDefault: Color { Color(hex: "#000000") }
+    public var quaternaryIconHover: Color { Color(hex: "#000000") }
+    public var quaternaryIconPressed: Color { Color(hex: "#000000") }
+    public var quaternaryIconDisabled: Color { Color(hex: "#777A8A") }
+    public var quaternaryBorderDefault: Color { Color(hex: "#000000") }
+    public var quaternaryBorderHover: Color { Color(hex: "#000000") }
+    public var quaternaryBorderPressed: Color { Color(hex: "#000000") }
+    public var quaternaryBorderDisabled: Color { Color(hex: "#777A8A") }
+    public var quaternaryHeightRegular: CGFloat { CGFloat(48) }
+    public var quaternaryHeightMedium: CGFloat { CGFloat(36) }
+    public var quaternaryHeightSmall: CGFloat { CGFloat(34) }
+    public var quaternaryPaddingHorizontal: CGFloat { CGFloat(24) }
+    public var quaternaryRadius: CGFloat { CGFloat(8) }
+    public var quaternaryElevation: CGFloat { CGFloat(0) }
     public var onlyIconFilledBackgroundDefault: Color { Color(hex: "#ED2124") }
     public var onlyIconFilledBackgroundHover: Color { Color(hex: "#FFFFFF") }
     public var onlyIconFilledBackgroundPressed: Color { Color(hex: "#F46256") }

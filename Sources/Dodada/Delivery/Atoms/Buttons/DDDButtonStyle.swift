@@ -69,7 +69,7 @@ private struct DDDButtonStyleContent<LeadingIcon: View, TrailingIcon: View>: Vie
                     state: state
                 )
             )
-        case .secondary, .secondaryDark:
+        case .secondary, .secondaryDark, .quaternary:
             AnyView(
                 DDDButtonSecondaryStyleView(
                     configuration: configuration,

@@ -683,6 +683,86 @@ extension Color {
     public static func buttonTertiaryBorder(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
         theme.colors.toColor(for: .buttonTertiaryBorder)
     }
+    public static var buttonQuaternaryBackgroundDefault: Color { DodadaColorToken.buttonQuaternaryBackgroundDefault.toColor() }
+
+    public static func buttonQuaternaryBackgroundDefault(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryBackgroundDefault)
+    }
+    public static var buttonQuaternaryBackgroundHover: Color { DodadaColorToken.buttonQuaternaryBackgroundHover.toColor() }
+
+    public static func buttonQuaternaryBackgroundHover(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryBackgroundHover)
+    }
+    public static var buttonQuaternaryBackgroundPressed: Color { DodadaColorToken.buttonQuaternaryBackgroundPressed.toColor() }
+
+    public static func buttonQuaternaryBackgroundPressed(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryBackgroundPressed)
+    }
+    public static var buttonQuaternaryBackgroundDisabled: Color { DodadaColorToken.buttonQuaternaryBackgroundDisabled.toColor() }
+
+    public static func buttonQuaternaryBackgroundDisabled(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryBackgroundDisabled)
+    }
+    public static var buttonQuaternaryTextDefault: Color { DodadaColorToken.buttonQuaternaryTextDefault.toColor() }
+
+    public static func buttonQuaternaryTextDefault(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryTextDefault)
+    }
+    public static var buttonQuaternaryTextHover: Color { DodadaColorToken.buttonQuaternaryTextHover.toColor() }
+
+    public static func buttonQuaternaryTextHover(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryTextHover)
+    }
+    public static var buttonQuaternaryTextPressed: Color { DodadaColorToken.buttonQuaternaryTextPressed.toColor() }
+
+    public static func buttonQuaternaryTextPressed(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryTextPressed)
+    }
+    public static var buttonQuaternaryTextDisabled: Color { DodadaColorToken.buttonQuaternaryTextDisabled.toColor() }
+
+    public static func buttonQuaternaryTextDisabled(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryTextDisabled)
+    }
+    public static var buttonQuaternaryIconDefault: Color { DodadaColorToken.buttonQuaternaryIconDefault.toColor() }
+
+    public static func buttonQuaternaryIconDefault(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryIconDefault)
+    }
+    public static var buttonQuaternaryIconHover: Color { DodadaColorToken.buttonQuaternaryIconHover.toColor() }
+
+    public static func buttonQuaternaryIconHover(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryIconHover)
+    }
+    public static var buttonQuaternaryIconPressed: Color { DodadaColorToken.buttonQuaternaryIconPressed.toColor() }
+
+    public static func buttonQuaternaryIconPressed(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryIconPressed)
+    }
+    public static var buttonQuaternaryIconDisabled: Color { DodadaColorToken.buttonQuaternaryIconDisabled.toColor() }
+
+    public static func buttonQuaternaryIconDisabled(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryIconDisabled)
+    }
+    public static var buttonQuaternaryBorderDefault: Color { DodadaColorToken.buttonQuaternaryBorderDefault.toColor() }
+
+    public static func buttonQuaternaryBorderDefault(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryBorderDefault)
+    }
+    public static var buttonQuaternaryBorderHover: Color { DodadaColorToken.buttonQuaternaryBorderHover.toColor() }
+
+    public static func buttonQuaternaryBorderHover(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryBorderHover)
+    }
+    public static var buttonQuaternaryBorderPressed: Color { DodadaColorToken.buttonQuaternaryBorderPressed.toColor() }
+
+    public static func buttonQuaternaryBorderPressed(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryBorderPressed)
+    }
+    public static var buttonQuaternaryBorderDisabled: Color { DodadaColorToken.buttonQuaternaryBorderDisabled.toColor() }
+
+    public static func buttonQuaternaryBorderDisabled(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {
+        theme.colors.toColor(for: .buttonQuaternaryBorderDisabled)
+    }
     public static var buttonOnlyIconFilledBackgroundDefault: Color { DodadaColorToken.buttonOnlyIconFilledBackgroundDefault.toColor() }
 
     public static func buttonOnlyIconFilledBackgroundDefault(using theme: DDDTheme = DDDThemeManager.shared.main) -> Color {

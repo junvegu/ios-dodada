@@ -21,6 +21,7 @@ public enum DDDButtonDesing {
     case onlyIcon(inverted: Bool)
     case ghost
     case link
+    case quaternary
 
     // MARK: - Foreground (text) color
 
@@ -70,6 +71,21 @@ public enum DDDButtonDesing {
             let tokens = isDisabled ? DodadaButtonTertiarySmallTokens.disabledState
                 : isPressed ? DodadaButtonTertiarySmallTokens.pressedState
                 : DodadaButtonTertiarySmallTokens.defaultState
+            return tokens.textColor?.toColor(using: theme) ?? .clear
+        case (.quaternary, .regular):
+            let tokens = isDisabled ? DodadaButtonQuaternaryRegularTokens.disabledState
+                : isPressed ? DodadaButtonQuaternaryRegularTokens.pressedState
+                : DodadaButtonQuaternaryRegularTokens.defaultState
+            return tokens.textColor?.toColor(using: theme) ?? .clear
+        case (.quaternary, .medium):
+            let tokens = isDisabled ? DodadaButtonQuaternaryMediumTokens.disabledState
+                : isPressed ? DodadaButtonQuaternaryMediumTokens.pressedState
+                : DodadaButtonQuaternaryMediumTokens.defaultState
+            return tokens.textColor?.toColor(using: theme) ?? .clear
+        case (.quaternary, .small):
+            let tokens = isDisabled ? DodadaButtonQuaternarySmallTokens.disabledState
+                : isPressed ? DodadaButtonQuaternarySmallTokens.pressedState
+                : DodadaButtonQuaternarySmallTokens.defaultState
             return tokens.textColor?.toColor(using: theme) ?? .clear
         case (.link, .regular):
             let tokens = isDisabled ? DodadaButtonLinkRegularTokens.disabledState
@@ -159,7 +175,7 @@ public enum DDDButtonDesing {
                 : isPressed ? DodadaButtonSecondarySmallTokens.pressedState
                 : DodadaButtonSecondarySmallTokens.defaultState
             return tokens.iconColor?.toColor(using: theme)
-        case (.secondaryDark, _):
+        case (.secondaryDark, _), (.quaternary, _):
             let tokens = isDisabled ? DodadaButtonSecondaryRegularTokens.disabledState
                 : isPressed ? DodadaButtonSecondaryRegularTokens.pressedState
                 : DodadaButtonSecondaryRegularTokens.defaultState
@@ -262,6 +278,21 @@ public enum DDDButtonDesing {
                 : isPressed ? DodadaButtonTertiarySmallTokens.pressedState
                 : DodadaButtonTertiarySmallTokens.defaultState
             return tokens.surfaceColor?.toColor(using: theme) ?? .clear
+        case (.quaternary, .regular):
+            let tokens = isDisabled ? DodadaButtonQuaternaryRegularTokens.disabledState
+                : isPressed ? DodadaButtonQuaternaryRegularTokens.pressedState
+                : DodadaButtonQuaternaryRegularTokens.defaultState
+            return tokens.surfaceColor?.toColor(using: theme) ?? .clear
+        case (.quaternary, .medium):
+            let tokens = isDisabled ? DodadaButtonQuaternaryMediumTokens.disabledState
+                : isPressed ? DodadaButtonQuaternaryMediumTokens.pressedState
+                : DodadaButtonQuaternaryMediumTokens.defaultState
+            return tokens.surfaceColor?.toColor(using: theme) ?? .clear
+        case (.quaternary, .small):
+            let tokens = isDisabled ? DodadaButtonQuaternarySmallTokens.disabledState
+                : isPressed ? DodadaButtonQuaternarySmallTokens.pressedState
+                : DodadaButtonQuaternarySmallTokens.defaultState
+            return tokens.surfaceColor?.toColor(using: theme) ?? .clear
         case (.link, .regular):
             let tokens = isDisabled ? DodadaButtonLinkRegularTokens.disabledState
                 : isPressed ? DodadaButtonLinkRegularTokens.pressedState
@@ -322,6 +353,11 @@ public enum DDDButtonDesing {
                 : isPressed ? DodadaButtonSecondarySmallTokens.pressedState
                 : DodadaButtonSecondarySmallTokens.defaultState
             return tokens.borderColor?.toColor(using: theme) ?? .clear
+        case (.quaternary, _):
+            let tokens = isDisabled ? DodadaButtonQuaternaryRegularTokens.disabledState
+                : isPressed ? DodadaButtonQuaternaryRegularTokens.pressedState
+                : DodadaButtonQuaternaryRegularTokens.defaultState
+            return tokens.borderColor?.toColor(using: theme) ?? .clear
         case (.tertiary, _):
             return DodadaButtonTertiaryRegularTokens.defaultState.borderColor?.toColor() ?? .clear
         case (.link, _):
@@ -346,7 +382,7 @@ public enum DDDButtonDesing {
         switch self {
         case .primary, .tertiary, .link, .ghost:
             return 0
-        case .secondary, .secondaryDark, .onlyIcon:
+        case .secondary, .secondaryDark, .onlyIcon, .quaternary:
             return 1
         }
     }
@@ -366,6 +402,12 @@ public enum DDDButtonDesing {
             return DodadaButtonSecondaryMediumTokens.defaultState.shapeHeight?.toCGFloat(using: theme) ?? 0
         case (.secondary, .small), (.secondaryDark, .small):
             return DodadaButtonSecondarySmallTokens.defaultState.shapeHeight?.toCGFloat(using: theme) ?? 0
+        case (.quaternary, .regular):
+            return DodadaButtonQuaternaryRegularTokens.defaultState.shapeHeight?.toCGFloat(using: theme) ?? 0
+        case (.quaternary, .medium):
+            return DodadaButtonQuaternaryMediumTokens.defaultState.shapeHeight?.toCGFloat(using: theme) ?? 0
+        case (.quaternary, .small):
+            return DodadaButtonQuaternarySmallTokens.defaultState.shapeHeight?.toCGFloat(using: theme) ?? 0
         case (.tertiary, .regular):
             return DodadaButtonTertiaryRegularTokens.defaultState.shapeHeight?.toCGFloat(using: theme) ?? 0
         case (.tertiary, .medium):
@@ -393,7 +435,7 @@ public enum DDDButtonDesing {
 
     public func getWidth(by theme: DDDTheme) -> CGFloat? {
         switch self {
-        case .primary, .secondary, .secondaryDark, .tertiary, .link:
+        case .primary, .secondary, .secondaryDark, .tertiary, .link, .quaternary:
             return nil
         case .onlyIcon(let inverted):
             if inverted {
@@ -410,10 +452,12 @@ public enum DDDButtonDesing {
 
     public func getCornerRadius(by theme: DDDTheme) -> CGFloat {
         switch self {
-        case .primary:
+        case .primary, .quaternary:
             return DodadaButtonPrimaryRegularTokens.defaultState.borderRadius?.toCGFloat(using: theme) ?? 0
         case .secondary, .secondaryDark:
             return DodadaButtonSecondaryRegularTokens.defaultState.borderRadius?.toCGFloat(using: theme) ?? 0
+        case .primary:
+            return DodadaButtonQuaternaryRegularTokens.defaultState.borderRadius?.toCGFloat(using: theme) ?? 0
         case .tertiary:
             return DodadaButtonTertiaryRegularTokens.defaultState.borderRadius?.toCGFloat(using: theme) ?? 0
         case .onlyIcon(let inverted):

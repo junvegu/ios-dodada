@@ -574,6 +574,195 @@ public struct DodadaButtonTertiarySmallTokens {
     )
 }
 
+/// `DodadaButtonQuaternaryRegularTokens` contains the tokens for the Button quaternary regular specification.
+public struct DodadaButtonQuaternaryRegularTokens {
+    public let borderRadius: DodadaRadiusToken?
+    public let gap: DodadaSpacingToken?
+    public let iconColor: DodadaColorToken?
+    public let paddingHorizontal: DodadaSpacingToken?
+    public let shapeHeight: DodadaSizingToken?
+    public let surfaceColor: DodadaColorToken?
+    public let textColor: DodadaColorToken?
+    public let borderColor: DodadaColorToken?
+    public let elevation: DodadaElevation?
+
+    private init(
+        borderRadius: DodadaRadiusToken? = .md,
+        gap: DodadaSpacingToken? = .sm,
+        iconColor: DodadaColorToken? = nil,
+        paddingHorizontal: DodadaSpacingToken? = .xl,
+        shapeHeight: DodadaSizingToken? = .buttonHeightRegular,
+        surfaceColor: DodadaColorToken? = nil,
+        textColor: DodadaColorToken? = nil,
+        borderColor: DodadaColorToken? = nil,
+        elevation: DodadaElevation? = .levelZero
+    ) {
+        self.borderRadius = borderRadius
+        self.gap = gap
+        self.iconColor = iconColor
+        self.paddingHorizontal = paddingHorizontal
+        self.shapeHeight = shapeHeight
+        self.surfaceColor = surfaceColor
+        self.textColor = textColor
+        self.borderColor = borderColor
+        self.elevation = elevation
+    }
+
+    public static let defaultState = DodadaButtonQuaternaryRegularTokens(
+        iconColor: .buttonQuaternaryIconDefault,
+        surfaceColor: .buttonQuaternaryBackgroundDefault,
+        textColor: .buttonQuaternaryTextDefault,
+        borderColor: .buttonQuaternaryTextPressed
+    )
+
+    public static let hoverState = DodadaButtonQuaternaryRegularTokens(
+        iconColor: .buttonQuaternaryIconHover,
+        surfaceColor: .buttonQuaternaryBackgroundHover,
+        textColor: .buttonQuaternaryTextHover,
+        borderColor: .buttonQuaternaryTextPressed
+    )
+
+    public static let pressedState = DodadaButtonQuaternaryRegularTokens(
+        iconColor: .buttonQuaternaryIconPressed,
+        surfaceColor: .buttonQuaternaryBackgroundPressed,
+        textColor: .buttonQuaternaryTextPressed,
+        borderColor: .buttonQuaternaryTextPressed
+    )
+
+    public static let disabledState = DodadaButtonQuaternaryRegularTokens(
+        iconColor: .buttonQuaternaryIconDisabled,
+        surfaceColor: .buttonQuaternaryBackgroundDisabled,
+        textColor: .buttonQuaternaryTextDisabled,
+        borderColor: .buttonQuaternaryTextPressed
+    )
+}
+
+/// `DodadaButtonQuaternaryMediumTokens` contains the tokens for the Button quaternary medium specification.
+public struct DodadaButtonQuaternaryMediumTokens {
+    public let borderRadius: DodadaRadiusToken?
+    public let gap: DodadaSpacingToken?
+    public let iconColor: DodadaColorToken?
+    public let paddingHorizontal: DodadaSpacingToken?
+    public let shapeHeight: DodadaSizingToken?
+    public let surfaceColor: DodadaColorToken?
+    public let textColor: DodadaColorToken?
+    public let borderColor: DodadaColorToken?
+    public let elevation: DodadaElevation?
+
+    private init(
+        borderRadius: DodadaRadiusToken? = .md,
+        gap: DodadaSpacingToken? = .sm,
+        iconColor: DodadaColorToken? = nil,
+        paddingHorizontal: DodadaSpacingToken? = .xl,
+        shapeHeight: DodadaSizingToken? = .buttonHeightMedium,
+        surfaceColor: DodadaColorToken? = nil,
+        textColor: DodadaColorToken? = nil,
+        borderColor: DodadaColorToken? = nil,
+        elevation: DodadaElevation? = .levelZero
+    ) {
+        self.borderRadius = borderRadius
+        self.gap = gap
+        self.iconColor = iconColor
+        self.paddingHorizontal = paddingHorizontal
+        self.shapeHeight = shapeHeight
+        self.surfaceColor = surfaceColor
+        self.textColor = textColor
+        self.borderColor = borderColor
+        self.elevation = elevation
+    }
+
+    public static let defaultState = DodadaButtonQuaternaryMediumTokens(
+        iconColor: .buttonQuaternaryIconDefault,
+        surfaceColor: .buttonQuaternaryBackgroundDefault,
+        textColor: .buttonQuaternaryTextDefault,
+        borderColor: .buttonQuaternaryBorderDefault
+    )
+
+    public static let hoverState = DodadaButtonQuaternaryMediumTokens(
+        iconColor: .buttonQuaternaryIconHover,
+        surfaceColor: .buttonQuaternaryBackgroundHover,
+        textColor: .buttonQuaternaryTextHover,
+        borderColor: .buttonQuaternaryBorderHover
+    )
+
+    public static let pressedState = DodadaButtonQuaternaryMediumTokens(
+        iconColor: .buttonQuaternaryIconPressed,
+        surfaceColor: .buttonQuaternaryBackgroundPressed,
+        textColor: .buttonQuaternaryTextPressed,
+        borderColor: .buttonQuaternaryBorderPressed
+    )
+
+    public static let disabledState = DodadaButtonQuaternaryMediumTokens(
+        iconColor: .buttonQuaternaryIconDisabled,
+        surfaceColor: .buttonQuaternaryBackgroundDisabled,
+        textColor: .buttonQuaternaryTextDisabled,
+        borderColor: .buttonQuaternaryBorderDisabled
+    )
+}
+
+/// `DodadaButtonQuaternarySmallTokens` contains the tokens for the Button quaternary small specification.
+public struct DodadaButtonQuaternarySmallTokens {
+    public let borderRadius: DodadaRadiusToken?
+    public let gap: DodadaSpacingToken?
+    public let iconColor: DodadaColorToken?
+    public let paddingHorizontal: DodadaSpacingToken?
+    public let shapeHeight: DodadaSizingToken?
+    public let surfaceColor: DodadaColorToken?
+    public let textColor: DodadaColorToken?
+    public let borderColor: DodadaColorToken?
+    public let elevation: DodadaElevation?
+
+    private init(
+        borderRadius: DodadaRadiusToken? = .md,
+        gap: DodadaSpacingToken? = .sm,
+        iconColor: DodadaColorToken? = nil,
+        paddingHorizontal: DodadaSpacingToken? = .xl,
+        shapeHeight: DodadaSizingToken? = .buttonHeightSmall,
+        surfaceColor: DodadaColorToken? = nil,
+        textColor: DodadaColorToken? = nil,
+        borderColor: DodadaColorToken? = nil,
+        elevation: DodadaElevation? = .levelZero
+    ) {
+        self.borderRadius = borderRadius
+        self.gap = gap
+        self.iconColor = iconColor
+        self.paddingHorizontal = paddingHorizontal
+        self.shapeHeight = shapeHeight
+        self.surfaceColor = surfaceColor
+        self.textColor = textColor
+        self.borderColor = borderColor
+        self.elevation = elevation
+    }
+
+    public static let defaultState = DodadaButtonQuaternarySmallTokens(
+        iconColor: .buttonQuaternaryIconDefault,
+        surfaceColor: .buttonQuaternaryBackgroundDefault,
+        textColor: .buttonQuaternaryTextDefault,
+        borderColor: .buttonQuaternaryBorderDefault
+    )
+
+    public static let hoverState = DodadaButtonQuaternarySmallTokens(
+        iconColor: .buttonQuaternaryIconHover,
+        surfaceColor: .buttonQuaternaryBackgroundHover,
+        textColor: .buttonQuaternaryTextHover,
+        borderColor: .buttonQuaternaryBorderHover
+    )
+
+    public static let pressedState = DodadaButtonQuaternarySmallTokens(
+        iconColor: .buttonQuaternaryIconPressed,
+        surfaceColor: .buttonQuaternaryBackgroundPressed,
+        textColor: .buttonQuaternaryTextPressed,
+        borderColor: .buttonQuaternaryBorderPressed
+    )
+
+    public static let disabledState = DodadaButtonQuaternarySmallTokens(
+        iconColor: .buttonQuaternaryIconDisabled,
+        surfaceColor: .buttonQuaternaryBackgroundDisabled,
+        textColor: .buttonQuaternaryTextDisabled,
+        borderColor: .buttonQuaternaryBorderDisabled
+    )
+}
+
 /// `DodadaButtonLinkRegularTokens` contains the tokens for the Button link regular specification.
 public struct DodadaButtonLinkRegularTokens {
     public let borderRadius: DodadaRadiusToken?
