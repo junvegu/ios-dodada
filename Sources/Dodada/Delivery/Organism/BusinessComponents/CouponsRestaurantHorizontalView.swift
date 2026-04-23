@@ -78,7 +78,7 @@ private struct CouponCardView: View {
             backgroundColor
                 .ignoresSafeArea()
             
-            Image(.specialPromo)//Corregir asset
+            Image(.discount)//Corregir asset
             
             VStack(alignment: .leading, spacing: .spacingTwoXs) {
                 Text(title)
