@@ -32,23 +32,32 @@ public struct DDDTabBar: View {
     
     // MARK: - Body
     public var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 0) {
-                ForEach(Array(tabs.enumerated()), id: \.offset) { index, tab in
-                    DDDTabItem(
-                        title: tab,
-                        isSelected: selectedIndex == index,
-                        action: {
-                            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                selectedIndex = index
-                            }
-                        }
-                    )
-                }
+        ViewThatFits(in: .horizontal) {
+            tabContent
+                .frame(maxWidth: .infinity)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                tabContent
             }
         }
         .background(Color.white)
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: selectedIndex)
+    }
+    
+    private var tabContent: some View {
+        HStack(spacing: 0) {
+            ForEach(Array(tabs.enumerated()), id: \.offset) { index, tab in
+                DDDTabItem(
+                    title: tab,
+                    isSelected: selectedIndex == index,
+                    action: {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                            selectedIndex = index
+                        }
+                    }
+                )
+            }
+        }
     }
 }
 
@@ -76,4 +85,3 @@ public struct DDDTabBar: View {
     
     return ContentView()
 }
-

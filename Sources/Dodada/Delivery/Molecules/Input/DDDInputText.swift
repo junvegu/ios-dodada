@@ -66,7 +66,8 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
                 label: compactLabel,
                 message: effectiveMessage,
                 isFocused: isFocused,
-                value: $value
+                value: $value,
+                hasPrefixSpacer: false
             ) {
                 buildTextField(effectiveMessage: effectiveMessage)
             } prefix: {

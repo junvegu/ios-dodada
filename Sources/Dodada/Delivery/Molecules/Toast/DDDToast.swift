@@ -81,13 +81,13 @@ public struct DDDToast: View {
 }
 
 
-struct ToastModifier: ViewModifier {
+public struct ToastModifier: ViewModifier {
     @Binding var isVisible: Bool
     let title: String
     let message: String?
     let type: AlertType
 
-    func body(content: Content) -> some View {
+   public func body(content: Content) -> some View {
         ZStack {
             content
             
@@ -119,7 +119,7 @@ struct ToastModifier: ViewModifier {
 }
 
 // Extension for easy usage
-extension View {
+public extension View {
     func toast(
         isVisible: Binding<Bool>,
         title: String,

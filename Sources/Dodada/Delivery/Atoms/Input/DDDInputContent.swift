@@ -43,6 +43,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
     private let label: String
     private let message: Message?
     private let isFocused: Bool
+    private let hasPrefixSpacer: Bool
     @ViewBuilder private let content: Content
     @ViewBuilder private let prefix: Prefix
     @ViewBuilder private let suffix: Suffix
@@ -102,9 +103,11 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
 
     public var body: some View {
         HStack(spacing: .zero) {
-            Spacer().frame(width: horizontalPadding)
+            if hasPrefixSpacer {
+                Spacer().frame(width: horizontalPadding)
+            }
             prefix
-
+            
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text(label)
                     .textStyle(.calloutRegular)
@@ -114,11 +117,11 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
                     .accessibility(removeTraits: .isStaticText)
                 content
             }
-
+            
             if idealSize.horizontal != true {
                 Spacer(minLength: 0)
             }
-
+            
             suffix
             Spacer().frame(width: horizontalPadding)
         }
@@ -167,6 +170,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
         message: Message? = nil,
         isFocused: Bool = false,
         value: Binding<String>,
+        hasPrefixSpacer: Bool? = nil,
         @ViewBuilder content: () -> Content,
         @ViewBuilder prefix: () -> Prefix = { EmptyView() },
         @ViewBuilder suffix: () -> Suffix = { EmptyView() }
@@ -179,6 +183,7 @@ public struct DDDInputContent<Content: View, Prefix: View, Suffix: View>: View {
         self.prefix = prefix()
         self.suffix = suffix()
         self._value = value
+        self.hasPrefixSpacer = hasPrefixSpacer ?? (Prefix.self != EmptyView.self)
     }
 }
 
