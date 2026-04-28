@@ -56,7 +56,7 @@ public struct DDDRatingMentionDetailsView: View {
             }
             Divider().frame(height: .spacingSm)
             
-        }.padding(.spacingSm)
+        }.padding(.horizontal, .spacingSm)
         
     }
     
