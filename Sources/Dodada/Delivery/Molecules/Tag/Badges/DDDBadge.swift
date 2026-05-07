@@ -21,6 +21,8 @@ public struct DDDBadge: View {
     }
 
     public var body: some View {
+        let radius: CGFloat = (type == .opacity) ? 99 : 6
+
         HStack(spacing: 4) {
             DDDIcon(icon, color: state.iconColorToken(for: type), size: .iconSm)
 
@@ -31,11 +33,14 @@ public struct DDDBadge: View {
         .padding(.horizontal, 8)
         .background(type.background(for: state))
         .foregroundColor(type.foreground(for: state))
+        .clipShape(RoundedRectangle(cornerRadius: radius))
         .overlay(
-            RoundedRectangle(cornerRadius: 6)
-                .stroke(type.border(for: state), lineWidth: (type == .outline || type == .filled) ? 1 : 0)
+            RoundedRectangle(cornerRadius: radius)
+                .stroke(
+                    type.border(for: state),
+                    lineWidth: (type == .outline || type == .filled) ? 1 : 0
+                )
         )
-        .cornerRadius(6)
     }
 }
 

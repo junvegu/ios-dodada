@@ -1,0 +1,21 @@
+<svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M60 28.332C60 48.1654 34.5 65.1654 34.5 65.1654C34.5 65.1654 9 48.1654 9 28.332C9 21.569 11.6866 15.083 16.4688 10.3008C21.251 5.51863 27.737 2.83203 34.5 2.83203C41.263 2.83203 47.749 5.51863 52.5312 10.3008C57.3134 15.083 60 21.569 60 28.332Z" fill="#AEB3C4" stroke="#AEB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<g filter="url(#filter0_d_8166_21309)">
+<path d="M34 49C45.0457 49 54 40.0457 54 29C54 17.9543 45.0457 9 34 9C22.9543 9 14 17.9543 14 29C14 40.0457 22.9543 49 34 49Z" fill="#DADEEB"/>
+<path d="M34 49C45.0457 49 54 40.0457 54 29C54 17.9543 45.0457 9 34 9C22.9543 9 14 17.9543 14 29C14 40.0457 22.9543 49 34 49Z" stroke="#DADEEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path d="M41.9697 18.082C42.354 18.0823 42.6658 18.3941 42.666 18.7783V37.832C42.666 38.4303 42.1803 38.916 41.582 38.916C40.9839 38.9158 40.499 38.4302 40.499 37.832V29.541H37.3936C36.7157 29.541 36.1663 28.9913 36.166 28.3135V23.8857C36.1661 20.6806 38.7646 18.082 41.9697 18.082Z" fill="#AEB3C4"/>
+<path d="M32.918 18.082C33.5161 18.0822 34.001 18.5678 34.001 19.166V25.207C34.001 27.2262 32.62 28.9233 30.751 29.4043V37.832C30.751 38.4302 30.2661 38.9158 29.668 38.916C29.0697 38.916 28.584 38.4303 28.584 37.832V29.4033C26.7152 28.9221 25.334 27.226 25.334 25.207V19.166C25.334 18.5677 25.8197 18.082 26.418 18.082C27.0161 18.0822 27.501 18.5678 27.501 19.166V24.832C27.501 25.1312 27.7438 25.374 28.043 25.374C28.342 25.3738 28.584 25.1311 28.584 24.832V19.166C28.584 18.5677 29.0697 18.082 29.668 18.082C30.2661 18.0822 30.751 18.5678 30.751 19.166V24.832C30.751 25.1312 30.9938 25.374 31.293 25.374C31.592 25.3738 31.834 25.1311 31.834 24.832V19.166C31.834 18.5677 32.3197 18.082 32.918 18.082Z" fill="#AEB3C4"/>
+<defs>
+<filter id="filter0_d_8166_21309" x="9" y="8" width="50" height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_8166_21309"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_8166_21309" result="shape"/>
+</filter>
+</defs>
+</svg>
