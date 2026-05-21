@@ -66,6 +66,7 @@ public struct DDDList: View {
             
             Spacer()
         }
+        .contentShape(Rectangle())
         .onTapGesture {
             onTap()
         }
