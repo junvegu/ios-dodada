@@ -96,7 +96,6 @@ public struct RecommendedRestaurantView: View {
         .padding()
         .background(Color.white)
         .cornerRadius(8)
-        .shadow(color: Color.black.opacity(0.10), radius: 4, x: 0, y: 0)
     }
 }
 
