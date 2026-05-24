@@ -12,7 +12,7 @@ public struct RouteCardItem: View {
     let stops: Int
     let distanceText: String
     let durationText: String
-    let rating: Double
+    let rating: String
     let imageURLs: [URL?]
     let extraCount: Int
     
@@ -21,7 +21,7 @@ public struct RouteCardItem: View {
         stops: Int,
         distanceText: String,
         durationText: String,
-        rating: Double,
+        rating: String,
         imageURLs: [URL?],
         extraCount: Int
     ) {
@@ -164,7 +164,7 @@ struct RouteCardItem_Previews: PreviewProvider {
                             stops: 4,
                             distanceText: "20Km",
                             durationText: "3h",
-                            rating: 4.2,
+                            rating: "4.2",
                             imageURLs: randomImageURLs(seed: index),
                             extraCount: 4
                         )

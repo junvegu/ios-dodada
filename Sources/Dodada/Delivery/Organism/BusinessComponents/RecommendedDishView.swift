@@ -10,7 +10,7 @@ import SwiftUI
 public struct RecommendedDishView: View {
     private let imageURL: URL?
     private let name: String
-    private let rating: Double
+    private let rating: String
     private let location: String
     private let distance: String
     private let categories: [String]
@@ -20,7 +20,7 @@ public struct RecommendedDishView: View {
     public init(
         imageURL: URL?,
         name: String,
-        rating: Double,
+        rating: String,
         location: String,
         distance: String,
         categories: [String],
@@ -97,7 +97,7 @@ public struct RecommendedDishView: View {
         RecommendedDishView(
             imageURL: URL(string: "https://depor.com/resizer/4kiZrbwt2iNZhIpk4fu_P3CFoWQ=/1200x1200/smart/filters:format(jpeg):quality(90)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/UGQRAZ63M5GYDLXVOH2NWZ5B3I.jpg"),
             name: "Anticuchos Bran",
-            rating: 4.1,
+            rating: "4.1",
             location: "San Pedro 308, Surquillo 15047",
             distance: "2.3km",
             categories: ["Criolla", "Tradicional", "Peruano", "Bar & Grill","Selva"],
@@ -107,7 +107,7 @@ public struct RecommendedDishView: View {
         RecommendedDishView(
             imageURL: URL(string: "https://marieclaire.com.mx/wp-content/uploads/2025/02/IMG_7795-822x1024.jpg"),
             name: "Pollitos Pio",
-            rating: 5,
+            rating: "5",
             location: "A la vuelta de tu casa",
             distance: "0km",
             categories: ["Criolla", "Tradicional", "Peruano", "Bar & Grill","Selva"],

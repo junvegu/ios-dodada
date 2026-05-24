@@ -1,34 +1,33 @@
 //
-//  DDDRestaurantPreview.swift
+//  DDDPlacePreview.swift
 //  Dodada
 //
 //  Created by Aly Benjamin Contreras Del Pino on 14/03/25.
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
-public struct RecommendedRestaurantView: View {
-    private let imageURL: URL?
-    private let name: String
-    private let rating: Double
-    private let location: String
-    private let distance: String
-    private let categories: [String]
-    private let priceLevel: LevelPrice
-    private let isFeatured: Bool
+public struct DDDPlacePreview: View {
+    let imageURL: URL?
+    let name: String
+    let rating: Double
+    let location: String
+    let distance: String
+    let categories: [String]
+    let priceLevel: LevelPrice
+    let isFeatured: Bool
     
     private let imageSize: CGFloat = 64
     
-    public init(
-        imageURL: URL?,
-        name: String,
-        rating: Double,
-        location: String,
-        distance: String,
-        categories: [String],
-        priceLevel: LevelPrice,
-        isFeatured: Bool
-    ) {
+    public init(imageURL: URL?,
+                name: String,
+                rating: Double,
+                location: String,
+                distance: String,
+                categories: [String],
+                priceLevel: LevelPrice,
+                isFeatured: Bool = false) {
         self.imageURL = imageURL
         self.name = name
         self.rating = rating
@@ -40,34 +39,42 @@ public struct RecommendedRestaurantView: View {
     }
     
     public var body: some View {
-        HStack(alignment: .top, spacing: .spacingXs) {
+        HStack(alignment: .top, spacing: 10) {
             ZStack {
                 Circle()
                     .fill(Color.white)
                     .frame(width: imageSize, height: imageSize)
-                    .shadow(radius: 4)
+                    .shadow(radius: 4)// Con el shadow se ve mejor :D
                     .overlay(
-                        DDDAsyncImage(url: imageURL)
+                        WebImage(url: imageURL)
+                            .resizable()
                             .scaledToFill()
                             .frame(width: imageSize, height: imageSize)
                             .clipShape(Circle())
+                            .placeholder(when: true) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.white.opacity(0.6))
+                                    ProgressView()
+                                }
+                            }
                     )
             }
             
-            VStack(alignment: .leading, spacing: .spacingXs) {
+            VStack(alignment: .leading, spacing: 6) {
                 HStack {
                     Text(name)
                         .textStyle(.bodyBold)
                     Spacer()
-                    HStack(spacing: .spacingTwoXs) {
-                        DDDIcon(.contentStar, color: .warningValue300, size: .iconXs)
+                    HStack(spacing: 4) {
+                        DDDIcon(.contentStar, color: nil, size: .iconSm)
                         Text(String(format: "%.1f", rating))
                             .textStyle(.caption2Bold)
                     }
                 }
                 
                 HStack {
-                    DDDIcon(.locationMapPin, size: .iconXs)
+                    DDDIcon(.locationMapPin, size: .iconSm)
                     Text(location)
                         .textStyle(.caption1Regular)
                     Text("(\(distance))")
@@ -85,7 +92,7 @@ public struct RecommendedRestaurantView: View {
                         Text("•")
                             .foregroundColor(.gray)
                         HStack {
-                            DDDIcon(.contentAward2, color: .warningValue300, size: .iconSm)
+                            DDDIcon(.contentAward, color: nil, size: .iconMd)
                             Text("Destacado")
                                 .textStyle(.caption2Bold)
                         }
@@ -95,14 +102,16 @@ public struct RecommendedRestaurantView: View {
         }
         .padding()
         .background(Color.white)
-        .cornerRadius(8)
+        .cornerRadius(15)
+        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.secondaryValue100, lineWidth: 2))
+        .padding(.horizontal, 16)
     }
 }
 
 
 #Preview {
     VStack{
-        RecommendedRestaurantView(
+        DDDPlacePreview(
             imageURL: URL(string: "https://www.biografia.de/biografia/Emma-Myers.jpg"),
             name: "Anticuchos Bran",
             rating: 4.1,
@@ -112,7 +121,7 @@ public struct RecommendedRestaurantView: View {
             priceLevel: .low,
             isFeatured: true
         )
-        RecommendedRestaurantView(
+        DDDPlacePreview(
             imageURL: URL(string: "pio"),
             name: "Pollitos Pio",
             rating: 5,
@@ -121,7 +130,7 @@ public struct RecommendedRestaurantView: View {
             categories: ["Criolla", "Tradicional", "Peruano", "Bar & Grill","Selva"],
             priceLevel: .medium,
             isFeatured: false
-        )
+            )
     }
 }
 

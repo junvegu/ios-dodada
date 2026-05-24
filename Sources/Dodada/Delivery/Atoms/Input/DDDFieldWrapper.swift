@@ -13,7 +13,7 @@ public struct FieldWrapper<Label: View, Content: View, Footer: View>: View {
     @Binding private var messageHeight: CGFloat
 
     private let message: Message?
-    private let isMandatory: Bool = false
+    private let isMandatory: Bool
 
     @ViewBuilder private let content: Content
     @ViewBuilder private let label: Label
@@ -21,11 +21,12 @@ public struct FieldWrapper<Label: View, Content: View, Footer: View>: View {
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack (spacing: .zero) {
+            HStack (spacing: 4) {
                 if isMandatory {
                     Text("*")
                         .textStyle(.headlineRegular)
                         .foregroundStyle(Color.errorValue500)
+                        .padding(.bottom, .spacingXs)
                 }
                 label
                     .accessibility(hidden: true)
@@ -52,12 +53,14 @@ public extension FieldWrapper {
     init(
         message: Message? = nil,
         messageHeight: Binding<CGFloat> = .constant(0),
+        isMandatory: Bool = false,
         @ViewBuilder content: () -> Content,
         @ViewBuilder label: () -> Label,
         @ViewBuilder footer: () -> Footer = { EmptyView() }
     ) {
         self.message = message
         self._messageHeight = messageHeight
+        self.isMandatory = isMandatory
         self.content = content()
         self.label = label()
         self.footer = footer()
@@ -69,12 +72,14 @@ public extension FieldWrapper where Label == FieldLabel {
         _ label: String,
         message: Message? = nil,
         messageHeight: Binding<CGFloat> = .constant(0),
+        isMandatory: Bool = false,
         @ViewBuilder content: () -> Content,
         @ViewBuilder footer: () -> Footer = { EmptyView() }
     ) {
         self.init(
             message: message,
             messageHeight: messageHeight,
+            isMandatory: isMandatory,
             content: content,
             label: {
                 FieldLabel(label)

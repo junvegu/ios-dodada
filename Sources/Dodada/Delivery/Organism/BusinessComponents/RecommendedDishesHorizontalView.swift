@@ -16,7 +16,7 @@ public struct RecommendedDishesHorizontalView<Item: Identifiable>: View {
     private let onDishTap: (Item) -> Void
     private let dishImageURL: (Item) -> URL?
     private let dishName: (Item) -> String
-    private let dishRating: (Item) -> Double
+    private let dishRating: (Item) -> String
     private let dishLocation: (Item) -> String
     private let dishDistance: (Item) -> String
     private let dishCategories: (Item) -> [String]
@@ -32,7 +32,7 @@ public struct RecommendedDishesHorizontalView<Item: Identifiable>: View {
         onDishTap: @escaping (Item) -> Void,
         dishImageURL: @escaping (Item) -> URL?,
         dishName: @escaping (Item) -> String,
-        dishRating: @escaping (Item) -> Double,
+        dishRating: @escaping (Item) -> String,
         dishLocation: @escaping (Item) -> String,
         dishDistance: @escaping (Item) -> String,
         dishCategories: @escaping (Item) -> [String],
@@ -92,7 +92,7 @@ public struct RecommendedDishesHorizontalView<Item: Identifiable>: View {
         }
     }
 }
-
+/*
 #Preview {
     struct MockDish: Identifiable {
         let id: String
@@ -129,3 +129,4 @@ public struct RecommendedDishesHorizontalView<Item: Identifiable>: View {
     )
 }
 
+*/

@@ -1,5 +1,5 @@
 //
-//  PromotionRestaurantHorizontalView.swift
+//  PromotionPlaceHorizontalView.swift
 //  Dodada
 //
 //  Created by Junior Quevedo Gutiérrez  on 12/01/26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct PromotionRestaurantHorizontalView<Item: Identifiable>: View {
+public struct PromotionPlaceHorizontalView<Item: Identifiable>: View {
     private let promotions: [Item]
     private let onSeeAllTap: (() -> Void)?
     private let promotionImageURL: (Item) -> String
@@ -96,7 +96,7 @@ private struct PromotionCardView: View {
 }
 
 #if PREVIEW
-struct PromotionRestaurantHorizontalView_Previews: PreviewProvider {
+struct PromotionPlaceHorizontalView_Previews: PreviewProvider {
     struct MockPromotion: Identifiable {
         let id: Int
         let imageURL: String
@@ -104,7 +104,7 @@ struct PromotionRestaurantHorizontalView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        PromotionRestaurantHorizontalView(
+        PromotionPlaceHorizontalView(
             promotions: [
                 MockPromotion(
                     id: 1,

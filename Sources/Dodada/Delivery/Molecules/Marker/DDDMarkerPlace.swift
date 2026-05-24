@@ -1,5 +1,5 @@
 //
-//  DDDMarkerRestaurant.swift
+//  DDDMarkerPlace.swift
 //  Dodada
 //
 //  Created by Aly Benjamin Contreras Del Pino on 27/02/25.
@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 import SDWebImageSwiftUI
 
-public struct DDDMarkerRestaurant: View {
+public struct DDDMarkerPlace: View {
     let imageURL: URL?
     let type: MarkerType?
     let isHighLight: Bool
@@ -59,25 +59,25 @@ public struct DDDMarkerRestaurant: View {
 }
 
 // Estructura y datos fuera del #Preview
-struct RestaurantLocation: Identifiable {
+struct PlaceLocation: Identifiable {
     let id = UUID()
     let coordinate: CLLocationCoordinate2D
     let imageURL: URL?
     let type: MarkerType
 }
 
-let restaurantLocations = [
-    RestaurantLocation(
+let placeLocations = [
+    PlaceLocation(
         coordinate: CLLocationCoordinate2D(latitude: -12.0464, longitude: -77.0428),
         imageURL: URL(string: "https://www.biografia.de/biografia/Emma-Myers.jpg"),
         type: .new
     ),
-    RestaurantLocation(
+    PlaceLocation(
         coordinate: CLLocationCoordinate2D(latitude: -12.0455, longitude: -77.0353),
         imageURL: URL(string: "https://rukminim2.flixcart.com/image/480/640/kuyf8nk0/poster/n/l/y/medium-rose-blackpink-blackpink-rose-kpop-on-the-ground-park-original-imag7ys9fsw8cmwy.jpeg?q=90"),
         type: .top_one
     ),
-    RestaurantLocation(
+    PlaceLocation(
         coordinate: CLLocationCoordinate2D(latitude: -12.0470, longitude: -77.0400),
         imageURL: URL(string: "https://example.com/image3.jpg"),
         type: .trading
@@ -85,16 +85,16 @@ let restaurantLocations = [
 ]
 
 #Preview("Marker en Mapa") {
-    struct DDDMarkerRestaurantMapPreview: View {
+    struct DDDMarkerPlaceMapPreview: View {
         @State private var region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: -12.0460, longitude: -77.0390),
             span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         )
 
         var body: some View {
-            Map(coordinateRegion: $region, annotationItems: restaurantLocations) { location in
+            Map(coordinateRegion: $region, annotationItems: placeLocations) { location in
                 MapAnnotation(coordinate: location.coordinate) {
-                    DDDMarkerRestaurant(
+                    DDDMarkerPlace(
                         imageURL: location.imageURL,
                         type: location.type
                     )
@@ -104,14 +104,14 @@ let restaurantLocations = [
         }
     }
 
-    return DDDMarkerRestaurantMapPreview()
+    return DDDMarkerPlaceMapPreview()
 }
 
 #Preview {
     VStack(spacing: 20){
-        DDDMarkerRestaurant(imageURL: URL(string: "https://i.pinimg.com/736x/95/20/4f/95204f0745253b7fe66474ecc09b7534.jpg"), isHighLight: true)
-        DDDMarkerRestaurant(imageURL: URL(string: "https://rukminim2.flixcart.com/image/480/640/kuyf8nk0/poster/n/l/y/medium-rose-blackpink-blackpink-rose-kpop-on-the-ground-park-original-imag7ys9fsw8cmwy.jpeg?q=90"), type: .top_one)
-        DDDMarkerRestaurant(imageURL: URL(string: "https://s.yimg.com/ny/api/res/1.2/QwXf3bUzCETetIfD6sXnxw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD0xNTIzO2NmPXdlYnA-/https://media.zenfs.com/en/where_is_the_buzz_814/f9413375386b12554013607cb214be66"), type: .trading)
+        DDDMarkerPlace(imageURL: URL(string: "https://i.pinimg.com/736x/95/20/4f/95204f0745253b7fe66474ecc09b7534.jpg"), isHighLight: true)
+        DDDMarkerPlace(imageURL: URL(string: "https://rukminim2.flixcart.com/image/480/640/kuyf8nk0/poster/n/l/y/medium-rose-blackpink-blackpink-rose-kpop-on-the-ground-park-original-imag7ys9fsw8cmwy.jpeg?q=90"), type: .top_one)
+        DDDMarkerPlace(imageURL: URL(string: "https://s.yimg.com/ny/api/res/1.2/QwXf3bUzCETetIfD6sXnxw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD0xNTIzO2NmPXdlYnA-/https://media.zenfs.com/en/where_is_the_buzz_814/f9413375386b12554013607cb214be66"), type: .trading)
     }
 }
 
