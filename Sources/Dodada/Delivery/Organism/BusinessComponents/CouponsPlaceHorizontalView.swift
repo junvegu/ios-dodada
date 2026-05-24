@@ -1,5 +1,5 @@
 //
-//  CouponsRestaurantHorizontalView.swift
+//  CouponsPlaceHorizontalView.swift
 //  Dodada
 //
 //  Created by Junior Quevedo Gutiérrez  on 12/01/26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct CouponsRestaurantHorizontalView<Item: Identifiable>: View {
+public struct CouponsPlaceHorizontalView<Item: Identifiable>: View {
     private let coupons: [Item]
     private let couponImageURL: (Item) -> String
     private let couponTitle: (Item) -> String
@@ -110,7 +110,7 @@ private struct CouponCardView: View {
         let description: String
     }
     
-    return CouponsRestaurantHorizontalView(
+    return CouponsPlaceHorizontalView(
         coupons: [
             MockCoupon(
                 id: 1,

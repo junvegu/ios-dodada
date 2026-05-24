@@ -19,7 +19,7 @@ public struct RoutesHorizontalView<Item: Identifiable>: View {
     private let routeStops: (Item) -> Int
     private let routeDistance: (Item) -> String
     private let routeDuration: (Item) -> String
-    private let routeRating: (Item) -> Double
+    private let routeRating: (Item) -> String
     private let routeImageURLs: (Item) -> [URL?]
     private let routeExtraCount: (Item) -> Int
     
@@ -34,7 +34,7 @@ public struct RoutesHorizontalView<Item: Identifiable>: View {
         routeStops: @escaping (Item) -> Int,
         routeDistance: @escaping (Item) -> String,
         routeDuration: @escaping (Item) -> String,
-        routeRating: @escaping (Item) -> Double,
+        routeRating: @escaping (Item) -> String,
         routeImageURLs: @escaping (Item) -> [URL?],
         routeExtraCount: @escaping (Item) -> Int
     ) {

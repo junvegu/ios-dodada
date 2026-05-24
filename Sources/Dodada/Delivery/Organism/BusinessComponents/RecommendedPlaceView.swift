@@ -1,33 +1,34 @@
 //
-//  DDDRestaurantPreview.swift
+//  DDDPlacePreview.swift
 //  Dodada
 //
 //  Created by Aly Benjamin Contreras Del Pino on 14/03/25.
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
-public struct DDDRestaurantPreview: View {
-    let imageURL: URL?
-    let name: String
-    let rating: Double
-    let location: String
-    let distance: String
-    let categories: [String]
-    let priceLevel: LevelPrice
-    let isFeatured: Bool
+public struct RecommendedPlaceView: View {
+    private let imageURL: URL?
+    private let name: String
+    private let rating: String
+    private let location: String
+    private let distance: String?
+    private let categories: [String]?
+    private let priceLevel: LevelPrice
+    private let isFeatured: Bool
     
     private let imageSize: CGFloat = 64
     
-    public init(imageURL: URL?,
-                name: String,
-                rating: Double,
-                location: String,
-                distance: String,
-                categories: [String],
-                priceLevel: LevelPrice,
-                isFeatured: Bool = false) {
+    public init(
+        imageURL: URL?,
+        name: String,
+        rating: String,
+        location: String,
+        distance: String? = nil,
+        categories: [String]? = nil,
+        priceLevel: LevelPrice,
+        isFeatured: Bool
+    ) {
         self.imageURL = imageURL
         self.name = name
         self.rating = rating
@@ -39,51 +40,61 @@ public struct DDDRestaurantPreview: View {
     }
     
     public var body: some View {
-        HStack(alignment: .top, spacing: 10) {
+        HStack(alignment: .top, spacing: .spacingXs) {
             ZStack {
                 Circle()
                     .fill(Color.white)
                     .frame(width: imageSize, height: imageSize)
-                    .shadow(radius: 4)// Con el shadow se ve mejor :D
+                    .shadow(radius: 4)
                     .overlay(
-                        WebImage(url: imageURL)
-                            .resizable()
+                        DDDAsyncImage(url: imageURL)
                             .scaledToFill()
                             .frame(width: imageSize, height: imageSize)
                             .clipShape(Circle())
-                            .placeholder(when: true) {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.white.opacity(0.6))
-                                    ProgressView()
-                                }
-                            }
                     )
             }
             
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: .spacingXs) {
+                
+                // MARK: - Name & Rating
+                
                 HStack {
                     Text(name)
                         .textStyle(.bodyBold)
+                    
                     Spacer()
-                    HStack(spacing: 4) {
-                        DDDIcon(.contentStar, color: nil, size: .iconSm)
-                        Text(String(format: "%.1f", rating))
+                    
+                    HStack(spacing: .spacingTwoXs) {
+                        DDDIcon(.contentStar, color: .warningValue300, size: .iconXs)
+                        
+                        Text(rating)
                             .textStyle(.caption2Bold)
                     }
                 }
                 
-                HStack {
-                    DDDIcon(.locationMapPin, size: .iconSm)
+                // MARK: - Location
+                
+                HStack(spacing: .spacingTwoXs) {
+                    DDDIcon(.locationMapPin, size: .iconXs)
+                    
                     Text(location)
                         .textStyle(.caption1Regular)
-                    Text("(\(distance))")
-                        .textStyle(.caption2Regular)
+                    
+                    if let distance, !distance.isEmpty {
+                        Text("(\(distance))")
+                            .textStyle(.caption2Regular)
+                    }
                 }
                 
-                HStack {
-                    DDDListTagView(data: categories)
+                // MARK: - Categories
+                
+                if let categories, !categories.isEmpty {
+                    HStack {
+                        DDDListTagView(data: categories)
+                    }
                 }
+                
+                // MARK: - Price & Featured
                 
                 HStack {
                     DDDPriceIndicatorView(level: priceLevel)
@@ -91,8 +102,10 @@ public struct DDDRestaurantPreview: View {
                     if isFeatured {
                         Text("•")
                             .foregroundColor(.gray)
+                        
                         HStack {
-                            DDDIcon(.contentAward, color: nil, size: .iconMd)
+                            DDDIcon(.contentAward2, color: .warningValue300, size: .iconSm)
+                            
                             Text("Destacado")
                                 .textStyle(.caption2Bold)
                         }
@@ -102,35 +115,33 @@ public struct DDDRestaurantPreview: View {
         }
         .padding()
         .background(Color.white)
-        .cornerRadius(15)
-        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.secondaryValue100, lineWidth: 2))
-        .padding(.horizontal, 16)
+        .cornerRadius(8)
     }
 }
 
 
 #Preview {
     VStack{
-        DDDRestaurantPreview(
+        RecommendedPlaceView(
             imageURL: URL(string: "https://www.biografia.de/biografia/Emma-Myers.jpg"),
             name: "Anticuchos Bran",
-            rating: 4.1,
+            rating: "4.1",
             location: "San Pedro 308, Surquillo 15047",
             distance: "2.3km",
             categories: ["Criolla", "Tradicional", "Peruano", "Bar & Grill","Selva"],
             priceLevel: .low,
             isFeatured: true
         )
-        DDDRestaurantPreview(
+        RecommendedPlaceView(
             imageURL: URL(string: "pio"),
             name: "Pollitos Pio",
-            rating: 5,
+            rating: "5",
             location: "A la vuelta de tu casa",
             distance: "0km",
             categories: ["Criolla", "Tradicional", "Peruano", "Bar & Grill","Selva"],
             priceLevel: .medium,
             isFeatured: false
-            )
+        )
     }
 }
 

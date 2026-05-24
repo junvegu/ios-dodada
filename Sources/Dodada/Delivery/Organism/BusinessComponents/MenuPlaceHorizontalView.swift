@@ -1,5 +1,5 @@
 //
-//  MenuRestaurantHorizontalView.swift
+//  MenuPlaceHorizontalView.swift
 //  Dodada
 //
 //  Created by Junior Quevedo Gutiérrez  on 12/01/26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct MenuRestaurantHorizontalView<Item: Identifiable>: View {
+public struct MenuPlaceHorizontalView<Item: Identifiable>: View {
     private let menuItems: [Item]
     private let lastUpdated: String?
     private let menuName: (Item) -> String
@@ -146,7 +146,7 @@ private struct MenuCardView: View {
 }
 
 #if DEBUG
-struct MenuRestaurantHorizontalView_Previews: PreviewProvider {
+struct MenuPlaceHorizontalView_Previews: PreviewProvider {
     struct MockMenuItem: Identifiable {
         let id: Int
         let name: String
@@ -158,7 +158,7 @@ struct MenuRestaurantHorizontalView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             
-            MenuRestaurantHorizontalView(
+            MenuPlaceHorizontalView(
                 menuItems: [
                     MockMenuItem(
                         id: 1,
@@ -190,7 +190,7 @@ struct MenuRestaurantHorizontalView_Previews: PreviewProvider {
             )
             .previewDisplayName("Con imágenes")
             
-            MenuRestaurantHorizontalView(
+            MenuPlaceHorizontalView(
                 menuItems: [
                     MockMenuItem(
                         id: 1,

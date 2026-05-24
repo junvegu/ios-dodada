@@ -27,6 +27,7 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
     private let passwordStrength: PasswordStrengthIndicator.PasswordStrength?
     private let isSecure: Bool
     private let message: Message?
+    private let isMandatory: Bool
     private let isRequired: Bool
     private let requiredMessage: String?
 
@@ -60,7 +61,9 @@ public struct DDDInputText<Prefix: View, Suffix: View>: View {
         }()
 
         let tokens = inputTokens(for: effectiveMessage)
-        return FieldWrapper(labelText, message: effectiveMessage, messageHeight: $messageHeight) {
+        let isTopLabelMandatory = isMandatory && !labelText.isEmpty
+
+        return FieldWrapper(labelText, message: effectiveMessage, messageHeight: $messageHeight, isMandatory: isTopLabelMandatory) {
             DDDInputContent(
                 state: state,
                 label: compactLabel,
@@ -187,6 +190,7 @@ public extension DDDInputText {
         passwordStrength: PasswordStrengthIndicator.PasswordStrength? = nil,
         message: Message? = nil,
         messageHeight: Binding<CGFloat> = .constant(0),
+        isMandatory: Bool = false,
         isRequired: Bool = false,
         requiredMessage: String? = nil,
         autocapitalization: UITextAutocapitalizationType = .none,
@@ -202,6 +206,7 @@ public extension DDDInputText {
             passwordStrength: passwordStrength,
             message: message,
             messageHeight: messageHeight,
+            isMandatory: isMandatory,
             isRequired: isRequired,
             requiredMessage: requiredMessage,
             autocapitalization: autocapitalization,
@@ -241,6 +246,7 @@ public extension DDDInputText {
         passwordStrength: PasswordStrengthIndicator.PasswordStrength? = nil,
         message: Message? = nil,
         messageHeight: Binding<CGFloat> = .constant(0),
+        isMandatory: Bool = false,
         isRequired: Bool = false,
         requiredMessage: String? = nil,
         autocapitalization: UITextAutocapitalizationType = .none,
@@ -257,6 +263,7 @@ public extension DDDInputText {
         self.passwordStrength = passwordStrength
         self.message = message
         self._messageHeight = messageHeight
+        self.isMandatory = isMandatory
         self.prefix = prefix()
         self.suffix = suffix()
         self.isRequired = isRequired
@@ -290,6 +297,7 @@ public extension DDDInputText {
                 isSecure: true,
                 passwordStrength: .medium(title: "Seguridad media"),
                 message: .help("Debe tener al menos 8 caracteres"),
+                isMandatory: true,
                 isRequired: true
             )
 

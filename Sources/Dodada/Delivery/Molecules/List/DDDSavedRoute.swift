@@ -9,10 +9,10 @@ import SwiftUI
 
 public struct DDDSavedRoute: View {
     public let title: String
-    public let restaurantsText: String
-    public let hoursText: String
+    public let placesText: String
+    public let hoursText: String?
     public let imageURL: String
-    public let badgeScore: String
+    public let badgeScore: String?
     public let onTap: () -> Void
     
     private let imageSize: CGFloat = 88
@@ -22,17 +22,17 @@ public struct DDDSavedRoute: View {
     
     public init(
         title: String,
-        restaurantsText: String,
-        hoursText: String,
-        badgeScore: String,
-        imageURL: String?,
+        placesText: String,
+        hoursText: String? = nil,
+        badgeScore: String? = nil,
+        imageURL: String,
         onTap: @escaping () -> Void = {}
     ) {
         self.title = title
-        self.restaurantsText = restaurantsText
+        self.placesText = placesText
         self.hoursText = hoursText
         self.badgeScore = badgeScore
-        self.imageURL = imageURL ?? ""
+        self.imageURL = imageURL
         self.onTap = onTap
     }
     
@@ -50,7 +50,7 @@ public struct DDDSavedRoute: View {
                     ZStack {
                         Color.secondaryValue100
                         
-                        Image("Route", bundle: .module)
+                        Image(.route)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 68, height: 68)
@@ -61,45 +61,51 @@ public struct DDDSavedRoute: View {
             }
             
             // MARK: - Texts
-            VStack(alignment: .leading, spacing: textSpacing) {
-                Text(title)
-                    .textStyle(.subheadlineBold)
-                    .foregroundColor(.secondaryValue500)
-                
+            VStack{
                 VStack(alignment: .leading, spacing: detailSpacing) {
-                    HStack(spacing: 6) {
-                        DDDIcon(.restaurantRestaurant, size: .iconXs, overrideColor: .primaryValue500)
+                    HStack{
+                        Text(title)
+                            .textStyle(.subheadlineBold)
+                            .foregroundColor(.secondaryValue500)
                         
-                        Text(restaurantsText)
-                            .textStyle(.footnoteRegular)
-                            .foregroundColor(.secondaryValue400)
+                        Spacer()
+                        
+                        // MARK: - Badge
+                        if let score = badgeScore {
+                            DDDBadge(
+                                text: score,
+                                icon: .contentStar,
+                                type: .opacity,
+                                state: .warning
+                            )
+                        }
                     }
                     
-                    HStack(spacing: 6) {
-                        DDDIcon(.timeClock, size: .iconXs, overrideColor: .primaryValue500)
+                    VStack(alignment: .leading, spacing: detailSpacing) {
+                        HStack(spacing: 6) {
+                            DDDIcon(.restaurantRestaurant, size: .iconXs, overrideColor: .primaryValue500)
+                            
+                            Text(placesText)
+                                .textStyle(.footnoteRegular)
+                                .foregroundColor(.secondaryValue400)
+                        }
                         
-                        Text(hoursText)
-                            .textStyle(.footnoteRegular)
-                            .foregroundColor(.secondaryValue400)
+                        if let hours = hoursText {
+                            HStack(spacing: 6) {
+                                DDDIcon(.timeClock, size: .iconXs, overrideColor: .primaryValue500)
+                                Text(hours)
+                                    .textStyle(.footnoteRegular)
+                                    .foregroundColor(.secondaryValue400)
+                            }
+                        }
                     }
                 }
             }
-            .padding(.top, 4)
-            
-            Spacer()
-            
-            // MARK: - Badge
-            DDDBadge(
-                text: badgeScore,
-                icon: .contentStar,
-                type: .opacity,
-                state: .warning
-            )
-            .padding(.top, 4)
-        }
-        .onTapGesture {
+        }.onTapGesture {
             onTap()
+            
         }
+        
     }
 }
 
@@ -107,7 +113,7 @@ public struct DDDSavedRoute: View {
     VStack(spacing: 12){
         DDDSavedRoute(
             title: "Ruta del ceviche",
-            restaurantsText: "4 restaurantes",
+            placesText: "4 restaurantes",
             hoursText: "4 horas",
             badgeScore: "4.2",
             imageURL: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200"
@@ -117,9 +123,7 @@ public struct DDDSavedRoute: View {
         
         DDDSavedRoute(
             title: "Ruta del ceviche",
-            restaurantsText: "4 restaurantes",
-            hoursText: "4 horas",
-            badgeScore: "4.2",
+            placesText: "4 restaurantes",
             imageURL: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200"
         ) {
             print("Tapped en Ruta del ceviche")
@@ -132,7 +136,7 @@ public struct DDDSavedRoute: View {
 #Preview("Sin Imagen (Fallback)") {
     DDDSavedRoute(
         title: "Ruta nocturna",
-        restaurantsText: "2 restaurantes",
+        placesText: "2 restaurantes",
         hoursText: "1 hora",
         badgeScore: "4.8",
         imageURL: ""
