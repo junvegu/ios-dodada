@@ -53,6 +53,7 @@ public struct DDDTabItem: View {
         Text(title)
             .textStyle(.subheadlineBold)
             .foregroundStyle(isSelected ? activeColor : inactiveColor)
+            .fixedSize(horizontal: true, vertical: false)
             .padding(.horizontal, .spacingMd)
             .animation(.easeInOut(duration: 0.3), value: isSelected)
     }
