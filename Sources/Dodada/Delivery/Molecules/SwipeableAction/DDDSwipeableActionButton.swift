@@ -216,14 +216,11 @@ public struct DDDSwipeableActionButton: View {
                 .textStyle(.bodyBold)
                 .foregroundStyle(currentColor)
             Spacer()
-            Text("Ir ahora")
+            Text(displayedAction.title)
                 .textStyle(.bodyRegular)
                 .foregroundStyle(currentColor)
             
-            DDDIcon(
-                .arrowsRight
-            )
-            .iconColor(currentColor)
+            DDDIcon(displayedAction.icon).iconColor(currentColor)
         }
         .padding(.trailing, .spacingMd)
         .frame(maxWidth: .infinity, alignment: .trailing)
