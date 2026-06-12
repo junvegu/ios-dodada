@@ -31,7 +31,7 @@ public struct DDDNotification: View {
     public var body: some View {
         if isVisible {
             HStack(spacing: 10) {
-                DDDIcon(type.leadingIcon, color: type.iconColorToken)
+                DDDIcon(type.leadingIcon, color: type.iconColorToken, size: .iconSm)
                 
                 VStack(alignment: .leading) {
                     Text(title)
@@ -137,7 +137,7 @@ public extension View {
                 isVisible: $isNotificationVisible,
                 title: "Success",
                 description: "Operation completed",
-                type: .state5
+                type: .success
             )
         }
     }

@@ -13,10 +13,10 @@ public enum NotificationType{
     
     var backgroundColor: Color {
         switch self {
-        case .success: return Color.successValue500.opacity(0.3)
-        case .warning: return Color.warningValue500.opacity(0.3)
-        case .error: return Color.errorValue500.opacity(0.3)
-        case .info: return Color.infoValue500.opacity(0.3)
+        case .success: return Color.successValue100
+        case .warning: return Color.warningValue100
+        case .error: return Color.errorValue100
+        case .info: return Color.infoValue100
         case .state5: return Color.secondaryValue100
         }
     }

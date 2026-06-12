@@ -8,27 +8,33 @@
 import SwiftUI
 
 public struct MenuPlaceHorizontalView<Item: Identifiable>: View {
+    private let title: String
     private let menuItems: [Item]
     private let lastUpdated: String?
     private let menuName: (Item) -> String
     private let menuImageURL: (Item) -> String
     private let menuPageCount: (Item) -> Int
-    private let menuURL: (Item) -> URL?
+    private let menuURL: ((Item) -> URL?)?
+    private let onItemTap: ((Item) -> Void)?
     
     public init(
+        title: String = "Menú",
         menuItems: [Item],
         lastUpdated: String? = nil,
         menuName: @escaping (Item) -> String,
         menuImageURL: @escaping (Item) -> String,
         menuPageCount: @escaping (Item) -> Int,
-        menuURL: @escaping (Item) -> URL?
+        menuURL: ((Item) -> URL?)? = nil,
+        onItemTap: ((Item) -> Void)? = nil
     ) {
+        self.title = title
         self.menuItems = menuItems
         self.lastUpdated = lastUpdated
         self.menuName = menuName
         self.menuImageURL = menuImageURL
         self.menuPageCount = menuPageCount
         self.menuURL = menuURL
+        self.onItemTap = onItemTap
     }
     
     private enum Constants {
@@ -40,7 +46,7 @@ public struct MenuPlaceHorizontalView<Item: Identifiable>: View {
     public var body: some View {
         VStack(spacing: .spacingMd) {
             DDDSection(
-                title: "Menú",
+                title: title,
                 subtitle: lastUpdated,
                 buttonTitle: nil
             )
@@ -52,7 +58,9 @@ public struct MenuPlaceHorizontalView<Item: Identifiable>: View {
                             name: menuName(item),
                             quantityItem: menuPageCount(item),
                             imageURL: menuImageURL(item),
-                            url: menuURL(item)
+                            onTap: {
+                                onItemTap?(item)
+                            }
                         )
                     }
                 }
@@ -66,7 +74,7 @@ private struct MenuCardView: View {
     let name: String
     let quantityItem: Int
     let imageURL: String
-    let url: URL?
+    var onTap: (() -> Void)? = nil
     @State private var showWebView = false
     
     private enum Constants {
@@ -76,8 +84,8 @@ private struct MenuCardView: View {
     
     var body: some View {
         Button {
-            if let url = url {
-                showWebView = true
+            if let onTap = onTap {
+                onTap()
             }
         } label: {
             ZStack(alignment: .bottomLeading) {
@@ -137,11 +145,6 @@ private struct MenuCardView: View {
             .clipShape(RoundedRectangle(cornerRadius: .radiusXl))
         }
         .buttonStyle(PlainButtonStyle())
-        .sheet(isPresented: $showWebView) {
-            if let url = url {
-                InternalWebView(url: url, isPresented: $showWebView)
-            }
-        }
     }
 }
 
@@ -185,8 +188,7 @@ struct MenuPlaceHorizontalView_Previews: PreviewProvider {
                 lastUpdated: "Actualizado hace 3 meses",
                 menuName: { $0.name },
                 menuImageURL: { $0.imageURL },
-                menuPageCount: { $0.pageCount },
-                menuURL: { $0.url }
+                menuPageCount: { $0.pageCount }
             )
             .previewDisplayName("Con imágenes")
             
@@ -210,8 +212,7 @@ struct MenuPlaceHorizontalView_Previews: PreviewProvider {
                 lastUpdated: nil,
                 menuName: { $0.name },
                 menuImageURL: { $0.imageURL },
-                menuPageCount: { $0.pageCount },
-                menuURL: { $0.url }
+                menuPageCount: { $0.pageCount }
             )
             .previewDisplayName("Sin imágenes")
         }
