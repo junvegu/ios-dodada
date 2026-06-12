@@ -31,7 +31,7 @@ public struct DDDToast: View {
     public var body: some View {
         if isVisible {
             HStack(spacing: 10) {
-                DDDIcon(type.leadingIcon, color: type.iconColorToken)
+                DDDIcon(type.leadingIcon, color: type.iconColorToken, size: .iconSm)
                 
                 VStack(alignment: .leading) {
                     Text(title)
@@ -49,7 +49,7 @@ public struct DDDToast: View {
                 Button(action: {
                     dismissToast()
                 }) {
-                    DDDIcon(.actionsCircleX, color: type.iconColorToken)
+                    DDDIcon(.actionsClose, color: type.iconColorToken, size: .iconSm)
                 }
             }
             .padding()

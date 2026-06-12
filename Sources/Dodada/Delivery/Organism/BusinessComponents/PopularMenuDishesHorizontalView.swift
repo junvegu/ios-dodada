@@ -51,7 +51,7 @@ public struct PopularMenuDishesHorizontalView<Item: Identifiable>: View where It
                         )
                     }
                 }
-                .padding(.horizontal, .spacingMd)
+                .padding(.horizontal, .spacingLg)
             }
         }
     }
