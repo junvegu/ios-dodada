@@ -23,11 +23,12 @@ import SDWebImageSwiftUI
 ///   .frame(width: 120, height: 120)
 ///   .clipShape(Circle())
 /// ```
-public struct DDDAsyncImage: View {
+public struct DDDAsyncImage<Placeholder: View>: View {
 
     // MARK: - Properties
 
     private let imageURL: URL?
+    private let placeholder: () -> Placeholder
     @State private var isLoaded = false
     @State private var didFail = false
 
@@ -36,17 +37,19 @@ public struct DDDAsyncImage: View {
     /// Creates an async image from a string URL.
     ///
     /// - Parameter urlString: String representation of the remote URL.
-    ///   If invalid or nil, a fallback error image will be shown.
-    public init(urlString: String?) {
+    ///   If invalid or nil, the provided placeholder will be shown.
+    public init(urlString: String?, @ViewBuilder placeholder: @escaping () -> Placeholder) {
         let trimmed = (urlString ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         self.imageURL = URL(string: trimmed)
+        self.placeholder = placeholder
     }
 
     /// Creates an async image from a URL.
     ///
-    /// - Parameter url: Remote image URL. If nil, a fallback error image will be shown.
-    public init(url: URL?) {
+    /// - Parameter url: Remote image URL. If nil, the provided placeholder will be shown.
+    public init(url: URL?, @ViewBuilder placeholder: @escaping () -> Placeholder) {
         self.imageURL = url
+        self.placeholder = placeholder
     }
 
     // MARK: - Body
@@ -59,9 +62,7 @@ public struct DDDAsyncImage: View {
             }
 
             if imageURL == nil || didFail {
-                Image(._404)
-                    .resizable()
-                    .scaledToFill()
+                placeholder()
                     .transition(.opacity)
             }
 
@@ -89,6 +90,18 @@ public struct DDDAsyncImage: View {
             isLoaded = false
             didFail = false
         }
+    }
+}
+
+// Backwards-compatible convenience initializers using the default 404 image as placeholder
+public extension DDDAsyncImage where Placeholder == AnyView {
+    init(urlString: String?) {
+        let trimmed = (urlString ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        self.init(url: URL(string: trimmed)) { AnyView(Image(._404).resizable().scaledToFill()) }
+    }
+
+    init(url: URL?) {
+        self.init(url: url) { AnyView(Image(._404).resizable().scaledToFill()) }
     }
 }
 
