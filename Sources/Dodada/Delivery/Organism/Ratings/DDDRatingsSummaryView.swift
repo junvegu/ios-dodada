@@ -44,7 +44,7 @@ public struct DDDRatingsSummaryView: View {
     public var body: some View {
         let avgDouble = Double(averageScore) ?? 0.0
         
-        VStack(alignment: .leading, spacing: .spacingXl) {
+        VStack(alignment: .leading, spacing: .spacingLg) {
             HStack(alignment: .top, spacing: .spacingXl) {
                 
                 VStack(alignment: .leading, spacing: .spacingTwoXs) {
@@ -91,28 +91,25 @@ public struct DDDRatingsSummaryView: View {
                         distributionBar(label: distributionLabels[0], percentage: distribution[0], color: .successValue500)
                         distributionBar(label: distributionLabels[1], percentage: distribution[1], color: .successValue400)
                         distributionBar(label: distributionLabels[2], percentage: distribution[2], color: .warningValue500)
-                        distributionBar(label: distributionLabels[3], percentage: distribution[3], color: .secondaryValue300)
-                        distributionBar(label: distributionLabels[4], percentage: distribution[4], color: .secondaryValue200)
+                        distributionBar(label: distributionLabels[3], percentage: distribution[3], color: .errorValue200)
+                        distributionBar(label: distributionLabels[4], percentage: distribution[4], color: .errorValue500)
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
-            
-            Divider()
-                .background(Color.secondaryValue200)
-                .padding(.vertical, .spacingXs)
-            
-            HStack(spacing: 0) {
-                ForEach(Array(categories.enumerated()), id: \.offset) { index, category in
-                    categoryView(title: category.title, score: category.score)
-                    
-                    if index < categories.count - 1 {
-                        Spacer()
+            VStack(spacing: 8){
+                Rectangle()
+                    .fill(Color.secondaryValue300)
+                    .frame(maxWidth: .infinity, maxHeight: 1)
+                
+                HStack(spacing: 36) {
+                    ForEach(Array(categories.enumerated()), id: \.offset) { index, category in
+                        categoryView(title: category.title, score: category.score)
                     }
                 }
             }
         }
-        .padding(.spacingMd)
+        .padding(.horizontal, .spacingMd)
     }
     
     @ViewBuilder
@@ -143,11 +140,11 @@ public struct DDDRatingsSummaryView: View {
         
         VStack(spacing: .spacingTwoXs) {
             Text(title)
-                .textStyle(.caption1Regular)
+                .textStyle(.caption2Regular)
                 .foregroundColor(.secondaryValue500)
             
             Text(String(format: "%.1f", scoreDouble))
-                .textStyle(.caption1Bold)
+                .textStyle(.caption2Bold)
                 .foregroundColor(.secondaryValue400)
         }
     }
@@ -166,12 +163,12 @@ struct DDDRatingsSummaryView_Previews: PreviewProvider {
                     DDDRatingCategoryItem(title: "Ambiente", score: "4.0"),
                     DDDRatingCategoryItem(title: "Precio", score: "4.0")
                 ],
-                distributionScores: [0.8, 0.6, 0.1, 0.0, 0.0]
+                distributionScores: [0.8, 0.6, 0.4, 0.3, 0.1]
             )
             .previewDisplayName("Diseño Completo")
             
             DDDRatingsSummaryView(
-                averageScore: "4.33",
+                averageScore: "3.5",
                 ratingsCount: 3,
                 categories: [
                     DDDRatingCategoryItem(title: "Food", score: "2.67"),
@@ -185,7 +182,6 @@ struct DDDRatingsSummaryView_Previews: PreviewProvider {
             )
             .previewDisplayName("Personalizado y Sin Distribución")
         }
-        .padding()
         .previewLayout(.sizeThatFits)
     }
 }
