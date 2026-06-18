@@ -40,7 +40,7 @@ public struct DDDDeliveryLinkButton: View {
     private var content: some View {
         DDDAsyncImage(urlString: thumbnailURL) {
             Text(type.capitalized)
-                .font(.system(size: 12, weight: .semibold))
+                .textStyle(.bodyBold)
                 .foregroundColor(.black)
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
