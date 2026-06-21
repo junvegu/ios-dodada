@@ -50,7 +50,7 @@ public struct PromotionPlaceHorizontalView<Item: Identifiable>: View {
                         )
                     }
                 }
-                .padding(.horizontal, .spacingMd)
+                .padding(.horizontal, .spacingLg)
             }
         }
     }
