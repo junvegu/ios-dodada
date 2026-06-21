@@ -35,7 +35,7 @@ public struct DDDRatingView: View {
                     rating = number
                 } label: {
                     let iconImage = image(for: number)
-                    DDDIcon(iconImage, color: number > rating ? .secondaryValue200 : nil, size: .iconSm)
+                    DDDIcon(iconImage, color: number > rating ? .secondaryValue200 : .warningValue300, size: .iconSm)
                 }
             }
         }
