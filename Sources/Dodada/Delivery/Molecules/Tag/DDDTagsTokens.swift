@@ -17,7 +17,7 @@ public enum TagType {
         case .filled:
             return state == .ghost ? .clear : state.background
         case .opacity:
-            return state == .ghost ? .clear : state.background.opacity(0.15)
+            return state == .ghost ? .clear : state.backgroundOpacity
         }
     }
 
@@ -98,6 +98,18 @@ public enum TagState {
         case .warning: return Color.warningValue500
         case .alert: return Color.errorValue500
         case .secondary: return Color.secondaryValue500
+        case .ghost: return .clear
+        }
+    }
+    
+    public var backgroundOpacity: Color {
+        switch self {
+        case .default: return Color.primaryValue100
+        case .info: return Color.infoValue100
+        case .success: return Color.successValue100
+        case .warning: return Color.warningValue100
+        case .alert: return Color.errorValue100
+        case .secondary: return Color.secondaryValue100
         case .ghost: return .clear
         }
     }

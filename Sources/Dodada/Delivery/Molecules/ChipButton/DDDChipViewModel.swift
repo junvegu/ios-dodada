@@ -12,7 +12,7 @@ public struct ChipModel: Identifiable, Equatable {
         lhs.id == rhs.id
     }
     
-    @State public var isSelected: Bool
+    public var isSelected: Bool
     public let id = UUID()
     public let systemImage: String
     public let titleKey: LocalizedStringKey
@@ -20,17 +20,17 @@ public struct ChipModel: Identifiable, Equatable {
 
 public class ChipsViewModel: ObservableObject {
     public init() {
+        self.dataObject = [
+            ChipModel(isSelected: false, systemImage: "heart.circle", titleKey: "Heart"),
+            ChipModel(isSelected: false, systemImage: "folder.circle", titleKey: "Folder"),
+            ChipModel(isSelected: false, systemImage: "pencil.and.outline", titleKey: "Pen"),
+            ChipModel(isSelected: false, systemImage: "book.circle", titleKey: "Book"),
+            ChipModel(isSelected: false, systemImage: "paperplane.circle", titleKey: "Paper Plain"),
+            ChipModel(isSelected: false, systemImage: "opticaldiscdrive", titleKey: "Optical Drive"),
+            ChipModel(isSelected: false, systemImage: "doc.circle", titleKey: "Documents")
+        ]
     }
     @Published var dataObject: [ChipModel] = []
-    @Published var chipArray: [ChipModel] = [
-        ChipModel(isSelected: false, systemImage: "heart.circle", titleKey: "Heart"),
-        ChipModel(isSelected: false, systemImage: "folder.circle", titleKey: "Folder"),
-        ChipModel(isSelected: false, systemImage: "pencil.and.outline", titleKey: "Pen"),
-        ChipModel(isSelected: false, systemImage: "book.circle", titleKey: "Book"),
-        ChipModel(isSelected: false, systemImage: "paperplane.circle", titleKey: "Paper Plain"),
-        ChipModel(isSelected: false, systemImage: "opticaldiscdrive", titleKey: "Optical Drive"),
-        ChipModel(isSelected: false, systemImage: "doc.circle", titleKey: "Documents")
-    ]
     
     public func addChipButtonCloseAction(text: String) {
         dataObject.append(
