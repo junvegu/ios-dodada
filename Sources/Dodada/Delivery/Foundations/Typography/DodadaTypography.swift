@@ -11,18 +11,13 @@ public struct DodadaFont {
     
 }
 public extension DodadaFont {
-    init(family: String,
-         size: CGFloat,
-         weight: CGFloat,
-         lineHeight: CGFloat,
-         letterSpacing: CGFloat?,
-         underline: Bool) {
-        self.init(family: family,
-                  size: size,
-                  weight: weight,
-                  lineHeight: lineHeight,
-                  letterSpacing: letterSpacing,
-                  underline: underline)
+    func withFamily(_ family: String) -> DodadaFont {
+        DodadaFont(family: family,
+                   size: size,
+                   weight: weight,
+                   lineHeight: lineHeight,
+                   letterSpacing: letterSpacing,
+                   underline: underline)
     }
 }
 public enum DodadaTypographyToken: CaseIterable {
