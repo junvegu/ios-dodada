@@ -8,8 +8,23 @@ public struct DodadaFont {
     public let lineHeight: CGFloat
     public let letterSpacing: CGFloat?
     public let underline: Bool
+    
 }
-
+public extension DodadaFont {
+    init(family: String,
+         size: CGFloat,
+         weight: CGFloat,
+         lineHeight: CGFloat,
+         letterSpacing: CGFloat?,
+         underline: Bool) {
+        self.init(family: family,
+                  size: size,
+                  weight: weight,
+                  lineHeight: lineHeight,
+                  letterSpacing: letterSpacing,
+                  underline: underline)
+    }
+}
 public enum DodadaTypographyToken: CaseIterable {
     case largeTitleRegular
     case largeTitleBold
