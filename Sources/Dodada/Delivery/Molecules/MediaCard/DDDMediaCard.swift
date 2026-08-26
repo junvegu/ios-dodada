@@ -72,5 +72,5 @@ public struct DDDMediaCard: View {
 }
 
 #Preview {
-    DDDMediaCard(imageURL: URL(string: "https://www.biografia.de/biografia/Emma-Myers.jpg"), text: "Emma Myers, my love, her is so cute", views: "2.5k", isLive: false, author: "Fxkrzn")
+    DDDMediaCard(imageURL: URL(string: "https://mx.web.img2.acsta.net/c_310_420/pictures/22/11/29/19/54/5215983.jpg"), text: "Emma Myers, my love, her is so cute", views: "2.5k", isLive: false, author: "Fxkrzn")
 }

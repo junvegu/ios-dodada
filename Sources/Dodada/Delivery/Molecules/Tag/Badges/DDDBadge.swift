@@ -27,7 +27,7 @@ public struct DDDBadge: View {
             DDDIcon(icon, color: state.iconColorToken(for: type), size: .iconSm)
 
             Text(text)
-                .textStyle(.caption2Bold)
+                .textStyle(.caption1Bold)
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 8)
@@ -152,8 +152,8 @@ struct DDDBadge_Previews: PreviewProvider {
                     state: .success
                 )
                 DDDBadge(
-                    text: "Alerta",
-                    icon: .trendingZap,
+                    text: "4.2",
+                    icon: .contentStar,
                     type: .opacity,
                     state: .warning
                 )

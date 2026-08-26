@@ -38,5 +38,5 @@ public struct DDDTagView: View {
 
 
 #Preview {
-    DDDTagView(label: "Esternocleidomastoideo", invert: false)
+    DDDTagView(label: "Esternocleidomastoideo", invert: true)
 }
