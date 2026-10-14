@@ -230,8 +230,7 @@ public enum DDDButtonDesing {
 
     // MARK: - Background color
 
-    public func getBackgroundColor(by themea: DDDTheme, size: DDDButtonSize = .regular, isDisabled: Bool = false, isPressed: Bool) -> Color {
-        let theme = DDDThemeManager.shared.main
+    public func getBackgroundColor(by theme: DDDTheme, size: DDDButtonSize = .regular, isDisabled: Bool = false, isPressed: Bool) -> Color {
         switch (self, size) {
         case (.primary, .regular):
             let tokens = isDisabled ? DodadaButtonPrimaryRegularTokens.disabledState
